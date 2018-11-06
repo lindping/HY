@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataConverter.cs" />
+    <Compile Include="DataDictionary\DataToObject.cs" />
     <Compile Include="Modle\Controller.cs" />
     <Compile Include="Modle\DataValue.cs" />
     <Compile Include="Modle\Mould.cs" />

@@ -17,6 +17,7 @@ using Resolve = YH.Simulator.Framework.Resolve;
 using Modle = YH.Simulator.Framework.Modle;
 using System.Windows.Threading;
 using DataDictionary = YH.Simulator.Framework.DataDictionary;
+using System.Configuration;
 
 namespace YH.Virtual_ECG_Monitor
 {
@@ -39,7 +40,7 @@ namespace YH.Virtual_ECG_Monitor
             NetInitializeComponent();
         }
 
-      
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
@@ -66,8 +67,11 @@ namespace YH.Virtual_ECG_Monitor
 
             m_NetClient.ConnectedServer += M_NetClient_ConnectedServer;
 
-            m_NetClient.Connect("192.168.1.166", 6500);
+            //  m_NetClient.Connect("127.0.0.1", 8899);
             //m_NetClient.Connect("10.10.100.254", 8899);
+            string ip = ConfigurationManager.AppSettings["NetClientIP"].ToString();
+            int port = int.Parse(ConfigurationManager.AppSettings["NetClientPort"].ToString());
+            m_NetClient.Connect(ip, port);
         }
 
         private void M_NetClient_ConnectedServer(object sender, NetEventArgs e)
@@ -97,13 +101,12 @@ namespace YH.Virtual_ECG_Monitor
 
         private void M_NetClient_ReceivedDatagram(object sender, NetEventArgs e)
         {
-            //throw new NotImplementedException();
-            //string info = string.Format("recv data:{0} from:{1}.", e.ClientSession.Datagram, e.ClientSession);                        
+                                 
 
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                Modle.Function Function = Resolve.Resolve.GetData_Treatment(e.ClientSession.RecvDataBuffer, ref _treatment);
-                SetData_Treatment(Function, _treatment);
+              //  Modle.Function Function = Resolve.Resolve.GetData_Treatment(e.ClientSession.RecvDataBuffer, ref _treatment);
+              //  SetData_Treatment(Function, _treatment);
             });
         }
 
@@ -662,7 +665,7 @@ namespace YH.Virtual_ECG_Monitor
         {
 
             BindData_VitalSigns();
-        
+
         }
 
         #region 生命体征 VitalSigns
@@ -745,7 +748,7 @@ namespace YH.Virtual_ECG_Monitor
         {
 
             ShowData_VitalSigns(Signs.VitalSigns);
-         
+
         }
 
         private string GetString_OperatorStatus(Modle.OperatorStatus OperatorStatus)
@@ -1076,7 +1079,7 @@ namespace YH.Virtual_ECG_Monitor
 
             SendBytes(dataBytes);
         }
-                
+
         private void textBox_VitalSigns_Cyclic_C_O__TextChanged(object sender, TextChangedEventArgs e)
         {
             int C_O_ = 0;
@@ -1862,6 +1865,7 @@ namespace YH.Virtual_ECG_Monitor
             SendBytes(dataBytes);
         }
 
+
         #endregion
 
         #endregion
@@ -1870,7 +1874,9 @@ namespace YH.Virtual_ECG_Monitor
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            new Virtual_ECG_Monitor.ECGmonitor().Show();
+            int rhythm = comboBox_VitalSigns_Cyclic_Rhythm_Basic.SelectedIndex;
+            ECGmonitor frm = new ECGmonitor(rhythm);
+            frm.Show();
         }
     }
 }

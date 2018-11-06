@@ -15,7 +15,7 @@ namespace YH.ECGMonitor.WaveData.RESPWaveData
         private int _inspcapacity;      //吸气量     //3000ml
         private int _ratio;             //吸气比(时间)     呼吸比1:2
         private int _etco2;             //呼气末二氧化碳
-        private float[] _waveData;      //波形数据
+        private float[,] _waveData;      //波形数据
 
         public RESPWaveData()
         {
@@ -89,7 +89,7 @@ namespace YH.ECGMonitor.WaveData.RESPWaveData
         /// <summary>
         /// 波形数据
         /// </summary>
-        public float[] WaveData
+        public float[,] WaveData
         {
             get { return _waveData; }
             set { _waveData = value; }
