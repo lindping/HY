@@ -1,0 +1,17 @@
+﻿<Application x:Class="YH.Simulation_Home.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:YH.MetroTile;assembly=YH.MetroTile"
+             StartupUri="MainWindow.xaml"
+              Startup="Application_Startup" Exit="Application_Exit">
+    <Application.Resources>
+        <!--多个资源字典-->
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/YH.Theme;component/Dictionary/Root.Dictionary.xaml"/>
+                <!--<ResourceDictionary Source="Dictionary/Skin.RegularStyle.xaml"></ResourceDictionary>-->
+                <ResourceDictionary Source="/YH.Theme;component/Dictionary/Skin.RoundedCornerStyle.xaml"></ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

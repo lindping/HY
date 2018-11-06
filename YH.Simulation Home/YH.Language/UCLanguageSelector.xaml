@@ -1,0 +1,11 @@
+﻿<UserControl x:Class="YH.Language.UCLanguageSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YH.Language"
+             mc:Ignorable="d" Height="24" Width="300" Loaded="UserControl_Loaded">
+    <Grid>
+        <ComboBox x:Name="cmb_Language" FontSize="14" SelectionChanged="cmb_Language_SelectionChanged" />
+    </Grid>
+</UserControl>

@@ -1,0 +1,29 @@
+﻿<Window x:Class="YH.Virtual_ECG_Monitor.ECGmonitor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
+        mc:Ignorable="d"    
+        Title="ECGmonitor" Height="300" Width="1336">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Dictionary/Skin.RegularStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid x:Name="myGrid">
+        <Canvas x:Name="myCanvas" Height="300" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1316" Margin="32,25.115,10,0">
+            <Polyline x:Name="polyline1" Points="" Stroke="Red"  StrokeThickness="2" FillRule="EvenOdd"/>
+            <Path Stroke="White" StrokeThickness="1" Data="M 0,150 H1306 M 30,0 V 300" Stretch="Fill" Width="1306"/>
+            <Path Stroke="Blue" StrokeThickness="1" Data="M 30,50 H1306 M 30,250 H1306" Width="1306"/>
+            <TextBlock Canvas.Top="42" Canvas.Left="15" Text="1" Foreground="White"/>
+            <TextBlock Canvas.Top="240" Canvas.Left="12" Text="-1" Foreground="White"/>
+            <TextBlock Canvas.Top="150" Canvas.Left="15" Text="0" Foreground="White"/>
+        </Canvas>
+        <TextBlock x:Name="timeNow" Text="timeNow" Foreground="White" Margin="501.77,366,499.23,343" d:LayoutOverrides="VerticalAlignment"/>
+
+    </Grid>
+
+</Window>

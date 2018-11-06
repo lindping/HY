@@ -1,0 +1,15 @@
+﻿<Window x:Class="YH.Language.SelectorWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YH.Language"
+        mc:Ignorable="d"
+        Title="Language Selector" Height="240" Width="320" Loaded="Window_Loaded" WindowStyle="ToolWindow" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <local:UCLanguageSelector x:Name="LanguageSelector" HorizontalAlignment="Left" Margin="80,30,0,0" VerticalAlignment="Top" Height="27" Width="222" Grid.ColumnSpan="2"/>
+        <Button x:Name="button_OK" Content="确定" HorizontalAlignment="Left" Margin="60,160,0,0" VerticalAlignment="Top" Width="76" Height="24" Click="button_OK_Click"/>
+        <Button x:Name="button_Cancel" Content="取消" HorizontalAlignment="Left" Margin="180,160,0,0" VerticalAlignment="Top" Width="74" Height="24" Click="button_Cancel_Click"/>
+        <Label x:Name="lab_Language" Content="语言" HorizontalAlignment="Left" Margin="2,31,0,0" VerticalAlignment="Top" Width="75" HorizontalContentAlignment="Right"/>
+    </Grid>
+</Window>

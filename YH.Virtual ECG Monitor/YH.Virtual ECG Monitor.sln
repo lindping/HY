@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Virtual ECG Monitor", "YH.Virtual ECG Monitor\YH.Virtual ECG Monitor.csproj", "{5D868C0A-D08F-453E-AE22-E0D8CE2BE5D6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Network.Framework", "..\YH.Virtual Simulator Engine\YH.Network.Framework\YH.Network.Framework.csproj", "{74FD28CA-AC58-4049-8D45-D52D992B252A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Simulator.Framework", "..\YH.Virtual Simulator Engine\YH.Simulator.Framework\YH.Simulator.Framework.csproj", "{6CB5B400-C32B-46F4-9B7E-5778B2B0617B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Theme", "..\YH.Theme\YH.Theme.csproj", "{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HYS.Library", "..\HYS.Library\HYS.Library.csproj", "{2E32B1FC-8848-4AFF-B05B-A6CAF73D1760}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5D868C0A-D08F-453E-AE22-E0D8CE2BE5D6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D868C0A-D08F-453E-AE22-E0D8CE2BE5D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D868C0A-D08F-453E-AE22-E0D8CE2BE5D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D868C0A-D08F-453E-AE22-E0D8CE2BE5D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74FD28CA-AC58-4049-8D45-D52D992B252A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74FD28CA-AC58-4049-8D45-D52D992B252A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74FD28CA-AC58-4049-8D45-D52D992B252A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74FD28CA-AC58-4049-8D45-D52D992B252A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CB5B400-C32B-46F4-9B7E-5778B2B0617B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB5B400-C32B-46F4-9B7E-5778B2B0617B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB5B400-C32B-46F4-9B7E-5778B2B0617B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB5B400-C32B-46F4-9B7E-5778B2B0617B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E32B1FC-8848-4AFF-B05B-A6CAF73D1760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E32B1FC-8848-4AFF-B05B-A6CAF73D1760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E32B1FC-8848-4AFF-B05B-A6CAF73D1760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E32B1FC-8848-4AFF-B05B-A6CAF73D1760}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

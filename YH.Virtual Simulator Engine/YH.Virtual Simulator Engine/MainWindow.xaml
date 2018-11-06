@@ -1,0 +1,523 @@
+﻿<Window x:Class="YH.Virtual_Simulator_Engine.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YH.Virtual_Simulator_Engine"
+        xmlns:tp="clr-namespace:YH.Virtual_Simulator_Engine"
+        xmlns:wf ="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
+        mc:Ignorable="d"
+        Title="Virtual Simulator Engine" Height="1060" Width="1920" WindowStartupLocation="CenterScreen"  WindowState="Maximized" MouseMove="Window_MouseMove" Closing="Window_Closing" StateChanged="Window_StateChanged" Loaded="Window_Loaded">
+
+    <Grid>
+
+        <!--下面部分为系统托盘菜单-->
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="240" Margin="10,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="406"/>
+
+        <!--下面部分为系统托盘菜单-->
+        <tp:NotificationAreaIcon  Icon="/patientIcon.ico" MouseDoubleClick="NotificationAreaIcon_MouseDoubleClick" MouseClick="NotificationAreaIcon_MouseClick" >
+            <tp:NotificationAreaIcon.MenuItems>
+                <wf:MenuItem Text="关于软件" Click="MenuItem_Click" />
+                <wf:MenuItem Text="打开" DefaultItem="True" Click="MenuItem_Click_1"/>
+                <wf:MenuItem Text="退出" Click="MenuItem_Click_2" />
+            </tp:NotificationAreaIcon.MenuItems>
+        </tp:NotificationAreaIcon>
+        <Button x:Name="button_Eyes_LightCheck_Left" Content="检查左眼" HorizontalAlignment="Left" Margin="284,201,0,0" VerticalAlignment="Top" Width="75" Click="button_Eyes_LightCheck_Left_Click" Height="31"/>
+        <Button x:Name="button_Eyes_LightCheck_Right" Content="检查右眼" HorizontalAlignment="Left" Margin="159,201,0,0" VerticalAlignment="Top" Width="75" Click="button_Eyes_LightCheck_Right_Click" Height="31" />
+        <Label x:Name="label_Eyes_Eyelid_Right" HorizontalAlignment="Left" Margin="135,31,0,0" VerticalAlignment="Top" Width="99" Height="25" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Eyes_Eyelid_Left" HorizontalAlignment="Left" Margin="284,31,0,0" VerticalAlignment="Top" Width="99" Height="25" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Eyes_Blinking_Right" HorizontalAlignment="Left" Margin="135,69,0,0" VerticalAlignment="Top" Width="99" Height="25" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Eyes_Blinking_Left" HorizontalAlignment="Left" Margin="284,69,0,0" VerticalAlignment="Top" Width="99" Height="25" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Eyes_Pupill_Right" HorizontalAlignment="Left" Margin="135,114,0,0" VerticalAlignment="Top" Width="99" Height="25" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Eyes_Pupill_Left" HorizontalAlignment="Left" Margin="284,114,0,0" VerticalAlignment="Top" Width="99" Height="25" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Eyes_Light_Right" HorizontalAlignment="Left" Margin="135,155,0,0" VerticalAlignment="Top" Width="99" Height="25" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Eyes_Light_Left" HorizontalAlignment="Left" Margin="284,155,0,0" VerticalAlignment="Top" Width="99" Height="25" HorizontalContentAlignment="Center"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="136" Margin="10,255,0,0" Stroke="Black" VerticalAlignment="Top" Width="406"/>
+        <Label x:Name="label_Cyanosis" Content="紫绀&#xA;Cyanosis" HorizontalAlignment="Left" Margin="10,262,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold"/>
+        <Label x:Name="label_Cyanosis_Lips" Content="口唇 &#xA;Lips" HorizontalAlignment="Left" Margin="105,262,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="label_Cyanosis_Fingernail" Content="手指甲床&#xA;Fingernail" HorizontalAlignment="Left" Margin="105,305,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="label_Cyanosis_FootNail" Content="脚指甲床 &#xA;Foot Nail" HorizontalAlignment="Left" Margin="105,345,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="label_Cyanosis_Lips_Status" Content="无" HorizontalAlignment="Left" Margin="222,271,0,0" VerticalAlignment="Top" Width="24" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Cyanosis_Lips_Value" Content="无" HorizontalAlignment="Left" Margin="254,271,0,0" VerticalAlignment="Top" Width="75" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Cyanosis_Fingernail_Status" Content="无" HorizontalAlignment="Left" Margin="222,315,0,0" VerticalAlignment="Top" Width="24" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Cyanosis_Fingernail_Value" Content="无" HorizontalAlignment="Left" Margin="254,315,0,0" VerticalAlignment="Top" Width="75" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Cyanosis_FootNail_Status" Content="无" HorizontalAlignment="Left" Margin="222,353,0,0" VerticalAlignment="Top" Width="24" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Cyanosis_FootNail_Value" Content="无" HorizontalAlignment="Left" Margin="254,353,0,0" VerticalAlignment="Top" Width="75" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Eyes" Content="眼睛&#xA;Eyes" HorizontalAlignment="Left" Margin="10,23,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold"/>
+        <Label x:Name="label_Eyes_LightCheck" Content="对光检查&#xA;Light Check" HorizontalAlignment="Left" Margin="72,192,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label x:Name="label_Eyes_Eyelid" Content="眼脸&#xA;Eyelid" HorizontalAlignment="Left" Margin="76,22,0,0" VerticalAlignment="Top" Width="69"/>
+        <Label x:Name="label_Eyes_Blinking" Content="眨眼&#xA;Blinking" HorizontalAlignment="Left" Margin="76,62,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label x:Name="label_Eyes_Pupill" Content="瞳孔&#xA;Pupill" HorizontalAlignment="Left" Margin="76,105,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label x:Name="label_Eyes_Light" Content="对光&#xA;Light" HorizontalAlignment="Left" Margin="76,147,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label x:Name="label_Eyes_Right" Content="右眼 Right" HorizontalAlignment="Left" Margin="136,8,0,0" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.796,0.52" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Eyes_Left" Content="左眼 Left" HorizontalAlignment="Left" Margin="284,8,0,0" VerticalAlignment="Top" Width="99" HorizontalContentAlignment="Center"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="90" Margin="10,397,0,0" Stroke="Black" VerticalAlignment="Top" Width="406"/>
+        <Label x:Name="label_AnalogVocal" Content="声音&#xA;Analog Voice" HorizontalAlignment="Left" Margin="10,402,0,0" VerticalAlignment="Top" Width="87" FontWeight="Bold"/>
+        <Label x:Name="label_AnalogVocal_Vocal" Content="发声&#xA;Vocal" HorizontalAlignment="Left" Margin="105,402,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="label_AnalogVocal_Voice" Content="语音&#xA;Voice" HorizontalAlignment="Left" Margin="105,442,0,0" VerticalAlignment="Top" Width="73"/>
+        <Label x:Name="label_AnalogVocal_Vocal_SoundID" Content="无" HorizontalAlignment="Left" Margin="178,410,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="label_AnalogVocal_Voice_SoundID" Content="无" HorizontalAlignment="Left" Margin="178,450,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="label_AnalogVocal_Vocal_SoundID_PlaybackMode" Content="停止" HorizontalAlignment="Left" Margin="270,410,0,0" VerticalAlignment="Top" Width="59" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_AnalogVocal_Voice_SoundID_PlaybackMode" Content="停止" HorizontalAlignment="Left" Margin="270,450,0,0" VerticalAlignment="Top" Width="59" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_AnalogVocal_Vocal_SoundID_SoundVolume" Content="0%" HorizontalAlignment="Left" Margin="334,410,0,0" VerticalAlignment="Top" Width="68" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_AnalogVocal_Voice_SoundID_SoundVolume" Content="0%" HorizontalAlignment="Left" Margin="334,450,0,0" VerticalAlignment="Top" Width="68" HorizontalContentAlignment="Center"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="381" Margin="423,10,0,0" Stroke="Black" VerticalAlignment="Top" Width="662"/>
+        <Label x:Name="label_Airway" Content="气道&#xA;Airway" HorizontalAlignment="Left" Margin="431,23,0,0" VerticalAlignment="Top" Width="96" FontWeight="Bold"/>
+        <Label x:Name="label_Airway_TongueEdema" Content="舌水肿&#xA;Tongue edema" HorizontalAlignment="Left" Margin="492,21,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_TongueFallback" Content="舌头后坠&#xA;Tongue fallback" HorizontalAlignment="Left" Margin="768,21,0,0" VerticalAlignment="Top" Width="103"/>
+        <Label x:Name="label_Airway_FBAO" Content="异物气道阻塞&#xA;FBAO" HorizontalAlignment="Left" Margin="492,63,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_PharyngealObstruction" Content="咽部阻塞&#xA;Pharyngeal Obstruction" HorizontalAlignment="Left" Margin="768,61,0,0" VerticalAlignment="Top" Width="147"/>
+        <Label x:Name="label_Airway_Laryngospasm" Content="喉痉挛&#xA;Laryngospasm" HorizontalAlignment="Left" Margin="492,104,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_Trismus" Content="牙关紧闭 &#xA;Trismus" HorizontalAlignment="Left" Margin="768,104,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_NeckAnkylosis" Content="颈部强直&#xA;Neck Ankylosis" HorizontalAlignment="Left" Margin="492,144,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_Resistance" Content="肺阻力&#xA;Resistance" HorizontalAlignment="Left" Margin="492,187,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_Compliance" Content="顺应性&#xA;Compliance" HorizontalAlignment="Left" Margin="492,227,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_Aerothorax" Content="气胸&#xA;Aerothorax" HorizontalAlignment="Left" Margin="492,267,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_StomachDistention" Content="胃胀气&#xA;Stomach distention" HorizontalAlignment="Left" Margin="492,347,0,0" VerticalAlignment="Top" Width="117"/>
+        <Label x:Name="label_Airway_AutonomousRespiration" Content="自主呼吸&#xA;Autonomous Respiration" HorizontalAlignment="Left" Margin="492,307,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_ExhaleCO2" Content="呼出CO2 &#xA;Exhale CO2" HorizontalAlignment="Left" Margin="768,347,0,0" VerticalAlignment="Top" Width="96"/>
+        <Label x:Name="label_Airway_TongueEdema_Status" HorizontalAlignment="Left" Margin="614,30,0,0" VerticalAlignment="Top" Height="27" Width="32" Content="无" />
+        <Label x:Name="label_Airway_TongueEdema_Value" HorizontalAlignment="Left" Margin="652,34,0,0" VerticalAlignment="Top" Width="99" Height="27" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_FBAO_Status" Content="无" HorizontalAlignment="Left" Margin="614,72,0,0" VerticalAlignment="Top" Width="32"/>
+        <Label x:Name="label_Airway_FBAO_Value" HorizontalAlignment="Left" Margin="652,74,0,0" VerticalAlignment="Top" Width="99" Height="25" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_Laryngospasm_Status" Content="无" HorizontalAlignment="Left" Margin="614,114,0,0" VerticalAlignment="Top" Width="28"/>
+        <Label x:Name="label_Airway_Laryngospasm_Value" HorizontalAlignment="Left" Margin="652,114,0,0" VerticalAlignment="Top" Width="99" Height="25" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_TongueFallback_Status" Content="无" HorizontalAlignment="Left" Margin="924,31,0,0" VerticalAlignment="Top" Width="28"/>
+        <Label x:Name="label_Airway_PharyngealObstruction_Status" Content="无" HorizontalAlignment="Left" Margin="924,70,0,0" VerticalAlignment="Top" Width="28" />
+        <Label x:Name="label_Airway_PharyngealObstruction_Value" HorizontalAlignment="Left" Margin="962,70,0,0" VerticalAlignment="Top" Width="99" Height="25" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_Trismus_Status" Content="无" HorizontalAlignment="Left" Margin="924,113,0,0" VerticalAlignment="Top" Width="28" />
+        <Label x:Name="label_Airway_Trismus_Value" HorizontalAlignment="Left" Margin="962,113,0,0" VerticalAlignment="Top" Width="99" Height="25" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_NeckAnkylosis_Status" Content="无" HorizontalAlignment="Left" Margin="614,152,0,0" VerticalAlignment="Top" Width="28"/>
+        <Label x:Name="label_Airway_NeckAnkylosis_Value" HorizontalAlignment="Left" Margin="652,153,0,0" VerticalAlignment="Top" Width="99" Height="27" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_Resistance_Right_Status" Content="无" HorizontalAlignment="Left" Margin="614,196,0,0" VerticalAlignment="Top" Width="32" />
+        <Label x:Name="label_Airway_Resistance_Left_Status" Content="无" HorizontalAlignment="Left" Margin="778,196,0,0" VerticalAlignment="Top" Width="34" />
+        <Label x:Name="label_Airway_Compliance_Right_Status" Content="无" HorizontalAlignment="Left" Margin="614,236,0,0" VerticalAlignment="Top" Width="32"/>
+        <Label x:Name="label_Airway_Compliance_Left_Status" Content="无" HorizontalAlignment="Left" Margin="778,236,0,0" VerticalAlignment="Top" Width="34"/>
+        <Label x:Name="label_Airway_Aerothorax_Right_Status" Content="无" HorizontalAlignment="Left" Margin="614,276,0,0" VerticalAlignment="Top" Width="32"/>
+        <Label x:Name="label_Airway_Aerothorax_Left_Status" Content="无" HorizontalAlignment="Left" Margin="778,276,0,0" VerticalAlignment="Top" Width="34"/>
+        <Label x:Name="label_Airway_AutonomousRespiration_Right_Status" Content="无" HorizontalAlignment="Left" Margin="614,316,0,0" VerticalAlignment="Top" Width="32"/>
+        <Label x:Name="label_Airway_AutonomousRespiration_Left_Status" Content="无" HorizontalAlignment="Left" Margin="778,317,0,0" VerticalAlignment="Top" Width="34"/>
+        <Label x:Name="label_Airway_StomachDistention_Status" Content="无" HorizontalAlignment="Left" Margin="614,356,0,0" VerticalAlignment="Top" Width="32"/>
+        <Label x:Name="label_Airway_ExhaleCO2_Status" Content="无" HorizontalAlignment="Left" Margin="927,358,0,0" VerticalAlignment="Top" Width="33"/>
+        <Label x:Name="label_Airway_ExhaleCO2_Value" HorizontalAlignment="Left" Margin="965,355,0,0" VerticalAlignment="Top" Width="99" Height="23" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_TongueFallback_Value" HorizontalAlignment="Left" Margin="962,30,0,0" VerticalAlignment="Top" Width="99" Height="25" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_StomachDistention_Value" HorizontalAlignment="Left" Margin="652,355,0,0" VerticalAlignment="Top" Width="99"  RenderTransformOrigin="0.515,3.667" Height="27" Content="0%" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_Airway_Resistance_Right_Value" HorizontalAlignment="Left" Margin="653,195,0,0" VerticalAlignment="Top" Width="99" Height="25" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_Resistance_Left_Value" HorizontalAlignment="Left" Margin="827,195,0,0" VerticalAlignment="Top" Width="99" Height="25" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_Compliance_Right_Value" HorizontalAlignment="Left" Margin="653,234,0,0" VerticalAlignment="Top" Width="99" Height="29" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_Compliance_Left_Value" HorizontalAlignment="Left" Margin="827,234,0,0" VerticalAlignment="Top" Width="99" Height="29" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_Aerothorax_Right_Value" HorizontalAlignment="Left" Margin="653,276,0,0" VerticalAlignment="Top" Width="99" Height="25" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_Aerothorax_Left_Value" HorizontalAlignment="Left" Margin="827,277,0,0" VerticalAlignment="Top" Width="99" Height="25" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_AutonomousRespiration_Right_Value" HorizontalAlignment="Left" Margin="653,315,0,0" VerticalAlignment="Top" Width="99" Height="27" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Airway_AutonomousRespiration_Left_Value" HorizontalAlignment="Left" Margin="827,318,0,0" VerticalAlignment="Top" Width="99" Height="24" Content="0%" HorizontalContentAlignment="Center" />
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="90" Margin="423,397,0,0" Stroke="Black" VerticalAlignment="Top" Width="662"/>
+        <Label x:Name="label_TracheaCannula" Content="气管插管&#xA;Trachea Cannula" HorizontalAlignment="Left" Margin="424,407,0,0" VerticalAlignment="Top" Width="111" FontWeight="Bold"/>
+        <Button x:Name="button_TracheaCannula_InTrachea" Content="插入气管&#xA;Insertion of Trachea" HorizontalAlignment="Left" Margin="572,407,0,0" VerticalAlignment="Top" Width="172" Click="button_TracheaCannula_InTrachea_Click"/>
+        <Button x:Name="button_TracheaCannula_InEsophagus" Content="插入食管&#xA;Insertion of Esophagus" HorizontalAlignment="Left" Margin="827,405,0,0" VerticalAlignment="Top" Width="168" Click="button_TracheaCannula_InEsophagus_Click"/>
+        <Button x:Name="button_TracheaCannula_InRightBronchus" Content="插入右支气管&#xA;Insertion of Right bronchus " HorizontalAlignment="Left" Margin="572,447,0,0" VerticalAlignment="Top" Width="172" Click="button_TracheaCannula_InRightBronchus_Click"/>
+        <Button x:Name="button_TracheaCannula_InLeftBronchus" Content="插入左支气管&#xA;Insertion of left bronchus " HorizontalAlignment="Left" Margin="827,445,0,0" VerticalAlignment="Top" Width="168" Click="button_TracheaCannula_InLeftBronchus_Click"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="130" Margin="10,494,0,0" Stroke="Black" VerticalAlignment="Top" Width="406"/>
+        <Label x:Name="label_BloodPressure" Content="血压测量&#xA;Blood Pressure" HorizontalAlignment="Left" Margin="10,500,0,0" VerticalAlignment="Top" Width="96" FontWeight="Bold"/>
+        <Label x:Name="label_BloodPressure_NIBP" Content="无创血压&#xA;NIBP" HorizontalAlignment="Left" Margin="105,500,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="label_BloodPressure_Korotkoff" Content="科罗特科夫音&#xA;Korotkoff" HorizontalAlignment="Left" Margin="105,540,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="label_BloodPressure_Korotkoff_Priority" Content="优先30S" HorizontalAlignment="Left" Margin="310,544,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_BloodPressure_Korotkoff_SoundVolume" HorizontalAlignment="Left" Height="23" Margin="197,544,0,0" VerticalAlignment="Top" Width="113" RenderTransformOrigin="-0.242,0.476"  Content="0%" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_BloodPressure_NIBP_Systolic" HorizontalAlignment="Left" Height="23" Margin="197,501,0,0"  VerticalAlignment="Top" Width="56" Content="0" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_BloodPressure_NIBP_Diastolic" HorizontalAlignment="Left" Height="23" Margin="280,500,0,0"  VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.763,0.435" Content="0" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_BloodPressure_NIBP_" Content="/" HorizontalAlignment="Left" Margin="253,502,0,0" VerticalAlignment="Top" Width="27" Height="21" HorizontalContentAlignment="Center"/>
+        <Label x:Name="label_BloodPressure_NIBP_Unit" HorizontalAlignment="Left" Margin="341,501,0,0" VerticalAlignment="Top" Width="61" RenderTransformOrigin="-0.242,0.476" Height="23"/>
+        <Label x:Name="label_BloodPressure_CuffPressure" Content="袖带压力&#xA;Cuff Pressure" HorizontalAlignment="Left" Margin="105,580,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="label_BloodPressure_Korotkoff_Priority_Status" Content="无" HorizontalAlignment="Left" Margin="370,544,0,0" VerticalAlignment="Top" Width="32" />
+        <Slider x:Name="slider_BloodPressure_CuffPressure" HorizontalAlignment="Left" Height="24" Margin="208,590,0,0" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.5,0.5" ValueChanged="slider_BloodPressure_CuffPressure_ValueChanged" Maximum="300">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <Label x:Name="label_BloodPressure_CuffPressure_Value" Content="0" HorizontalAlignment="Left" Margin="360,589,0,0" VerticalAlignment="Top" Width="42" HorizontalContentAlignment="Center"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Margin="10,945,0,0" Stroke="Black" Width="406" Height="77" VerticalAlignment="Top"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="119" Margin="10,820,0,0" Stroke="Black" VerticalAlignment="Top" Width="406"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="83" Margin="10,730,0,0" Stroke="Black" VerticalAlignment="Top" Width="406"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="90" Margin="10,631,0,0" Stroke="Black" VerticalAlignment="Top" Width="406"/>
+        <Label x:Name="label_Convulsions" Content="惊厥&#xA;Convulsions" HorizontalAlignment="Left" Margin="10,636,0,0" VerticalAlignment="Top" Width="87" FontWeight="Bold"/>
+        <Label x:Name="label_Secretions" Content="分泌物&#xA;Secretions" HorizontalAlignment="Left" Margin="10,735,0,0" VerticalAlignment="Top" Width="87" FontWeight="Bold"/>
+        <Label x:Name="label_Haemorrhage" Content="出血&#xA;Haemorrhage" HorizontalAlignment="Left" Margin="12,824,0,0" VerticalAlignment="Top" Width="60" FontWeight="Bold"/>
+        <Label x:Name="label_Catheterization" Content="导尿&#xA;Catheterization" HorizontalAlignment="Left" Margin="14,951,0,0" VerticalAlignment="Top" Width="96" FontWeight="Bold"/>
+        <Label x:Name="label_Convulsions_Clonic" Content="阵挛&#xA;Clonic" HorizontalAlignment="Left" Margin="105,636,0,0" VerticalAlignment="Top" Width="45"/>
+        <Label x:Name="label_Convulsions_Tonic" Content="强直&#xA;Tonic" HorizontalAlignment="Left" Margin="105,676,0,0" VerticalAlignment="Top" Width="45"/>
+        <Label x:Name="label_Convulsions_Clonic_RightArm_Value" HorizontalAlignment="Left" Margin="184,646,0,0" VerticalAlignment="Top" Width="73" Height="23" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Convulsions_Clonic_LeftArm_Value" HorizontalAlignment="Left" Margin="325,646,0,0" VerticalAlignment="Top" Width="73" Height="23" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Convulsions_Clonic_LeftArm_Status" Content="无" HorizontalAlignment="Left" Margin="292,645,0,0" VerticalAlignment="Top"  RenderTransformOrigin="1.714,0.8" Width="28" Height="23"/>
+        <Label x:Name="label_Convulsions_Tonic_NeckAnkylosis_Value" HorizontalAlignment="Left" Margin="184,686,0,0" VerticalAlignment="Top" Width="73" Height="23" Content="0%" HorizontalContentAlignment="Center" />
+        <Label x:Name="label_Secretions_Sweat" Content="出汗 &#xA;Sweat" HorizontalAlignment="Left" Margin="105,731,0,0" VerticalAlignment="Top" Width="45" />
+        <Label x:Name="label_Secretions_Eyes" Content="眼睛 &#xA;Eyes" HorizontalAlignment="Left" Margin="209,731,0,0" VerticalAlignment="Top" Width="44" />
+        <Label x:Name="label_Secretions_Mouth" Content="无" HorizontalAlignment="Left" Margin="311,731,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Secretions_Ears" Content="耳 &#xA;Ears" HorizontalAlignment="Left" Margin="105,772,0,0" VerticalAlignment="Top" Width="45"/>
+        <Label x:Name="label_Secretions_Nose" Content="鼻 &#xA;Nose" HorizontalAlignment="Left" Margin="209,772,0,0" VerticalAlignment="Top" Width="44" />
+        <Label x:Name="label_Secretions_Froth" Content="白沫 &#xA;Froth" HorizontalAlignment="Left" Margin="311,772,0,0" VerticalAlignment="Top" Width="49" />
+        <Label x:Name="label_Haemorrhage_RightUpper" Content="右上&#xA;Right Upper" HorizontalAlignment="Left" Margin="72,824,0,0" VerticalAlignment="Top" Width="37"/>
+        <Label x:Name="label_Haemorrhage_RightLower" Content="右下 &#xA;Right Lower" HorizontalAlignment="Left" Margin="72,883,0,0" VerticalAlignment="Top" Width="38"/>
+        <Label x:Name="label_Haemorrhage_RightUpper_Arterial_Value" HorizontalAlignment="Left" Margin="177,825,0,0" VerticalAlignment="Top" Width="49" Height="23" HorizontalContentAlignment="Center" Content="0%" />
+        <Label x:Name="label_Haemorrhage_RightUpper_Arterial" Content="动脉" HorizontalAlignment="Left" Margin="109,822,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.714,-0.333"/>
+        <Label x:Name="label_Haemorrhage_RightUpper_Venous_Value" HorizontalAlignment="Left" Margin="177,856,0,0" VerticalAlignment="Top" Width="49" Height="23" HorizontalContentAlignment="Center" Content="0%" />
+        <Label x:Name="label_Haemorrhage_RightUpper_Venous" Content="静脉" HorizontalAlignment="Left" Margin="109,853,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_Haemorrhage_RightLower_Arterial_Value" HorizontalAlignment="Left" Margin="178,887,0,0" VerticalAlignment="Top" Width="49" Height="23" HorizontalContentAlignment="Center" Content="0%" />
+        <Label x:Name="label_Haemorrhage_RightLower_Arterial" Content="动脉" HorizontalAlignment="Left" Margin="110,885,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.714,-0.333"/>
+        <Label x:Name="label_Haemorrhage_RightLower_Venous_Value" HorizontalAlignment="Left" Margin="178,915,0,0" VerticalAlignment="Top" Width="49" Height="23" HorizontalContentAlignment="Center" Content="0%" />
+        <Label x:Name="label_Haemorrhage_RightLower_Venous" Content="静脉" HorizontalAlignment="Left" Margin="110,913,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_Haemorrhage_LeftUpper" Content="左上&#xA;Left Upper" HorizontalAlignment="Left" Margin="232,830,0,0" VerticalAlignment="Top" Width="59"/>
+        <Label x:Name="label_Haemorrhage_LeftLower" Content="左下 &#xA;Left Lower" HorizontalAlignment="Left" Margin="232,890,0,0" VerticalAlignment="Top" Width="61"/>
+        <Label x:Name="label_Haemorrhage_LeftUpper_Arterial_Value" HorizontalAlignment="Left" Margin="359,827,0,0" VerticalAlignment="Top" Width="50" Height="23" HorizontalContentAlignment="Center" Content="0%" />
+        <Label x:Name="label_Haemorrhage_LeftUpper_Arterial" Content="动脉" HorizontalAlignment="Left" Margin="292,825,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.714,-0.333"/>
+        <Label x:Name="label_Haemorrhage_LeftUpper_Venous_Value" HorizontalAlignment="Left" Margin="359,855,0,0" VerticalAlignment="Top" Width="50" Height="23" HorizontalContentAlignment="Center" Content="0%" />
+        <Label x:Name="label_Haemorrhage_LeftUpper_Venous" Content="静脉" HorizontalAlignment="Left" Margin="292,853,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_Haemorrhage_LeftLower_Arterial_Value" HorizontalAlignment="Left" Margin="360,891,0,0" VerticalAlignment="Top" Width="50" Height="23" HorizontalContentAlignment="Center" Content="0%" />
+        <Label x:Name="label_Haemorrhage_LeftLower_Arterial" Content="动脉" HorizontalAlignment="Left" Margin="293,889,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.714,-0.333"/>
+        <Label x:Name="label_Haemorrhage_LeftLower_Venous_Value" HorizontalAlignment="Left" Margin="360,916,0,0" VerticalAlignment="Top" Width="50" Height="23" HorizontalContentAlignment="Center" Content="0%" />
+        <Label x:Name="label_Haemorrhage_LeftLower_Venous" Content="静脉" HorizontalAlignment="Left" Margin="293,914,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_Catheterization_Urine_Urinate" Content="排尿&#xA;Urinate" HorizontalAlignment="Left" Margin="115,951,0,0" VerticalAlignment="Top"  Height="28" Width="47"/>
+        <Label x:Name="label_Catheterization_Urine_UPD_Value" HorizontalAlignment="Left" Margin="306,951,0,0" VerticalAlignment="Top" Width="99" Height="23" HorizontalContentAlignment="Center" Content="无" />
+        <Label x:Name="label_Catheterization_Urine_UPD" Content="尿量 &#xA;UPD" HorizontalAlignment="Left" Margin="232,946,0,0" VerticalAlignment="Top" Width="61" Height="39"/>
+        <Button x:Name="label_Catheterization_InsertionBladder" Content="插入膀光&#xA;Insertion of bladder" HorizontalAlignment="Left" Margin="115,981,0,0" VerticalAlignment="Top" Width="143" Height="39" Click="label_Catheterization_InsertionBladder_Click"/>
+        <Label x:Name="label_Convulsions_Clonic_RightArm_Status" Content="无" HorizontalAlignment="Left" Margin="156,645,0,0" VerticalAlignment="Top" Width="28" Height="23"/>
+        <Label x:Name="label_Convulsions_Tonic_NeckAnkylosis_Status" Content="无" HorizontalAlignment="Left" Margin="156,684,0,0" VerticalAlignment="Top" Width="28" />
+        <Label x:Name="label_Secretions_Sweat_Status" Content="无" HorizontalAlignment="Left" Margin="156,739,0,0" VerticalAlignment="Top" Width="45" />
+        <Label x:Name="label_Secretions_Ears_Status" Content="无" HorizontalAlignment="Left" Margin="156,780,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.8,0.45"/>
+        <Label x:Name="label_Secretions_Eyes_Status" Content="无" HorizontalAlignment="Left" Margin="253,739,0,0" VerticalAlignment="Top" Width="44" />
+        <Label x:Name="label_Secretions_Nose_Status" Content="无" HorizontalAlignment="Left" Margin="253,780,0,0" VerticalAlignment="Top" Width="44" />
+        <Label x:Name="label_Secretions_Mouth_Status" Content="无" HorizontalAlignment="Left" Margin="360,739,0,0" VerticalAlignment="Top" Width="38"/>
+        <Label x:Name="label_Secretions_Froth_Status" Content="无" HorizontalAlignment="Left" Margin="360,780,0,0" VerticalAlignment="Top" Width="49" />
+        <Label x:Name="label_Haemorrhage_RightUpper_Arterial_Status" Content="无" HorizontalAlignment="Left" Margin="143,822,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.714,-0.333" HorizontalContentAlignment="Center" Width="29"/>
+        <Label x:Name="label_Haemorrhage_RightUpper_Venous_Status" Content="无" HorizontalAlignment="Left" Margin="143,853,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="29" />
+        <Label x:Name="label_Haemorrhage_RightLower_Arterial_Status" Content="无" HorizontalAlignment="Left" Margin="144,885,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.714,-0.333" HorizontalContentAlignment="Center" Width="28"/>
+        <Label x:Name="label_Haemorrhage_RightLower_Venous_Status" Content="无" HorizontalAlignment="Left" Margin="144,913,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="28" />
+        <Label x:Name="label_Haemorrhage_LeftUpper_Arterial_Status" Content="无" HorizontalAlignment="Left" Margin="326,825,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.714,-0.333" HorizontalContentAlignment="Center" Width="28"/>
+        <Label x:Name="label_Haemorrhage_LeftUpper_Venous_Status" Content="无" HorizontalAlignment="Left" Margin="326,853,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="28" />
+        <Label x:Name="label_Haemorrhage_LeftLower_Arterial_Status" Content="无" HorizontalAlignment="Left" Margin="327,889,0,0" VerticalAlignment="Top"  RenderTransformOrigin="0.714,-0.333" HorizontalContentAlignment="Center" Width="27"/>
+        <Label x:Name="label_Haemorrhage_LeftLower_Venous_Status" Content="无" HorizontalAlignment="Left" Margin="327,914,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Center" Width="27" />
+        <Label x:Name="label_Catheterization_Urine_Urinate_Status" Content="无" HorizontalAlignment="Left" Margin="166,951,0,0" VerticalAlignment="Top"  Height="28" Width="47" HorizontalContentAlignment="Center"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="77" Margin="424,945,0,0" Stroke="Black" VerticalAlignment="Top" Width="661"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="444" Margin="424,495,0,0" Stroke="Black" VerticalAlignment="Top" Width="662"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="60" Margin="431,871,0,0" Stroke="Black" VerticalAlignment="Top" Width="644"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="194" Margin="763,672,0,0" Stroke="Black" VerticalAlignment="Top" Width="312"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="194" Margin="431,672,0,0" Stroke="Black" VerticalAlignment="Top" Width="327"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="165" Margin="515,502,0,0" Stroke="Black" VerticalAlignment="Top" Width="560"/>
+        <Label x:Name="label_Palpation" Content="触诊&#xA;Palpation" HorizontalAlignment="Left" Margin="425,951,0,0" VerticalAlignment="Top" Width="83" FontWeight="Bold"/>
+        <Label x:Name="label_Stethoscopy" Content="听诊&#xA;Stethoscopy" HorizontalAlignment="Left" Margin="425,505,0,0" VerticalAlignment="Top" Width="90" FontWeight="Bold"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds" Content="心脏 &#xA;Heart&#xA;Sounds" HorizontalAlignment="Left" Margin="515,512,0,0" VerticalAlignment="Top" Width="57" Height="92" FontWeight="Bold"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_M" Content="M.二尖瓣区 &#xA;Mitral area" HorizontalAlignment="Left" Margin="574,509,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_T" Content="T.三尖瓣区&#xA;Tricuspid area" HorizontalAlignment="Left" Margin="864,508,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_A" Content="A.主动脉瓣区&#xA;Aortic area" HorizontalAlignment="Left" Margin="572,560,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_P" Content="P.肺动脉瓣区&#xA;Pulmonary area" HorizontalAlignment="Left" Margin="864,564,0,0" VerticalAlignment="Top" Width="94"/>
+        <Label x:Name="label_Stethoscopy_LungSounds" Content="肺 &#xA;Lung  Sounds" HorizontalAlignment="Left" Margin="431,673,0,0" VerticalAlignment="Top" Width="87" Height="42" FontWeight="Bold"/>
+        <Label x:Name="label_VitalSigns_Cyclic_Copy2" Content="前部 Anterior" HorizontalAlignment="Left" Margin="559,676,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label x:Name="label_VitalSigns_Cyclic_Copy3" Content="背部 Posterior" HorizontalAlignment="Left" Margin="858,676,0,0" VerticalAlignment="Top" Width="95"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ARUL" Content="前右上叶&#xA;ARUL" HorizontalAlignment="Left" Margin="447,707,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ARUL_SoundID" HorizontalAlignment="Left" Margin="507,707,0,0" VerticalAlignment="Top" Width="85"  RenderTransformOrigin="-0.242,0.476" Height="26" />
+        <Label x:Name="label_Stethoscopy_LungSounds_ARUL_SoundVolume_Value" HorizontalAlignment="Left" Margin="551,733,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="-0.242,0.476" Height="23" Content="0%" />
+        <Label x:Name="label_Stethoscopy_LungSounds_ARUL_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="507,732,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_M_SoundID" HorizontalAlignment="Left" Margin="685,508,0,0" VerticalAlignment="Top" Width="95"  RenderTransformOrigin="-0.242,0.476" Height="26" />
+        <Label x:Name="label_Stethoscopy_HeartSounds_M_SoundVolume_Value" HorizontalAlignment="Left" Margin="729,534,0,0" VerticalAlignment="Top" Width="51"  RenderTransformOrigin="-0.242,0.476" Height="26" Content="0%"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_M_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="685,534,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_A_SoundID" HorizontalAlignment="Left" Margin="685,560,0,0" VerticalAlignment="Top" Width="95"  RenderTransformOrigin="-0.242,0.476" Height="26" />
+        <Label x:Name="label_Stethoscopy_HeartSounds_A_SoundVolume_Value" HorizontalAlignment="Left" Margin="729,586,0,0" VerticalAlignment="Top" Width="51"  RenderTransformOrigin="-0.242,0.476" Height="23" Content="0%" />
+        <Label x:Name="label_Stethoscopy_HeartSounds_A_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="685,586,0,0" VerticalAlignment="Top" Width="44" Height="23"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_T_SoundID" HorizontalAlignment="Left" Margin="971,508,0,0" VerticalAlignment="Top" Width="95"  RenderTransformOrigin="-0.242,0.476" Height="26" />
+        <Label x:Name="label_Stethoscopy_HeartSounds_T_SoundVolume_Value" HorizontalAlignment="Left" Margin="1015,534,0,0" VerticalAlignment="Top" Width="51"  RenderTransformOrigin="-0.242,0.476" Height="26" Content="0%" />
+        <Label x:Name="label_Stethoscopy_HeartSounds_T_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="971,534,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_P_SoundID" HorizontalAlignment="Left" Margin="971,560,0,0" VerticalAlignment="Top" Width="95"  RenderTransformOrigin="-0.242,0.476" Height="26" />
+        <Label x:Name="label_Stethoscopy_HeartSounds_P_SoundVolume_Value" HorizontalAlignment="Left" Margin="1015,586,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-0.242,0.476" Height="23" Content="0%" />
+        <Label x:Name="label_Stethoscopy_HeartSounds_P_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="971,586,0,0" VerticalAlignment="Top" Width="44" Height="23"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_E" Content="E.主动脉瓣第二听诊区&#xA;Erb" HorizontalAlignment="Left" Margin="572,614,0,0" VerticalAlignment="Top" Width="87"/>
+        <Label x:Name="label_Stethoscopy_HeartSounds_E_SoundID" HorizontalAlignment="Left" Margin="685,614,0,0" VerticalAlignment="Top" Width="95"  RenderTransformOrigin="-0.242,0.476" Height="26" />
+        <Label x:Name="label_Stethoscopy_HeartSounds_E_SoundVolume_Value" HorizontalAlignment="Left" Margin="729,640,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-0.242,0.476" Height="26" Content="0%" />
+        <Label x:Name="label_Stethoscopy_HeartSounds_E_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="685,640,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ALUL" Content="前左上叶&#xA;ALUL" HorizontalAlignment="Left" Margin="602,707,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ALUL_SoundID" HorizontalAlignment="Left" Margin="667,707,0,0" VerticalAlignment="Top" Width="84" RenderTransformOrigin="-0.242,0.476" Height="26" />
+        <Label x:Name="label_Stethoscopy_LungSounds_ALUL_SoundVolume_Value" HorizontalAlignment="Left" Margin="706,733,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-0.242,0.476" Height="23" Content="0%"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ALUL_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="662,733,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PLUL" Content="背左上叶&#xA;PLUL" HorizontalAlignment="Left" Margin="767,709,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PRUL" Content="背右上叶&#xA;PRUL" HorizontalAlignment="Left" Margin="922,709,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ARML" Content="前右中叶&#xA;ARML" HorizontalAlignment="Left" Margin="447,758,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ARML_SoundID" HorizontalAlignment="Left" Margin="507,760,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="-0.242,0.476" Height="24" />
+        <Label x:Name="label_Stethoscopy_LungSounds_ARML_SoundVolume_Value" HorizontalAlignment="Left" Margin="551,784,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="-0.242,0.476" Height="23" Content="0%" />
+        <Label x:Name="label_Stethoscopy_LungSounds_ARML_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="507,781,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ARLL" Content="前右下叶&#xA;ARLL" HorizontalAlignment="Left" Margin="447,810,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ARLL_SoundID" HorizontalAlignment="Left" Margin="507,811,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="-0.242,0.476" Height="23" />
+        <Label x:Name="label_Stethoscopy_LungSounds_ARLL_SoundVolume_Value" HorizontalAlignment="Left" Margin="551,836,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="-0.242,0.476" Height="23" Content="0%" />
+        <Label x:Name="label_Stethoscopy_LungSounds_ARLL_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="507,836,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ALLL" Content="前左下叶&#xA;ALLL" HorizontalAlignment="Left" Margin="602,813,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ALLL_SoundID" HorizontalAlignment="Left" Margin="667,813,0,0" VerticalAlignment="Top" Width="84" RenderTransformOrigin="-0.242,0.476" Height="26" />
+        <Label x:Name="label_Stethoscopy_LungSounds_ALLL_SoundVolume_Value" HorizontalAlignment="Left" Margin="706,839,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-0.242,0.476" Height="23" Content="0%"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_ALLL_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="662,839,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PLUL_SoundID" HorizontalAlignment="Left" Margin="827,709,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="-0.242,0.476" Height="24" />
+        <Label x:Name="label_Stethoscopy_LungSounds_PLUL_SoundVolume_Value" HorizontalAlignment="Left" Margin="871,735,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="-0.242,0.476" Height="23" Content="0%" />
+        <Label x:Name="label_Stethoscopy_LungSounds_PLUL_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="827,735,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PRUL_SoundID" HorizontalAlignment="Left" Margin="982,707,0,0" VerticalAlignment="Top" Width="84" RenderTransformOrigin="-0.242,0.476" Height="24" />
+        <Label x:Name="label_Stethoscopy_LungSounds_PRUL_SoundVolume_Value" HorizontalAlignment="Left" Margin="1021,736,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-0.242,0.476" Height="23" Content="0%" />
+        <Label x:Name="label_Stethoscopy_LungSounds_PRUL_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="977,738,0,0" VerticalAlignment="Top" Width="44" Height="26" RenderTransformOrigin="0.5,0.385"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PLLL" Content="背左下叶&#xA;PLLL" HorizontalAlignment="Left" Margin="766,783,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PLLL_SoundID" HorizontalAlignment="Left" Margin="826,782,0,0" VerticalAlignment="Top" Width="85" RenderTransformOrigin="-0.242,0.476" Height="23" />
+        <Label x:Name="label_Stethoscopy_LungSounds_PLLL_SoundVolume_Value" HorizontalAlignment="Left" Margin="870,808,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="-0.242,0.476" Height="26" Content="0%"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PLLL_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="826,808,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PRLL" Content="背右下叶&#xA;PRLL" HorizontalAlignment="Left" Margin="921,782,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PRLL_SoundID" HorizontalAlignment="Left" Margin="986,782,0,0" VerticalAlignment="Top" Width="84" RenderTransformOrigin="-0.242,0.476" Height="23"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PRLL_SoundVolume_Value" HorizontalAlignment="Left" Margin="1025,808,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-0.242,0.476" Height="26" Content="0%"/>
+        <Label x:Name="label_Stethoscopy_LungSounds_PRLL_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="981,808,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Palpation_AbdominalTouch_RightUpper" Content="右上腹肋弓下&#xA;Right Upper" HorizontalAlignment="Left" Margin="507,947,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.12,0.621"/>
+        <Label x:Name="label_Palpation_AbdominalTouch_LeftUpper" Content="左上腹压痛点&#xA;Left Upper" HorizontalAlignment="Left" Margin="614,946,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Palpation_AbdominalTouch_Middle" Content="肚脐周围压痛点&#xA;Middle" HorizontalAlignment="Left" Margin="729,946,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Palpation_AbdominalTouch_RightLower" Content="右下腹压痛点&#xA;Right Lower" HorizontalAlignment="Left" Margin="858,947,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_Palpation_AbdominalTouch_LeftLower" Content="左下腹压痛点&#xA;Left Lower" HorizontalAlignment="Left" Margin="974,946,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="button_Palpation_AbdominalTouch_RightUpper" Content="右上腹肋弓下&#xA;Right Upper" HorizontalAlignment="Left" Margin="508,986,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="-0.373,0.6" Click="button_Palpation_AbdominalTouch_RightUpper_Click"/>
+        <Button x:Name="button_Palpation_AbdominalTouch_LeftUpper" Content="左上腹压痛点&#xA;Left Upper" HorizontalAlignment="Left" Margin="614,986,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="-0.373,0.6" Click="button_Palpation_AbdominalTouch_LeftUpper_Click"/>
+        <Button x:Name="button_Palpation_AbdominalTouch_Middle" Content="肚脐周围压痛点&#xA;Middle" HorizontalAlignment="Left" Margin="729,987,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="-0.373,0.6" Click="button_Palpation_AbdominalTouch_Middle_Click"/>
+        <Button x:Name="button_Palpation_AbdominalTouch_RightLower" Content="右下腹压痛点&#xA;Right Lower" HorizontalAlignment="Left" Margin="858,986,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="-0.373,0.6" Click="button_Palpation_AbdominalTouch_RightLower_Click"/>
+        <Button x:Name="button_Palpation_AbdominalTouch_LeftLower" Content="左下腹压痛点&#xA;Left Lower" HorizontalAlignment="Left" Margin="974,987,0,0" VerticalAlignment="Top" Width="88" RenderTransformOrigin="-0.373,0.6" Click="button_Palpation_AbdominalTouch_LeftLower_Click"/>
+        <Label x:Name="label_Stethoscopy_AbdomenSounds" Content="腹&#xA;Abdomen Sounds" HorizontalAlignment="Left" Margin="432,883,0,0" VerticalAlignment="Top" Width="87" Height="42" FontWeight="Bold"/>
+        <Label x:Name="label_Stethoscopy_AbdomenSounds_Bowel" Content="肠鸣音&#xA;Bowel Sounds" HorizontalAlignment="Left" Margin="532,880,0,0" VerticalAlignment="Top" Width="101"/>
+        <Label x:Name="label_Stethoscopy_AbdomenSounds_Bowel_SoundID" HorizontalAlignment="Left" Margin="652,880,0,0" VerticalAlignment="Top" Width="99" RenderTransformOrigin="-0.242,0.476" Height="25"/>
+        <Label x:Name="label_Stethoscopy_AbdomenSounds_Bowel_SoundVolume_Value" HorizontalAlignment="Left" Margin="702,905,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="-0.242,0.476" Height="24" Content="0%" />
+        <Label x:Name="label_Stethoscopy_AbdomenSounds_Vascular" Content="血管杂音&#xA;Vascular Sounds" HorizontalAlignment="Left" Margin="778,880,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label x:Name="label_Stethoscopy_AbdomenSounds_Vascular_SoundID" HorizontalAlignment="Left" Margin="967,877,0,0" VerticalAlignment="Top" Width="103" RenderTransformOrigin="-0.242,0.476" Height="26" />
+        <Label x:Name="label_Stethoscopy_AbdomenSounds_Vascular_SoundVolume_Value" HorizontalAlignment="Left" Margin="1006,903,0,0" VerticalAlignment="Top" Width="64" RenderTransformOrigin="-0.242,0.476" Height="26" Content="0%" />
+        <Label x:Name="label_Stethoscopy_AbdomenSounds_Vascular_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="962,903,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Label x:Name="label_Palpation_AbdominalTouch_RightUpper_Status" Content="无" HorizontalAlignment="Left" Margin="593,956,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.12,0.621"/>
+        <Label x:Name="label_Palpation_AbdominalTouch_LeftUpper_Status" Content="无" HorizontalAlignment="Left" Margin="700,959,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Palpation_AbdominalTouch_Middle_Status" Content="无" HorizontalAlignment="Left" Margin="824,959,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Palpation_AbdominalTouch_RightLower_Status" Content="无" HorizontalAlignment="Left" Margin="944,960,0,0" VerticalAlignment="Top" />
+        <Label x:Name="label_Palpation_AbdominalTouch_LeftLower_Status" Content="无" HorizontalAlignment="Left" Margin="1060,959,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Stethoscopy_AbdomenSounds_Bowel_SoundVolume" Content="音量" HorizontalAlignment="Left" Margin="653,905,0,0" VerticalAlignment="Top" Width="44" Height="26"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="152" Margin="1095,870,0,0" Stroke="Black" VerticalAlignment="Top" Width="809"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="55" Margin="1175,876,0,0" Stroke="Black" VerticalAlignment="Top" Width="722"/>
+        <Label x:Name="label_Medication" Content="药物治疗&#xA;Medication" HorizontalAlignment="Left" Margin="1100,875,0,0" VerticalAlignment="Top" Width="98" FontWeight="Bold"/>
+        <Label x:Name="label_Medication_DrugDelivery" Content="给药 &#xA;Drug Delivery" HorizontalAlignment="Left" Margin="1178,879,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.477,2.12" FontWeight="Bold"/>
+        <Label x:Name="label_Medication_DrugDelivery_Drug" Content="药物&#xA;Drug" HorizontalAlignment="Left" Margin="1258,884,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-0.373,0.6"/>
+        <Label x:Name="label_Medication_DrugDelivery_Drug_DrugName" HorizontalAlignment="Left" Margin="1397,892,0,0" VerticalAlignment="Top" Width="117" RenderTransformOrigin="-0.242,0.476" Height="23"/>
+        <Label x:Name="label_Medication_DrugDelivery_Drug_DrugCategory_Dose" Content="剂量 &#xA;Dose" HorizontalAlignment="Left" Margin="1662,886,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-0.373,0.6"/>
+        <Label x:Name="label_Medication_DrugDelivery_Drug_DrugCategory_Route" Content="给药途径 &#xA;Route" HorizontalAlignment="Left" Margin="1519,884,0,0" VerticalAlignment="Top" Width="58" RenderTransformOrigin="-0.373,0.6"/>
+        <Label x:Name="label_Medication_DrugDelivery_Drug_DrugCategory_Route_Value" HorizontalAlignment="Left" Margin="1582,892,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.242,0.476" Height="23"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="77" Margin="1175,939,0,0" Stroke="Black" VerticalAlignment="Top" Width="722"/>
+        <Label x:Name="label_Medication_Apply" Content="治疗&#xA;Medication" HorizontalAlignment="Left" Margin="1178,940,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.477,2.12" FontWeight="Bold"/>
+        <Button x:Name="label_Medication_Apply_PO" Content="口服药 &#xA;PO" HorizontalAlignment="Left" Margin="1249,940,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.373,0.6" Click="label_Medication_Apply_PO_Click"/>
+        <Button x:Name="label_Medication_Apply_IV" Content="静脉注射 &#xA;IV" HorizontalAlignment="Left" Margin="1570,939,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.373,0.6" Click="label_Medication_Apply_IV_Click"/>
+        <Button x:Name="label_Medication_Apply_IVGtt" Content="静脉滴注&#xA;IV.gtt" HorizontalAlignment="Left" Margin="1249,979,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.373,0.6" Click="label_Medication_Apply_IVGtt_Click"/>
+        <Button x:Name="label_Medication_Apply_IM" Content="肌内注射&#xA;IM " HorizontalAlignment="Left" Margin="1570,982,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.373,0.6" Click="label_Medication_Apply_IM_Click"/>
+        <Label x:Name="label_Medication_DrugDelivery_Drug_DrugCategory" HorizontalAlignment="Left" Margin="1315,892,0,0" VerticalAlignment="Top" Width="77" RenderTransformOrigin="-0.242,0.476" Height="23" />
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="214" Margin="1095,650,0,0" Stroke="Black" VerticalAlignment="Top" Width="809"/>
+        <Label x:Name="label_Pulse" Content="脉搏&#xA;Pulse" HorizontalAlignment="Left" Margin="1094,686,0,0" VerticalAlignment="Top" Width="98" FontWeight="Bold"/>
+        <Label x:Name="label_Pulse_Body" Content="身体&#xA;Body " HorizontalAlignment="Left" Margin="1493,652,0,0" VerticalAlignment="Top" Width="41" RenderTransformOrigin="0.217,0.75"/>
+        <Label x:Name="label_Pulse_Body_Carotid_Right_Value" HorizontalAlignment="Left" Margin="1460,699,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Button x:Name="button_Pulse_Body_Carotid_Right" Content="右颈动脉&#xA;Carotid " HorizontalAlignment="Left" Margin="1378,692,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-0.373,0.6" Height="40" Click="button_Pulse_Body_Carotid_Right_Click"/>
+        <Label x:Name="label_Pulse_Body_Carotid_Left_Value" HorizontalAlignment="Left" Margin="1613,701,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Label x:Name="label_Pulse_Body_Femoral_Right_Value" HorizontalAlignment="Left" Margin="1459,744,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Button x:Name="button_Pulse_Body_Femoral_Right" Content="右股动脉&#xA;Femoral " HorizontalAlignment="Left" Margin="1378,736,0,0" VerticalAlignment="Top" Width="51" Click="button_Pulse_Body_Femoral_Right_Click"/>
+        <Label x:Name="label_Pulse_Body_Femoral_Left_Value" HorizontalAlignment="Left" Margin="1613,746,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Label x:Name="label_Pulse_RightLeg" Content="右腿&#xA;Right Leg" HorizontalAlignment="Left" Margin="1173,741,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.217,0.75"/>
+        <Label x:Name="label_Pulse_RightLeg_Popliteal_Value" HorizontalAlignment="Left" Margin="1307,751,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Label x:Name="label_Pulse_RightLeg_DorsalisPedis_Value" HorizontalAlignment="Left" Margin="1307,790,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Button x:Name="button_Pulse_RightLeg_Popliteal" Content="腘动脉&#xA;Popliteal" HorizontalAlignment="Left" Margin="1228,742,0,0" VerticalAlignment="Top" Width="51" Click="button_Pulse_RightLeg_Popliteal_Click"/>
+        <Button x:Name="button_Pulse_RightLeg_DorsalisPedis" Content="足背动脉&#xA;Dorsalis Pedis" HorizontalAlignment="Left" Margin="1228,783,0,0" VerticalAlignment="Top" Width="51" Click="button_Pulse_RightLeg_DorsalisPedis_Click"/>
+        <Label x:Name="label_Pulse_RightArm" Content="右臂&#xA;Right Arm" HorizontalAlignment="Left" Margin="1173,652,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.217,0.75"/>
+        <Label x:Name="label_Pulse_RightArm_Brachial_Value" HorizontalAlignment="Left" Margin="1307,661,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Label x:Name="label_Pulse_RightArm_Radial_Value" HorizontalAlignment="Left" Margin="1307,701,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Button x:Name="button_Pulse_RightArm_Brachial" Content="肱动脉&#xA;Brachial" HorizontalAlignment="Left" Margin="1228,651,0,0" VerticalAlignment="Top" Width="51" Click="button_Pulse_RightArm_Brachial_Click"/>
+        <Button x:Name="button_Pulse_RightArm_Radial" Content="桡动脉&#xA;Radial" HorizontalAlignment="Left" Margin="1228,692,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="0.098,0.5" Click="button_Pulse_RightArm_Radial_Click"/>
+        <Label x:Name="label_Pulse_LeftArm" Content="左臂&#xA;Right Arm" HorizontalAlignment="Left" Margin="1674,652,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.217,0.75"/>
+        <Label x:Name="label_Pulse_LeftArm_Brachial_Value" HorizontalAlignment="Left" Margin="1836,659,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Label x:Name="label_Pulse_LeftArm_Radial_Value" HorizontalAlignment="Left" Margin="1836,700,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Label x:Name="label_Pulse_LeftLeg" Content="左腿&#xA;Left Leg" HorizontalAlignment="Left" Margin="1674,739,0,0" VerticalAlignment="Top" Width="50" RenderTransformOrigin="0.217,0.75"/>
+        <Label x:Name="label_Pulse_LeftLeg_Popliteal_Value" HorizontalAlignment="Left" Margin="1836,744,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Label x:Name="label_Pulse_LeftLeg_DorsalisPedis_Value" HorizontalAlignment="Left" Margin="1836,788,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Button x:Name="button_Pulse_LeftArm_Brachial" Content="肱动脉&#xA;Brachial" HorizontalAlignment="Left" Margin="1729,652,0,0" VerticalAlignment="Top" Width="51" Click="button_Pulse_LeftArm_Brachial_Click"/>
+        <Button x:Name="button_Pulse_LeftArm_Radial" Content="桡动脉&#xA;Radial" HorizontalAlignment="Left" Margin="1729,694,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="0.098,0.5" Click="button_Pulse_LeftArm_Radial_Click"/>
+        <Label x:Name="label_Pulse_RightLeg_Heel_Value" HorizontalAlignment="Left" Margin="1307,830,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Button x:Name="button_Pulse_RightLeg_Heel" Content="足跟动脉&#xA;Heel" HorizontalAlignment="Left" Margin="1228,824,0,0" VerticalAlignment="Top" Width="51" Click="button_Pulse_RightLeg_Heel_Click"/>
+        <Button x:Name="button_Pulse_LeftLeg_Popliteal" Content="腘动脉&#xA;Popliteal" HorizontalAlignment="Left" Margin="1729,739,0,0" VerticalAlignment="Top" Width="51" Click="button_Pulse_LeftLeg_Popliteal_Click"/>
+        <Button x:Name="button_Pulse_LeftLeg_DorsalisPedis" Content="足背动脉&#xA;Dorsalis Pedis" HorizontalAlignment="Left" Margin="1729,782,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="0.451,0.7" Click="button_Pulse_LeftLeg_DorsalisPedis_Click"/>
+        <Button x:Name="button_Pulse_LeftLeg_Heel" Content="足跟动脉&#xA;Heel" HorizontalAlignment="Left" Margin="1729,824,0,0" VerticalAlignment="Top" Width="51" Click="button_Pulse_LeftLeg_Heel_Click"/>
+        <Label x:Name="label_Pulse_LeftLeg_Heel_Value" HorizontalAlignment="Left" Margin="1836,830,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="-0.242,0.476" Height="23" Content="无" />
+        <Label x:Name="label_Pulse_RightArm_Brachial_Status" Content="无" HorizontalAlignment="Left" Margin="1278,660,0,0" VerticalAlignment="Top" Width="28" Visibility="Hidden"  />
+        <Label x:Name="label_Pulse_RightArm_Radial_Status" Content="无" HorizontalAlignment="Left" Margin="1279,700,0,0" VerticalAlignment="Top" Width="28" Visibility="Hidden"   />
+        <Label x:Name="label_Pulse_RightLeg_Popliteal_Status" Content="无" HorizontalAlignment="Left" Margin="1279,750,0,0" VerticalAlignment="Top" Width="28" Visibility="Hidden"   />
+        <Label x:Name="label_Pulse_RightLeg_DorsalisPedis_Status" Content="无" HorizontalAlignment="Left" Margin="1279,789,0,0" VerticalAlignment="Top" Width="28" Visibility="Hidden"  />
+        <Label x:Name="label_Pulse_RightLeg_Heel_Status" Content="无" HorizontalAlignment="Left" Margin="1279,830,0,0" VerticalAlignment="Top" Width="28" Visibility="Hidden"   />
+        <Label x:Name="label_Pulse_Body_Carotid_Right_Status" Content="无" HorizontalAlignment="Left" Margin="1429,699,0,0" VerticalAlignment="Top" Width="29" Visibility="Hidden"   />
+        <Label x:Name="label_Pulse_Body_Femoral_Right_Status" Content="无" HorizontalAlignment="Left" Margin="1428,744,0,0" VerticalAlignment="Top" Width="29" Visibility="Hidden"  />
+        <Label x:Name="label_Pulse_LeftArm_Brachial_Status" Content="无" HorizontalAlignment="Left" Margin="1802,657,0,0" VerticalAlignment="Top" Width="27" Visibility="Hidden"  />
+        <Label x:Name="label_Pulse_LeftArm_Radial_Status" Content="无" HorizontalAlignment="Left" Margin="1802,700,0,0" VerticalAlignment="Top" Width="27" Visibility="Hidden" />
+        <Label x:Name="label_Pulse_LeftLeg_Popliteal_Status" Content="无" HorizontalAlignment="Left" Margin="1802,745,0,0" VerticalAlignment="Top" Width="27" Visibility="Hidden" />
+        <Label x:Name="label_Pulse_LeftLeg_DorsalisPedis_Status" Content="无" HorizontalAlignment="Left" Margin="1802,788,0,0" VerticalAlignment="Top" Width="27" Visibility="Hidden"   />
+        <Label x:Name="label_Pulse_LeftLeg_Heel_Status" Content="无" HorizontalAlignment="Left" Margin="1802,830,0,0" VerticalAlignment="Top" Width="27" Visibility="Hidden"  />
+        <Label x:Name="label_Pulse_Body_Carotid_Left_Status" Content="无" HorizontalAlignment="Left" Margin="1580,700,0,0" VerticalAlignment="Top" Width="29" Visibility="Hidden"   />
+        <Label x:Name="label_Pulse_Body_Femoral_Left_Status" Content="无" HorizontalAlignment="Left" Margin="1579,746,0,0" VerticalAlignment="Top" Width="29" Visibility="Hidden"  />
+        <ComboBox x:Name="comboBox_Medication_Apply_PO_Drug" HorizontalAlignment="Left" Margin="1315,947,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.242,0.476"/>
+        <Label x:Name="label_Medication_DrugDelivery_Drug_DrugCategory_Dose_Value" HorizontalAlignment="Left" Height="23" Margin="1718,892,0,0"  VerticalAlignment="Top" Width="61" Content="0"/>
+        <Label x:Name="label_Medication_DrugDelivery_Drug_DoseUnit_Value" HorizontalAlignment="Left" Margin="1836,892,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.242,0.476" Height="27"/>
+        <TextBox x:Name="textBox_Medication_Apply_PO_Dose" HorizontalAlignment="Left" Height="23" Margin="1440,947,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" Text="0"/>
+        <ComboBox x:Name="comboBox_Medication_Apply_PO_DoseUnit" HorizontalAlignment="Left" Margin="1506,947,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.242,0.476"/>
+        <Label x:Name="label_Medication_DrugDelivery_Drug_DoseUnit" HorizontalAlignment="Left" Margin="1783,885,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.242,0.476" Height="43" Content="剂量单位&#xD;&#xA;DoseUnit"/>
+        <ComboBox x:Name="comboBox_Medication_Apply_IV_Drug" HorizontalAlignment="Left" Margin="1639,947,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.242,0.476"/>
+        <TextBox x:Name="textBox_Medication_Apply_IV_Dose" HorizontalAlignment="Left" Height="23" Margin="1764,947,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" Text="0"/>
+        <ComboBox x:Name="comboBox_Medication_Apply_IV_DoseUnit" HorizontalAlignment="Left" Margin="1830,947,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.242,0.476"/>
+        <ComboBox x:Name="comboBox_Medication_Apply_IVGtt_Drug" HorizontalAlignment="Left" Margin="1315,986,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.242,0.476"/>
+        <TextBox x:Name="textBox_Medication_Apply_IVGtt_Dose" HorizontalAlignment="Left" Height="23" Margin="1440,986,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" Text="0"/>
+        <ComboBox x:Name="comboBox_Medication_Apply_IVGtt_DoseUnit" HorizontalAlignment="Left" Margin="1506,986,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.242,0.476"/>
+        <ComboBox x:Name="comboBox_Medication_Apply_IM_Drug" HorizontalAlignment="Left" Margin="1642,986,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.242,0.476"/>
+        <TextBox x:Name="textBox_Medication_Apply_IM_Dose" HorizontalAlignment="Left" Height="23" Margin="1767,986,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61" Text="0"/>
+        <ComboBox x:Name="comboBox_Medication_Apply_IM_DoseUnit" HorizontalAlignment="Left" Margin="1833,986,0,0" VerticalAlignment="Top" Width="53" RenderTransformOrigin="-0.242,0.476"/>
+        <Button x:Name="button_Pulse_Body_Carotid_Left" Content="左颈动脉&#xA;Carotid " HorizontalAlignment="Left" Margin="1524,692,0,0" VerticalAlignment="Top" Width="51" RenderTransformOrigin="-0.373,0.6" Height="40" Click="button_Pulse_Body_Carotid_Left_Click"/>
+        <Button x:Name="button_Pulse_Body_Femoral_Left" Content="左股动脉&#xA;Femoral " HorizontalAlignment="Left" Margin="1524,736,0,0" VerticalAlignment="Top" Width="51" Click="button_Pulse_Body_Femoral_Left_Click"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="91" Margin="1094,555,0,0" Stroke="Black" VerticalAlignment="Top" Width="809"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="85" Margin="1493,559,0,0" Stroke="Black" VerticalAlignment="Top" Width="401"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="85" Margin="1176,559,0,0" Stroke="Black" VerticalAlignment="Top" Width="312"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="146" Margin="1093,398,0,0" Stroke="Black" VerticalAlignment="Top" Width="809"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="131" Margin="1492,405,0,0" Stroke="Black" VerticalAlignment="Top" Width="401"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="131" Margin="1175,405,0,0" Stroke="Black" VerticalAlignment="Top" Width="312"/>
+        <Label x:Name="label_CPR" Content="心肺复苏&#xA;CPR" HorizontalAlignment="Left" Margin="1099,410,0,0" VerticalAlignment="Top" Width="72" FontWeight="Bold"/>
+        <Label x:Name="label_Defibrillation" Content="除颤/AED&#xA;Defibrillation" HorizontalAlignment="Left" Margin="1094,574,0,0" VerticalAlignment="Top" Width="83" FontWeight="Bold"/>
+        <Label x:Name="label_Pacing" Content="起搏&#xA;Pacing" HorizontalAlignment="Left" Margin="1504,580,0,0" VerticalAlignment="Top" Width="72" FontWeight="Bold"/>
+        <Button x:Name="label_CPR_Q_Pat" Content="拍打&#xA;Pat" HorizontalAlignment="Left" Margin="1177,410,0,0" VerticalAlignment="Top" Width="111" Click="label_CPR_Q_Pat_Click"/>
+        <Button x:Name="label_CPR_Q_Shout" Content="呼叫&#xA;Shout" HorizontalAlignment="Left" Margin="1293,410,0,0" VerticalAlignment="Top" Width="103" Click="label_CPR_Q_Shout_Click"/>
+        <Button x:Name="label_CPR_Q_CheckRightCarotid" Content="检查右颈动脉&#xA;Right Carotid Artery  " HorizontalAlignment="Left" Margin="1177,453,0,0" VerticalAlignment="Top" Width="111" Click="label_CPR_Q_CheckRightCarotid_Click"/>
+        <Button x:Name="label_CPR_Q_CheckLeftCarotid" Content="检查左颈动脉&#xA;Left Carotid Artery " HorizontalAlignment="Left" Margin="1293,453,0,0" VerticalAlignment="Top" Width="103" Click="label_CPR_Q_CheckLeftCarotid_Click"/>
+        <Button x:Name="label_CPR_Q_HeadTiltChinLift" Content="仰头抬颏&#xA;head tilt chin lift" HorizontalAlignment="Left" Margin="1177,496,0,0" VerticalAlignment="Top" Width="111" Click="label_CPR_Q_HeadTiltChinLift_Click"/>
+        <Button x:Name="label_CPR_Q_RemovalOralForeignBody" Content="清除口腔异物&#xA;Removal of oral foreign body" HorizontalAlignment="Left" Margin="1293,496,0,0" VerticalAlignment="Top" Width="103" Click="label_CPR_Q_RemovalOralForeignBody_Click"/>
+        <Label x:Name="label_CPR_P_PressDepth" Content="按压深度 &#xA;Press depth" HorizontalAlignment="Left" Margin="1515,410,0,0" VerticalAlignment="Top" Width="111"/>
+        <Label x:Name="label_CPR_P_PressPosition" Content="按压位置&#xA;Press position" HorizontalAlignment="Left" Margin="1643,408,0,0" VerticalAlignment="Top" Width="111"/>
+        <Label x:Name="label_CPR_P_BlowVolume" Content="吹气 &#xA;Blow" HorizontalAlignment="Left" Margin="1782,409,0,0" VerticalAlignment="Top" Width="111"/>
+        <Button x:Name="button_Defibrillation_Energy" Content="除颤能量&#xA;Defibrillation Energy" HorizontalAlignment="Left" Margin="1178,559,0,0" VerticalAlignment="Top" Width="111" Click="button_Defibrillation_Energy_Click"/>
+        <Label x:Name="label_Defibrillation_Electrode" Content="电极片检测&#xA;Electrode " HorizontalAlignment="Left" Margin="1178,601,0,0" VerticalAlignment="Top" Width="69"/>
+        <Button x:Name="label_Defibrillation_Electrode_Sterno" Content="胸骨&#xA;Sterno" HorizontalAlignment="Left" Margin="1293,603,0,0" VerticalAlignment="Top" Width="69" Click="label_Defibrillation_Electrode_Sterno_Click"/>
+        <Button x:Name="label_Defibrillation_Electrode_Apex" Content="心尖搏动点&#xA;Apex" HorizontalAlignment="Left" Margin="1401,603,0,0" VerticalAlignment="Top" Width="69" Click="label_Defibrillation_Electrode_Apex_Click"/>
+        <Label x:Name="label_Pacing_Electrode" Content="电极片检测&#xA;Electrode " HorizontalAlignment="Left" Margin="1582,603,0,0" VerticalAlignment="Top" Width="69"/>
+        <Button x:Name="label_Pacing_Electrode_Sternum" Content="胸前&#xA;Sternum" HorizontalAlignment="Left" Margin="1710,603,0,0" VerticalAlignment="Top" Width="69" Click="label_Pacing_Electrode_Sternum_Click"/>
+        <Button x:Name="label_Pacing_Electrode_Back" Content="后背&#xA;Back" HorizontalAlignment="Left" Margin="1816,603,0,0" VerticalAlignment="Top" Width="69" Click="label_Pacing_Electrode_Back_Click"/>
+        <Button x:Name="label_Pacing_Current" Content="起搏电流 &#xA;Pacemaker Current" HorizontalAlignment="Left" Margin="1582,559,0,0" VerticalAlignment="Top" Width="123" Click="label_Pacing_Current_Click"/>
+        <Slider x:Name="slider_CPR_P_PressDepth" HorizontalAlignment="Left" Height="24" Margin="1514,478,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5"  Maximum="125" ValueChanged="slider_CPR_P_PressDepth_ValueChanged">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="89.762"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <Slider x:Name="slider_CPR_P_BlowVolume" HorizontalAlignment="Left" Height="24" Margin="1759,479,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.5,0.5"  Maximum="100" ValueChanged="slider_CPR_P_BlowVolume_ValueChanged">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleY="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="270.037"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <CheckBox x:Name="checkBox_CPR_P_PressPosition_Status" Content="正确" HorizontalAlignment="Left" Margin="1662,476,0,0" VerticalAlignment="Top" Checked="checkBox_CPR_P_PressPosition_Status_Checked" Unchecked="checkBox_CPR_P_PressPosition_Status_Unchecked"/>
+        <ComboBox x:Name="comboBox_Defibrillation_Energy" HorizontalAlignment="Left" Margin="1294,565,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.242,0.476"/>
+        <ComboBox x:Name="comboBox_Pacing_Current" HorizontalAlignment="Left" Margin="1709,565,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="-0.242,0.476"/>
+        <Label x:Name="label_Defibrillation_Electrode_Unit" Content="焦耳&#xD;&#xA;Joule" HorizontalAlignment="Left" Margin="1418,560,0,0" VerticalAlignment="Top" Width="46"/>
+        <Label x:Name="label_Pacing_Current_Unit" Content="毫安&#xD;&#xA;mA" HorizontalAlignment="Left" Margin="1836,560,0,0" VerticalAlignment="Top" Width="46"/>
+        <Rectangle Fill="#FFF4F4F5" Height="381" Margin="1094,10,0,0" Stroke="Black" VerticalAlignment="Top" HorizontalAlignment="Left" Width="808"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="120" Margin="1175,267,0,0" Stroke="Black" VerticalAlignment="Top" Width="665"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="120" Margin="1175,141,0,0" Stroke="Black" VerticalAlignment="Top" Width="665"/>
+        <Rectangle Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="120" Margin="1175,16,0,0" Stroke="Black" VerticalAlignment="Top" Width="665"/>
+        <Label x:Name="label_VitalSigns_Cyclic" Content="循环&#xA;Cyclic" HorizontalAlignment="Left" Margin="1177,17,0,0" VerticalAlignment="Top" Width="69" FontWeight="Bold"/>
+        <Label x:Name="label_VitalSigns_Breath" Content="呼吸&#xA;Breath" HorizontalAlignment="Left" Margin="1175,143,0,0" VerticalAlignment="Top" Width="58" FontWeight="Bold"/>
+        <Label x:Name="label_VitalSigns_Other" Content="其它&#xA;Other" HorizontalAlignment="Left" Margin="1177,269,0,0" VerticalAlignment="Top" Width="58" FontWeight="Bold"/>
+        <Label x:Name="label_VitalSigns_Cyclic_Rhythm_Basic" Content="基本心律&#xA;Basic Rhythm" HorizontalAlignment="Left" Margin="1247,17,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label x:Name="label_VitalSigns_Cyclic_Rhythm_Extrasystole" Content="期前收缩&#xA;Extrasystole" HorizontalAlignment="Left" Margin="1441,18,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label x:Name="label_VitalSigns_Cyclic_HeartRate" Content="心率&#xA;Heart Rate" HorizontalAlignment="Left" Margin="1641,17,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="3.752,1.075" Height="40"/>
+        <Label x:Name="label_VitalSigns_Cyclic_SpO2" Content="血氧饱和度&#xA;SpO2" HorizontalAlignment="Left" Margin="1441,57,0,0" VerticalAlignment="Top" Width="80" Height="40" RenderTransformOrigin="0.912,0.55"/>
+        <Label x:Name="label_VitalSigns_Cyclic_IBP" Content="有创血压&#xA;IBP" HorizontalAlignment="Left" Margin="1222,57,0,0" VerticalAlignment="Top" Width="59"/>
+        <Label x:Name="label_VitalSigns_Cyclic_PAP" Content="肺动脉压&#xA;PAP" HorizontalAlignment="Left" Margin="1222,96,0,0" VerticalAlignment="Top" Width="59"/>
+        <Label x:Name="label_VitalSigns_Cyclic_CVP" Content="中心静脉压&#xA;CVP" HorizontalAlignment="Left" Margin="1436,96,0,0" VerticalAlignment="Top" Width="80" Height="40"/>
+        <Label x:Name="label_VitalSigns_Cyclic_PAWP" Content="肺毛压&#xA;PAWP" HorizontalAlignment="Left" Margin="1641,98,0,0" VerticalAlignment="Top" Width="80"/>
+        <Label x:Name="label_VitalSigns_Other_ICP" Content="颅内压&#xA;ICP" HorizontalAlignment="Left" Margin="1248,308,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.35,0.35"/>
+        <Label x:Name="label_VitalSigns_Cyclic_C_O_" Content="心输出量&#xA;C.O." HorizontalAlignment="Left" Margin="1642,59,0,0" VerticalAlignment="Top" Width="80" Height="40"/>
+        <Label x:Name="label_VitalSigns_Breath_RespType" Content="呼吸类型&#xA;Resp Type" HorizontalAlignment="Right" Margin="0,143,584,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns_Breath_RespRate" Content="呼吸率&#xA;Resp Rate" HorizontalAlignment="Left" Margin="1443,143,0,0" VerticalAlignment="Top" Width="78"/>
+        <Label x:Name="label_VitalSigns_Breath_InspiratoryCapacity" Content="呼吸量&#xA;Inspiratory Capacity" HorizontalAlignment="Left" Margin="1641,143,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns_Breath_RespRatio" Content="呼吸比&#xA;Resp ratio" HorizontalAlignment="Right" Margin="0,183,584,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns_Breath_CO2" Content="二氧化碳&#xA;CO2" HorizontalAlignment="Left" Margin="1443,183,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="0.532,2.213"/>
+        <Label x:Name="label_VitalSigns_Breath_ETCO2" Content="呼气末二氧化碳&#xA;ETCO2" HorizontalAlignment="Left" Margin="1641,183,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns_Breath_O2" Content="氧气&#xA;O2" HorizontalAlignment="Left" Margin="1248,223,0,0" VerticalAlignment="Top" Width="43" RenderTransformOrigin="0.532,2.213"/>
+        <Label x:Name="label_VitalSigns_Breath_N2O" Content="笑气&#xA;N2O" HorizontalAlignment="Left" Margin="1443,223,0,0" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.532,2.213"/>
+        <Label x:Name="label_VitalSigns_Breath_AGT" Content="麻醉剂&#xA;AGT" HorizontalAlignment="Left" Margin="1641,223,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="0.532,2.213"/>
+        <Label x:Name="label_VitalSigns_Other_PeripheralTemperature" Content="外周温度&#xA;Peri. Temperature" HorizontalAlignment="Left" Margin="1248,268,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns_Other_BloodTemperature" Content="血液温度&#xA;Blood Temperature" HorizontalAlignment="Left" Margin="1443,269,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns_Other_pH" Content="PH&#xA;" HorizontalAlignment="Right" Margin="0,270,191,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns_Other_TOF" Content="TOF&#xA;Train-of-four" HorizontalAlignment="Left" Margin="1248,347,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns_Other_TOFRatio" Content="TOF比例&#xA;Train-of-four Ratio" HorizontalAlignment="Left" Margin="1443,344,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns_Other_PTC" Content="强直后计数 &#xA;PTC：" HorizontalAlignment="Right" Margin="0,347,191,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="0.532,2.213" Height="40"/>
+        <Label x:Name="label_VitalSigns" Content="生命体征&#xA;VitalSigns" HorizontalAlignment="Left" Margin="1099,18,0,0" VerticalAlignment="Top" Width="78" RenderTransformOrigin="-1.166,-0.828" FontWeight="Bold"/>
+        <TextBox x:Name="textBox_VitalSigns_Cyclic_IBP_Systolic" HorizontalAlignment="Left" Height="23" Margin="1286,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextChanged="textBox_VitalSigns_Cyclic_IBP_Systolic_TextChanged"/>
+        <TextBox x:Name="textBox_VitalSigns_Cyclic_IBP_Diastolic" HorizontalAlignment="Left" Height="23" Margin="1346,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextChanged="textBox_VitalSigns_Cyclic_IBP_Diastolic_TextChanged"/>
+        <Label x:Name="label_VitalSigns_Cyclic_IBP_" Content="/" HorizontalAlignment="Left" Margin="1326,68,0,0" VerticalAlignment="Top" Width="19" Height="21"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Cyclic_Rhythm_Basic" HorizontalAlignment="Left" Margin="1330,29,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="comboBox_VitalSigns_Cyclic_Rhythm_Basic_SelectionChanged" />
+        <ComboBox x:Name="comboBox_VitalSigns_Cyclic_Rhythm_Extrasystole" HorizontalAlignment="Left" Margin="1522,29,0,0" VerticalAlignment="Top" Width="100" Height="21" SelectionChanged="comboBox_VitalSigns_Cyclic_Rhythm_Extrasystole_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Cyclic_PAP_Systolic" HorizontalAlignment="Left" Height="23" Margin="1286,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextChanged="textBox_VitalSigns_Cyclic_PAP_Systolic_TextChanged"/>
+        <TextBox x:Name="textBox_VitalSigns_Cyclic_PAP_Diastolic" HorizontalAlignment="Left" Height="23" Margin="1346,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextChanged="textBox_VitalSigns_Cyclic_PAP_Diastolic_TextChanged"/>
+        <Label x:Name="label_VitalSigns_Cyclic_PAP_" Content="/" HorizontalAlignment="Left" Margin="1326,108,0,0" VerticalAlignment="Top" Width="19" Height="21"/>
+        <TextBox x:Name="textBox_VitalSigns_Cyclic_SpO2" HorizontalAlignment="Left" Height="23" Margin="1522,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" TextChanged="textBox_VitalSigns_Cyclic_SpO2_TextChanged"/>
+        <TextBox x:Name="textBox_VitalSigns_Cyclic_CVP" HorizontalAlignment="Left" Height="23" Margin="1522,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" TextChanged="textBox_VitalSigns_Cyclic_CVP_TextChanged"/>
+        <TextBox x:Name="textBox_VitalSigns_Cyclic_PAWP" HorizontalAlignment="Left" Height="23" Margin="1734,107,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Cyclic_PAWP_TextChanged"/>
+        <TextBox x:Name="textBox_VitalSigns_Other_ICP" HorizontalAlignment="Left" Height="23" Margin="1331,319,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Other_ICP_TextChanged"/>
+        <TextBox x:Name="textBox_VitalSigns_Cyclic_C_O_" HorizontalAlignment="Left" Height="23" Margin="1738,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" TextChanged="textBox_VitalSigns_Cyclic_C_O__TextChanged"/>
+        <TextBox x:Name="textBox_VitalSigns_Cyclic_HeartRate" HorizontalAlignment="Left" Height="23" Margin="1737,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="53" TextChanged="textBox_VitalSigns_Cyclic_HeartRate_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Breath_RespType" HorizontalAlignment="Left" Margin="1330,152,0,0" VerticalAlignment="Top" Width="100" SelectionChanged="comboBox_VitalSigns_Breath_RespType_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Breath_RespRate" HorizontalAlignment="Left" Height="23" Margin="1522,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Breath_RespRate_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Breath_RespRate_Unit" HorizontalAlignment="Left" Margin="1577,147,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Breath_RespRate_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Breath_InspiratoryCapacity" HorizontalAlignment="Left" Height="23" Margin="1737,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" TextChanged="textBox_VitalSigns_Breath_InspiratoryCapacity_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Breath_InspiratoryCapacity_Unit" HorizontalAlignment="Left" Margin="1789,147,0,0" VerticalAlignment="Top" Width="46" Height="23" SelectionChanged="comboBox_VitalSigns_Breath_InspiratoryCapacity_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Breath_CO2" HorizontalAlignment="Left" Height="23" Margin="1522,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Breath_CO2_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Breath_CO2_Unit" HorizontalAlignment="Left" Margin="1577,192,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Breath_CO2_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Breath_N2O_inN2O" HorizontalAlignment="Left" Height="23" Margin="1497,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextChanged="textBox_VitalSigns_Breath_N2O_inN2O_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Breath_N2O_Unit" HorizontalAlignment="Left" Margin="1577,231,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Breath_N2O_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Breath_AGT_inAGT" HorizontalAlignment="Left" Height="23" Margin="1709,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextChanged="textBox_VitalSigns_Breath_AGT_inAGT_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Breath_AGT_Unit" Margin="1789,231,0,0" VerticalAlignment="Top" Height="23" RenderTransformOrigin="0.878,0.391" HorizontalAlignment="Left" Width="46" SelectionChanged="comboBox_VitalSigns_Breath_AGT_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Breath_RespRatio" HorizontalAlignment="Left" Height="23" Margin="1330,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Breath_RespRatio_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Breath_RespRatio_Unit" HorizontalAlignment="Left" Margin="1385,192,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Breath_RespRatio_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Breath_O2_inO2" HorizontalAlignment="Right" Height="23" Margin="0,231,567,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" RenderTransformOrigin="0.947,0.391" TextChanged="textBox_VitalSigns_Breath_O2_inO2_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Breath_O2_Unit" HorizontalAlignment="Left" Margin="1385,231,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Breath_O2_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Breath_ETCO2" HorizontalAlignment="Left" Height="23" Margin="1737,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="52" TextChanged="textBox_VitalSigns_Breath_ETCO2_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Breath_ETCO2_Unit" HorizontalAlignment="Left" Margin="1789,192,0,0" VerticalAlignment="Top" Width="46" Height="23" SelectionChanged="comboBox_VitalSigns_Breath_ETCO2_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Other_PeripheralTemperature" HorizontalAlignment="Left" Height="23" Margin="1330,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Other_PeripheralTemperature_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Other_PeripheralTemperature_Unit" HorizontalAlignment="Left" Margin="1385,280,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Other_PeripheralTemperature_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Other_BloodTemperature" HorizontalAlignment="Left" Height="23" Margin="1522,280,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Other_BloodTemperature_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Other_BloodTemperature_Unit" HorizontalAlignment="Left" Margin="1577,280,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Other_BloodTemperature_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Other_TOFRatio" HorizontalAlignment="Left" Height="23" Margin="1522,358,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Other_TOFRatio_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Other_TOFRatio_Unit" HorizontalAlignment="Left" Margin="1577,358,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Other_TOFRatio_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Other_TOF" HorizontalAlignment="Left" Height="23" Margin="1330,358,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Other_TOF_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Other_TOF_Unit" HorizontalAlignment="Left" Margin="1385,358,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Other_TOF_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Other_pH" HorizontalAlignment="Left" Height="23" Margin="1734,277,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Other_pH_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Other_pH_Unit" Margin="1789,277,0,0" VerticalAlignment="Top" Height="23" HorizontalAlignment="Left" Width="45" SelectionChanged="comboBox_VitalSigns_Other_pH_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Other_PTC" HorizontalAlignment="Left" Height="23" Margin="1735,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TextChanged="textBox_VitalSigns_Other_PTC_TextChanged"/>
+        <ComboBox x:Name="comboBox_VitalSigns_Other_PTC_Unit" HorizontalAlignment="Left" Margin="1789,355,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Other_PTC_Unit_SelectionChanged" />
+        <ComboBox x:Name="comboBox_VitalSigns_Cyclic_HeartRate_Unit" HorizontalAlignment="Left" Margin="1790,23,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Cyclic_HeartRate_Unit_SelectionChanged" />
+        <ComboBox x:Name="comboBox_VitalSigns_Cyclic_PAWP_Unit" HorizontalAlignment="Left" Margin="1790,107,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Cyclic_PAWP_Unit_SelectionChanged" />
+        <ComboBox x:Name="comboBox_VitalSigns_Cyclic_C_O__Unit" HorizontalAlignment="Left" Margin="1790,66,0,0" VerticalAlignment="Top" Width="46" Height="23" SelectionChanged="comboBox_VitalSigns_Cyclic_C_O__Unit_SelectionChanged" />
+        <ComboBox x:Name="comboBox_VitalSigns_Cyclic_CVP_Unit" HorizontalAlignment="Left" Margin="1575,106,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Cyclic_CVP_Unit_SelectionChanged" />
+        <ComboBox x:Name="comboBox_VitalSigns_Cyclic_SpO2_Unit" HorizontalAlignment="Left" Margin="1575,65,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Cyclic_SpO2_Unit_SelectionChanged" />
+        <ComboBox x:Name="comboBox_VitalSigns_Other_ICP_Unit" HorizontalAlignment="Left" Margin="1386,319,0,0" VerticalAlignment="Top" Width="45" Height="23" SelectionChanged="comboBox_VitalSigns_Other_ICP_Unit_SelectionChanged" RenderTransformOrigin="-9.511,2.783" />
+        <ComboBox x:Name="comboBox_VitalSigns_Cyclic_IBP_Unit" HorizontalAlignment="Left" Margin="1386,66,0,0" VerticalAlignment="Top" Width="45" Height="23" RenderTransformOrigin="2.244,-2.783" SelectionChanged="comboBox_VitalSigns_Cyclic_IBP_Unit_SelectionChanged" />
+        <ComboBox x:Name="comboBox_VitalSigns_Cyclic_PAP_Unit" HorizontalAlignment="Left" Margin="1386,107,0,0" VerticalAlignment="Top" Width="45" Height="23" RenderTransformOrigin="2.244,-2.783" SelectionChanged="comboBox_VitalSigns_Cyclic_PAP_Unit_SelectionChanged" />
+        <TextBox x:Name="textBox_VitalSigns_Breath_O2_exO2" HorizontalAlignment="Right" Height="23" Margin="0,231,527,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextChanged="textBox_VitalSigns_Breath_O2_exO2_TextChanged"/>
+        <TextBox x:Name="textBox_VitalSigns_Breath_N2O_exN2O" HorizontalAlignment="Left" Height="23" Margin="1537,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextChanged="textBox_VitalSigns_Breath_N2O_exN2O_TextChanged"/>
+        <TextBox x:Name="textBox_VitalSigns_Breath_AGT_exAGT" HorizontalAlignment="Left" Height="23" Margin="1749,231,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="40" TextChanged="textBox_VitalSigns_Breath_AGT_exAGT_TextChanged"/>
+        <Label x:Name="label_VitalSigns_LeadLine" Content="导联线&#xA;Lead Line" HorizontalAlignment="Left" Margin="1842,19,0,0" VerticalAlignment="Top" Width="57" FontWeight="Bold"/>
+        <CheckBox x:Name="checkBox_VitalSigns_LeadLine_RA" Content="RA" HorizontalAlignment="Left" Margin="1841,68,0,0" VerticalAlignment="Top" Width="58" Checked="checkBox_VitalSigns_LeadLine_RA_Checked" Unchecked="checkBox_VitalSigns_LeadLine_RA_Unchecked"/>
+        <CheckBox x:Name="checkBox_VitalSigns_LeadLine_LA" Content="LA" HorizontalAlignment="Left" Margin="1841,110,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_LA_Checked" Unchecked="checkBox_VitalSigns_LeadLine_LA_Unchecked"/>
+        <CheckBox x:Name="checkBox_VitalSigns_LeadLine_RL" Content="RL" HorizontalAlignment="Left" Margin="1841,151,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_RL_Checked" Unchecked="checkBox_VitalSigns_LeadLine_RL_Unchecked"/>
+        <CheckBox x:Name="checkBox_VitalSigns_LeadLine_LL" Content="LL" HorizontalAlignment="Left" Margin="1841,195,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_LL_Checked" Unchecked="checkBox_VitalSigns_LeadLine_LL_Unchecked"/>
+        <CheckBox x:Name="checkBox_VitalSigns_LeadLine_V" Content="V" HorizontalAlignment="Left" Margin="1841,237,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_V_Checked" Unchecked="checkBox_VitalSigns_LeadLine_V_Unchecked"/>
+        <CheckBox x:Name="checkBox_VitalSigns_LeadLine_SPO2" Content="SPO2" HorizontalAlignment="Left" Margin="1841,276,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_SPO2_Checked" Unchecked="checkBox_VitalSigns_LeadLine_SPO2_Unchecked"/>
+        <CheckBox x:Name="checkBox_VitalSigns_LeadLine_NIBP" Content="NIBP" HorizontalAlignment="Left" Margin="1841,319,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_NIBP_Checked" Unchecked="checkBox_VitalSigns_LeadLine_NIBP_Unchecked"/>
+        <CheckBox x:Name="checkBox_VitalSigns_LeadLine_Temp1" Content="Temp1" HorizontalAlignment="Left" Margin="1841,360,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_Temp1_Checked" Unchecked="checkBox_VitalSigns_LeadLine_Temp1_Unchecked"/>
+    </Grid>
+</Window>

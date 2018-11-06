@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Splash", "YH.Splash\YH.Splash.csproj", "{4EE23BD0-384E-4141-A32D-8250592F100F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Language", "YH.Language\YH.Language.csproj", "{15F0DFF7-4A2B-4A66-838F-963A0A572EB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Library", "YH.Library\YH.Library.csproj", "{057CEF2D-D1E8-40F9-AC89-93C2FC2B7B60}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Simulation Home", "YH.Simulation Home\YH.Simulation Home.csproj", "{1D034700-5E59-4217-B1FB-3D0448A6A579}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.MetroTile", "YH.MetroTile\YH.MetroTile.csproj", "{18218518-3E9B-4E72-B5D5-912BF694EAAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Theme", "YH.Theme\YH.Theme.csproj", "{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YH.Loading", "YH.Loading\YH.Loading.csproj", "{39B8D148-4227-41FA-80BA-70665D8760DD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EE23BD0-384E-4141-A32D-8250592F100F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EE23BD0-384E-4141-A32D-8250592F100F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EE23BD0-384E-4141-A32D-8250592F100F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EE23BD0-384E-4141-A32D-8250592F100F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15F0DFF7-4A2B-4A66-838F-963A0A572EB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15F0DFF7-4A2B-4A66-838F-963A0A572EB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15F0DFF7-4A2B-4A66-838F-963A0A572EB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15F0DFF7-4A2B-4A66-838F-963A0A572EB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{057CEF2D-D1E8-40F9-AC89-93C2FC2B7B60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{057CEF2D-D1E8-40F9-AC89-93C2FC2B7B60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{057CEF2D-D1E8-40F9-AC89-93C2FC2B7B60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{057CEF2D-D1E8-40F9-AC89-93C2FC2B7B60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D034700-5E59-4217-B1FB-3D0448A6A579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D034700-5E59-4217-B1FB-3D0448A6A579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D034700-5E59-4217-B1FB-3D0448A6A579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D034700-5E59-4217-B1FB-3D0448A6A579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{18218518-3E9B-4E72-B5D5-912BF694EAAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18218518-3E9B-4E72-B5D5-912BF694EAAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{18218518-3E9B-4E72-B5D5-912BF694EAAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{18218518-3E9B-4E72-B5D5-912BF694EAAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{837988E6-EC7A-4FB4-9FA7-D0BD513F8122}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B8D148-4227-41FA-80BA-70665D8760DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B8D148-4227-41FA-80BA-70665D8760DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B8D148-4227-41FA-80BA-70665D8760DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B8D148-4227-41FA-80BA-70665D8760DD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
