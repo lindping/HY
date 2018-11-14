@@ -108,6 +108,18 @@
     <Compile Include="RESPWaveData\RESPWaveData_002.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_001.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_000.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_018.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_017.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_016.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_015.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_014.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_013.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_012.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_011.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_010.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_009.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_008.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_007.cs" />
     <Page Include="Dictionary\Root.Dictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
