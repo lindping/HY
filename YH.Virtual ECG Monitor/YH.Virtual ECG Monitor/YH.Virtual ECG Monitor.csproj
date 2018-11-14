@@ -100,6 +100,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ECGSetting.xaml.cs">
+      <DependentUpon>ECGSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RESPWaveData\RESPWaveData.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_003.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_006.cs" />
@@ -108,6 +114,7 @@
     <Compile Include="RESPWaveData\RESPWaveData_002.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_001.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_000.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_019.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_018.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_017.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_016.cs" />
@@ -120,6 +127,19 @@
     <Compile Include="RESPWaveData\RESPWaveData_009.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_008.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_007.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_020.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_021.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_022.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_023.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_024.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_025.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_026.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_027.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_028.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_029.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_030.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_031.cs" />
+    <Compile Include="RESPWaveData\RESPWaveData_032.cs" />
     <Page Include="Dictionary\Root.Dictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -135,6 +155,14 @@
     <Page Include="ECGmonitor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ECGSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Main.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
