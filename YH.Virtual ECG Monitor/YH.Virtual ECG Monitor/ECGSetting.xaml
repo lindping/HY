@@ -83,12 +83,12 @@
                 <!--心电图开关-->
                 <StackPanel  Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" Margin="10,0,20,0" FontSize="14">心电图开关：</TextBlock>
-                    <CheckBox Style="{StaticResource chkBullet}" Background="#0089e1" IsChecked="False" Content="Off" Tag="On"/>
+                    <CheckBox Style="{StaticResource chkBullet}" Background="#0089e1" IsChecked="False" Content="Off" Tag="On" Margin="0,5,0,-5"/>
                 </StackPanel>
             </Grid>
             <DockPanel Grid.Row="3" Background="White" Margin="30,0" Height="120">
-                <StackPanel Orientation="Vertical" DockPanel.Dock="Left" Background="#0089e1" Width="60" >
-                <TextBlock Foreground="White" FontSize="14" Margin="0,50">设置结果</TextBlock>
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Left" Background="#0089e1" Width="80" Margin="0,-7,0,7" >
+                <TextBlock Foreground="White" FontSize="14" Margin="12,50,0,50">设置结果</TextBlock>
                 </StackPanel>
             <StackPanel >
 

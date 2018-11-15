@@ -46,7 +46,7 @@
         <Button Grid.Row="0" Grid.Column="10" Height="30"  Grid.ColumnSpan="2"  Width="228"> 1.4 Volume（警报音量）</Button>
 
 
-        <Button Grid.Row="1" Grid.Column="0"  Height="60"  Grid.ColumnSpan="8" Width="910" > 2.1 ECG（Electro Cardio Gram:心电图）</Button>
+        <Button Grid.Row="1" Grid.Column="0"  Height="60"  Grid.ColumnSpan="8" Width="910"  Click="Button_Click"> 2.1 ECG（Electro Cardio Gram:心电图）</Button>
         <Button Grid.Row="1" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228"> 3.1 HR（HEART RATE ：心率 BPM）</Button>
         <Button Grid.Row="1" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228"> 3.2 PR（ Pulse Rate:脉搏 频率 BPM）</Button>
 

@@ -23,5 +23,10 @@ namespace YH.Virtual_ECG_Monitor
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

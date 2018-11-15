@@ -56,10 +56,7 @@ namespace YH.Virtual_ECG_Monitor
             launch1 = new Launch(interval);
             launch1.OnElapsed += Launch1_OnElapsed;
             launch1.Start();
-
-
             this.Title = data.Name;
-
         }
 
         private void Launch1_OnElapsed()

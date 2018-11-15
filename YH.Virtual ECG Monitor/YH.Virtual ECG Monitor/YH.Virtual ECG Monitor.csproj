@@ -140,6 +140,10 @@
     <Compile Include="RESPWaveData\RESPWaveData_030.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_031.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_032.cs" />
+    <Page Include="Dictionary\Dictionary1.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dictionary\Root.Dictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
