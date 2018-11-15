@@ -1,3 +1,11 @@
 ﻿{
-
+  "ECGSwitch": true,
+  "Gain": "10",
+  "Lead": "v3",
+  "Level": "高",
+  "Max": 120,
+  "Min": 60,
+  "QRSVolumn": 6,
+  "Speed": "12.5",
+  "Warning": false
 }

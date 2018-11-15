@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace HYS.Library
 {
-   public class JsonHelper
+    public class JsonHelper
     {
-        public static  string GetFileJson(string filepath)
+        public static string ReadFileJson(string filepath)
         {
             string json = string.Empty;
             using (FileStream fs = new FileStream(filepath, FileMode.Open, System.IO.FileAccess.Read, FileShare.ReadWrite))
             {
-                using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("gb2312")))
+                using (StreamReader sr = new StreamReader(fs, Encoding.GetEncoding("utf-8")))
                 {
                     json = sr.ReadToEnd();
                 }
@@ -22,6 +22,26 @@ namespace HYS.Library
             return json;
         }
 
-       
+        public static void SaveFileJson(string json, string filepath)
+        {          
+
+            FileStream fs = new FileStream(filepath, FileMode.Create);
+
+            //把json数据写到文件  
+            using (StreamWriter sw = new StreamWriter(fs))
+            {
+                try
+                {
+                    sw.Write(json);
+                    sw.Close();
+                    fs.Close();
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+            }
+
+        }
     }
 }

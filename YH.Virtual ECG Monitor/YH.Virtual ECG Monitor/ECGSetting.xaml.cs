@@ -22,6 +22,7 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class ECGSetting : Window
     {
+        public ECGSettingModel settingModel;
         public ECGSetting()
         {
             InitializeComponent();
@@ -29,15 +30,12 @@ namespace YH.Virtual_ECG_Monitor
         }
         private void InitializeData()
         {
-          string json =  JsonHelper.GetFileJson("ECGGetting.json");
+            string json = JsonHelper.ReadFileJson("ECGGetting.json");
             if (!string.IsNullOrWhiteSpace(json))
             {
-                ECGSettingModel model = JsonConvert.DeserializeObject<ECGSettingModel>(json);
-                if (model != null)
-                {
-
-                }
+                settingModel = JsonConvert.DeserializeObject<ECGSettingModel>(json);               
             }
+            DataContext = settingModel;
         }
 
         //关闭窗口
@@ -53,9 +51,35 @@ namespace YH.Virtual_ECG_Monitor
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (settingModel.Min >= settingModel.Max)
+            {
+                MessageBox.Show("低限不能大于等于高限");
+                return;
+            }
+            JsonSerializerSettings setting = new JsonSerializerSettings();         
+            string json= JsonConvert.SerializeObject(settingModel);
+            JsonHelper.SaveFileJson(json, "ECGGetting.json");
+            this.Close();
+        }
+    }
 
+    public class ObjectToBoolConverter : IValueConverter
+    {
+
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return parameter.Equals(value);
         }
 
-     
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            bool isChecked = (bool)value;
+            if (!isChecked)
+            {
+                return null;
+            }
+            return parameter;
+        }
     }
-}
+
+  }

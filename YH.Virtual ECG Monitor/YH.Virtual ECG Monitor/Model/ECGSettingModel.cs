@@ -15,7 +15,7 @@ namespace YH.Virtual_ECG_Monitor
         /// <summary>
         /// 速度
         /// </summary>
-        public int Speed { get; set; }
+        public string Speed { get; set; }
 
         /// <summary>
         /// QRS音量
@@ -25,17 +25,17 @@ namespace YH.Virtual_ECG_Monitor
         /// <summary>
         /// 增益
         /// </summary>
-        public int Gain { get; set; }
+        public string Gain { get; set; }
 
         /// <summary>
         /// 心电图开关
         /// </summary>
         public bool ECGSwitch { get; set; }
 
-        public int Max { get; }
-        public int Min { get; }
+        public int Max { get; set; }
+        public int Min { get; set; }
         public bool Warning { get; set; }
-        public int Level { get; set; }
+        public string Level { get; set; }
 
 
     }
