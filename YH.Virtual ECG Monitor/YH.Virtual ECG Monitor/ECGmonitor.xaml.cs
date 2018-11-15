@@ -36,16 +36,23 @@ namespace YH.Virtual_ECG_Monitor
         int rate = 0;
         RESPWaveData data;
 
+        int rhythm;  //心率类型
+        int wave;    //波形
 
-        public ECGmonitor(int rhythm)
+        int dataLength;
+        public ECGmonitor(int rhythm, int wave)
         {
             InitializeComponent();
-         
-            data =  DataToObject.To<RESPWaveData>(rhythm) ;
-            addY = data.WaveData.Length > 1000 ? 10 : 1;
-            addX = (double)myCanvas.Width / (double)data.Rate / ((double)data.WaveData.Length/(double)addY);
 
-            int interval = data.WaveData.Length > 1000 ? 4 : 20;
+            this.rhythm = rhythm;
+            this.wave = wave;
+
+            data =  DataToObject.To<RESPWaveData>(rhythm) ;
+            dataLength = data.WaveData.GetLength(0);
+            addY = data.WaveData.Length > 1000 ? 10 : 1;
+            addX = (double)myCanvas.Width / (double)data.Rate / ((double)dataLength / (double)addY);
+
+            int interval = dataLength > 1000 ? 4 : 20;
             launch1 = new Launch(interval);
             launch1.OnElapsed += Launch1_OnElapsed;
             launch1.Start();
@@ -60,13 +67,13 @@ namespace YH.Virtual_ECG_Monitor
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
               
-                y = data.WaveData[i,2] / (double)100;
+                y = data.WaveData[i, wave] / (double)100;
                 y = 150 - 100 * y;
                 polyline1.Points.Add(new Point(x, y));
                 x += addX;
                 i += addY;
 
-                if (i >= data.WaveData.Length)
+                if (i >= dataLength)
                 {
                     i = 0;
                     rate++;                 
