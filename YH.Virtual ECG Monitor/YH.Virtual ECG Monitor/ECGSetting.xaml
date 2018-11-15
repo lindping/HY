@@ -74,7 +74,7 @@
                 </StackPanel>
                 <!--增益-->
                 <StackPanel  Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" Margin="10,0,20,0" FontSize="14">心电图开关：</TextBlock>
+                <TextBlock VerticalAlignment="Center" Margin="10,0,20,0" FontSize="14">增益：</TextBlock>
                 <RadioButton IsChecked="False" Content="5" Margin="5"/>
                 <RadioButton IsChecked="False" Content="10" Margin="5"/>
                 <RadioButton IsChecked="False" Content="20" Margin="5"/>
@@ -83,36 +83,36 @@
                 <!--心电图开关-->
                 <StackPanel  Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                     <TextBlock VerticalAlignment="Center" Margin="10,0,20,0" FontSize="14">心电图开关：</TextBlock>
-                    <CheckBox Style="{StaticResource chkBullet}" Background="#0089e1" IsChecked="False" Content="Off" Tag="On" Margin="0,5,0,-5"/>
+                    <CheckBox Style="{StaticResource chkBullet}" Background="#0089e1" IsChecked="False" Content="Off" Tag="On" Margin="0,0,0,0"/>
                 </StackPanel>
             </Grid>
             <DockPanel Grid.Row="3" Background="White" Margin="30,0" Height="120">
-                <StackPanel Orientation="Vertical" DockPanel.Dock="Left" Background="#0089e1" Width="80" Margin="0,-7,0,7" >
+                <StackPanel Orientation="Vertical" DockPanel.Dock="Left" Background="#0089e1" Width="80" Margin="0,0,0,0" >
                 <TextBlock Foreground="White" FontSize="14" Margin="12,50,0,50">设置结果</TextBlock>
                 </StackPanel>
             <StackPanel >
 
-                <StackPanel Orientation="Horizontal" Margin="10,0">
-                    <TextBlock Height="30" VerticalAlignment="Top" Text="高限："/>
-                    <DockPanel Width="500" Height="30" VerticalAlignment="Top">
-                        <Slider DockPanel.Dock="Top" x:Name="slider_1"   IsSnapToTickEnabled="True" Maximum="10" ValueChanged="Slider_ValueChanged"/>
+                <StackPanel Orientation="Horizontal" Margin="10,5"   >
+                    <TextBlock Height="25"  Text="高限："  />
+                    <DockPanel Width="500" Height="25" >
+                        <Slider DockPanel.Dock="Top"  x:Name="slider_1"   IsSnapToTickEnabled="True" Maximum="10" ValueChanged="Slider_ValueChanged"/>
                     </DockPanel>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Margin="10,0">
-                    <TextBlock Height="30" VerticalAlignment="Top" Text="低限："/>
-                    <DockPanel Width="500" Height="30" VerticalAlignment="Top">
+                <StackPanel Orientation="Horizontal" Margin="10,0" >
+                    <TextBlock Height="25"  Text="低限："/>
+                    <DockPanel Width="500" Height="25" >
                         <Slider DockPanel.Dock="Top" x:Name="slider_2"   IsSnapToTickEnabled="True" Maximum="10" ValueChanged="Slider_ValueChanged"/>
                     </DockPanel>
                 </StackPanel>
 
-                <StackPanel Orientation="Horizontal" Margin="10,0">
-                    <TextBlock Height="30" VerticalAlignment="Top" Text="警报："/>
-                    <CheckBox Style="{StaticResource chkBullet}" Background="#0089e1" IsChecked="False" Content="Off" Tag="On"/>
+                <StackPanel Orientation="Horizontal" Margin="10,0" >
+                    <TextBlock Height="25"  Text="警报："/>
+                    <CheckBox  VerticalAlignment="Top" Style="{StaticResource chkBullet}" Background="#0089e1" IsChecked="False" Content="Off" Tag="On"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="10,0">
-                    <TextBlock Height="30" VerticalAlignment="Top" Text="级别："/>
-                    <DockPanel Width="500" Height="30" VerticalAlignment="Top">
+                    <TextBlock Height="25" Text="级别："/>
+                    <DockPanel Width="500" Height="25" >
                         <Slider DockPanel.Dock="Top" x:Name="slider_3"   IsSnapToTickEnabled="True" Maximum="3" ValueChanged="Slider_ValueChanged"/>
                     </DockPanel>
                 </StackPanel>
@@ -122,10 +122,10 @@
             <!--底部-->
             <Grid Grid.Row="4" Margin="30,20,30,0" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="40">
-                    <Button Background="#0089e1" Width="100" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <Button Click="Button_Click" Background="#0089e1" Width="100" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
                         <TextBlock Foreground="#ffffff" Margin="5,0,5,0">确定</TextBlock>
                     </Button>
-                    <Button Background="#f99f3d" Width="100" Margin="0,0,20,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <Button Click="btnClose_Click" Background="#f99f3d" Width="100" Margin="0,0,20,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
                         <TextBlock Foreground="#ffffff" Margin="5,0,5,0">取消</TextBlock>
                     </Button>
                 </StackPanel>

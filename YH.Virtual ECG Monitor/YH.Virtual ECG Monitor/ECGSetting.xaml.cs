@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HYS.Library;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +25,21 @@ namespace YH.Virtual_ECG_Monitor
         public ECGSetting()
         {
             InitializeComponent();
-            Application.Current.Resources.MergedDictionaries[1] = new ResourceDictionary()
-            {
-                Source = new Uri("Dictionary/Skin.RegularStyle.xaml", UriKind.Relative)
-            };
+            InitializeData();
         }
+        private void InitializeData()
+        {
+          string json =  JsonHelper.GetFileJson("ECGGetting.json");
+            if (!string.IsNullOrWhiteSpace(json))
+            {
+                ECGSettingModel model = JsonConvert.DeserializeObject<ECGSettingModel>(json);
+                if (model != null)
+                {
+
+                }
+            }
+        }
+
         //关闭窗口
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -38,5 +50,12 @@ namespace YH.Virtual_ECG_Monitor
         {
 
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+     
     }
 }
