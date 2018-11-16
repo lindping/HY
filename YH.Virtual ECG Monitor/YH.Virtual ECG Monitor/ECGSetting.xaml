@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
+        xmlns:lib="clr-namespace:HYS.Library;assembly=HYS.Library"
         mc:Ignorable="d"
         Title="ECGSetting"   
         Width="800" Height="500" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
@@ -11,7 +12,113 @@
         <local:ECGSettingModel></local:ECGSettingModel>
     </Window.DataContext>
     <Window.Resources>
-        <local:ObjectToBoolConverter  x:Key="ObjectToBoolConverter"></local:ObjectToBoolConverter>
+        <lib:ObjectToBoolConverter  x:Key="ObjectToBoolConverter"></lib:ObjectToBoolConverter>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="#999999"></Setter>
+        </Style>
+        <!--自定义按钮控件-->
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="MinWidth" Value="30"></Setter>
+            <Setter Property="MinHeight" Value="15"></Setter>
+            <Setter Property="Cursor" Value="Hand"></Setter>
+            <Setter Property="Foreground" Value="#666666"></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border BorderThickness="0" BorderBrush="DarkViolet" CornerRadius="2"   
+                     Background="{TemplateBinding Background}"  
+                     Margin="{TemplateBinding Margin}"  
+                     Padding="{TemplateBinding Padding}"  
+                     MinWidth="{TemplateBinding MinWidth}"   
+                     MinHeight="{TemplateBinding MinHeight}"  
+                     HorizontalAlignment="{TemplateBinding HorizontalAlignment}"   
+                     VerticalAlignment="{TemplateBinding VerticalAlignment}">
+                            <TextBlock Foreground="{TemplateBinding Foreground}" HorizontalAlignment="{TemplateBinding HorizontalAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}"    
+                      FontSize="{TemplateBinding FontSize}" FontFamily="{TemplateBinding FontFamily}" Text="{TemplateBinding Content}"></TextBlock>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--图标字体-->
+        <Style x:Key="FIcon" TargetType="TextBlock">
+            <Setter Property="TextElement.FontFamily" Value="images/#icomoon"></Setter>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <!--slider滑块样式模板-->
+        <Style x:Key="StyleForRepeatButton" TargetType="{x:Type RepeatButton}">
+            <Style.Setters>
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Height" Value="10"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="BorderBrush" Value="Transparent"/>
+                <Setter Property="Focusable" Value="False"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="Transparent"></Setter>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Focusable" Value="False"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="Transparent"></Setter>
+                    <Setter Property="BorderThickness" Value="0"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                    <Setter Property="Focusable" Value="False"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <ControlTemplate x:Key="tmpThumb" TargetType="{x:Type Thumb}">
+            <Rectangle Name="e" RadiusX="2" RadiusY="2" Width="11" MinHeight="20" Fill="#0089e1"/>
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="e" Property="Fill" Value="#cccccc"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="tmp" TargetType="{x:Type Slider}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto" MinHeight="25"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+                <TickBar x:Name="top" Fill="#f1f1f1" Grid.Row="0" HorizontalAlignment="Stretch"  
+                         Placement="Top" Height="8"  
+                         Visibility="Collapsed"/>
+                <Track x:Name="PART_Track" Grid.Row="1" HorizontalAlignment="Stretch">
+                    <Track.IncreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource StyleForRepeatButton}"  
+                                      Command="Slider.IncreaseLarge" Visibility="Hidden"/>
+                    </Track.IncreaseRepeatButton>
+                    <Track.DecreaseRepeatButton>
+                        <RepeatButton Style="{StaticResource StyleForRepeatButton}"  
+                                      Command="Slider.DecreaseLarge" Visibility="Hidden"/>
+                    </Track.DecreaseRepeatButton>
+                    <Track.Thumb>
+                        <Thumb Height="20" Template="{StaticResource tmpThumb}"/>
+                    </Track.Thumb>
+                </Track>
+                <TickBar x:Name="Bottom" Grid.Row="2" Fill="#eeeeee" HorizontalAlignment="Stretch"  
+                         Visibility="Hidden" Placement="Bottom" Height="0"/>
+            </Grid>
+            <ControlTemplate.Triggers>
+                <Trigger Property="TickPlacement" Value="TopLeft">
+                    <Setter TargetName="top" Property="Visibility" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="BottomRight">
+                    <Setter Property="Visibility" TargetName="Bottom" Value="Visible"/>
+                </Trigger>
+                <Trigger Property="TickPlacement" Value="Both">
+                    <Setter TargetName="top" Property="Visibility" Value="Visible"/>
+                    <Setter TargetName="Bottom" Property="Visibility" Value="Visible"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </Window.Resources>
         <Grid >
             <!--布局-->
@@ -51,17 +158,18 @@
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="0,0,0,20">
                     <TextBlock VerticalAlignment="Center" Margin="10,0,20,0" FontSize="14">导联：</TextBlock>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=i}" Content="i" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=ii}" Content="ii" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=iii}" Content="iii" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=aVR}" Content="aVR" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=aVL}" Content="aVL" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=v1}" Content="v1" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=v2}" Content="v2" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=v3}" Content="v3" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=v4}" Content="v4" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=v5}" Content="v5" Margin="5"/>
-                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay,  Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=v6}" Content="v6" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=0}" Content="i" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=1}" Content="ii" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=2}" Content="iii" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=3}" Content="aVR" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=4}" Content="aVL" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=5}" Content="aVF" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=6}" Content="v1" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=7}" Content="v2" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=8}" Content="v3" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=9}" Content="v4" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay, Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=10}" Content="v5" Margin="5"/>
+                <RadioButton  GroupName="rbLead" IsChecked="{ Binding  Mode=TwoWay,  Path=Lead, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=11}" Content="v6" Margin="5"/>
             </StackPanel>
                 <!--速度-->
                 <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,0,0,20">
@@ -72,14 +180,27 @@
                 <RadioButton GroupName="rbSpeed"   IsChecked="{ Binding  Mode=TwoWay, Path=Speed, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=6.5}" Content="6.5" Margin="5"/>
                 </StackPanel>
                 <!--QRS音量-->
-                <StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,0">
+                <!--<StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,0">
                     <TextBlock  Margin="10,0,10,0" FontSize="14">QRS音量</TextBlock>
                     <DockPanel Width="300">
                     <Slider DockPanel.Dock="Top"  Name="slider"  IsSnapToTickEnabled="True"   Value="{ Binding  Mode=TwoWay, Path=QRSVolumn}" Interval="1"  Maximum="10"   />
                     </DockPanel>
                 <TextBlock  Height="25" TextWrapping="Wrap"  Text="{Binding ElementName=slider, Path=Value }" VerticalAlignment="Top"/>
-            </StackPanel>
-                <!--增益-->
+            </StackPanel>-->
+            <DockPanel Margin="0,0,0,0"  Grid.Row="1" Grid.Column="1" >
+                <TextBlock DockPanel.Dock="Left" Margin="0,10,0,10" Width="60" >QRS音量</TextBlock>
+                <TextBlock DockPanel.Dock="Right" Margin="5,8,20,5" ><Run  Text="{ Binding ElementName=slider,Path=Value}"/></TextBlock>
+                <Grid DockPanel.Dock="Top" Margin="5,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <Canvas Grid.Row="0" Margin="10,16,10,5" HorizontalAlignment="Stretch" Panel.ZIndex="-1">
+                        <Rectangle RadiusX="2" RadiusY="2" Width="220" MinHeight="2" Fill="#cccccc" Height="2" Canvas.Left="-4"/>
+                    </Canvas>
+                    <Slider x:Name="slider" Grid.Row="0" Margin="0,5,30,5"  TickFrequency="1" Maximum="10"  Value="{ Binding  Mode=TwoWay, Path=QRSVolumn}"  Template="{StaticResource tmp}"  IsSnapToTickEnabled="True"  TickPlacement="BottomRight"  />                   
+                </Grid>
+            </DockPanel>
+            <!--增益-->
                 <StackPanel  Grid.Row="2" Grid.Column="0" Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center" Margin="10,0,20,0" FontSize="14">增益：</TextBlock>
                 <RadioButton  GroupName="rbGain" IsChecked="{ Binding  Mode=TwoWay, Path=Gain, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=5}" Content="5" Margin="5"/>
@@ -93,42 +214,40 @@
                 <CheckBox Style="{StaticResource chkBullet}" Background="#0089e1" IsChecked="{ Binding  Mode=TwoWay, Path=ECGSwitch}" Content="Off" Tag="On" Margin="0,0,0,0"/>
                 </StackPanel>
             </Grid>
-            <DockPanel Grid.Row="3" Background="White" Margin="30,0" Height="120">
+            <DockPanel Grid.Row="3" Background="White" Margin="30,0" Height="90">
                 <StackPanel Orientation="Vertical" DockPanel.Dock="Left" Background="#0089e1" Width="80" Margin="0,0,0,0" >
-                <TextBlock Foreground="White" FontSize="14" Margin="12,50,0,50">设置结果</TextBlock>
+                <TextBlock Foreground="White" FontSize="14" Margin="12,35,0,35">设置结果</TextBlock>
                 </StackPanel>
             <StackPanel >
+                <DockPanel Margin="10,0,0,0">
+                    <TextBlock x:Name="textblock_CompressionDepth_Title" DockPanel.Dock="Left" Margin="0,10,0,10" Width="60" >高低限制</TextBlock>
+                    <TextBlock DockPanel.Dock="Right" Margin="5,8,20,5" ><Run   x:Name="tbMin" Text="{ Binding ElementName=slider_1,Path=Value}"/>-<Run x:Name="tbMax"  Text="{ Binding ElementName=slider_2,Path=Value}"/></TextBlock>
+                    <Grid DockPanel.Dock="Top" Margin="5,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                        </Grid.RowDefinitions>
+                        <Canvas Grid.Row="0" Margin="10,16,10,5" HorizontalAlignment="Stretch" Panel.ZIndex="-1">
+                            <Rectangle RadiusX="2" RadiusY="2" Width="480" MinHeight="2" Fill="#cccccc" Height="2" Canvas.Left="-4"/>
+                        </Canvas>
+                        <Slider x:Name="slider_1" Grid.Row="0" Margin="0,5,30,5"  TickFrequency="10" Maximum="130" Minimum="50" Value="{ Binding  Mode=TwoWay, Path= Min}"  Template="{StaticResource tmp}"  IsSnapToTickEnabled="True"  TickPlacement="BottomRight"  />
+                        <Slider x:Name="slider_2" Grid.Row="0" Margin="0,5,30,5" TickFrequency="10" Maximum="130" Minimum="50" Value="{ Binding  Mode=TwoWay, Path= Max}"  Template="{StaticResource tmp}"  IsSnapToTickEnabled="True"  TickPlacement="BottomRight"  />
 
-                <StackPanel Orientation="Horizontal" Margin="10,5"   >
-                    <TextBlock Height="25"  Text="高限："  />
-                    <DockPanel Width="500" Height="25" >
-                        <Slider DockPanel.Dock="Top"  x:Name="slider_1"  Margin="0,5,-5,5" TickFrequency="10" Value="{ Binding  Mode=TwoWay, Path= Max}" IsSnapToTickEnabled="True" TickPlacement="BottomRight" Maximum="130" Minimum="60" />
-                        <Slider DockPanel.Dock="Top" x:Name="slider_2" Margin="0,5,-5,5"   TickFrequency="10"  Value="{ Binding  Mode=TwoWay, Path= Min}" IsSnapToTickEnabled="True" TickPlacement="BottomRight" Maximum="120" Minimum="50" />
-
-                        <!--<Slider x:Name="slider_Compression_MinimumLimit" Grid.Row="0" Margin="0,5,-5,5" Maximum="7" Minimum="0" TickFrequency="1" Template="{StaticResource tmp}"  IsSnapToTickEnabled="True" Value="0" TickPlacement="BottomRight"  ValueChanged="slider_Compression_MinimumLimit_ValueChanged"/>
-                        <Slider x:Name="slider_Compression_MaximumLimit" Grid.Row="0" Margin="0,5,-5,5" Maximum="7" Minimum="0" TickFrequency="1" Template="{StaticResource tmp}"  IsSnapToTickEnabled="True" Value="7" TickPlacement="BottomRight" ValueChanged="slider_Compression_MaximumLimit_ValueChanged"/>-->
-                    </DockPanel>
-                    <TextBlock  Height="25" TextWrapping="Wrap" Text="{Binding ElementName=slider_1, Path=Value }" VerticalAlignment="Top"/>
-                </StackPanel>
-
-                <!--<StackPanel Orientation="Horizontal" Margin="10,0" >
-                    <TextBlock Height="25"  Text="低限："/>
-                    <DockPanel Width="500" Height="25" >
-                        <Slider DockPanel.Dock="Top" x:Name="slider_2"   Interval="10"  Value="{ Binding  Mode=TwoWay, Path= Min}" IsSnapToTickEnabled="True" Maximum="120" Minimum="50" />
-                    </DockPanel>
-                    <TextBlock  Height="25" TextWrapping="Wrap"  Text="{Binding ElementName=slider_2, Path=Value }" VerticalAlignment="Top"/>
-                </StackPanel>-->
+                    </Grid>
+                </DockPanel>              
 
                 <StackPanel Orientation="Horizontal" Margin="10,0" >
-                    <TextBlock Height="25"  Text="警报："/>
-                    <CheckBox  VerticalAlignment="Top" Style="{StaticResource chkBullet}" Background="#0089e1" IsChecked="{ Binding  Mode=TwoWay, Path=Warning}" Content="Off" Tag="On"/>
+                    <TextBlock Height="25"  Text="警报：" Width="60"/>
+                    <CheckBox  Margin="5 0 0 0" VerticalAlignment="Top" Style="{StaticResource chkBullet}" Background="#0089e1" IsChecked="{ Binding  Mode=TwoWay, Path=Warning}" Content="Off" Tag="On"/>
                 </StackPanel>
-                <StackPanel Orientation="Horizontal" Margin="10,0">
-                    <TextBlock Height="25" Text="级别："/>
+              <StackPanel Orientation="Horizontal" Margin="10,0">
+                    <TextBlock Height="25" Text="级别：" Width="60"/>
                     <DockPanel Width="500" Height="25" >
-                        <Slider DockPanel.Dock="Top" x:Name="slider_3"   IsSnapToTickEnabled="True" Maximum="3" ValueChanged="Slider_ValueChanged"/>
+                        <RadioButton  GroupName="rbLevel" IsChecked="{ Binding  Mode=TwoWay, Path=Level, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=低}" Content="低" Margin="5"/>
+                        <RadioButton  GroupName="rbLevel" IsChecked="{ Binding  Mode=TwoWay, Path=Level, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=中}" Content="中" Margin="5"/>
+                        <RadioButton  GroupName="rbLevel" IsChecked="{ Binding  Mode=TwoWay, Path=Level, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=高}" Content="高" Margin="5"/>
                     </DockPanel>
                 </StackPanel>
+              
             </StackPanel>
           
 

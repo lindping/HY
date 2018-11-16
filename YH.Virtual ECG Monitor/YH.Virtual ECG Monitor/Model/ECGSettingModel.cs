@@ -11,11 +11,11 @@ namespace YH.Virtual_ECG_Monitor
         /// <summary>
         /// 导联
         /// </summary>
-        public string  Lead { get; set; }
+        public int  Lead { get; set; }
         /// <summary>
         /// 速度
         /// </summary>
-        public string Speed { get; set; }
+        public float Speed { get; set; }
 
         /// <summary>
         /// QRS音量
@@ -25,7 +25,7 @@ namespace YH.Virtual_ECG_Monitor
         /// <summary>
         /// 增益
         /// </summary>
-        public string Gain { get; set; }
+        public int Gain { get; set; }
 
         /// <summary>
         /// 心电图开关

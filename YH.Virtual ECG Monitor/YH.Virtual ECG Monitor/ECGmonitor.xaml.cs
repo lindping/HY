@@ -1,20 +1,5 @@
 ﻿using HYS.Library;
-using Microsoft.Research.DynamicDataDisplay;
-using Microsoft.Research.DynamicDataDisplay.DataSources;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 using YH.ECGMonitor.WaveData.RESPWaveData;
 using YH.Simulator.Framework;
@@ -40,19 +25,23 @@ namespace YH.Virtual_ECG_Monitor
         int wave;    //波形
 
         int dataLength;
-        public ECGmonitor(int rhythm, int wave)
+
+        ECGSettingModel setting;
+        public ECGmonitor(int rhythm)
         {
             InitializeComponent();
 
             this.rhythm = rhythm;
-            this.wave = wave;
+
+            setting = Setting.GetSetting();
+            this.wave = setting.Lead;
 
             data =  DataToObject.To<RESPWaveData>(rhythm) ;
             dataLength = data.WaveData.GetLength(0);
             addY = data.WaveData.Length > 1000 ? 10 : 1;
             addX = (double)myCanvas.Width / (double)data.Rate / ((double)dataLength / (double)addY);
-
-            int interval = dataLength > 1000 ? 4 : 20;
+            
+            int interval = dataLength > 1000 ? 4 : (int)(addX/setting.Speed);
             launch1 = new Launch(interval);
             launch1.OnElapsed += Launch1_OnElapsed;
             launch1.Start();
@@ -62,10 +51,9 @@ namespace YH.Virtual_ECG_Monitor
         private void Launch1_OnElapsed()
         {
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
-            {
+            {             
               
-                y = data.WaveData[i, wave] / (double)100;
-                y = 150 - 100 * y;
+                y = setting.Gain * (15 - 10 * data.WaveData[i, wave]);
                 polyline1.Points.Add(new Point(x, y));
                 x += addX;
                 i += addY;

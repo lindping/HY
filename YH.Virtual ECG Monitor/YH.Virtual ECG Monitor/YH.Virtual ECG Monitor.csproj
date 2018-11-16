@@ -105,6 +105,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Constants.cs" />
     <Compile Include="ECGSetting.xaml.cs">
       <DependentUpon>ECGSetting.xaml</DependentUpon>
     </Compile>
@@ -146,6 +147,7 @@
     <Compile Include="RESPWaveData\RESPWaveData_030.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_031.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_032.cs" />
+    <Compile Include="Setting.cs" />
     <Page Include="Dictionary\Dictionary1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -209,7 +211,7 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ECGGetting.json">
+    <None Include="ECGSetting.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />

@@ -1875,7 +1875,7 @@ namespace YH.Virtual_ECG_Monitor
         private void button_Click(object sender, RoutedEventArgs e)
         {
             int rhythm = comboBox_VitalSigns_Cyclic_Rhythm_Basic.SelectedIndex;
-            ECGmonitor frm = new ECGmonitor(rhythm,1);
+            ECGmonitor frm = new ECGmonitor(rhythm);
             frm.Show();
         }
     }
