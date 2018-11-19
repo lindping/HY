@@ -33,9 +33,15 @@ namespace YH.Virtual_ECG_Monitor
             string number = button.Content.ToString().Substring(0,4).Trim();
             switch(number)
             {
-                case "1.1": break;
+                case "1.1": 
+                    PatientInfo patientInfo = new PatientInfo();
+                    patientInfo.Show();
+                    break;
                 case "1.2": break;
-                case "1.3": break;
+                case "1.3":
+                    DisplaySetting displaySetting = new DisplaySetting();
+                    displaySetting.Show();
+                    break;
                 case "1.4": break;
                 case "2.1": 
                     ECGSetting frm = new ECGSetting();

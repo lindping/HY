@@ -56,13 +56,13 @@
 
     <!--字体颜色样式-->
     <Style x:Key="font1">
-        <Setter Property="TextElement.Foreground" Value="White"></Setter>
+        <Setter Property="TextElement.Foreground" Value="#FFFFFF"></Setter>
     </Style>
 
     <!--菜单按钮样式-->
     <ControlTemplate x:Key="button1" TargetType="{x:Type Button}">
         <Grid x:Name="controlLayout">
-            <Rectangle x:Name="buttonSurface" RadiusX="8" RadiusY="8" Fill="#444444"/>
+            <Rectangle x:Name="buttonSurface" RadiusX="8" RadiusY="8" Fill="#333333"/>
             <Label x:Name="buttonCaption" Foreground="#f1f1f1" Content="{TemplateBinding Content}"/>
         </Grid>
 
@@ -70,23 +70,115 @@
         <ControlTemplate.Triggers>
             <!--Property="IsMouseOver" Value="True" 鼠标经过触发器为True-->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="buttonSurface" Property="Fill" Value="#444444"/>
+                <Setter TargetName="buttonSurface" Property="Fill" Value="#333333"/>
                 <Setter TargetName="buttonCaption" Property="Foreground" Value="White"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
 
+    <ControlTemplate x:Key="label1" TargetType="{x:Type Label}">
+        <Grid x:Name="controlLayout">
+            <Rectangle x:Name="buttonSurface" RadiusX="8" RadiusY="8" Fill="#000089e1"/>
+            <Label x:Name="buttonCaption" Foreground="#0089e1" Content="{TemplateBinding Content}"/>
+        </Grid>        
+    </ControlTemplate>
+
+    <!--表格模板 1-->
+    <ControlTemplate x:Key="TableButtonTemplate1" TargetType="{x:Type Button}">
+        <Grid x:Name="controlLayout">
+            <Rectangle x:Name="buttonSurface" Fill="#41484b" Margin="0.5"/>
+            <Label x:Name="buttonCaption" Foreground="#FFFFFF"  FontSize="12" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}"/>           
+        </Grid>
+    </ControlTemplate>
+
+    <!--表格模板 2-->
+    <ControlTemplate x:Key="TableButtonTemplate2" TargetType="{x:Type Button}">
+        <Grid x:Name="controlLayout">
+            <Rectangle x:Name="buttonSurface" Fill="#333b40" Margin="0.5"/>
+            <Label x:Name="buttonCaption" Foreground="#FFFFFF"  FontSize="12" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <!--表格模板 3-->
+    <ControlTemplate x:Key="TableButtonTemplate3" TargetType="{x:Type Label}">
+        <Grid x:Name="controlLayout">
+            <Rectangle x:Name="buttonSurface" Fill="#41484b" Margin="0.5"/>
+            <Label x:Name="buttonCaption" Foreground="#FFFFFF" FontSize="12" Margin="0,0,0,0" HorizontalAlignment ="Center"  VerticalAlignment="Center" Content="{TemplateBinding Content}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <!--表格模板 2-->
+    <ControlTemplate x:Key="TableButtonTemplate4" TargetType="{x:Type Label}">
+        <Grid x:Name="controlLayout">
+            <Rectangle x:Name="buttonSurface" Fill="#333b40" Margin="0.5"/>
+            <Label x:Name="buttonCaption" Foreground="#FFFFFF"  FontSize="12" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}"/>
+        </Grid>
+    </ControlTemplate>
+
+    <!--表格背景颜色样式-->
+    <Style x:Key="tablebg1">
+        <Setter Property="DockPanel.Background" Value="#000000"></Setter>
+    </Style>
+
+    <!--表格分割线颜色样式-->
+    <Style x:Key="Split1">
+        <Setter Property="DockPanel.Background" Value="#444444"></Setter>
+    </Style>
+
+    <!--Button样式-->
+    <Style TargetType="Button">
+        <Setter Property="Width" Value="70"></Setter>
+        <Setter Property="Height" Value="30"></Setter>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="bdr" CornerRadius="5" Cursor="Hand"
+                            BorderBrush="{TemplateBinding BorderBrush}"  
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <TextBlock Name="tbk" Background="Transparent" Foreground="Yellow"  TextAlignment="Center"
+                                   Text="{Binding RelativeSource={RelativeSource TemplatedParent},Path=Content}"></TextBlock>
+                        <Border.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Color="White" Offset="0"></GradientStop>
+                                <GradientStop Color="LightBlue" Offset="0.3"></GradientStop>
+                                <GradientStop Color="Blue" Offset="1"></GradientStop>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="bdr" Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="LightBlue" Offset="0"></GradientStop>
+                                        <GradientStop Color="Blue" Offset="1"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="tbk" Property="Foreground" Value="LightYellow"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <!--TextBox样式-->
     <Style TargetType="TextBox">
         <Setter Property="FontFamily" Value="Times New Roman"></Setter>
         <Setter Property="FontSize" Value="14"></Setter>
+        <Setter Property="CaretBrush" Value="#0089e1"/>
+        <Setter Property="TextElement.Foreground" Value="#FFFFFF"></Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="TextBox">
-                    <Border BorderBrush="Blue" BorderThickness="0.5" CornerRadius="5">
+                    <Border BorderBrush="#0089e1" BorderThickness="1" CornerRadius="5">
                         <ScrollViewer x:Name="PART_ContentHost" Focusable="false" 
                                       HorizontalScrollBarVisibility="Hidden" 
-                                      VerticalScrollBarVisibility="Hidden"></ScrollViewer>
+                                      VerticalScrollBarVisibility="Hidden"
+                                      VerticalContentAlignment="Center"
+                                      HorizontalContentAlignment="Center"
+                                      Foreground="#0089e1"></ScrollViewer>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

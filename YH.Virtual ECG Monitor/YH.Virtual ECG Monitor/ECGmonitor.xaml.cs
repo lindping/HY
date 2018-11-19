@@ -13,9 +13,9 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class ECGmonitor : Window
     {
-        MediaPlayer player ;
+        MediaPlayer player;
         Launch launch1;
-        Launch soundLauch;
+        //  Launch soundLauch;
         double addX = 0;//x轴上增量值
         int IndexInterval = 1;   //样本数据的数组索引间隔
         double x = 0; // x坐标
@@ -36,9 +36,9 @@ namespace YH.Virtual_ECG_Monitor
         {
             InitializeComponent();
 
-          
+
             this.rhythm = rhythm;
-            setting = Setting.GetSetting();
+            setting = Setting.Get<ECGSettingData>().Custom;
             this.wave = setting.Lead;
             data = DataToObject.To<RESPWaveData>(rhythm);
             dataLength = data.WaveData.GetLength(0);
@@ -46,10 +46,10 @@ namespace YH.Virtual_ECG_Monitor
             addX = (double)myCanvas.Width / (double)waveCountMax / ((double)dataLength / (double)IndexInterval);
 
             player = new MediaPlayer();
-            player.Volume = setting.QRSVolumn/10;
-            soundLauch = new Launch(800);
-            soundLauch.OnElapsed += SoundLauch_OnElapsed;
-            soundLauch.Start();
+            player.Volume = setting.QRSVolumn / (double)10;
+            //soundLauch = new Launch(800);
+            //soundLauch.OnElapsed += SoundLauch_OnElapsed;
+            //soundLauch.Start();
 
             //原始速度
             //double dotCount = waveCount * dataLength * addY;
@@ -64,17 +64,15 @@ namespace YH.Virtual_ECG_Monitor
             this.Title = data.Name;
         }
 
-        private void SoundLauch_OnElapsed()
-        {
-            SoundPlay(Constants.GeneralWaveFile);
-        }
-
         private void Launch1_OnElapsed()
         {
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
+                y = data.WaveData[i, wave];
 
-                y = 150 - data.WaveData[i, wave];
+                SoundPlay(y);
+
+                y = 150 - y;
                 polyline1.Points.Add(new Point(x, y));
                 x += addX;
                 i += IndexInterval;
@@ -91,17 +89,27 @@ namespace YH.Virtual_ECG_Monitor
                     x = 0;
                     polyline1.Points.Clear();
                 }
-
             });
         }
 
-        private void SoundPlay(string waveFilePath)
+        private void SoundPlay(double y)
         {
+
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                player.Open(new Uri(waveFilePath, UriKind.Relative));
-                player.Play();
+                if (i > 0 && i < dataLength - 1 && ((y <= data.WaveData[i - 1, wave] && y < data.WaveData[i + 1, wave]) || (y < data.WaveData[i - 1, wave] && y <= data.WaveData[i + 1, wave])))
+                {
+
+                    player.Open(new Uri(Constants.GeneralWaveFile, UriKind.Relative));
+                    player.Play();
+                }
             });
+        }
+
+
+        private void Window_Unloaded(object sender, RoutedEventArgs e)
+        {            
+            launch1.Stop();
         }
     }
 

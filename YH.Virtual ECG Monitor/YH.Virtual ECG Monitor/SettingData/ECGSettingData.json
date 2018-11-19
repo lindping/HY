@@ -1,0 +1,14 @@
+﻿{
+  "Custom":null ,
+  "Default": {
+    "ECGSwitch": true,
+    "Gain": 10,
+    "Lead": 1,
+    "Level": "高",
+    "Max": 120,
+    "Min": 60,
+    "QRSVolumn": 6,
+    "Speed": 25,
+    "Warning": true
+  }
+}

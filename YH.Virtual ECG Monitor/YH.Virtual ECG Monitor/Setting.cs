@@ -10,33 +10,26 @@ namespace YH.Virtual_ECG_Monitor
 {
     public class Setting
     {
-        public static ECGSettingModel GetSetting()
+
+        public static T Get<T>()
         {
-            ECGSettingModel settingModel = null;
-            string json = JsonHelper.ReadFileJson(Constants.ECGSettingJsonFilePath);
-            if (!string.IsNullOrWhiteSpace(json))
+            T t = default(T);
+            try
             {
-                settingModel = JsonConvert.DeserializeObject<ECGSettingModel>(json);
-            }
-            else
-            {
-                settingModel = new ECGSettingModel()
+                string json = JsonHelper.ReadFileJson("SettingData\\" + typeof(T).Name + ".json");
+                if (!string.IsNullOrWhiteSpace(json))
                 {
-                    ECGSwitch = true,
-                    Lead = 1,
-                    Gain = 10,
-                    Level = "低",
-                    Max = 130,
-                    Min = 50,
-                    QRSVolumn = 8,
-                    Speed = 50,
-                    Warning = false,
-                };
+                    t = JsonConvert.DeserializeObject<T>(json);
+                }
             }
-            return settingModel;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return t;
         }
 
-        public static bool SaveSetting(ECGSettingModel settingModel)
+        public static bool Save<T>(T settingModel)
         {
             if (settingModel != null)
             {
@@ -44,14 +37,17 @@ namespace YH.Virtual_ECG_Monitor
                 {
                     JsonSerializerSettings setting = new JsonSerializerSettings();
                     string json = JsonConvert.SerializeObject(settingModel);
-                    JsonHelper.SaveFileJson(json, Constants.ECGSettingJsonFilePath);
+                    JsonHelper.SaveFileJson(json, "SettingData\\" + typeof(T).Name + ".json");
                     return true;
-                } catch
+                }
+                catch
                 {
                     return false;
                 }
             }
             return false;
         }
+
+
     }
 }

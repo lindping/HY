@@ -106,13 +106,19 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Constants.cs" />
+    <Compile Include="DisplaySetting.xaml.cs">
+      <DependentUpon>DisplaySetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ECGSetting.xaml.cs">
       <DependentUpon>ECGSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\ECGSettingModel.cs" />
+    <Compile Include="Model\Models.cs" />
+    <Compile Include="PatientInfo.xaml.cs">
+      <DependentUpon>PatientInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RESPWaveData\RESPWaveData.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_003.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_006.cs" />
@@ -164,6 +170,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="DisplaySetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ECGmonitor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -192,6 +202,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PatientInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -211,8 +225,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ECGSetting.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Include="SettingData\ECGSettingData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -220,6 +234,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="SettingData\PatientInfoData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -258,9 +275,14 @@
     <Resource Include="Image1.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Sound\du.wav" />
-    <Content Include="Sound\du2.wav" />
+    <Content Include="Sound\du.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Sound\du2.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

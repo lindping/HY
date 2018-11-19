@@ -22,16 +22,16 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class ECGSetting : Window
     {
-        public ECGSettingModel settingModel;
+        public ECGSettingData settingModel;
         public ECGSetting()
         {
             InitializeComponent();
             InitializeData();
         }
         private void InitializeData()
-        {
-            settingModel = Setting.GetSetting();        
-            DataContext = settingModel;
+        {          
+            settingModel = Setting.Get<ECGSettingData>();        
+            DataContext = settingModel.Custom;
         }
 
         //关闭窗口
@@ -43,12 +43,12 @@ namespace YH.Virtual_ECG_Monitor
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if (settingModel.Min >= settingModel.Max)
+            if (settingModel.Custom.Min >= settingModel.Custom.Max)
             {
                 MessageBox.Show("低限不能大于等于高限");
                 return;
             }
-            Setting.SaveSetting(settingModel);
+            Setting.Save(settingModel);
             this.Close();
         } 
      

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"
-        Title="MainWindow" Height="768" Width="1366"
-        WindowStartupLocation="CenterScreen" Background="Black" >  
+        Title="心电图" Height="768" Width="1366"
+        WindowStartupLocation="CenterScreen" Background="Black"    Unloaded="Window_Unloaded">  
     <Grid x:Name="myGrid">
         <Canvas x:Name="myCanvas" Height="300" VerticalAlignment="Top" HorizontalAlignment="Center" Width="1316" Margin="32,25.115,10,0">
             <Polyline x:Name="polyline1" Points="" Stroke="Red"  StrokeThickness="2" FillRule="EvenOdd"/>

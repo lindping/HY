@@ -3,15 +3,6 @@
 
     <!--Window样式-->
     <Style x:Key="WindowStyle" TargetType="Window">
-        <Style.Triggers>
-            <EventTrigger RoutedEvent="Window.Loaded">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.0" To="1.0" Duration="0:0:1" />
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>
-        </Style.Triggers>        
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Window">
@@ -21,7 +12,7 @@
                             <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                 <GradientStop Color="#eeeeee" Offset="0"></GradientStop>
                                 <GradientStop Color="#eeeeee" Offset="0.4"></GradientStop>
-                                <GradientStop Color="#dddddd" Offset="1"></GradientStop>
+                                <GradientStop Color="White" Offset="1"></GradientStop>
                             </LinearGradientBrush>
                         </Border.Background>
                         <ContentPresenter></ContentPresenter>
@@ -29,19 +20,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-
     </Style>
-
-    <Storyboard x:Key="ClosedStoryboard" Storyboard.TargetName="LoginGrid">
-        <DoubleAnimation From="1" To="0" Duration="0:0:2" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[1].Offset"/>
-        <DoubleAnimation From="1" To="0" Duration="0:0:1.5" BeginTime="0:0:0.5" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[2].Offset"/>
-        <ColorAnimation To="#00000000" Duration="0" Storyboard.TargetProperty="OpacityMask.(GradientBrush.GradientStops)[2].Color"/>
-    </Storyboard>
-    <RadialGradientBrush  x:Key="ClosedBrush" >
-        <GradientStop Color="#FF000000" Offset="0"/>
-        <GradientStop Color="#FF000000" Offset="1"/>
-        <GradientStop Color="#FF000000" Offset="1"/>
-    </RadialGradientBrush>
 
     <!--面板模板样式-->
     <Style x:Key="shadow1">
@@ -62,18 +41,18 @@
 
     <!--背景颜色样式-->
     <Style x:Key="bg1">
-        <Setter Property="DockPanel.Background" Value="#FFFFFF"></Setter>
+        <Setter Property="DockPanel.Background" Value="White"></Setter>
     </Style>
 
     <!--字体颜色样式-->
     <Style x:Key="font1">
-        <Setter Property="TextElement.Foreground" Value="#222222"></Setter>
+        <Setter Property="TextElement.Foreground" Value="Black"></Setter>
     </Style>
 
     <!--菜单按钮样式-->
     <ControlTemplate x:Key="button1" TargetType="{x:Type Button}">
         <Grid x:Name="controlLayout">
-            <Rectangle x:Name="buttonSurface" RadiusX="8" RadiusY="8" Fill="#eeeeee"/>
+            <Rectangle x:Name="buttonSurface" RadiusX="8" RadiusY="8" Fill="#ffffff"/>
             <Label x:Name="buttonCaption" Foreground="#666666" Content="{TemplateBinding Content}"/>
         </Grid>
 
@@ -81,126 +60,11 @@
         <ControlTemplate.Triggers>
             <!--Property="IsMouseOver" Value="True" 鼠标经过触发器为True-->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="buttonSurface" Property="Fill" Value="#eeeeee"/>
+                <Setter TargetName="buttonSurface" Property="Fill" Value="#ffffff"/>
                 <Setter TargetName="buttonCaption" Property="Foreground" Value="Black"/>
             </Trigger>
         </ControlTemplate.Triggers>
     </ControlTemplate>
-
-    <ControlTemplate x:Key="label1" TargetType="{x:Type Label}">
-        <Grid x:Name="controlLayout">
-            <Rectangle x:Name="buttonSurface" RadiusX="8" RadiusY="8" Fill="#eeeeee"/>
-            <Label x:Name="buttonCaption" Foreground="#666666" Content="{TemplateBinding Content}"/>
-        </Grid>
-    </ControlTemplate>
-
-    <!--表格模板 1-->
-    <ControlTemplate x:Key="TableButtonTemplate1" TargetType="{x:Type Button}">
-        <Grid x:Name="controlLayout">
-            <Rectangle x:Name="buttonSurface" Fill="#eeeeee" Margin="0.5"/>
-            <Label x:Name="buttonCaption" Foreground="#666666" FontSize="12"  Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}"/>
-        </Grid>
-    </ControlTemplate>
-
-    <!--表格模板 2-->
-    <ControlTemplate x:Key="TableButtonTemplate2" TargetType="{x:Type Button}">
-        <Grid x:Name="controlLayout">
-            <Rectangle x:Name="buttonSurface" Fill="#cccccc" Margin="0.5"/>
-            <Label x:Name="buttonCaption" Foreground="#666666"  FontSize="12"  Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}"/>
-        </Grid>
-    </ControlTemplate>
-
-    <!--表格模板 1-->
-    <ControlTemplate x:Key="TableButtonTemplate3" TargetType="{x:Type Label}">
-        <Grid x:Name="controlLayout">
-            <Rectangle x:Name="buttonSurface" Fill="#eeeeee" Margin="0.5"/>
-            <Label x:Name="buttonCaption" Foreground="#666666" FontSize="12"  Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}"/>
-        </Grid>
-    </ControlTemplate>
-
-    <!--表格模板 2-->
-    <ControlTemplate x:Key="TableButtonTemplate4" TargetType="{x:Type Label}">
-        <Grid x:Name="controlLayout">
-            <Rectangle x:Name="buttonSurface" Fill="#cccccc" Margin="0.5"/>
-            <Label x:Name="buttonCaption" Foreground="#666666"  FontSize="12"  Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}"/>
-        </Grid>
-    </ControlTemplate>
-
-    <!--表格背景颜色样式-->
-    <Style x:Key="tablebg1">
-        <Setter Property="DockPanel.Background" Value="#999999"></Setter>        
-    </Style>
-
-    <!--表格分割线颜色样式-->
-    <Style x:Key="Split1">
-        <Setter Property="DockPanel.Background" Value="#f1f1f1"></Setter>
-    </Style>
-
-    <!--频谱背景颜色样式-->
-    <Style x:Key="ppbg1">
-        <Setter Property="DockPanel.Background" Value="#cccccc"></Setter>
-    </Style>
-
-    <!--Button样式-->
-    <Style TargetType="Button">
-        <Setter Property="Width" Value="70"></Setter>
-        <Setter Property="Height" Value="30"></Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Name="bdr" Cursor="Arrow"
-                            BorderBrush="{TemplateBinding BorderBrush}" 
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Border.Background>
-                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                <GradientStop Color="White" Offset="0"></GradientStop>
-                                <GradientStop Color="LightGreen" Offset="0.3"></GradientStop>
-                                <GradientStop Color="Green" Offset="1"></GradientStop>
-                            </LinearGradientBrush>
-                        </Border.Background>
-                        <TextBlock Name="tbk" Background="Transparent" Foreground="DarkGreen" TextAlignment="Center"
-                                   Text="{TemplateBinding Content}"></TextBlock>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="bdr" Property="Background">
-                                <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Color="LightGreen" Offset="0"></GradientStop>
-                                        <GradientStop Color="Green" Offset="1"></GradientStop>
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
-                            <Setter TargetName="tbk" Property="Foreground" Value="White"></Setter>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <!--TextBox样式-->
-    <Style TargetType="TextBox">
-        <Setter Property="FontFamily" Value="Times New Roman"/>
-        <Setter Property="FontSize" Value="14"/>
-        <Setter Property="CaretBrush" Value="#0089e1"/>
-        <Setter Property="TextElement.Foreground" Value="#222222"></Setter>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="TextBox">
-                    <Border BorderBrush="#0089e1" BorderThickness="1"  CornerRadius="5">
-                        <ScrollViewer x:Name="PART_ContentHost" Focusable="false" 
-                                      HorizontalScrollBarVisibility="Hidden" 
-                                      VerticalScrollBarVisibility="Hidden"
-                                      VerticalContentAlignment="Center"
-                                      HorizontalContentAlignment="Center"
-                                      Foreground="#0089e1"
-                                      ></ScrollViewer>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
 
     <!--ContextMenu样式-->
     <Style TargetType="ContextMenu">
@@ -234,6 +98,5 @@
             </Setter.Value>
         </Setter>
     </Style>
-
-
+    
 </ResourceDictionary>
