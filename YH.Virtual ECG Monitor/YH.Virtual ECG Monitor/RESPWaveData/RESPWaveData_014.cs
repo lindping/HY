@@ -16,7 +16,7 @@ namespace YH.ECGMonitor.WaveData.RESPWaveData
             ID = "R14";
             Name = "延长QT时间的窦律";
             Remark = "";
-            Rate = 8;
+            Rate = 80;
             InspCapacity = 3000;
             Ratio = 67;
             ETCO2 = 40;

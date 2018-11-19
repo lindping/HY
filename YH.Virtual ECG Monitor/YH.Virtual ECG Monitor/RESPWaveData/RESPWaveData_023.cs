@@ -16,7 +16,7 @@ namespace YH.ECGMonitor.WaveData.RESPWaveData
             ID = "R23";
             Name = "心房颤动（AFib）";
             Remark = "";
-            Rate = 8;
+            Rate = 80;
             InspCapacity = 3000;
             Ratio = 67;
             ETCO2 = 40;

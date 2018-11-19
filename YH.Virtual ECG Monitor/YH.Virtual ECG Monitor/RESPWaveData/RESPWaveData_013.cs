@@ -16,7 +16,7 @@ namespace YH.ECGMonitor.WaveData.RESPWaveData
             ID = "R13";
             Name = "电轴右偏的窦律";
             Remark = "";
-            Rate = 8;
+            Rate = 80;
             InspCapacity = 3000;
             Ratio = 67;
             ETCO2 = 40;

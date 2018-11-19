@@ -16,7 +16,7 @@ namespace YH.ECGMonitor.WaveData.RESPWaveData
             ID = "R26";
             Name = "室性心动过速（VT）";
             Remark = "";
-            Rate = 8;
+            Rate = 80;
             InspCapacity = 3000;
             Ratio = 67;
             ETCO2 = 40;

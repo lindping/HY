@@ -16,7 +16,7 @@ namespace YH.ECGMonitor.WaveData.RESPWaveData
             ID = "R24";
             Name = "交界性异博心率";
             Remark = "";
-            Rate = 8;
+            Rate = 80;
             InspCapacity = 3000;
             Ratio = 67;
             ETCO2 = 40;

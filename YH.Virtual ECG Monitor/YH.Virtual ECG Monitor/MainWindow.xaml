@@ -103,6 +103,7 @@
         <CheckBox x:Name="checkBox_VitalSigns_LeadLine_SPO2" Content="SPO2" HorizontalAlignment="Left" Margin="767,281,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_SPO2_Checked" Unchecked="checkBox_VitalSigns_LeadLine_SPO2_Unchecked"/>
         <CheckBox x:Name="checkBox_VitalSigns_LeadLine_NIBP" Content="NIBP" HorizontalAlignment="Left" Margin="767,324,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_NIBP_Checked" Unchecked="checkBox_VitalSigns_LeadLine_NIBP_Unchecked"/>
         <CheckBox x:Name="checkBox_VitalSigns_LeadLine_Temp1" Content="Temp1" HorizontalAlignment="Left" Margin="767,365,0,0" VerticalAlignment="Top" Height="15" Width="58" Checked="checkBox_VitalSigns_LeadLine_Temp1_Checked" Unchecked="checkBox_VitalSigns_LeadLine_Temp1_Unchecked"/>
-        <Button x:Name="button" Content="心电图" HorizontalAlignment="Left" Margin="367,473,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Button x:Name="button" Content="心电图" HorizontalAlignment="Left" Margin="503,460,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
+        <Button x:Name="button_1" Content="心电图设置" HorizontalAlignment="Left" Margin="367,460,0,0" VerticalAlignment="Top" Width="75" Click="button_1_Click" />
     </Grid>
 </Window>

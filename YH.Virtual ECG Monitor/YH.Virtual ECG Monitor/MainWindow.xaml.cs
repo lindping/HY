@@ -1878,5 +1878,12 @@ namespace YH.Virtual_ECG_Monitor
             ECGmonitor frm = new ECGmonitor(rhythm);
             frm.Show();
         }
+
+        private void button_1_Click(object sender, RoutedEventArgs e)
+        {
+         
+            ECGSetting frm = new ECGSetting();
+            frm.Show();
+        }
     }
 }
