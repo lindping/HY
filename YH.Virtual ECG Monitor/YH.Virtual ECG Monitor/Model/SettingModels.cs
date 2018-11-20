@@ -64,7 +64,6 @@ namespace YH.Virtual_ECG_Monitor
         public ECGSettingModel Default { get; set; }
 
     }
-
    
     public class PatientInfoModel
     {
@@ -100,13 +99,58 @@ namespace YH.Virtual_ECG_Monitor
         }
         public PatientInfoModel Default { get; set; }
 
-    }
+    }   
 
-    public class DisplaySettingModel
+    public class OtherSettingModel
     {
-
+        public int DisplayWaveNumber { get; set; }
+        public int AlartVolumn { get; set; }
+        public bool NIBP { get; set; }
+        public object Clone()
+        {
+            return MemberwiseClone();
+        }
     }
 
+    public class OtherSettingData
+    {
+        private OtherSettingModel _custom;
+        public OtherSettingModel Custom
+        {
+            get
+            {
+                if (_custom == null && Default != null)
+                {
+                    _custom = (OtherSettingModel)Default.Clone();
+                }
+                return _custom;
+            }
+            set
+            {
+                _custom = value;
+            }
+        }
+        public OtherSettingModel Default { get; set; }
+    }
 
+    public class LayoutWave
+    {
+        public string Name { get; set; }
+        public string Status { get; set; }
+    }
+
+    public class LayoutSettingModel
+    {
+        public bool IsDefault { get; set; }
+        public string Name { get; set; }
+        public List<LayoutWave> MainWaveCategories { get; set; }
+        public List<LayoutWave> OtherWaveCategories { get; set; }
+        public LayoutWave NIBPWaveCategory { get; set; }
+    }
+
+    public class LayoutSettingData
+    {
+        public List<LayoutSettingModel> Layouts { get; set; }
+    }
 
 }

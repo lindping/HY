@@ -4,7 +4,7 @@
     <ControlTemplate x:Key="RoundButtonTemplate" TargetType="{x:Type Button}">
         <Grid x:Name="controlLayout">
             <Rectangle x:Name="buttonSurface" RadiusX="8" RadiusY="8" Fill="{TemplateBinding Background}"/>
-            <Label x:Name="buttonCaption" FontSize="14" Foreground="White" Content="{TemplateBinding Content}"/>
+            <Label x:Name="buttonCaption" FontSize="14" Foreground="White" Content="{TemplateBinding Content}"/> 
         </Grid>
 
         <!--向模板添加触发器-->
@@ -28,7 +28,7 @@
         <ControlTemplate.Triggers>
             <!--Property="IsMouseOver" Value="True" 鼠标经过触发器为True-->
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter TargetName="buttonSurface" Property="Fill" Value="#cccccc"/>
+                <Setter TargetName="buttonSurface" Property="Fill" Value="#0089e1"/>
                 <Setter TargetName="buttonCaption" Property="Foreground" Value="#ffffff"/>
             </Trigger>
         </ControlTemplate.Triggers>

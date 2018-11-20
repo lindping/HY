@@ -106,16 +106,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Constants.cs" />
+    <Compile Include="AlartVolumnSetting.xaml.cs">
+      <DependentUpon>AlartVolumnSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DisplaySetting.xaml.cs">
       <DependentUpon>DisplaySetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="ECGSetting.xaml.cs">
       <DependentUpon>ECGSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LayoutSetting.xaml.cs">
+      <DependentUpon>LayoutSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Models.cs" />
+    <Compile Include="Model\SettingModels.cs" />
     <Compile Include="PatientInfo.xaml.cs">
       <DependentUpon>PatientInfo.xaml</DependentUpon>
     </Compile>
@@ -157,16 +163,24 @@
     <Page Include="Dictionary\Dictionary1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Dictionary\Root.Dictionary.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Dictionary\Skin.RegularStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Dictionary\Skin.RoundedCornerStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="AlartVolumnSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -181,6 +195,10 @@
     <Page Include="ECGSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LayoutSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Main.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -234,6 +252,10 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <None Include="SettingData\LayoutSettingData.json" />
+    <None Include="SettingData\OtherSettingData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SettingData\PatientInfoData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

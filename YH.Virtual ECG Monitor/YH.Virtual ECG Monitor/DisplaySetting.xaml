@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"
-        Title="DisplaySetting" Width="800" Height="500" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
+        Title="设置屏幕显示" Width="800" Height="420" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
     <Grid>
         <!--布局-->
         <Grid.RowDefinitions>
@@ -18,9 +18,9 @@
         </Grid.RowDefinitions>
         <!--顶部 最大化最小化关闭-->
         <DockPanel Grid.Row="0" Margin="0" Background="#0089e1">
-            <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14" Foreground="White">屏幕设定</TextBlock>
+            <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14" Foreground="White">设置屏幕显示</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
-                <Button x:Name="BtnClose" Foreground="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                <Button x:Name="BtnClose" Foreground="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="btnClose_Click">
                     <Grid x:Name="Uc_Grid" VerticalAlignment="Center">
                         <Path x:Name="Uc_Path1" Stroke="#ffffff" StrokeThickness="2" Data="M0,0 L8,8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
                         <Path x:Name="Uc_Path2" Stroke="#ffffff" StrokeThickness="2" Data="M8,0 L0,8" VerticalAlignment="Center" HorizontalAlignment="Center"></Path>
@@ -28,36 +28,49 @@
                 </Button>
             </StackPanel>
         </DockPanel>
-
-        <!--底部-->
+      
         <Grid Grid.Row="4" Margin="30,70,30,0" VerticalAlignment="Bottom">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock HorizontalAlignment="Center" FontSize="16">设置屏幕显示</TextBlock>
-                <Button Background="#ffffff" Margin="0,10,0,0" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+            <StackPanel  x:Name="btnGroup" Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock HorizontalAlignment="Center" FontSize="16">设置屏幕显示</TextBlock>              
+                <Button  Tag="5" Background="#ffffff" Margin="0,10,0,0" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}" Click="Button_Click">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <TextBox Background="#0089e1" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBox>
                         <TextBlock Foreground="#666666" Margin="10,0,200,0" VerticalAlignment="Center">5wave(5波形)</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Background="#ffffff" Margin="0,10,0,0" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                <Button Tag="4" Background="#ffffff" Margin="0,10,0,0" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}" Click="Button_Click">
                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
                         <TextBox Background="#0089e1" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBox>
                         <TextBlock Foreground="#666666" Margin="10,0,200,0" VerticalAlignment="Center">4wave(4波形)</TextBlock>
                     </StackPanel>
                 </Button>
-                <Button Background="#ffffff" Margin="0,10,0,0" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                <Button Tag="3" Background="#ffffff" Margin="0,10,0,0" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}" Click="Button_Click" >
                     <DockPanel VerticalAlignment="Center" HorizontalAlignment="Left">
                         <TextBox Background="#0089e1" VerticalAlignment="Center" HorizontalAlignment="Left"></TextBox>
                         <TextBlock Foreground="#666666" Margin="10,0,200,0" VerticalAlignment="Center">3wave(3波形)</TextBlock>
                     </DockPanel>
-                </Button>
-                <Button Background="#ffffff" Margin="0,10,0,0" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
-                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Left">
-                        <TextBox Background="#0089e1" VerticalAlignment="Center" HorizontalAlignment="Left" ></TextBox>
-                        <TextBlock Foreground="#666666" Margin="10,0,200,0" VerticalAlignment="Center">Big Num(大数字)</TextBlock>
+                </Button>              
+                <Button Tag="1" Background="#ffffff" Margin="0,10,0,0" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}" Click="Button_Click">
+                    <DockPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="20,0,0,0">
+                        <TextBox Background="#0089e1" VerticalAlignment="Center"  HorizontalAlignment="Left"></TextBox>
+                        <TextBlock Foreground="#666666" Margin="10,0,200,0" VerticalAlignment="Center" >Big Num(大数字)</TextBlock>
                     </DockPanel>
                 </Button>
             </StackPanel>
         </Grid>
-    </Grid>
+        <!--底部-->
+        <Grid Grid.Row="5" Margin="30,20,30,0" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="40">
+                <Button Click="Button_Click_2"  Background="#0089e1" Width="100" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <TextBlock Foreground="#ffffff" Margin="5,0,5,0">布局设置</TextBlock>
+                </Button>
+                <Button Click="Button_Click_1"  Background="#0089e1" Width="100" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <TextBlock Foreground="#ffffff" Margin="5,0,5,0">确定</TextBlock>
+                </Button>
+                <Button Click="btnClose_Click" Background="#f99f3d" Width="100" Margin="0,0,20,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <TextBlock Foreground="#ffffff" Margin="5,0,5,0">取消</TextBlock>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>  
 </Window>
