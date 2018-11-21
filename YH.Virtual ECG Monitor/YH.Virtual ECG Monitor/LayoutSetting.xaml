@@ -6,50 +6,49 @@
         xmlns:lib="clr-namespace:HYS.Library;assembly=HYS.Library"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"
-        Title="检测仪版面设定" Height="600" Width="1024">
-    <Window.Resources>
-        <lib:ObjectToBoolConverter  x:Key="ObjectToBoolConverter"></lib:ObjectToBoolConverter>      
+        Title="检测仪版面设定" Height="600" Width="1024">     
+    <Window.Resources>      
+        <lib:ObjectToBoolConverter  x:Key="ObjectToBoolConverter"></lib:ObjectToBoolConverter>
+        <DataTemplate x:Key="layoutItemTemplate">
+            <Button  Content="{Binding Path=Name}"></Button>
+        </DataTemplate>
     </Window.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition  Height="40"></RowDefinition>
             <RowDefinition ></RowDefinition>
-            <RowDefinition ></RowDefinition>
-            <RowDefinition ></RowDefinition>
-            <RowDefinition ></RowDefinition>
-            <RowDefinition ></RowDefinition>           
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition  Height="60"></RowDefinition>            
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="120" ></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="150"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Click="Button_Click"  Tag="1">
-                <TextBlock Height="30">5波形版面</TextBlock>
+       
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="4"  HorizontalAlignment="Center"   VerticalAlignment="Top" >
+            <Button Click="Button_Click"  Tag="1" Height="50" Width="100" Margin="0,20,0,10">
+             <TextBlock >5波形版面</TextBlock>
             </Button>
-        </DockPanel>
-        <DockPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Click="Button_Click" Tag="2">
+            <Button Click="Button_Click" Tag="2" Height="50" Width="100"  Margin="0,10">
                 <TextBlock Height="30">4波形版面</TextBlock>
             </Button>
-        </DockPanel>
-        <DockPanel Grid.Column="0" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Click="Button_Click" Tag="3">
+            <Button Click="Button_Click" Tag="3" Height="50" Width="100" Margin="0,10">
                 <TextBlock Height="30">3波形版面</TextBlock>
             </Button>
-        </DockPanel>
-        <DockPanel Grid.Column="0" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Click="Button_Click" Tag="4">
+            <Button Click="Button_Click" Tag="4" Height="50" Width="100" Margin="0,10,0,20">
                 <TextBlock Height="30">大数字版面</TextBlock>
             </Button>
-        </DockPanel>
-        
-        <DockPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"  VerticalAlignment="Center">
-            <TextBlock Height="20" >版面名称:</TextBlock>
-            <TextBox Height="50"></TextBox>
-        </DockPanel>
-        
-        <Grid x:Name="grid_1" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" > 
+            <ListBox x:Name="lbCustomLayout" ItemTemplate="{StaticResource layoutItemTemplate}">
+            </ListBox>
+        </StackPanel>       
+
+        <DockPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"  VerticalAlignment="Center" Margin="20,0,100,0">
+            <TextBlock Height="20"  Text="版面名称:   " />
+            <TextBox Height="30" x:Name="tbLayoutName" TextChanged="tbLayoutName_TextChanged"  VerticalContentAlignment="Center"></TextBox>
+        </DockPanel>        
+        <Grid x:Name="grid_1" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20" > 
                 <Grid.RowDefinitions>
                     <RowDefinition ></RowDefinition>
                     <RowDefinition ></RowDefinition>
@@ -65,80 +64,80 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Click="Button_Click_1"  Tag="0">
+                <Button Click="Button_Click_1"  Tag="0,0">
                         <TextBlock>波形1</TextBlock>
                 </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Click="Button_Click_1"  Tag="0">
+                <Button Click="Button_Click_1"  Tag="0,1">
                         <TextBlock>波形2</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Click="Button_Click_1"  Tag="0">
+                <Button Click="Button_Click_1"  Tag="0,2">
                         <TextBlock>波形3</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Click="Button_Click_1"  Tag="0">
+                <Button Click="Button_Click_1"  Tag="0,3">
                         <TextBlock>波形4</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Click="Button_Click_1"  Tag="0">
+                <Button Click="Button_Click_1"  Tag="0,4">
                         <TextBlock>波形5</TextBlock>
                     </Button>
                 </DockPanel>
 
                 <DockPanel Grid.Row="0" Grid.Column="3">
-                <Button Click="Button_Click_1"  Tag="1">
+                <Button Click="Button_Click_1"  Tag="1,0">
                         <TextBlock>视窗1</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="1" Grid.Column="3">
-                <Button Click="Button_Click_1"  >
+                <Button Click="Button_Click_1" Tag="1,1" >
                         <TextBlock>视窗2</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="2" Grid.Column="3">
-                <Button Click="Button_Click_1"  >
+                <Button Click="Button_Click_1"  Tag="1,2">
                         <TextBlock>视窗3</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="3" Grid.Column="3">
-                <Button Click="Button_Click_1"  Tag="1">
+                <Button Click="Button_Click_1"  Tag="1,3">
                         <TextBlock>视窗4</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="4" Grid.Column="3">
-                    <Button>
+                <Button Tag="1,4" Click="Button_Click_1">
                         <TextBlock>视窗5</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="5" Grid.Column="3">
-                <Button Click="Button_Click_1"  Tag="1">
+                <Button Click="Button_Click_1"  Tag="1,7">
                         <TextBlock>视窗8</TextBlock>
                     </Button>
                 </DockPanel>
 
                 <DockPanel Grid.Row="5" Grid.Column="0">
-                <Button Click="Button_Click_1"  Tag="2">
+                <Button Click="Button_Click_1"  Tag="2,0">
                         <TextBlock>无创血压</TextBlock>
                     </Button>
                 </DockPanel>
 
                 <DockPanel Grid.Row="5" Grid.Column="1">
-                <Button Click="Button_Click_1">
+                <Button Click="Button_Click_1" Tag="1,5">
                         <TextBlock>视窗6</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="5" Grid.Column="2">
-                <Button Click="Button_Click_1">
+                <Button Click="Button_Click_1" Tag="1,6">
                         <TextBlock>视窗7</TextBlock>
                     </Button>
                 </DockPanel>
             </Grid>
-        <Grid x:Name="grid_2" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2"  >
+        <Grid x:Name="grid_2" Visibility="Hidden" Grid.Column="1" Grid.Row="1"  Margin="20">
                 <Grid.RowDefinitions>                  
                     <RowDefinition ></RowDefinition>
                     <RowDefinition ></RowDefinition>
@@ -153,71 +152,71 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-                    <Button>
+                <Button Tag="0,0" Click="Button_Click_1">
                         <TextBlock>波形1</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-                    <Button>
+                <Button Tag="0,1" Click="Button_Click_1">
                         <TextBlock>波形2</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
-                    <Button>
+                <Button Tag="0,2" Click="Button_Click_1">
                         <TextBlock>波形3</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
-                    <Button>
+                <Button Tag="0,3" Click="Button_Click_1">
                         <TextBlock>波形4</TextBlock>
                     </Button>
                 </DockPanel>               
 
                 <DockPanel Grid.Row="0" Grid.Column="3">
-                    <Button>
+                <Button Tag="1,0" Click="Button_Click_1">
                         <TextBlock>视窗1</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="1" Grid.Column="3">
-                    <Button>
+                <Button Tag="1,1" Click="Button_Click_1">
                         <TextBlock>视窗2</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="2" Grid.Column="3">
-                    <Button>
+                <Button Tag="1,2" Click="Button_Click_1">
                         <TextBlock>视窗3</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="3" Grid.Column="3">
-                    <Button>
+                <Button Tag="1,3" Click="Button_Click_1">
                         <TextBlock>视窗4</TextBlock>
                     </Button>
                 </DockPanel>
                
                 <DockPanel Grid.Row="4" Grid.Column="3">
-                    <Button>
+                <Button Tag="1,6" Click="Button_Click_1">
                         <TextBlock>视窗7</TextBlock>
                     </Button>
                 </DockPanel>
 
                 <DockPanel Grid.Row="4" Grid.Column="0">
-                    <Button>
+                <Button Tag="2,0" Click="Button_Click_1">
                         <TextBlock>无创血压</TextBlock>
                     </Button>
                 </DockPanel>
 
                 <DockPanel Grid.Row="4" Grid.Column="1">
-                    <Button>
+                <Button Tag="1,4" Click="Button_Click_1">
                         <TextBlock>视窗5</TextBlock>
                     </Button>
                 </DockPanel>
                 <DockPanel Grid.Row="4" Grid.Column="2">
-                    <Button>
+                <Button Tag="1,5" Click="Button_Click_1">
                         <TextBlock>视窗6</TextBlock>
                     </Button>
                 </DockPanel>
             </Grid>
-        <Grid x:Name="grid_3" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" >
+        <Grid x:Name="grid_3" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20" >
             <Grid.RowDefinitions>
                 <RowDefinition ></RowDefinition>
                 <RowDefinition ></RowDefinition>
@@ -232,112 +231,108 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
-                <Button>
+                <Button Tag="0,0" Click="Button_Click_1">
                     <TextBlock>波形1</TextBlock>
                 </Button>
             </DockPanel>
             <DockPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
-                <Button>
+                <Button Tag="0,1" Click="Button_Click_1">
                     <TextBlock>波形2</TextBlock>
                 </Button>
             </DockPanel>
             <DockPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
-                <Button>
+                <Button Tag="0,2" Click="Button_Click_1">
                     <TextBlock>波形3</TextBlock>
                 </Button>
             </DockPanel>
           
 
             <DockPanel Grid.Row="3" Grid.Column="1">
-                <Button>
+                <Button Tag="1,0" Click="Button_Click_1" >
                     <TextBlock>视窗1</TextBlock>
                 </Button>
             </DockPanel>
             <DockPanel Grid.Row="3" Grid.Column="2">
-                <Button>
+                <Button Tag="1,1" Click="Button_Click_1" >
                     <TextBlock>视窗2</TextBlock>
                 </Button>
             </DockPanel>
             <DockPanel Grid.Row="3" Grid.Column="3">
-                <Button>
+                <Button Tag="1,2" Click="Button_Click_1" >
                     <TextBlock>视窗3</TextBlock>
                 </Button>
             </DockPanel>
           
-         
-
             <DockPanel Grid.Row="3" Grid.Column="0">
-                <Button>
+                <Button Tag="2,0" Click="Button_Click_1" >
                     <TextBlock>无创血压</TextBlock>
                 </Button>
             </DockPanel>
-
-          
+            
         </Grid>
-        <Grid x:Name="grid_4" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" >
+        <Grid x:Name="grid_4" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20">
             <Grid.RowDefinitions>
-                <RowDefinition ></RowDefinition>
-                <RowDefinition ></RowDefinition>
-                <RowDefinition ></RowDefinition>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>           
             </Grid.ColumnDefinitions>
             <DockPanel Grid.Row="0" Grid.Column="0">
-                <Button>
+                <Button Tag="0,0" Click="Button_Click_1" >
                     <TextBlock>波形1</TextBlock>
                 </Button>
             </DockPanel>
             <DockPanel Grid.Row="0" Grid.Column="1" >
-                <Button>
+                <Button Tag="0,1" Click="Button_Click_1" >
                     <TextBlock>波形2</TextBlock>
                 </Button>
             </DockPanel>
             <DockPanel Grid.Row="2" Grid.Column="1" >
-                <Button>
+                <Button Tag="0,2" Click="Button_Click_1" >
                     <TextBlock>波形3</TextBlock>
                 </Button>
             </DockPanel>
 
 
             <DockPanel Grid.Row="1" Grid.Column="1">
-                <Button>
+                <Button Tag="1,0" Click="Button_Click_1" >
                     <TextBlock>视窗1</TextBlock>
                 </Button>
             </DockPanel>        
 
             <DockPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
-                <Button>
+                <Button Tag="2,0" Click="Button_Click_1" >
                     <TextBlock>无创血压</TextBlock>
                 </Button>
             </DockPanel>
 
 
         </Grid>
-        <StackPanel Grid.Column="2" Grid.Row="1" Grid.RowSpan="2"  HorizontalAlignment="Center">
-            <TextBlock>可提供参数</TextBlock>
-            <ListBox x:Name="lbWaveCategory"   DisplayMemberPath="Text"  SelectedValuePath="Value">              
+        <StackPanel Grid.Column="2" Grid.Row="1"  Grid.RowSpan="2"  HorizontalAlignment="Center" Margin="0 20 0 0">
+            <TextBlock Margin="0,0,0,10">可提供参数</TextBlock>
+            <ListBox x:Name="lbWaveCategory"   DisplayMemberPath="Name"  SelectedValuePath="Name"  SelectionMode="Single"   SelectionChanged="lbWaveCategory_Selected">              
             </ListBox>
         </StackPanel>
 
-        <StackPanel Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="10,0">
+        <StackPanel x:Name="spInitStatus" Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Margin="10,0" Opacity="0">
             <TextBlock Height="25" Width="60">初始状态</TextBlock>
-            <DockPanel Width="500" Height="25" >
-                <RadioButton  GroupName="rbLevel" IsChecked="{ Binding  Mode=TwoWay, Path=Level, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=开}" Content="开" Margin="5"/>
-                <RadioButton  GroupName="rbLevel" IsChecked="{ Binding  Mode=TwoWay, Path=Level, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=关}" Content="关" Margin="5"/>
-                <RadioButton  GroupName="rbLevel" IsChecked="{ Binding  Mode=TwoWay, Path=Level, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=空}" Content="空" Margin="5"/>
+            <DockPanel Width="500" Height="25" x:Name="rbInitStatus">
+                <RadioButton  GroupName="gpInitStatus" Checked="RadioButton_Checked" IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=开}" Content="开" Margin="5"/>
+                <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=关}" Content="关" Margin="5"/>
+                <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=空}" Content="空" Margin="5"/>
             </DockPanel>
         </StackPanel>
        
 
-        <DockPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" HorizontalAlignment="Center">
-            <Button Width="100" Height="40" Margin="20,0,20,0">打开设定</Button>
-            <Button Width="100" Height="40" Margin="20,0,20,0">保存设定</Button>
-            <Button Width="100" Height="40" Margin="20,0,20,0">设为默认</Button>
+        <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center">
+            <Button Width="100" Height="40" Margin="20,0,20,0" >另存为</Button>
+            <Button Width="100" Height="40" Margin="20,0,20,0" Click="Button_Click_3">设为默认</Button>
             <Button Width="100" Height="40" Margin="20,0,20,0">确定</Button>
-            <Button Width="100" Height="40" Margin="20,0,20,0">应用</Button>
-            <Button Width="100" Height="40" Margin="20,0,20,0">取消</Button>
+            <Button Width="100" Height="40" Margin="20,0,20,0" Click="Button_Click_2" >应用</Button>
+            <Button Width="100" Height="40" Margin="20,0,20,0" Click="Button_Close" >取消</Button>
         </DockPanel>
 
     </Grid>
