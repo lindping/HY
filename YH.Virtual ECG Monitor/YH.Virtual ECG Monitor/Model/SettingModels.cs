@@ -146,6 +146,17 @@ namespace YH.Virtual_ECG_Monitor
         public List<LayoutWave> MainWaveCategories { get; set; }
         public List<LayoutWave> OtherWaveCategories { get; set; }
         public LayoutWave NIBPWaveCategory { get; set; }
+
+        /// <summary>
+        /// 版面布局,只有0-3的4种
+        /// </summary>
+        public int GridModel { get; set; } 
+
+        public LayoutSettingModel Clone()
+        {
+            return this.MemberwiseClone() as LayoutSettingModel;
+        }
+
     }
 
     public class LayoutSettingData
