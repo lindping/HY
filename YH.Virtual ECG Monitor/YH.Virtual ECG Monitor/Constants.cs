@@ -13,32 +13,32 @@ namespace YH.Virtual_ECG_Monitor
 
         public static List<LayoutWave> MainWaveCategories = new List<LayoutWave>()
         {
-            new LayoutWave(){ Name="次要心电图导联", Status="开" },
-            new LayoutWave(){ Name="动脉血压",       Status="开" },
-            new LayoutWave(){ Name="二氧化碳",       Status="开" },
-            new LayoutWave(){ Name="肺动脉压",       Status="开" },
-            new LayoutWave(){ Name="没有",           Status="开" },
-            new LayoutWave(){ Name="血氧饱和度",     Status="开" },
-            new LayoutWave(){ Name="中心静脉压",     Status="开" },
-            new LayoutWave(){ Name="主要心电图导联", Status="开" }
+            new LayoutWave(){ Name="次要心电图导联", Status="开"},
+            new LayoutWave(){ Name="动脉血压",       Status="开"},
+            new LayoutWave(){ Name="二氧化碳",       Status="开"},
+            new LayoutWave(){ Name="肺动脉压",       Status="开"},
+            new LayoutWave(){ Name="没有",           Status="开"},
+            new LayoutWave(){ Name="血氧饱和度",     Status="开"},
+            new LayoutWave(){ Name="中心静脉压",     Status="开"},
+            new LayoutWave(){ Name="主要心电图导联", Status="开"}
         };
 
         public static List<LayoutWave> otherWaveCategories = new List<LayoutWave>()
       {
-         new LayoutWave(){ Name="PH",          Status="开" },
-         new LayoutWave(){ Name="PTC",         Status="开" },
-         new LayoutWave(){ Name="TOF",         Status="开" },
-         new LayoutWave(){ Name="颅内压",      Status="开" },
-         new LayoutWave(){ Name="麻醉剂",      Status="开" },
-         new LayoutWave(){ Name="脉搏",        Status="开" },
-         new LayoutWave(){ Name="没有",        Status="开" },
-         new LayoutWave(){ Name="气道呼吸率",  Status="开" },
-         new LayoutWave(){ Name="笑气",        Status="开" },
-         new LayoutWave(){ Name="心输出量",    Status="开" },
-         new LayoutWave(){ Name="血温",        Status="开" },
-         new LayoutWave(){ Name="血氧饱和度",  Status="开" },
-         new LayoutWave(){ Name="氧气",        Status="开" },
-         new LayoutWave(){ Name="周围温度",    Status="开" },
+         new LayoutWave(){ Name="PH",          Status="开"},
+         new LayoutWave(){ Name="PTC",         Status="开"},
+         new LayoutWave(){ Name="TOF",         Status="开"},
+         new LayoutWave(){ Name="颅内压",      Status="开"},
+         new LayoutWave(){ Name="麻醉剂",      Status="开"},
+         new LayoutWave(){ Name="脉搏",        Status="开"},
+         new LayoutWave(){ Name="没有",        Status="开"},
+         new LayoutWave(){ Name="气道呼吸率",  Status="开"},
+         new LayoutWave(){ Name="笑气",        Status="开"},
+         new LayoutWave(){ Name="心输出量",    Status="开"},
+         new LayoutWave(){ Name="血温",        Status="开"},
+         new LayoutWave(){ Name="血氧饱和度",  Status="开"},
+         new LayoutWave(){ Name="氧气",        Status="开"},
+         new LayoutWave(){ Name="周围温度",    Status="开"}
       };
 
         public static List<LayoutWave> NIBPWaveCategories = new List<LayoutWave>()

@@ -6,40 +6,240 @@
         xmlns:lib="clr-namespace:HYS.Library;assembly=HYS.Library"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"
-        Title="检测仪版面设定" Height="600" Width="1024">     
-    <Window.Resources>      
-        <lib:ObjectToBoolConverter  x:Key="ObjectToBoolConverter"></lib:ObjectToBoolConverter>      
+        Title="检测仪版面设定" Height="600" Width="1024">
+    <Window.Resources>
+        <lib:ObjectToBoolConverter  x:Key="ObjectToBoolConverter"></lib:ObjectToBoolConverter>
     </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition  Height="40"></RowDefinition>
             <RowDefinition ></RowDefinition>
-            <RowDefinition Height="40"></RowDefinition>
-            <RowDefinition  Height="60"></RowDefinition>            
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition  Height="80"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180" ></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="150"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-       
+
         <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="4"  HorizontalAlignment="Center"   VerticalAlignment="Top"  x:Name="layoutPanel"  Margin="0 50 0 0">
-           
-        </StackPanel>       
+
+        </StackPanel>
 
         <DockPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"  VerticalAlignment="Center" Margin="20,0,100,0">
             <TextBlock Height="20"  Text="版面名称:   " />
             <TextBox Height="30" x:Name="tbLayoutName" TextChanged="tbLayoutName_TextChanged"  VerticalContentAlignment="Center"></TextBox>
-        </DockPanel>        
-        <Grid x:Name="grid_0" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20" > 
+        </DockPanel>
+        <Grid x:Name="grid_0" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20,20,20,5" >
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            <Grid  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="0,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="0,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="0,3" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="0,4" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            <Grid Grid.Row="0" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                        Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"   Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            <Grid Grid.Row="2" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            <Grid Grid.Row="3" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,3" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                          Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"     Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            <Grid Grid.Row="4" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,4" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Text="" Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text="" Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text="" Margin="5,5" />
+            </Grid>           
+            <Grid Grid.Row="5" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="2,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Text="" Margin="5,5" />
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text=""  Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text="" Margin="5,5" />
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,5" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Text=""  Margin="5,5" />
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text="" Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text="" Margin="5,5" />              
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,6" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"   Margin="5,5"                                       Text=""/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text=""  Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text=""  Margin="5,5"/>               
+            </Grid>
+            <Grid Grid.Row="5" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,7" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Text="" Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text="" Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text="" Margin="5,5" />
+            </Grid>
+        </Grid>
+        <Grid x:Name="grid_1" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20,20,20,5">
                 <Grid.RowDefinitions>
                     <RowDefinition ></RowDefinition>
                     <RowDefinition ></RowDefinition>
                     <RowDefinition ></RowDefinition>
                     <RowDefinition ></RowDefinition>
                     <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -47,98 +247,187 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-             
-                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" >
-                    <Grid.RowDefinitions>
-                        <RowDefinition></RowDefinition>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                  
-                    <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"                                        Text="     主要心电图导联"/>
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
                 </Button>
-                <TextBlock Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"  Foreground="Gray"    Text="     波形1" />
-                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"  Foreground="Gray" Text="     开"/>
-            </Grid>               
-           
-            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Click="Button_Click_1"  Tag="0,1">
-                        <TextBlock>波形2</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Click="Button_Click_1"  Tag="0,2">
-                        <TextBlock>波形3</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Click="Button_Click_1"  Tag="0,3">
-                        <TextBlock>波形4</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Click="Button_Click_1"  Tag="0,4">
-                        <TextBlock>波形5</TextBlock>
-                    </Button>
-                </StackPanel>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>           
+               
+                </Grid>
+                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.Column="3">
-                <Button Click="Button_Click_1"  Tag="1,0">
-                        <TextBlock>视窗1</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="3">
-                <Button Click="Button_Click_1" Tag="1,1" >
-                        <TextBlock>视窗2</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="3">
-                <Button Click="Button_Click_1"  Tag="1,2">
-                        <TextBlock>视窗3</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="3">
-                <Button Click="Button_Click_1"  Tag="1,3">
-                        <TextBlock>视窗4</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="3">
-                <Button Tag="1,4" Click="Button_Click_1">
-                        <TextBlock>视窗5</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="3">
-                <Button Click="Button_Click_1"  Tag="1,7">
-                        <TextBlock>视窗8</TextBlock>
-                    </Button>
-                </StackPanel>
-
-            <StackPanel Grid.Row="5" Grid.Column="0">
-                <Button Click="Button_Click_1"  Tag="2,0">
-                        <TextBlock>无创血压</TextBlock>
-                    </Button>
-                </StackPanel>
-
-            <StackPanel Grid.Row="5" Grid.Column="1">
-                <Button Click="Button_Click_1" Tag="1,5">
-                        <TextBlock>视窗6</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="5" Grid.Column="2">
-                <Button Click="Button_Click_1" Tag="1,6">
-                        <TextBlock>视窗7</TextBlock>
-                    </Button>
-                </StackPanel>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-        <Grid x:Name="grid_1" Visibility="Hidden" Grid.Column="1" Grid.Row="1"  Margin="20">
-                <Grid.RowDefinitions>                  
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,3" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+
+                <Grid Grid.Row="0" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="1" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="2" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="3" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,3" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+
+                <Grid Grid.Row="4" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,6" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+
+                <Grid Grid.Row="4" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="2,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+
+                <Grid Grid.Row="4" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,4" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="4" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,5" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+            </Grid>
+        <Grid x:Name="grid_2" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20,20,20,5" >
+                <Grid.RowDefinitions>
                     <RowDefinition ></RowDefinition>
                     <RowDefinition ></RowDefinition>
                     <RowDefinition ></RowDefinition>
                     <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition></ColumnDefinition>
@@ -146,202 +435,228 @@
                     <ColumnDefinition></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Tag="0,0" Click="Button_Click_1">
-                        <TextBlock>波形1</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Tag="0,1" Click="Button_Click_1">
-                        <TextBlock>波形2</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Tag="0,2" Click="Button_Click_1">
-                        <TextBlock>波形3</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
-                <Button Tag="0,3" Click="Button_Click_1">
-                        <TextBlock>波形4</TextBlock>
-                    </Button>
-                </StackPanel>
+                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="0" Grid.Column="3">
-                <Button Tag="1,0" Click="Button_Click_1">
-                        <TextBlock>视窗1</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="3">
-                <Button Tag="1,1" Click="Button_Click_1">
-                        <TextBlock>视窗2</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="3">
-                <Button Tag="1,2" Click="Button_Click_1">
-                        <TextBlock>视窗3</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="3">
-                <Button Tag="1,3" Click="Button_Click_1">
-                        <TextBlock>视窗4</TextBlock>
-                    </Button>
-                </StackPanel>
-
-            <StackPanel Grid.Row="4" Grid.Column="3">
-                <Button Tag="1,6" Click="Button_Click_1">
-                        <TextBlock>视窗7</TextBlock>
-                    </Button>
-                </StackPanel>
-
-            <StackPanel Grid.Row="4" Grid.Column="0">
-                <Button Tag="2,0" Click="Button_Click_1">
-                        <TextBlock>无创血压</TextBlock>
-                    </Button>
-                </StackPanel>
-
-            <StackPanel Grid.Row="4" Grid.Column="1">
-                <Button Tag="1,4" Click="Button_Click_1">
-                        <TextBlock>视窗5</TextBlock>
-                    </Button>
-                </StackPanel>
-            <StackPanel Grid.Row="4" Grid.Column="2">
-                <Button Tag="1,5" Click="Button_Click_1">
-                        <TextBlock>视窗6</TextBlock>
-                    </Button>
-                </StackPanel>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-        <Grid x:Name="grid_2" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20" >
-            <Grid.RowDefinitions>
-                <RowDefinition ></RowDefinition>
-                <RowDefinition ></RowDefinition>
-                <RowDefinition ></RowDefinition>
-                <RowDefinition ></RowDefinition>
-              
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
-                <Button Tag="0,0" Click="Button_Click_1">
-                    <TextBlock>波形1</TextBlock>
+                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
                 </Button>
-            </StackPanel>
-            <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
-                <Button Tag="0,1" Click="Button_Click_1">
-                    <TextBlock>波形2</TextBlock>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
                 </Button>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
-                <Button Tag="0,2" Click="Button_Click_1">
-                    <TextBlock>波形3</TextBlock>
-                </Button>
-            </StackPanel>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
 
 
-            <StackPanel Grid.Row="3" Grid.Column="1">
-                <Button Tag="1,0" Click="Button_Click_1" >
-                    <TextBlock>视窗1</TextBlock>
-                </Button>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="2">
-                <Button Tag="1,1" Click="Button_Click_1" >
-                    <TextBlock>视窗2</TextBlock>
-                </Button>
-            </StackPanel>
-            <StackPanel Grid.Row="3" Grid.Column="3">
-                <Button Tag="1,2" Click="Button_Click_1" >
-                    <TextBlock>视窗3</TextBlock>
-                </Button>
-            </StackPanel>
+                <Grid Grid.Row="3" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Row="3" Grid.Column="0">
-                <Button Tag="2,0" Click="Button_Click_1" >
-                    <TextBlock>无创血压</TextBlock>
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
                 </Button>
-            </StackPanel>
-            
-        </Grid>
-        <Grid x:Name="grid_3" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="5*"></RowDefinition>
-                <RowDefinition Height="3*"></RowDefinition>
-                <RowDefinition Height="2*"></RowDefinition>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>           
-            </Grid.ColumnDefinitions>
-            <StackPanel Grid.Row="0" Grid.Column="0">
-                <Button Tag="0,0" Click="Button_Click_1" >
-                    <TextBlock>波形1</TextBlock>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="3" Grid.Column="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
                 </Button>
-            </StackPanel>
-            <StackPanel Grid.Row="0" Grid.Column="1" >
-                <Button Tag="0,1" Click="Button_Click_1" >
-                    <TextBlock>波形2</TextBlock>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="3" Grid.Column="3">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
                 </Button>
-            </StackPanel>
-            <StackPanel Grid.Row="2" Grid.Column="1" >
-                <Button Tag="0,2" Click="Button_Click_1" >
-                    <TextBlock>波形3</TextBlock>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+
+                <Grid Grid.Row="3" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="2,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
                 </Button>
-            </StackPanel>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+
+            </Grid>
+        <Grid x:Name="grid_3" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20,20,20,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5*"></RowDefinition>
+                    <RowDefinition Height="3*"></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Row="0" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="0" Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
+                <Grid Grid.Row="2" Grid.Column="1" >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                </Button>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
 
 
-            <StackPanel Grid.Row="1" Grid.Column="1">
-                <Button Tag="1,0" Click="Button_Click_1" >
-                    <TextBlock>视窗1</TextBlock>
+                <Grid Grid.Row="1" Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
                 </Button>
-            </StackPanel>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
 
-            <StackPanel Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
-                <Button Tag="2,0" Click="Button_Click_1" >
-                    <TextBlock>无创血压</TextBlock>
+                <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="2,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
                 </Button>
-            </StackPanel>
+                <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+            </Grid>
 
 
-        </Grid>
-        <StackPanel Grid.Column="2" Grid.Row="1"  Grid.RowSpan="2"  HorizontalAlignment="Center" Margin="0 20 10 0">
-            <TextBlock Margin="0,0,0,10">可提供参数</TextBlock>
-            <ListBox x:Name="lbWaveCategory"   DisplayMemberPath="Name"  SelectedValuePath="Name"  SelectionMode="Single"   SelectionChanged="lbWaveCategory_Selected">
-                <ListBox.Resources>
-                    <Style TargetType="ListBoxItem">                      
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="LightBlue"/>
-                            </Trigger>
-                            <Trigger Property="IsSelected" Value="True">
-                                <Setter Property="Background" Value="LightBlue"/>
+            </Grid>
+            <StackPanel Grid.Column="2" Grid.Row="1"  Grid.RowSpan="2"  HorizontalAlignment="Center" Margin="0 20 10 0">
+                <TextBlock Margin="0,0,0,10">可提供参数</TextBlock>
+                <ListBox x:Name="lbWaveCategory"   DisplayMemberPath="Name"  SelectedValuePath="Name"  SelectionMode="Single"   SelectionChanged="lbWaveCategory_Selected">
+                    <ListBox.Resources>
+                        <Style TargetType="ListBoxItem">                            
+                            <Style.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#0089e1"/>
                                 <Setter Property="Foreground" Value="Red"/>
                             </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </ListBox.Resources>
-            </ListBox>
-        </StackPanel>
-
-        <StackPanel x:Name="spInitStatus" Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Margin="10,0" Opacity="0">
-            <TextBlock Height="25" Width="60">初始状态</TextBlock>
-            <DockPanel Width="500" Height="25" x:Name="rbInitStatus">
-                <RadioButton  GroupName="gpInitStatus" Checked="RadioButton_Checked" IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=开}" Content="开" Margin="5"/>
-                <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=关}" Content="关" Margin="5"/>
-                <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=空}" Content="空" Margin="5"/>
+                                <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#0089e1"/>
+                                    <Setter Property="Foreground" Value="Red"/>
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListBox.Resources>
+                </ListBox>
+            </StackPanel>
+            <StackPanel x:Name="spInitStatus" Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Margin="20,0" Opacity="0" VerticalAlignment="Top">
+                <TextBlock Height="25" Width="60">初始状态</TextBlock>
+                <DockPanel Width="500" Height="25" x:Name="rbInitStatus">
+                    <RadioButton  GroupName="gpInitStatus" Checked="RadioButton_Checked" IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=开}" Content="开" Margin="5,0"/>
+                    <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=关}" Content="关" Margin="5,0"/>
+                    <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=空}" Content="空" Margin="5,0"/>
+                </DockPanel>
+            </StackPanel>
+            <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center">
+                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_add">新增</Button>
+                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_3">设为默认</Button>
+                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_4">确定</Button>
+                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_2">应用</Button>
+                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Close" >取消</Button>
             </DockPanel>
-        </StackPanel>
-       
 
-        <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center">
-            <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_add">新增</Button>
-            <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_3">设为默认</Button>
-            <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_4">确定</Button>
-            <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_2">应用</Button>
-            <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Close" >取消</Button>
-        </DockPanel>
-
-    </Grid>
+        </Grid>
 </Window>

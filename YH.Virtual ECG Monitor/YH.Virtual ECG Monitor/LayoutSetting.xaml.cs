@@ -13,7 +13,7 @@ namespace YH.Virtual_ECG_Monitor
     {
         // SolidColorBrush selected = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0089e1"));
         // SolidColorBrush selected = Brushes.LightCyan;
-        SolidColorBrush selected = new SolidColorBrush(Color.FromRgb(190,230,253));
+        SolidColorBrush selected = new SolidColorBrush(Color.FromRgb(190, 230, 253));
         SolidColorBrush unSelected = Brushes.LightGray;
 
         List<LayoutWave> waveCategories;
@@ -34,7 +34,7 @@ namespace YH.Virtual_ECG_Monitor
         private void InitializeData()
         {
             model = GetData();
-            BindData(model,0);
+            BindData(model, 0);
         }
         private LayoutSettingData GetData()
         {
@@ -72,7 +72,7 @@ namespace YH.Virtual_ECG_Monitor
 
         }
 
-        private void BindData(LayoutSettingData model,int selectedIndex)
+        private void BindData(LayoutSettingData model, int selectedIndex)
         {
             layoutPanel.Children.Clear();
             Button selectedButton = null;
@@ -132,6 +132,9 @@ namespace YH.Virtual_ECG_Monitor
         /// <param name="e"></param>
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            //记录旧的layoutSelectedIndex
+            int old_layoutSelectedIndex = layoutSelectedIndex;
+
             Button button = sender as Button;
             string layoutName = (button.Content as TextBlock).Text;
             for (int i = 0; i < model.Layouts.Count; i++)
@@ -142,24 +145,52 @@ namespace YH.Virtual_ECG_Monitor
                     break;
                 }
             }
+            if (old_layoutSelectedIndex == layoutSelectedIndex)
+            {
+                return;
+            }
+            if (old_layoutSelectedIndex < 0)
+            {
+                old_layoutSelectedIndex = layoutSelectedIndex;
+            }
 
             //显示当前版面对应的grid
             for (int i = 0; i < 4; i++)
             {
+                //非新旧交替的两个grid,不需要处理
+                if (i != model.Layouts[old_layoutSelectedIndex].GridModel && i != model.Layouts[layoutSelectedIndex].GridModel)
+                {
+                    continue;
+                }
                 var grid = this.FindName("grid_" + i.ToString()) as Grid;
                 grid.Visibility = i == model.Layouts[layoutSelectedIndex].GridModel ? Visibility.Visible : Visibility.Hidden;
+
+
 
                 //清除非所有button的选中颜色并显示对应的波形信息
                 foreach (var child in grid.Children)
                 {
-                    if (child is StackPanel)
+                    if (child is Grid)
                     {
-                        StackPanel panel = child as StackPanel;
-                        int index = panel.Children.Count > 2 ? 1 : 0;
-                        Button buttonItem = panel.Children[index] as Button;
-                        if (buttonItem!=null && buttonItem.Background == selected)
+                        Grid cell = child as Grid;
+                        Button buttonItem = cell.Children[0] as Button;
+
+                        //如果是旧的活动grid,需要清除选中cell的颜色
+                        if (i == model.Layouts[old_layoutSelectedIndex].GridModel)
                         {
-                            buttonItem.Background=unSelected;
+                            if (buttonItem != null && buttonItem.Background == selected)
+                            {
+                                buttonItem.Background = unSelected;
+                            }
+                        }
+                        //如果是新的活动grid,需要显示版面信息
+                        if (i == model.Layouts[layoutSelectedIndex].GridModel)
+                        {
+                            string[] result = GetCellInfoFromCoordinate(buttonItem.Tag.ToString());
+
+                            (cell.Children[1] as TextBlock).Text = result[0];
+                            (buttonItem.Content as TextBlock).Text = result[1];
+                            (cell.Children[2] as TextBlock).Text = result[2];
                         }
                     }
                 }
@@ -173,7 +204,7 @@ namespace YH.Virtual_ECG_Monitor
             layoutName = model.Layouts[layoutSelectedIndex].Name;
             tbLayoutName.Text = layoutName;
 
-            //设置选中颜色
+            //设置当前点中按钮颜色
             foreach (var child in layoutPanel.Children)
             {
                 if (child is DockPanel)
@@ -181,10 +212,32 @@ namespace YH.Virtual_ECG_Monitor
                     Button buttonItem = (child as DockPanel).Children[0] as Button;
                     buttonItem.Background = buttonItem == button ? selected : unSelected;
                 }
-            }         
+            }
 
         }
 
+        /// <summary>
+        /// 根据坐标位置返回对应的title
+        /// </summary>
+        private string[] GetCellInfoFromCoordinate(string tag)
+        {
+            string title = string.Empty;
+            string status = string.Empty;
+            string name = string.Empty;
+            LayoutWave wave = null;
+            int[] tags = tag.ToString().Split(',').Select(p => int.Parse(p)).ToArray();
+            switch (tags[0])
+            {
+                case 0: title = "波形"; wave = model.Layouts[layoutSelectedIndex].MainWaveCategories[tags[1]]; break;
+                case 1: title = "视窗"; wave = model.Layouts[layoutSelectedIndex].OtherWaveCategories[tags[1]]; break;
+                case 2: title = "NIBP"; wave = model.Layouts[layoutSelectedIndex].NIBPWaveCategory; break;
+            }
+            title = title + (tags[1] + 1).ToString();
+            status = wave.Status;
+            name = wave.Name;
+            return new string[3] { title, name, status };
+
+        }
         /// <summary>
         /// 版面位置按钮响应事件处理
         /// </summary>
@@ -215,12 +268,12 @@ namespace YH.Virtual_ECG_Monitor
                 selectedWave = model.Layouts[layoutSelectedIndex].NIBPWaveCategory;
             }
 
-            //设置选中颜色
-            foreach (var child in ((button.Parent as StackPanel).Parent as Grid).Children)
+            //设置点中按钮为选中颜色
+            foreach (var child in ((button.Parent as Grid).Parent as Grid).Children)
             {
-                if (child is StackPanel)
+                if (child is Grid)
                 {
-                    Button buttonItem = (child as StackPanel).Children[0] as Button;
+                    Button buttonItem = (child as Grid).Children[0] as Button;
                     buttonItem.Background = buttonItem == button ? selected : unSelected;
                 }
             }
@@ -228,7 +281,7 @@ namespace YH.Virtual_ECG_Monitor
 
             // 刷新界面,显示波形的初始化状态选择控件
             lbWaveCategory.ItemsSource = waveCategories;
-            lbWaveCategory.SelectedValue = selectedWave.Name;
+            lbWaveCategory.SelectedValue = selectedWave.Name;           
 
             spInitStatus.Opacity = 1;
             rbInitStatus.DataContext = selectedWave;
@@ -240,7 +293,7 @@ namespace YH.Virtual_ECG_Monitor
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void Button_Click_2(object sender, RoutedEventArgs e)
-        {          
+        {
             Setting.Save(model);
             MessageBox.Show("保存成功");
         }
@@ -329,7 +382,7 @@ namespace YH.Virtual_ECG_Monitor
             LayoutSettingModel newLayout = layout.Clone();
             newLayout.Name = layoutName;
             model.Layouts.Add(newLayout);
-            BindData(model,model.Layouts.Count-1);
+            BindData(model, model.Layouts.Count - 1);
         }
 
         private void Button_Click_delete(object sender, RoutedEventArgs e)
@@ -348,7 +401,7 @@ namespace YH.Virtual_ECG_Monitor
             {
                 BindData(model, -1);
             }
-          
+
 
         }
 
