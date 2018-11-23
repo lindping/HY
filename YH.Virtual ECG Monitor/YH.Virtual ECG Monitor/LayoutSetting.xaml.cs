@@ -11,9 +11,9 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class LayoutSetting : Window
     {
-        // SolidColorBrush selected = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0089e1"));
+         SolidColorBrush selected = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#BEE6FD"));
         // SolidColorBrush selected = Brushes.LightCyan;
-        SolidColorBrush selected = new SolidColorBrush(Color.FromRgb(190, 230, 253));
+     
         SolidColorBrush unSelected = Brushes.LightGray;
         SolidColorBrush unCellSelected = Brushes.Black;
         List<LayoutWave> waveCategories;
@@ -104,7 +104,8 @@ namespace YH.Virtual_ECG_Monitor
                 panel.Children.Add(button);
                 if (i >= 4)
                 {
-                    button.Width = 85;
+                    
+                    button.Width = 85;                   
                     Button delBtn = new Button();
                     delBtn.Height = 40;
                     delBtn.Width = 50;
