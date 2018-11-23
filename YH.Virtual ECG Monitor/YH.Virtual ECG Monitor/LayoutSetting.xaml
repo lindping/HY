@@ -6,33 +6,87 @@
         xmlns:lib="clr-namespace:HYS.Library;assembly=HYS.Library"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"
-        Title="检测仪版面设定" Height="600" Width="1024">
+        Title="监护仪版面设定" WindowStyle="None" Topmost="False" Width="1024" Height="650" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
     <Window.Resources>
         <lib:ObjectToBoolConverter  x:Key="ObjectToBoolConverter"></lib:ObjectToBoolConverter>
+        <Style x:Key="FIcon" TargetType="TextBlock">
+            <Setter Property="TextElement.FontFamily" Value="images/#icomoon"></Setter>
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        <!--菜单按钮控件-->
+        <ControlTemplate x:Key="MenuButtonTemplate" TargetType="{x:Type Button}">        
+            <Grid x:Name="controlLayout" Margin="0,5,0,0">
+                <Rectangle x:Name="buttonSurface" RadiusX="3" RadiusY="3" Fill="{TemplateBinding Background}"  Width="80" />
+                <Label x:Name="buttonCaption" FontSize="14" HorizontalAlignment="Center" Foreground="White" Content="{TemplateBinding Content}"/>
+            </Grid>
+
+            <!--向模板添加触发器-->
+            <ControlTemplate.Triggers>
+                <!--Property="IsMouseOver" Value="True" 鼠标经过触发器为True-->
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter TargetName="buttonSurface" Property="Fill" Value="#cccccc"/>
+                    <Setter TargetName="buttonCaption" Property="Foreground" Value="#ffffff"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
     </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
             <RowDefinition  Height="40"></RowDefinition>
             <RowDefinition ></RowDefinition>
             <RowDefinition Height="30"></RowDefinition>
-            <RowDefinition  Height="80"></RowDefinition>
+            <RowDefinition  Height="60"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="180" ></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="150"></ColumnDefinition>
+            <ColumnDefinition Width="160"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="4"  HorizontalAlignment="Center"   VerticalAlignment="Top"  x:Name="layoutPanel"  Margin="0 50 0 0">
-
-        </StackPanel>
-
-        <DockPanel Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"  VerticalAlignment="Center" Margin="20,0,100,0">
-            <TextBlock Height="20"  Text="版面名称:   " />
-            <TextBox Height="30" x:Name="tbLayoutName" TextChanged="tbLayoutName_TextChanged"  VerticalContentAlignment="Center"></TextBox>
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Background="#0089e1" VerticalAlignment="Center">
+            <StackPanel DockPanel.Dock="Left" Orientation="Horizontal" Margin="0,10,0,10">
+                <TextBlock Foreground="White" Margin="20,0,0,0">监护仪版面设定</TextBlock>               
+            </StackPanel>
+            <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,5,0">
+                <TextBlock Foreground="White" Margin="0,0,20,0" VerticalAlignment="Center"></TextBlock>
+                <!--<Button Background="#0089e1" Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                        <TextBlock Text="&#xe904;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="White" ></TextBlock>
+                        <TextBlock Foreground="#ffffff" Margin="5,0,5,0"></TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button Background="#0089e1" Margin="5,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
+                        <TextBlock Text="&#xea26;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="White" ></TextBlock>
+                        <TextBlock Foreground="#ffffff" Margin="5,0,5,0">警告音量</TextBlock>
+                    </StackPanel>
+                </Button>-->
+                <Button x:Name="BtnClose" Click="Button_Close"  Foreground="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                    <Grid x:Name="Uc_Grid" VerticalAlignment="Center">
+                        <Path x:Name="Uc_Path1" Stroke="#ffffff" StrokeThickness="2" Data="M0,0 L8,8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Path x:Name="Uc_Path2" Stroke="#ffffff" StrokeThickness="2" Data="M8,0 L0,8" VerticalAlignment="Center" HorizontalAlignment="Center"></Path>
+                    </Grid>
+                </Button>
+            </StackPanel>
         </DockPanel>
-        <Grid x:Name="grid_0" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20,20,20,5" >
+
+        <ScrollViewer x:Name="scrolls" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="500" Grid.Column="0" Grid.Row="1" Grid.RowSpan="3" >
+            <ScrollViewer.Content>
+                <StackPanel   HorizontalAlignment="Center"   VerticalAlignment="Top"  x:Name="layoutPanel">
+                </StackPanel>
+            </ScrollViewer.Content>
+        </ScrollViewer>
+        <DockPanel Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2"  VerticalAlignment="Center" Margin="20,0,180,0">
+            <TextBlock Height="20"  Text="版面名称:  " />
+            <TextBox Height="30" x:Name="tbLayoutName"  VerticalContentAlignment="Center"></TextBox>
+        </DockPanel>
+
+        <Grid x:Name="grid_0" Visibility="Hidden" Grid.Column="1" Grid.Row="2" Margin="20,20,10,5" Background="Black" >
             <Grid.RowDefinitions>
                 <RowDefinition ></RowDefinition>
                 <RowDefinition ></RowDefinition>
@@ -56,8 +110,9 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                <Button   Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
+                    <TextBlock  Foreground="Gainsboro"  FontSize="16"  Margin="5,5">
+                    </TextBlock>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
@@ -71,7 +126,7 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="0,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"   Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
@@ -84,7 +139,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="0,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
@@ -97,7 +152,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="0,3" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
@@ -110,7 +165,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="0,4" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
@@ -123,7 +178,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
@@ -136,7 +191,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                        Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                            Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"   Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
@@ -149,7 +204,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
@@ -162,7 +217,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,3" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                          Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                              Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"     Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
@@ -175,11 +230,11 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,4" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Text="" Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Text="" Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text="" Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text="" Margin="5,5" />
-            </Grid>           
+            </Grid>
             <Grid Grid.Row="5" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
@@ -188,7 +243,7 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="2,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Text="" Margin="5,5" />
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Text="" Margin="5,5" />
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text=""  Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text="" Margin="5,5" />
@@ -201,10 +256,10 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,5" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Text=""  Margin="5,5" />
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Text=""  Margin="5,5" />
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text="" Margin="5,5" />
-                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text="" Margin="5,5" />              
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text="" Margin="5,5" />
             </Grid>
             <Grid Grid.Row="5" Grid.Column="2">
                 <Grid.RowDefinitions>
@@ -214,10 +269,10 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,6" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"   Margin="5,5"                                       Text=""/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"       Margin="5,5"                                       Text=""/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text=""  Margin="5,5" />
-                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text=""  Margin="5,5"/>               
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text=""  Margin="5,5"/>
             </Grid>
             <Grid Grid.Row="5" Grid.Column="3">
                 <Grid.RowDefinitions>
@@ -227,27 +282,27 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"   Tag="1,7" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Text="" Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Text="" Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Text="" Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Text="" Margin="5,5" />
             </Grid>
         </Grid>
-        <Grid x:Name="grid_1" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20,20,20,5">
-                <Grid.RowDefinitions>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
+        <Grid x:Name="grid_1" Visibility="Hidden" Grid.Column="1" Grid.Row="2" Margin="20,20,10,5">
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -256,13 +311,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
-                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>           
-               
-                </Grid>
-                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
+                <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
+
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -271,12 +326,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -285,12 +340,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
+            <Grid Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -299,13 +354,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,3" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
-                <Grid Grid.Row="0" Grid.Column="3">
+            <Grid Grid.Row="0" Grid.Column="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -314,12 +369,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="1" Grid.Column="3">
+            <Grid Grid.Row="1" Grid.Column="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -328,12 +383,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="2" Grid.Column="3">
+            <Grid Grid.Row="2" Grid.Column="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -342,12 +397,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="3" Grid.Column="3">
+            <Grid Grid.Row="3" Grid.Column="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -356,13 +411,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,3" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
-                <Grid Grid.Row="4" Grid.Column="3">
+            <Grid Grid.Row="4" Grid.Column="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -371,13 +426,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,6" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
-                <Grid Grid.Row="4" Grid.Column="0">
+            <Grid Grid.Row="4" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -386,13 +441,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="2,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
-                <Grid Grid.Row="4" Grid.Column="1">
+            <Grid Grid.Row="4" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -401,12 +456,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,4" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="4" Grid.Column="2">
+            <Grid Grid.Row="4" Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -415,27 +470,27 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,5" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-            </Grid>
-        <Grid x:Name="grid_2" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20,20,20,5" >
-                <Grid.RowDefinitions>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
-                    <RowDefinition ></RowDefinition>
+        </Grid>
+        <Grid x:Name="grid_2" Visibility="Hidden" Grid.Column="1" Grid.Row="2" Margin="20,20,10,5" >
+            <Grid.RowDefinitions>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
+                <RowDefinition ></RowDefinition>
 
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -444,12 +499,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
+            <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -457,12 +512,12 @@
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
+            <Grid Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -471,14 +526,14 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
 
-                <Grid Grid.Row="3" Grid.Column="1">
+            <Grid Grid.Row="3" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -487,12 +542,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="3" Grid.Column="2">
+            <Grid Grid.Row="3" Grid.Column="2">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -501,12 +556,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="3" Grid.Column="3">
+            <Grid Grid.Row="3" Grid.Column="3">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -515,13 +570,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
-                <Grid Grid.Row="3" Grid.Column="0">
+            <Grid Grid.Row="3" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -530,24 +585,24 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="2,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
-            </Grid>
-        <Grid x:Name="grid_3" Visibility="Hidden" Grid.Column="1" Grid.Row="1" Margin="20,20,20,5">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="5*"></RowDefinition>
-                    <RowDefinition Height="3*"></RowDefinition>
-                    <RowDefinition Height="2*"></RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <Grid Grid.Row="0" Grid.Column="0">
+        </Grid>
+        <Grid x:Name="grid_3" Visibility="Hidden" Grid.Column="1" Grid.Row="2" Margin="20,20,10,5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*"></RowDefinition>
+                <RowDefinition Height="3*"></RowDefinition>
+                <RowDefinition Height="2*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="0" Grid.Column="0">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -556,12 +611,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="0" Grid.Column="1" >
+            <Grid Grid.Row="0" Grid.Column="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -570,12 +625,12 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,1" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
-                <Grid Grid.Row="2" Grid.Column="1" >
+            <Grid Grid.Row="2" Grid.Column="1" >
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -584,14 +639,14 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="0,2" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
 
-                <Grid Grid.Row="1" Grid.Column="1">
+            <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -600,13 +655,13 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="1,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
-                <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
+            <Grid Grid.Row="1" Grid.Column="0" Grid.RowSpan="2">
                 <Grid.RowDefinitions>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
@@ -615,48 +670,73 @@
                 </Grid.ColumnDefinitions>
 
                 <Button  Grid.Column="0" Grid.Row="0"  Click="Button_Click_1"  Tag="2,0" VerticalAlignment="Stretch" HorizontalContentAlignment="Left" >
-                    <TextBlock FontSize="16"     FontWeight="Bold"                                         Margin="5,5"/>
+                    <TextBlock FontSize="16" Foreground="Gainsboro"                                             Margin="5,5"/>
                 </Button>
                 <TextBlock  Grid.Column="0" Grid.Row="0"  VerticalAlignment="Top"     Foreground="Gray"    Margin="5,5" />
                 <TextBlock  Grid.Column="0" Grid.Row="0" VerticalAlignment="Bottom"   Foreground="Gray"    Margin="5,5"/>
             </Grid>
 
 
-            </Grid>
-            <StackPanel Grid.Column="2" Grid.Row="1"  Grid.RowSpan="2"  HorizontalAlignment="Center" Margin="0 20 10 0">
-                <TextBlock Margin="0,0,0,10">可提供参数</TextBlock>
-                <ListBox x:Name="lbWaveCategory"   DisplayMemberPath="Name"  SelectedValuePath="Name"  SelectionMode="Single"   SelectionChanged="lbWaveCategory_Selected">
-                    <ListBox.Resources>
-                        <Style TargetType="ListBoxItem">                            
-                            <Style.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
+        </Grid>
+
+        <StackPanel Grid.Column="2" Grid.Row="2"  Grid.RowSpan="2"  HorizontalAlignment="Center" Margin="0 20 10 0">
+            <TextBlock Margin="0,0,0,10">可提供参数</TextBlock>
+            <ListBox x:Name="lbWaveCategory"   DisplayMemberPath="Name"  SelectedValuePath="Name"  SelectionMode="Single"   SelectionChanged="lbWaveCategory_Selected">
+                <ListBox.Resources>
+                    <Style TargetType="ListBoxItem">
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Background" Value="#0089e1"/>
                                 <Setter Property="Foreground" Value="Red"/>
                             </Trigger>
-                                <Trigger Property="IsSelected" Value="True">
+                            <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#0089e1"/>
-                                    <Setter Property="Foreground" Value="Red"/>
-                                </Trigger>
-                            </Style.Triggers>
-                        </Style>
-                    </ListBox.Resources>
-                </ListBox>
-            </StackPanel>
-            <StackPanel x:Name="spInitStatus" Grid.Column="1" Grid.Row="2" Orientation="Horizontal" Margin="20,0" Opacity="0" VerticalAlignment="Top">
-                <TextBlock Height="25" Width="60">初始状态</TextBlock>
-                <DockPanel Width="500" Height="25" x:Name="rbInitStatus">
-                    <RadioButton  GroupName="gpInitStatus" Checked="RadioButton_Checked" IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=开}" Content="开" Margin="5,0"/>
-                    <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=关}" Content="关" Margin="5,0"/>
-                    <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=空}" Content="空" Margin="5,0"/>
-                </DockPanel>
-            </StackPanel>
-            <DockPanel Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="3" HorizontalAlignment="Center">
-                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_add">新增</Button>
-                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_3">设为默认</Button>
-                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_4">确定</Button>
-                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Click_2">应用</Button>
-                <Button Width="100" Height="35" Margin="20,0,20,0" Click="Button_Close" >取消</Button>
+                                <Setter Property="Foreground" Value="Red"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListBox.Resources>
+            </ListBox>
+        </StackPanel>
+        <StackPanel x:Name="spInitStatus" Grid.Column="1" Grid.Row="3" Orientation="Horizontal" Margin="20,0" Opacity="0" VerticalAlignment="Top">
+            <TextBlock Height="25" Width="60">初始状态</TextBlock>
+            <DockPanel Width="500" Height="25" x:Name="rbInitStatus">
+                <RadioButton  GroupName="gpInitStatus" Checked="RadioButton_Checked" IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=开}" Content="开" Margin="5,0"/>
+                <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=关}" Content="关" Margin="5,0"/>
+                <RadioButton  GroupName="gpInitStatus"  Checked="RadioButton_Checked"  IsChecked="{ Binding  Mode=OneWay, Path=Status, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=空}" Content="空" Margin="5,0"/>
             </DockPanel>
-
-        </Grid>
+        </StackPanel>
+        <StackPanel   Orientation="Horizontal" HorizontalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Background="#0089e1">
+            <Button Margin="180,0,30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_add">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
+                    <TextBlock Foreground="#666666" Margin="5,0,5,0">新增</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_3">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
+                    <TextBlock Foreground="#666666" Margin="5,0,5,0">设为默认</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_4">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
+                    <TextBlock Foreground="#666666" Margin="5,0,5,0">确定</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
+                    <TextBlock Foreground="#666666" Margin="5,0,5,0">应用</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Close">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
+                    <TextBlock Foreground="#666666" Margin="5,0,5,0">取消</TextBlock>
+                </StackPanel>
+            </Button>           
+        </StackPanel>
+    </Grid>
 </Window>

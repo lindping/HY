@@ -15,7 +15,7 @@ namespace YH.Virtual_ECG_Monitor
         // SolidColorBrush selected = Brushes.LightCyan;
         SolidColorBrush selected = new SolidColorBrush(Color.FromRgb(190, 230, 253));
         SolidColorBrush unSelected = Brushes.LightGray;
-
+        SolidColorBrush unCellSelected = Brushes.Black;
         List<LayoutWave> waveCategories;
         LayoutSettingData model;
         LayoutWave selectedWave = null;
@@ -72,6 +72,11 @@ namespace YH.Virtual_ECG_Monitor
 
         }
 
+        /// <summary>
+        /// 初始化左边--选择版面的按钮导航
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="selectedIndex"></param>
         private void BindData(LayoutSettingData model, int selectedIndex)
         {
             layoutPanel.Children.Clear();
@@ -83,15 +88,12 @@ namespace YH.Virtual_ECG_Monitor
                 button.Height = 40;
                 button.Width = 140;
                 button.Margin = new Thickness(0, 10, 0, 10);
-
+                button.VerticalContentAlignment = VerticalAlignment.Center;
                 button.Click += Button_Click;
 
-                TextBlock textBlock = new TextBlock();
-                textBlock.Height = 30;
+                TextBlock textBlock = new TextBlock();            
                 textBlock.Text = model.Layouts[i].Name;
                 button.Content = textBlock;
-
-
 
                 if (i == selectedIndex)
                 {
@@ -149,7 +151,7 @@ namespace YH.Virtual_ECG_Monitor
             {
                 return;
             }
-            if (old_layoutSelectedIndex < 0)
+            if (old_layoutSelectedIndex < 0 || old_layoutSelectedIndex>=model.Layouts.Count)
             {
                 old_layoutSelectedIndex = layoutSelectedIndex;
             }
@@ -174,23 +176,14 @@ namespace YH.Virtual_ECG_Monitor
                     {
                         Grid cell = child as Grid;
                         Button buttonItem = cell.Children[0] as Button;
-
-                        //如果是旧的活动grid,需要清除选中cell的颜色
-                        if (i == model.Layouts[old_layoutSelectedIndex].GridModel)
-                        {
-                            if (buttonItem != null && buttonItem.Background == selected)
-                            {
-                                buttonItem.Background = unSelected;
-                            }
-                        }
-                        //如果是新的活动grid,需要显示版面信息
+                        buttonItem.Background = unCellSelected;                      
                         if (i == model.Layouts[layoutSelectedIndex].GridModel)
                         {
                             string[] result = GetCellInfoFromCoordinate(buttonItem.Tag.ToString());
-
                             (cell.Children[1] as TextBlock).Text = result[0];
                             (buttonItem.Content as TextBlock).Text = result[1];
                             (cell.Children[2] as TextBlock).Text = result[2];
+                          
                         }
                     }
                 }
@@ -217,7 +210,7 @@ namespace YH.Virtual_ECG_Monitor
         }
 
         /// <summary>
-        /// 根据坐标位置返回对应的title
+        /// 根据坐标位置返回对应的波形单元格显示信息
         /// </summary>
         private string[] GetCellInfoFromCoordinate(string tag)
         {
@@ -274,11 +267,10 @@ namespace YH.Virtual_ECG_Monitor
                 if (child is Grid)
                 {
                     Button buttonItem = (child as Grid).Children[0] as Button;
-                    buttonItem.Background = buttonItem == button ? selected : unSelected;
+                    buttonItem.Background = buttonItem == button ? selected : unCellSelected;
+                    (buttonItem.Content as TextBlock).Foreground = buttonItem == button ? Brushes.Black : Brushes.Gainsboro;
                 }
             }
-
-
             // 刷新界面,显示波形的初始化状态选择控件
             lbWaveCategory.ItemsSource = waveCategories;
             lbWaveCategory.SelectedValue = selectedWave.Name;           
@@ -294,8 +286,12 @@ namespace YH.Virtual_ECG_Monitor
         /// <param name="e"></param>
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            Setting.Save(model);
-            MessageBox.Show("保存成功");
+            if (CheckLayoutName())
+            {
+                Setting.Save(model);
+                MessageBox.Show("保存成功");
+                BindData(model,layoutSelectedIndex);
+            }
         }
 
         /// <summary>
@@ -324,21 +320,7 @@ namespace YH.Virtual_ECG_Monitor
             {
                 selectedWave.Status = (sender as RadioButton).Content.ToString();
             }
-        }
-
-        /// <summary>
-        /// 版面名称的修改,手工同步数据源
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void tbLayoutName_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            string text = (sender as TextBox).Text;
-            if (layoutSelectedIndex > 3 && !string.IsNullOrWhiteSpace(text))
-            {
-                model.Layouts[layoutSelectedIndex].Name = text;
-            }
-        }
+        }    
 
         /// <summary>
         /// 当前选择版面设置为默认版面
@@ -365,7 +347,7 @@ namespace YH.Virtual_ECG_Monitor
 
         private void Button_Click_add(object sender, RoutedEventArgs e)
         {
-            string layoutName = tbLayoutName.Text;
+            string layoutName = tbLayoutName.Text.Trim();
             if (string.IsNullOrWhiteSpace(layoutName))
             {
                 MessageBox.Show("版面名称不能为空");
@@ -401,15 +383,36 @@ namespace YH.Virtual_ECG_Monitor
             {
                 BindData(model, -1);
             }
-
-
         }
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            Setting.Save(model);
-            MessageBox.Show("保存成功");
-            this.Close();
+            if (CheckLayoutName())
+            {
+                Setting.Save(model);
+                MessageBox.Show("保存成功");
+                this.Close();
+            }
+        }
+
+        private bool CheckLayoutName()
+        {
+            if (layoutSelectedIndex > 3)
+            {
+                string layoutName = tbLayoutName.Text.Trim();
+                if (string.IsNullOrWhiteSpace(layoutName))
+                {
+                    MessageBox.Show("版面名称不能为空");
+                    return false;
+                }
+                if (model.Layouts.ToList().Exists(p => p.Name == layoutName))
+                {
+                    MessageBox.Show("版面名称不能重复");
+                    return false;
+                }
+                model.Layouts[layoutSelectedIndex].Name = layoutName;
+            }
+            return true;
         }
     }
 }
