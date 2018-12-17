@@ -87,6 +87,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Windows" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -159,6 +160,9 @@
     <Compile Include="RESPWaveData\RESPWaveData_030.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_031.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_032.cs" />
+    <Compile Include="SetLayoutName.xaml.cs">
+      <DependentUpon>SetLayoutName.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Setting.cs" />
     <Page Include="Dictionary\Dictionary1.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -221,6 +225,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PatientInfo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SetLayoutName.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

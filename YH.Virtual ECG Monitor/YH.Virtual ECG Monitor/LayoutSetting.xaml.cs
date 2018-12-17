@@ -194,6 +194,7 @@ namespace YH.Virtual_ECG_Monitor
             selectedWave = null;
             waveCategories = null;
             lbWaveCategory.ItemsSource = waveCategories;
+            lbWaveCategory.Visibility = Visibility.Hidden;
 
             layoutName = model.Layouts[layoutSelectedIndex].Name;
             tbLayoutName.Text = layoutName;
@@ -233,7 +234,7 @@ namespace YH.Virtual_ECG_Monitor
 
         }
         /// <summary>
-        /// 版面位置按钮响应事件处理
+        /// 波形位置按钮响应事件处理
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -274,7 +275,8 @@ namespace YH.Virtual_ECG_Monitor
             }
             // 刷新界面,显示波形的初始化状态选择控件
             lbWaveCategory.ItemsSource = waveCategories;
-            lbWaveCategory.SelectedValue = selectedWave.Name;           
+            lbWaveCategory.SelectedValue = selectedWave.Name;
+            lbWaveCategory.Visibility = Visibility.Visible;
 
             spInitStatus.Opacity = 1;
             rbInitStatus.DataContext = selectedWave;
@@ -347,25 +349,22 @@ namespace YH.Virtual_ECG_Monitor
         }
 
         private void Button_Click_add(object sender, RoutedEventArgs e)
-        {
-            string layoutName = tbLayoutName.Text.Trim();
-            if (string.IsNullOrWhiteSpace(layoutName))
-            {
-                MessageBox.Show("版面名称不能为空");
-                return;
-            }
-            if (model.Layouts.ToList().Exists(p => p.Name == layoutName))
-            {
-                MessageBox.Show("版面名称不能重复");
-                return;
-            }
+        {      
 
-            //复制当前版面
-            LayoutSettingModel layout = model.Layouts[layoutSelectedIndex];
-            LayoutSettingModel newLayout = layout.Clone();
-            newLayout.Name = layoutName;
-            model.Layouts.Add(newLayout);
-            BindData(model, model.Layouts.Count - 1);
+            SetLayoutName setlayName = new SetLayoutName(tbLayoutName.Text,model.Layouts);           
+            if (setlayName.ShowDialog()==true)
+            {
+                //复制当前版面
+                LayoutSettingModel layout = model.Layouts[layoutSelectedIndex];
+                LayoutSettingModel newLayout = layout.Clone();
+                newLayout.Name = setlayName.LayoutName;
+                model.Layouts.Add(newLayout);
+                BindData(model, model.Layouts.Count - 1);
+            }
+            else
+            {
+                return;
+            }         
         }
 
         private void Button_Click_delete(object sender, RoutedEventArgs e)

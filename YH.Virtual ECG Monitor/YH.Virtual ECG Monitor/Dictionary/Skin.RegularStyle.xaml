@@ -98,5 +98,29 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
+
+    <Style x:Key="FIcon" TargetType="TextBlock">
+        <Setter Property="TextElement.FontFamily" Value="images/#icomoon"></Setter>
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="FontSize" Value="20"/>
+    </Style>
+    <!--菜单按钮控件-->
+    <ControlTemplate x:Key="MenuButtonTemplate" TargetType="{x:Type Button}">
+        <Grid x:Name="controlLayout" Margin="0,5,0,0">
+            <Rectangle x:Name="buttonSurface" RadiusX="3" RadiusY="3" Fill="{TemplateBinding Background}"  Width="80" />
+            <Label x:Name="buttonCaption" FontSize="14" HorizontalAlignment="Center" Foreground="White" Content="{TemplateBinding Content}"/>
+        </Grid>
+
+        <!--向模板添加触发器-->
+        <ControlTemplate.Triggers>
+            <!--Property="IsMouseOver" Value="True" 鼠标经过触发器为True-->
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter TargetName="buttonSurface" Property="Fill" Value="#cccccc"/>
+                <Setter TargetName="buttonCaption" Property="Foreground" Value="#ffffff"/>
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
 </ResourceDictionary>
