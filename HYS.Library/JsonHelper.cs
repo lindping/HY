@@ -28,7 +28,7 @@ namespace HYS.Library
             FileStream fs = new FileStream(filepath, FileMode.Create);
 
             //把json数据写到文件  
-            using (StreamWriter sw = new StreamWriter(fs))
+            using (StreamWriter sw = new StreamWriter(fs, Encoding.GetEncoding("utf-8")))
             {
                 try
                 {

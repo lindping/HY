@@ -723,22 +723,16 @@
             </DockPanel>
         </StackPanel>
         <StackPanel   Orientation="Horizontal" HorizontalAlignment="Stretch"  Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="4" Background="#0089e1">
-            <Button Margin="180,0,30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_add">
+            <Button Margin="240,0,30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_add">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
                     <TextBlock Foreground="#666666" Margin="5,0,5,0">另存为</TextBlock>
                 </StackPanel>
             </Button>
-            <Button Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_3">
+            <Button  Visibility="Collapsed"  Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_3">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
                     <TextBlock Foreground="#666666" Margin="5,0,5,0">设为默认</TextBlock>
-                </StackPanel>
-            </Button>
-            <Button Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_4">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
-                    <TextBlock Foreground="#666666" Margin="5,0,5,0">确定</TextBlock>
                 </StackPanel>
             </Button>
             <Button Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_2">
@@ -747,6 +741,12 @@
                     <TextBlock Foreground="#666666" Margin="5,0,5,0">应用</TextBlock>
                 </StackPanel>
             </Button>
+            <Button Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Click_4">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
+                    <TextBlock Foreground="#666666" Margin="5,0,5,0">确定</TextBlock>
+                </StackPanel>
+            </Button>           
             <Button Margin="30,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  Click="Button_Close">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>

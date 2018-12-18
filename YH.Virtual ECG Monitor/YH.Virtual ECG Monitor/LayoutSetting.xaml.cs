@@ -46,9 +46,9 @@ namespace YH.Virtual_ECG_Monitor
                 {
                     Layouts = new List<LayoutSettingModel>() {
                     new LayoutSettingModel() {  IsDefault=true, Name="5波形版面", GridModel=0},
-                    new LayoutSettingModel(){  IsDefault=true, Name="4波形版面",GridModel=1 },
-                    new LayoutSettingModel(){  IsDefault=true, Name="3波形版面",GridModel=2},
-                    new LayoutSettingModel(){  IsDefault=true, Name="大数字版面",GridModel=3},
+                    new LayoutSettingModel(){  IsDefault=false, Name="4波形版面",GridModel=1 },
+                    new LayoutSettingModel(){  IsDefault=false, Name="3波形版面",GridModel=2},
+                    new LayoutSettingModel(){  IsDefault=false, Name="大数字版面",GridModel=3},
                 }
                 };
 

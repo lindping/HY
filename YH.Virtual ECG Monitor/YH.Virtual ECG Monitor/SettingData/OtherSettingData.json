@@ -1,7 +1,7 @@
 ﻿{
   "Custom": null,
   "Default": {
-    "DisplayWaveNumber": 8,
+    "DefaultLayout": 8,
     "AlartVolumn": 6,
     "NIBP": false
   }

@@ -1,0 +1,81 @@
+﻿<Window x:Class="YH.Virtual_ECG_Monitor.VolumnSetting"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
+      
+        Title="警报音量设定" Width="800" Height="500" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
+    <Grid>
+        <!--布局-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--顶部 最大化最小化关闭-->
+        <DockPanel Grid.Row="0" Margin="0" Background="#0089e1">
+            <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14" Foreground="White">警报音量设定</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <Button x:Name="BtnClose" Click="btnClose_Click" Foreground="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}">
+                    <Grid x:Name="Uc_Grid" VerticalAlignment="Center">
+                        <Path x:Name="Uc_Path1" Stroke="#ffffff" StrokeThickness="2" Data="M0,0 L8,8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Path x:Name="Uc_Path2" Stroke="#ffffff" StrokeThickness="2" Data="M8,0 L0,8" VerticalAlignment="Center" HorizontalAlignment="Center"></Path>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="0,50">
+            <TextBlock FontSize="16">设置警报音量</TextBlock>
+        </StackPanel>
+        <Grid Grid.Row="2" Margin="10,0,10,0" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Viewbox Grid.Row="0" Height="120" >
+                <Canvas Width="220" Height="120" Margin="0">
+                    <!--加载图标-->
+                    <!--<local:UserControl1 x:Name="_loading"  HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+                    <Path  Tag="10"  MouseDown="Path_MouseDown" Data="M5.011,0C7.767,0,10.022,1.897,10.022,4.216L10.022,151.201C10.022,153.519 7.767,155.417 5.011,155.417 2.255,155.417 0,153.519 0,151.201L0,4.216C0,1.897,2.255,0,5.011,0" Fill="#D1D1D1" Height="155.417" Canvas.Left="202.77" Canvas.Top="41.731" Width="10.022"/>
+                    <Path  Tag="9" MouseDown="Path_MouseDown"   Data="M5.011,0C7.768,0,10.023,1.897,10.023,4.215L10.023,130.45C10.023,132.769 7.768,134.666 5.011,134.666 2.255,134.666 0,132.769 0,130.45L0,4.215C0,1.896,2.255,0,5.011,0" Fill="#D1D1D1" Height="134.666" Canvas.Left="180.24" Canvas.Top="62.482" Width="10.023"/>
+                    <Path  Tag="8" MouseDown="Path_MouseDown"   Data="M5.012,0C7.768,0,10.023,1.897,10.023,4.215L10.023,114.583C10.023,116.901 7.768,118.799 5.012,118.799 2.255,118.799 0,116.901 0,114.583L0,4.215C0,1.896,2.255,0,5.012,0" Fill="#D1D1D1" Height="118.799" Canvas.Left="157.71" Canvas.Top="78.349" Width="10.023"/>
+                    <Path  Tag="7" MouseDown="Path_MouseDown"   Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.215L10.022,96.858C10.022,99.177 7.767,101.074 5.011,101.074 2.255,101.074 0,99.177 0,96.858L0,4.215C0,1.896,2.255,0,5.011,0" Fill="#D1D1D1" Height="101.074" Canvas.Left="135.18" Canvas.Top="96.074" Width="10.022"/>
+                    <Path  Tag="6" MouseDown="Path_MouseDown"   Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.215L10.022,79.661C10.022,81.979 7.767,83.877 5.011,83.877 2.255,83.877 0,81.979 0,79.661L0,4.215C0,1.896,2.255,0,5.011,0" Fill="#D1D1D1" Height="83.877" Canvas.Left="112.65" Canvas.Top="113.271" Width="10.022"/>
+                    <Path  Tag="5"  MouseDown="Path_MouseDown"  Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.216L10.022,62.686C10.022,65.004 7.767,66.902 5.011,66.902 2.255,66.902 0,65.004 0,62.686L0,4.216C0,1.896,2.255,0,5.011,0" Fill="#D1D1D1" Height="66.902" Canvas.Left="90.12" Canvas.Top="130.246" Width="10.022"/>
+                    <Path  Tag="4"  MouseDown="Path_MouseDown"  Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.216L10.022,49.854C10.022,52.172 7.767,54.068 5.011,54.068 2.255,54.068 0,52.172 0,49.854L0,4.216C0,1.896,2.255,0,5.011,0" Fill="#D1D1D1" Height="54.069" Canvas.Left="67.59" Canvas.Top="143.079" Width="10.022"/>
+                    <Path  Tag="3"  MouseDown="Path_MouseDown"  Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.215L10.022,33.026C10.022,35.345 7.767,37.242 5.011,37.242 2.255,37.242 0,35.345 0,33.026L0,4.215C0,1.896,2.255,0,5.011,0" Fill="#D1D1D1" Height="37.242" Canvas.Left="45.06" Canvas.Top="159.906" Width="10.022"/>
+                    <Path  Tag="2" MouseDown="Path_MouseDown"   Data="M5.011,0C7.767,0,10.022,1.897,10.022,4.216L10.022,21.104C10.022,23.423 7.767,25.32 5.011,25.32 2.255,25.32 0,23.423 0,21.104L0,4.216C0,1.897,2.255,0,5.011,0" Fill="#D1D1D1" Height="25.32" Canvas.Left="22.53" Canvas.Top="171.828" Width="10.022"/>
+                    <Path  Tag="1" MouseDown="Path_MouseDown"   Data="M5.011,0C7.767,0,10.022,1.897,10.022,4.216L10.022,13.05C10.022,15.368 7.767,17.266 5.011,17.266 2.255,17.266 0,15.368 0,13.05L0,4.216C0,1.897,2.255,0,5.011,0" Fill="#D1D1D1" Height="17.266" Canvas.Left="0" Canvas.Top="179.882" Width="10.022"/>
+                </Canvas>
+            </Viewbox>
+            <Viewbox Grid.Row="0" Height="120">
+                <Canvas Width="220" Height="120" Margin="0">
+                    <Canvas.OpacityMask>
+                        <!--此处的7 来自10-3 显示3格，绑定的时候注意-->
+                        <LinearGradientBrush x:Name="lgb_volumn" StartPoint="0,1" >
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStop Offset="0.1" Color="Black"/>
+                                <GradientStop Offset="0.1" Color="Transparent"/>
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </Canvas.OpacityMask>
+                    <!--加载图标-->
+                    <!--<local:UserControl1 x:Name="_loading"  HorizontalAlignment="Center"  VerticalAlignment="Center"/>-->
+                    <Path  Tag="10"  MouseDown="Path_MouseDown" Data="M5.011,0C7.767,0,10.022,1.897,10.022,4.216L10.022,151.201C10.022,153.519 7.767,155.417 5.011,155.417 2.255,155.417 0,153.519 0,151.201L0,4.216C0,1.897,2.255,0,5.011,0" Fill="#0089e1" Height="155.417" Canvas.Left="202.77" Canvas.Top="41.731" Width="10.022"/>
+                    <Path  Tag="9" MouseDown="Path_MouseDown"   Data="M5.011,0C7.768,0,10.023,1.897,10.023,4.215L10.023,130.45C10.023,132.769 7.768,134.666 5.011,134.666 2.255,134.666 0,132.769 0,130.45L0,4.215C0,1.896,2.255,0,5.011,0" Fill="#0089e1" Height="134.666" Canvas.Left="180.24" Canvas.Top="62.482" Width="10.022"/>
+                    <Path  Tag="8" MouseDown="Path_MouseDown"   Data="M5.011,0C7.768,0,10.023,1.897,10.023,4.215L10.023,114.583C10.023,116.901 7.768,118.799 5.012,118.799 2.255,118.799 0,116.901 0,114.583L0,4.215C0,1.896,2.255,0,5.012,0" Fill="#0089e1" Height="118.799" Canvas.Left="157.71" Canvas.Top="78.349" Width="10.022"/>
+                    <Path  Tag="7" MouseDown="Path_MouseDown"   Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.215L10.022,96.858C10.022,99.177 7.767,101.074 5.011,101.074 2.255,101.074 0,99.177 0,96.858L0,4.215C0,1.896,2.255,0,5.011,0" Fill="#0089e1" Height="101.074" Canvas.Left="135.18" Canvas.Top="96.074" Width="10.022"/>
+                    <Path  Tag="6" MouseDown="Path_MouseDown"   Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.215L10.022,79.661C10.022,81.979 7.767,83.877 5.011,83.877 2.255,83.877 0,81.979 0,79.661L0,4.215C0,1.896,2.255,0,5.011,0" Fill="#0089e1" Height="83.877" Canvas.Left="112.65" Canvas.Top="113.271" Width="10.022"/>
+                    <Path  Tag="5"  MouseDown="Path_MouseDown"  Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.216L10.022,62.686C10.022,65.004 7.767,66.902 5.011,66.902 2.255,66.902 0,65.004 0,62.686L0,4.216C0,1.896,2.255,0,5.011,0" Fill="#0089e1" Height="66.902" Canvas.Left="90.12" Canvas.Top="130.246" Width="10.022"/>
+                    <Path  Tag="4"  MouseDown="Path_MouseDown"  Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.216L10.022,49.854C10.022,52.172 7.767,54.068 5.011,54.068 2.255,54.068 0,52.172 0,49.854L0,4.216C0,1.896,2.255,0,5.011,0" Fill="#0089e1" Height="54.069" Canvas.Left="67.59" Canvas.Top="143.079" Width="10.022"/>
+                    <Path  Tag="3"  MouseDown="Path_MouseDown"  Data="M5.011,0C7.767,0,10.022,1.896,10.022,4.215L10.022,33.026C10.022,35.345 7.767,37.242 5.011,37.242 2.255,37.242 0,35.345 0,33.026L0,4.215C0,1.896,2.255,0,5.011,0" Fill="#0089e1" Height="37.242" Canvas.Left="45.06" Canvas.Top="159.906" Width="10.022"/>
+                    <Path  Tag="2" MouseDown="Path_MouseDown"   Data="M5.011,0C7.767,0,10.022,1.897,10.022,4.216L10.022,21.104C10.022,23.423 7.767,25.32 5.011,25.32 2.255,25.32 0,23.423 0,21.104L0,4.216C0,1.897,2.255,0,5.011,0" Fill="#0089e1" Height="25.32" Canvas.Left="22.53" Canvas.Top="171.828" Width="10.022"/>
+                    <Path  Tag="1" MouseDown="Path_MouseDown"    Data="M5.011,0C7.767,0,10.022,1.897,10.022,4.216L10.022,13.05C10.022,15.368 7.767,17.266 5.011,17.266 2.255,17.266 0,15.368 0,13.05L0,4.216C0,1.897,2.255,0,5.011,0" Fill="#0089e1" Height="17.266" Canvas.Left="0" Canvas.Top="179.882" Width="10.022"/>
+                </Canvas>
+            </Viewbox>
+        </Grid>
+    </Grid>
+</Window>

@@ -103,7 +103,7 @@ namespace YH.Virtual_ECG_Monitor
 
     public class OtherSettingModel
     {
-        public int DisplayWaveNumber { get; set; }
+        public string  DefaultLayout { get; set; }
         public int AlartVolumn { get; set; }
         public bool NIBP { get; set; }
         public object Clone()

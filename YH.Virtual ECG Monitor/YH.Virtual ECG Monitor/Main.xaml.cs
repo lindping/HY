@@ -42,7 +42,10 @@ namespace YH.Virtual_ECG_Monitor
                     DisplaySetting displaySetting = new DisplaySetting();
                     displaySetting.Show();
                     break;
-                case "1.4": break;
+                case "1.4": 
+                    VolumnSetting volumnSetting = new VolumnSetting();
+                    volumnSetting.Show();
+                        break;
                 case "2.1": 
                     ECGSetting frm = new ECGSetting();
                     frm.Show();

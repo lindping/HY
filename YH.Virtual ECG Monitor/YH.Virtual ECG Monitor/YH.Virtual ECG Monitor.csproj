@@ -110,6 +110,9 @@
     <Compile Include="AlartVolumnSetting.xaml.cs">
       <DependentUpon>AlartVolumnSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VolumnSetting.xaml.cs">
+      <DependentUpon>VolumnSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DisplaySetting.xaml.cs">
       <DependentUpon>DisplaySetting.xaml</DependentUpon>
     </Compile>
@@ -160,6 +163,7 @@
     <Compile Include="RESPWaveData\RESPWaveData_030.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_031.cs" />
     <Compile Include="RESPWaveData\RESPWaveData_032.cs" />
+    <Compile Include="SelectToColorConverter.cs" />
     <Compile Include="SetLayoutName.xaml.cs">
       <DependentUpon>SetLayoutName.xaml</DependentUpon>
     </Compile>
@@ -185,6 +189,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="AlartVolumnSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VolumnSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

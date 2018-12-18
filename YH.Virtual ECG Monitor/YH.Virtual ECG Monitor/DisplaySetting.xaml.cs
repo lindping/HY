@@ -1,5 +1,7 @@
-﻿using System;
+﻿using HYS.Library;
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,10 +21,10 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class DisplaySetting : Window
     {
-        SolidColorBrush selected = new SolidColorBrush((Color)ColorConverter.ConvertFromString("#0089e1"));
-        SolidColorBrush unSelected = Brushes.Transparent;
+       
 
-        OtherSettingData model;
+        LayoutSettingData model;
+      
         public DisplaySetting()
         {
             InitializeComponent();
@@ -31,20 +33,10 @@ namespace YH.Virtual_ECG_Monitor
 
         public void InitializeData()
         {
-            model = Setting.Get<OtherSettingData>();
-            foreach (var element in btnGroup.Children)
-            {
-                if (element is Button)
-                {
-                    Button button = element as Button;
-                    if (button.Tag.ToString() == model.Custom.DisplayWaveNumber.ToString())
-                    {
-                        button.Background = selected;
-                        break;
-                    }
-                    
-                }
-            }
+            model = Setting.Get<LayoutSettingData>();
+            List<LayoutSettingModel> list= model.Layouts;
+            displayList.ItemsSource = list;       
+      
         }
         //关闭窗口
         private void btnClose_Click(object sender, RoutedEventArgs e)
@@ -52,35 +44,39 @@ namespace YH.Virtual_ECG_Monitor
             this.Close();
         }
 
+    
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            Button selectButton = sender as Button;
+            SetLayoutButtonSelected(selectButton.DataContext as LayoutSettingModel);
+        }
 
-            foreach (var element in btnGroup.Children)
+        private void SetLayoutButtonSelected(LayoutSettingModel selectedModel)
+        {
+            foreach (var element in VisualTreeHelper_ex.FindVisualChildren<Button>(displayList))
             {
                 if (element is Button)
                 {
                     Button button = element as Button;
-                    if (element == sender)
+                    if (button.DataContext as LayoutSettingModel== selectedModel)
                     {
-
-                        if (button.Background != selected)
+                        if (button.Background != SelectToColorConverter.Selected)
                         {
-                            button.Background = selected;
+                            button.Background = SelectToColorConverter.Selected;
                         }
-                        model.Custom.DisplayWaveNumber = Convert.ToInt32(button.Tag);
+                     //   model.Custom.DefaultLayout = (button.DataContext as LayoutSettingModel).Name;
 
                     }
                     else
                     {
-                        if (button.Background == selected)
+                        if (button.Background == SelectToColorConverter.Selected)
                         {
-                            button.Background = unSelected;
+                            button.Background = SelectToColorConverter.UnSelected;
                         }
                     }
                 }
             }
         }
-
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Setting.Save(model);
@@ -94,4 +90,7 @@ namespace YH.Virtual_ECG_Monitor
 
         }
     }
+
+
+   
 }
