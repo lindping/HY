@@ -24,7 +24,7 @@ namespace YH.Virtual_ECG_Monitor
             }
             catch (Exception ex)
             {
-                throw ex;
+                return t;
             }
             return t;
         }

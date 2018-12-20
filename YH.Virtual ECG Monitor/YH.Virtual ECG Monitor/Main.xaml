@@ -41,7 +41,22 @@
         </Grid.ColumnDefinitions>
 
         <Button Grid.Row="0" Grid.Column="0" Height="30"  Grid.ColumnSpan="5"  Width="570"  Click="Button_Click"> 1.1  Patient（病人信息）</Button>
-        <Button Grid.Row="0" Grid.Column="5" Height="30"  Grid.ColumnSpan="3"  Width="341.5" Click="Button_Click" > 1.2  Date Time（系统时间）</Button>
+        <!--<Button Grid.Row="0" Grid.Column="5" Height="30"  Grid.ColumnSpan="3"  Width="341.5" Click="Button_Click" > 1.2  Date Time（系统时间）</Button>-->
+        <StackPanel Grid.Row="0" Grid.Column="5" Height="30"  Grid.ColumnSpan="3"            
+                     Orientation="Horizontal" HorizontalAlignment="Stretch" Background="#ddd">
+            <TextBlock Height="Auto"
+                       Margin="20,5,0,0"
+                       Name="tbDate"                
+                     
+                       Text="2018-12-19"
+                        Background="Transparent"    
+                       />
+            <TextBlock Height="Auto"
+                       Margin="10,5,0,0"
+                       Name="tbTime"                    
+                         Text="11:10:24"
+                       />
+        </StackPanel>
         <Button Grid.Row="0" Grid.Column="8" Height="30"  Grid.ColumnSpan="2"  Width="341.5" Click="Button_Click"> 1.3 屏幕设定</Button>
         <Button Grid.Row="0" Grid.Column="10" Height="30"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click"> 1.4 Volume（警报音量）</Button>
 
@@ -68,7 +83,7 @@
 
 
         <Button Grid.Row="6" Grid.Column="0"  Height="60"  Grid.ColumnSpan="5" Width="570"  Click="Button_Click">4.1 NIBP（Non-invasive measurement of blood pressure 无创血压 mmHg）</Button>
-        <Button Grid.Row="6" Grid.Column="5" Height="60"  Grid.ColumnSpan="3"  Width="341.5"  Click="Button_Click">4.2  </Button>
+        <Button Grid.Row="6" Grid.Column="5" Height="60"  Grid.ColumnSpan="3"    Click="Button_Click">4.2  </Button>
         <Button Grid.Row="6" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="341.5"  Click="Button_Click">5.1 N2O（AG麻醉气体一氧化二氮）</Button>
         <Button Grid.Row="6" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click">5.2  O2（AG麻醉气体氧气）</Button>
     </Grid>
