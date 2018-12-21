@@ -164,26 +164,43 @@ namespace YH.Virtual_ECG_Monitor
         public List<LayoutSettingModel> Layouts { get; set; }
     }
 
+    public class VirtualManAttributeItem
+    {
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public int MinValue { get; set; }
+        public int MaxValue { get; set; }
+        public int Value { get; set; }
+        public string unit { get; set; }
+    }
 
     /// <summary>
-    /// 模型身体特征
+    /// 虚拟人体征
     /// </summary>
     public class VirtualManAttributeModel
     {
-        public int HeartRate { get; set; }
-        public int PulseRate { get; set; }
-        public int SPO2 { get; set; }
-        public int Temp1 { get; set; }
-        public int Temp2 { get; set; }
-        public int IBP { get; set; }
-        public int CO { get; set; }
-        public int ETCO2 { get; set; }
-        public int RESP { get; set; }
-        public int N2O { get; set; }
-        public int O2 { get; set; }
-        public int PAP { get; set; }
+        public VirtualManAttributeItem HeartRate { get; set; }
+        public VirtualManAttributeItem PulseRate { get; set; }
+        public VirtualManAttributeItem SPO2 { get; set; }
+        public VirtualManAttributeItem Temp1 { get; set; }
+        public VirtualManAttributeItem Temp2 { get; set; }
+        public VirtualManAttributeItem[] IBP { get; set; }
+        public VirtualManAttributeItem[] NIBP { get; set; }
+        public VirtualManAttributeItem CO { get; set; }
+        public VirtualManAttributeItem ETCO2 { get; set; }
+        public VirtualManAttributeItem RESP { get; set; }
+        public VirtualManAttributeItem N2O { get; set; }
+        public VirtualManAttributeItem O2 { get; set; }
+        public VirtualManAttributeItem PAP { get; set; }
 
-        public int this[int i]
+
+        public VirtualManAttributeModel()
+        {
+            IBP = new VirtualManAttributeItem[2];
+            NIBP = new VirtualManAttributeItem[2];
+        }
+
+        public VirtualManAttributeItem this[int i]
         {
             get
             {
@@ -194,14 +211,15 @@ namespace YH.Virtual_ECG_Monitor
                     case 2: return SPO2;
                     case 3: return Temp1;
                     case 4: return Temp2;
-                    case 5: return IBP;
-                    case 6: return CO;
-                    case 7: return ETCO2;
-                    case 8: return RESP;
-                    case 9: return N2O;
-                    case 10: return O2;
-                    case 11: return PAP;
-                    default: return HeartRate;
+                   // case 5: return IBP[0];
+                  //  case 6: return IBP[0];
+                    case 7: return CO;
+                    case 8: return ETCO2;
+                    case 9: return RESP;
+                    case 10: return N2O;
+                    case 11: return O2;
+                    case 12: return PAP;
+                    default: return null;
                 }
             }
             set
@@ -213,14 +231,14 @@ namespace YH.Virtual_ECG_Monitor
                     case 2: SPO2 = value; break;
                     case 3: Temp1 = value; break;
                     case 4: Temp2 = value; break;
-                    case 5: IBP = value; break;
-                    case 6: CO = value; break;
-                    case 7: ETCO2 = value; break;
-                    case 8: RESP = value; break;
-                    case 9: N2O = value; break;
-                    case 10: O2 = value; break;
-                    case 11: PAP = value; break;
-                    default: HeartRate = value; break; ;
+                   // case 5: IBP[0] = value; break;
+                    case 7: CO = value; break;
+                    case 8: ETCO2 = value; break;
+                    case 9: RESP = value; break;
+                    case 10: N2O = value; break;
+                    case 11: O2 = value; break;
+                    case 12: PAP = value; break;
+                    default:break;                    
                 }
             }
         }

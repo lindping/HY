@@ -57,35 +57,35 @@
                          Text="11:10:24"
                        />
         </StackPanel>
-        <Button Grid.Row="0" Grid.Column="8" Height="30"  Grid.ColumnSpan="2"  Width="341.5" Click="Button_Click"> 1.3 屏幕设定</Button>
+        <Button Grid.Row="0" Grid.Column="8" Height="30"  Grid.ColumnSpan="2"  Width="341.5" Click="Button_Click"> 1.3 Display Setting(屏幕设定)</Button>
         <Button Grid.Row="0" Grid.Column="10" Height="30"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click"> 1.4 Volume（警报音量）</Button>
 
 
-        <Button Grid.Row="1" Grid.Column="0"  Height="60"  Grid.ColumnSpan="8" Width="910"  Click="Button_Click"> 2.1 ECG（Electro Cardio Gram:心电图）</Button>
-        <Button Grid.Row="1" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click"> 3.1 HR（HEART RATE ：心率 BPM）</Button>
-        <Button Grid.Row="1" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click"> 3.2 PR（ Pulse Rate:脉搏 频率 BPM）</Button>
+        <Button Grid.Row="1" Grid.Column="0"  Height="60"  Grid.ColumnSpan="8" Width="910"  Click="Button_Click"  > 2.1 ECG（Electro Cardio Gram:心电图）</Button>
+        <Button Grid.Row="1" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click" Tag="0"> 3.1 HR（HEART RATE ：心率 BPM）</Button>
+        <Button Grid.Row="1" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click" Tag="1"> 3.2 PR（ Pulse Rate:脉搏 频率 BPM）</Button>
 
         <Button Grid.Row="2" Grid.Column="0"  Height="60"  Grid.ColumnSpan="8" Width="910"  Click="Button_Click"> 2.2 PLETH（血氧描记）</Button>
-        <Button Grid.Row="2" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click"> 3.3 SPO2（血氧饱和度  %）</Button>
-        <Button Grid.Row="2" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click"> 3.4 Temp1（周围温度 ℃）</Button>
+        <Button Grid.Row="2" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click" Tag="2"> 3.3 SPO2（血氧饱和度  %）</Button>
+        <Button Grid.Row="2" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click" Tag="3"> 3.4 Temp1（周围温度 ℃）</Button>
 
         <Button Grid.Row="3" Grid.Column="0"  Height="60"  Grid.ColumnSpan="8" Width="910"  Click="Button_Click"> 2.3 ABP（动脉血压）</Button>
-        <Button Grid.Row="3" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click"> 3.5 IBP（Invasive measurement of blood pressure 有创血压 mmHg）</Button>
-        <Button Grid.Row="3" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click"> 3.6 Temp2（血液温度 ℃）</Button>
+        <Button Grid.Row="3" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click" Tag="5"> 3.5 IBP（Invasive measurement of blood pressure 有创血压 mmHg）</Button>
+        <Button Grid.Row="3" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228" Click="Button_Click" Tag="4"> 3.6 Temp2（血液温度 ℃）</Button>
 
         <Button Grid.Row="4" Grid.Column="0"  Height="60"  Grid.ColumnSpan="8" Width="910"  Click="Button_Click"> 2.4  PAP（肺动脉压）</Button>
-        <Button Grid.Row="4" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click"> 3.7 PAP（肺动脉压 mmHg）</Button>
-        <Button Grid.Row="4" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click"> 3.8  C.O.（心输出量 L/min）</Button>
+        <Button Grid.Row="4" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click" Tag="12"> 3.7 PAP（肺动脉压 mmHg）</Button>
+        <Button Grid.Row="4" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click" Tag="7"> 3.8  C.O.（心输出量 L/min）</Button>
 
         <Button Grid.Row="5" Grid.Column="0"  Height="60"  Grid.ColumnSpan="8" Width="910"  Click="Button_Click"> 2.5  CO2（二氧化碳）</Button>
-        <Button Grid.Row="5" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click"> 3.9 ETCO2（呼气末二氧化碳 mmHg）</Button>
-        <Button Grid.Row="5" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click"> 3.10 RESP（Respiration呼吸率  RPM）</Button>
+        <Button Grid.Row="5" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click" Tag="8"> 3.9 ETCO2（呼气末二氧化碳 mmHg）</Button>
+        <Button Grid.Row="5" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click" Tag="9"> 3.10 RESP（Respiration呼吸率  RPM）</Button>
 
 
-        <Button Grid.Row="6" Grid.Column="0"  Height="60"  Grid.ColumnSpan="5" Width="570"  Click="Button_Click">4.1 NIBP（Non-invasive measurement of blood pressure 无创血压 mmHg）</Button>
-        <Button Grid.Row="6" Grid.Column="5" Height="60"  Grid.ColumnSpan="3"    Click="Button_Click">4.2  </Button>
-        <Button Grid.Row="6" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="341.5"  Click="Button_Click">5.1 N2O（AG麻醉气体一氧化二氮）</Button>
-        <Button Grid.Row="6" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click">5.2  O2（AG麻醉气体氧气）</Button>
+        <Button Grid.Row="6" Grid.Column="0"  Height="60"  Grid.ColumnSpan="5" Width="570"  Click="Button_Click" Tag="6">4.1 NIBP（Non-invasive measurement of blood pressure 无创血压 mmHg）</Button>
+        <Button Grid.Row="6" Grid.Column="5" Height="60"  Grid.ColumnSpan="3"  >4.2  </Button>
+        <Button Grid.Row="6" Grid.Column="8" Height="60"  Grid.ColumnSpan="2"  Width="341.5"  Click="Button_Click" Tag="10">5.1 N2O（AG麻醉气体一氧化二氮）</Button>
+        <Button Grid.Row="6" Grid.Column="10" Height="60"  Grid.ColumnSpan="2"  Width="228"  Click="Button_Click" Tag="11">5.2  O2（AG麻醉气体氧气）</Button>
     </Grid>
 
 </Window>

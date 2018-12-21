@@ -119,8 +119,8 @@
     <Compile Include="AlartVolumnSetting.xaml.cs">
       <DependentUpon>AlartVolumnSetting.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SettingDialog.xaml.cs">
-      <DependentUpon>SettingDialog.xaml</DependentUpon>
+    <Compile Include="VirtualManSetting.xaml.cs">
+      <DependentUpon>VirtualManSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="VolumnSetting.xaml.cs">
       <DependentUpon>VolumnSetting.xaml</DependentUpon>
@@ -180,6 +180,9 @@
       <DependentUpon>SetLayoutName.xaml</DependentUpon>
     </Compile>
     <Compile Include="Setting.cs" />
+    <Compile Include="WaveSetting.xaml.cs">
+      <DependentUpon>WaveSetting.xaml</DependentUpon>
+    </Compile>
     <Page Include="Dictionary\Dictionary1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -204,7 +207,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="SettingDialog.xaml">
+    <Page Include="VirtualManSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -253,6 +256,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SetLayoutName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WaveSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
