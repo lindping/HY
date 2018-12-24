@@ -62,30 +62,34 @@ namespace YH.Virtual_ECG_Monitor
                 switch (number)
                 {
                     case "1.1":
-                        PatientInfo patientInfo = new PatientInfo();
-                        patientInfo.Show();
+                     new PatientInfo().ShowDialog();
+                        
                         break;
                     case "1.2":
                         //      System.Diagnostics.Process.Start("ms-settings:dateandtime");
 
                         break;
                     case "1.3":
-                        DisplaySetting displaySetting = new DisplaySetting();
-                        displaySetting.Show();
+                        new DisplaySetting().ShowDialog();                        
                         break;
                     case "1.4":
-                        VolumnSetting volumnSetting = new VolumnSetting();
-                        volumnSetting.Show();
+                      new VolumnSetting().ShowDialog();                      
                         break;
                     case "2.1":
-                        ECGSetting frm = new ECGSetting();
-                        frm.Show();
+                        new ECGSetting().ShowDialog();                       
                         break;
-                    case "2.2": break;
-                    case "2.3": break;
-                    case "2.4": break;
-                    case "2.5": break;
-
+                    case "2.2":
+                        new WaveSetting(0).ShowDialog();
+                        break;
+                    case "2.3":
+                        new WaveSetting(1).ShowDialog();
+                        break;
+                    case "2.4":
+                        new WaveSetting(2).ShowDialog();
+                        break;
+                    case "2.5":
+                        new WaveSetting(3).ShowDialog();
+                        break;
                     case "3.7": break;
                     case "3.8": break;
                     case "3.9": break;

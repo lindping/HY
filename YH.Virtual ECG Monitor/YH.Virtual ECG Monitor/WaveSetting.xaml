@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"     
-       Title="波形参数设置" Width="400"  Height="auto" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
+       Title="波形参数设置" Width="400"  Height="200" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
     <Grid x:Name="grid" Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition ></RowDefinition>
@@ -14,9 +14,10 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Row="0" Margin="0" Background="#0089e1"   Height="28" VerticalAlignment="Top">
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0" Background="#0089e1"   Height="28" VerticalAlignment="Top" >
             <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14" Foreground="White">波形参数设置</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button x:Name="BtnClose"  Foreground="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" IsCancel="True">
@@ -28,17 +29,33 @@
             </StackPanel>
         </DockPanel>
 
-        <StackPanel    Grid.Column="0" Grid.Row="1"  Orientation="Horizontal"  HorizontalAlignment="Center"  VerticalAlignment="Center" >
-            <TextBlock x:Name="tb_description" Text="{Binding  Path=Description}"></TextBlock>
-            <TextBox Width="100" Margin="10,0" x:Name="tb_value"  Text="{Binding Mode=TwoWay, Path=Value}"></TextBox>
-            <TextBlock x:Name="tb_range" ></TextBlock>
+  
+        <TextBlock    Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20 0 0 0">增益(mm/mV):</TextBlock>
+            <StackPanel x:Name="rb_gain"  Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">            
+                <RadioButton GroupName="rb_gain" Content="5" VerticalContentAlignment="Center" Margin="10"></RadioButton>
+                <RadioButton GroupName="rb_gain"  IsChecked="True" Content="10" VerticalContentAlignment="Center" Margin="5">
+                </RadioButton>
+                <RadioButton GroupName="rb_gain" Content="20" VerticalContentAlignment="Center" Margin="10">
+                </RadioButton>
+                <RadioButton GroupName="rb_gain" Content="40" VerticalContentAlignment="Center" Margin="10">
+                </RadioButton>
+            </StackPanel>        
+     
+            <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="2" HorizontalAlignment="Left" Margin="20 0 0 0">走速(mm/s):</TextBlock>
+            <StackPanel x:Name="rb_speed"   Grid.Column="1" Grid.Row="2" Orientation="Horizontal"  HorizontalAlignment="Left">
+                <RadioButton GroupName="rb_speed" Content="25" VerticalContentAlignment="Center" Margin="10" IsChecked="True" ></RadioButton>
+            <RadioButton GroupName="rb_speed"  IsChecked="True" Content="50" VerticalContentAlignment="Center" Margin="5">
+            </RadioButton>
+            <RadioButton GroupName="rb_speed" Content="100" VerticalContentAlignment="Center" Margin="10">
+            </RadioButton>
+            <RadioButton GroupName="rb_speed" Content="200" VerticalContentAlignment="Center" Margin="10">
+            </RadioButton>
+            <RadioButton GroupName="rb_speed" Content="400" VerticalContentAlignment="Center" Margin="10">
+            </RadioButton>
         </StackPanel>
-        <StackPanel    Grid.Column="0" Grid.Row="2"  Orientation="Horizontal"  HorizontalAlignment="Center"  VerticalAlignment="Center" >
-            <TextBlock x:Name="tb_description1" Text="{Binding  Path=Description}"></TextBlock>
-            <TextBox Width="100" Margin="10,0" x:Name="tb_value1"  Text="{Binding Mode=TwoWay, Path=Value}"></TextBox>
-            <TextBlock x:Name="tb_range1" ></TextBlock>
-        </StackPanel>
-        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="3"   Background="#0089e1" Height="32"  VerticalAlignment="Bottom">
+        <!--</StackPanel>-->
+
+        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Background="#0089e1" Height="32"  VerticalAlignment="Bottom">
             <StackPanel    Orientation="Horizontal" HorizontalAlignment="Center"  Background="#0089e1" VerticalAlignment="Stretch" >
                 <Button Margin="0,0,10,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  IsCancel="True" >
                     <StackPanel Orientation="Horizontal">

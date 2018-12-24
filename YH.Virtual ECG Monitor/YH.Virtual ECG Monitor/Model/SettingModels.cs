@@ -211,8 +211,6 @@ namespace YH.Virtual_ECG_Monitor
                     case 2: return SPO2;
                     case 3: return Temp1;
                     case 4: return Temp2;
-                   // case 5: return IBP[0];
-                  //  case 6: return IBP[0];
                     case 7: return CO;
                     case 8: return ETCO2;
                     case 9: return RESP;
@@ -231,14 +229,13 @@ namespace YH.Virtual_ECG_Monitor
                     case 2: SPO2 = value; break;
                     case 3: Temp1 = value; break;
                     case 4: Temp2 = value; break;
-                   // case 5: IBP[0] = value; break;
                     case 7: CO = value; break;
                     case 8: ETCO2 = value; break;
                     case 9: RESP = value; break;
                     case 10: N2O = value; break;
                     case 11: O2 = value; break;
                     case 12: PAP = value; break;
-                    default:break;                    
+                    default: break;
                 }
             }
         }
@@ -268,6 +265,51 @@ namespace YH.Virtual_ECG_Monitor
         }
         public VirtualManAttributeModel Default { get; set; }
 
+    }
+
+    public  class WaveSettingData
+    {
+        private WaveSettingModel _custom;
+        public WaveSettingModel Custom
+        {
+            get
+            {
+                if (_custom == null && Default != null)
+                {
+                    _custom = (WaveSettingModel)Default.Clone();
+                }
+                return _custom;
+            }
+            set
+            {
+                _custom = value;
+            }
+        }
+        public WaveSettingModel Default { get; set; }
+    }
+
+    public class WaveSettingModel
+    {
+         public WaveSettingItem PLETH { get; set; }
+        public WaveSettingItem ABP { get; set; }
+        public WaveSettingItem PAP { get; set; }
+        public WaveSettingItem CO2 { get; set; }
+
+        public WaveSettingModel Clone()
+        {
+            return this.MemberwiseClone() as WaveSettingModel;
+        }
+    }
+
+    public class WaveSettingItem
+    {
+        public int Gain { get; set; }
+        public int Speed { get; set; }
+
+        public WaveSettingItem Clone()
+        {
+            return this.MemberwiseClone() as WaveSettingItem;
+        }
     }
 }
 
