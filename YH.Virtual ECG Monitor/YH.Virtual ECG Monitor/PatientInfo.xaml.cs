@@ -29,6 +29,20 @@ namespace YH.Virtual_ECG_Monitor
         public void InitializeData()
         {
             model = Setting.Get<PatientInfoData>();
+            if (model == null)
+            {
+                model = new PatientInfoData()
+                {
+                    Default = new PatientInfoModel()
+                    {
+                        Age = 28,
+                        BedNo = "YH001",
+                        MedRecNo = "YHCC201812150008",
+                        Name = "王小明",
+                        Sex = Sex.女
+                    }
+                };
+            }
             DataContext = model.Custom;
         }
 
@@ -45,9 +59,9 @@ namespace YH.Virtual_ECG_Monitor
                 MessageBox.Show("姓名不能为空");
                 return;
             }
-           
+
             int age;
-            if (!int.TryParse(tbAge.Text, out age) || age<1)
+            if (!int.TryParse(tbAge.Text, out age) || age < 1)
             {
                 MessageBox.Show("年龄不正确");
             }
@@ -60,7 +74,7 @@ namespace YH.Virtual_ECG_Monitor
             {
                 MessageBox.Show("床位号不能为空");
                 return;
-            }          
+            }
 
             Setting.Save(model);
         }
