@@ -17,7 +17,7 @@
             <ColumnDefinition Width="120"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0" Background="#0089e1"   Height="28" VerticalAlignment="Top" >
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0" Background="#0089e1"  VerticalAlignment="Top" >
             <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14" Foreground="White">波形参数设置</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button x:Name="BtnClose"  Foreground="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" IsCancel="True">
@@ -29,7 +29,10 @@
             </StackPanel>
         </DockPanel>
 
+
   
+
+
         <TextBlock    Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20 0 0 0">增益(mm/mV):</TextBlock>
             <StackPanel x:Name="rb_gain"  Grid.Column="1" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">            
                 <RadioButton GroupName="rb_gain" Content="5" VerticalContentAlignment="Center" Margin="10"></RadioButton>

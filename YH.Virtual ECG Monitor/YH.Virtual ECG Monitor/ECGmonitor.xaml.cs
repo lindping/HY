@@ -3,7 +3,6 @@ using System;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
-using YH.ECGMonitor.WaveData.RESPWaveData;
 using YH.Simulator.Framework;
 
 namespace YH.Virtual_ECG_Monitor
@@ -22,7 +21,7 @@ namespace YH.Virtual_ECG_Monitor
         double y = 0; // y坐标
         int i = 0;    //样本数据的数组索引
 
-        RESPWaveData data;
+        Wave_RESP data;
 
         int rhythm;  //心率类型
         int wave;    //心律波形索引值
@@ -40,22 +39,13 @@ namespace YH.Virtual_ECG_Monitor
             this.rhythm = rhythm;
             setting = Setting.Get<ECGSettingData>().Custom;
             this.wave = setting.Lead;
-            data = DataToObject.To<RESPWaveData>(rhythm);
+            data = DataToObject.To<Wave_RESP>(rhythm);
             dataLength = data.WaveData.GetLength(0);
             IndexInterval = dataLength > 1000 ? 10 : 1;
             addX = (double)myCanvas.Width / (double)waveCountMax / ((double)dataLength / (double)IndexInterval);
 
             player = new MediaPlayer();
-            player.Volume = setting.QRSVolumn / (double)10;
-            //soundLauch = new Launch(800);
-            //soundLauch.OnElapsed += SoundLauch_OnElapsed;
-            //soundLauch.Start();
-
-            //原始速度
-            //double dotCount = waveCount * dataLength * addY;
-            //double t = ((double)(1000* 60 * waveCount)) / (double)data.Rate;
-            //int interval =(int) (t / dotCount);
-
+            player.Volume = setting.QRSVolumn / (double)10;  
 
             int interval = (int)(1000 / setting.Speed);
             launch1 = new Launch(interval);
@@ -94,12 +84,10 @@ namespace YH.Virtual_ECG_Monitor
 
         private void SoundPlay(double y)
         {
-
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
                 if (i > 0 && i < dataLength - 1 && ((y <= data.WaveData[i - 1, wave] && y < data.WaveData[i + 1, wave]) || (y < data.WaveData[i - 1, wave] && y <= data.WaveData[i + 1, wave])))
                 {
-
                     player.Open(new Uri(Constants.GeneralWaveFile, UriKind.Relative));
                     player.Play();
                 }

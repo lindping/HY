@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YH.ECGMonitor.WaveData.RESPWaveData
+YH.Virtual_ECG_Monitor.WaveData.RESPWaveData
 {
     public class RESPWaveData_018 : RESPWaveData
     {

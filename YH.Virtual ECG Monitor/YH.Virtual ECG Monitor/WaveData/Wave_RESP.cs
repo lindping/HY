@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YH.ECGMonitor.WaveData.RESPWaveData
+namespace YH.Virtual_ECG_Monitor
 {
-    public class RESPWaveData
+    public class Wave_RESP
     {
         private string _id;             //ID号
         private string _name;           //名称
@@ -17,11 +17,10 @@ namespace YH.ECGMonitor.WaveData.RESPWaveData
         private int _etco2;             //呼气末二氧化碳
         private float[,] _waveData;      //波形数据
 
-        public RESPWaveData()
+        public Wave_RESP()
         {
 
-        }
-        
+        }       
 
         /// <summary>
         /// 记录号

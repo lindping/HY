@@ -119,6 +119,9 @@
     <Compile Include="AlartVolumnSetting.xaml.cs">
       <DependentUpon>AlartVolumnSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="OtherWave.xaml.cs">
+      <DependentUpon>OtherWave.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VirtualManSetting.xaml.cs">
       <DependentUpon>VirtualManSetting.xaml</DependentUpon>
     </Compile>
@@ -141,45 +144,59 @@
     <Compile Include="PatientInfo.xaml.cs">
       <DependentUpon>PatientInfo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RESPWaveData\RESPWaveData.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_003.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_006.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_005.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_004.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_002.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_001.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_000.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_019.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_018.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_017.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_016.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_015.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_014.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_013.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_012.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_011.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_010.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_009.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_008.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_007.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_020.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_021.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_022.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_023.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_024.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_025.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_026.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_027.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_028.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_029.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_030.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_031.cs" />
-    <Compile Include="RESPWaveData\RESPWaveData_032.cs" />
+    <Compile Include="WaveData\RespType.cs" />
+    <Compile Include="WaveData\Wave_RESP.cs" />
     <Compile Include="SelectToColorConverter.cs" />
     <Compile Include="SetLayoutName.xaml.cs">
       <DependentUpon>SetLayoutName.xaml</DependentUpon>
     </Compile>
     <Compile Include="Setting.cs" />
+    <Compile Include="WaveData\Rhythm.cs" />
+    <Compile Include="WaveData\WaveData_ABP\WaveData_ABP.cs" />
+    <Compile Include="WaveData\WaveData_ABP\WaveData_ABP_01.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_00.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_01.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_28.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_29.cs" />
+    <Compile Include="WaveData\WaveData_PLETH\WaveData_PLETH.cs" />
+    <Compile Include="WaveData\WaveData_PLETH\WaveData_PLETH_01.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_000.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_001.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_002.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_003.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_004.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_005.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_006.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_007.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_008.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_009.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_010.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_011.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_012.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_013.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_014.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_015.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_016.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_017.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_018.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_019.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_020.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_021.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_022.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_023.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_024.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_025.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_026.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_027.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_028.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_029.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_030.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_031.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_032.cs" />
+    <Compile Include="WaveData\Wave_ABP.cs" />
+    <Compile Include="WaveData\Wave_ECG.cs" />
+    <Compile Include="WaveData\Wave_PLETH.cs" />
     <Compile Include="WaveSetting.xaml.cs">
       <DependentUpon>WaveSetting.xaml</DependentUpon>
     </Compile>
@@ -206,6 +223,10 @@
     <Page Include="AlartVolumnSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="OtherWave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="VirtualManSetting.xaml">
       <SubType>Designer</SubType>

@@ -1875,15 +1875,19 @@ namespace YH.Virtual_ECG_Monitor
         private void button_Click(object sender, RoutedEventArgs e)
         {
             int rhythm = comboBox_VitalSigns_Cyclic_Rhythm_Basic.SelectedIndex;
-            ECGmonitor frm = new ECGmonitor(rhythm);
-            frm.Show();
+
+            Button button = sender as Button;
+            if (button == button_ecg)
+            {
+                new ECGmonitor(rhythm).ShowDialog();
+            }
+            else
+            {
+                new OtherWave().ShowDialog();
+            }
+          
+        
         }
 
-        private void button_1_Click(object sender, RoutedEventArgs e)
-        {
-         
-            ECGSetting frm = new ECGSetting();
-            frm.Show();
-        }
     }
 }

@@ -15,7 +15,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>       
         </Grid.ColumnDefinitions>
-        <DockPanel Grid.Row="0" Margin="0" Background="#0089e1"   Height="28" VerticalAlignment="Top">
+        <DockPanel Grid.Row="0" Margin="0" Background="#0089e1"    VerticalAlignment="Top">
             <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14" Foreground="White">虚拟人参数设置</TextBlock>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
                 <Button x:Name="BtnClose"  Foreground="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" IsCancel="True">
