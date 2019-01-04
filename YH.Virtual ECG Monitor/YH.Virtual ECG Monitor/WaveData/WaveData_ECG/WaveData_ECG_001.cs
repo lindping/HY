@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace  YH.Virtual_ECG_Monitor
 {
-    public class WaveData_ECG_01 : WaveData_ECG
+    public class WaveData_ECG_001 : WaveData_ECG
     {
-        public WaveData_ECG_01() : base()
+        public WaveData_ECG_001() : base()
         {
             ID = "R01";
             Name = "窦性心律";

@@ -198,6 +198,9 @@
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_030.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_031.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_032.cs" />
+    <Compile Include="WaveDisplay.xaml.cs">
+      <DependentUpon>WaveDisplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="WaveSetting.xaml.cs">
       <DependentUpon>WaveSetting.xaml</DependentUpon>
     </Compile>
@@ -282,6 +285,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SetLayoutName.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="WaveDisplay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

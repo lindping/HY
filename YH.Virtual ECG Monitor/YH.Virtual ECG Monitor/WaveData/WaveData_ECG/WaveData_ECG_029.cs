@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace  YH.Virtual_ECG_Monitor
 {
-    public class WaveData_ECG_29 : WaveData_ECG
+    public class WaveData_ECG_029 : WaveData_ECG
     {
-        public WaveData_ECG_29() : base()
+        public WaveData_ECG_029() : base()
         {
             ID = "R29";
             Name = "心博停止——直线（空）";

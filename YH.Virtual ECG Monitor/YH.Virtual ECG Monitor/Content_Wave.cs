@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using YH.Simulator.Framework;
 
 namespace YH.Virtual_ECG_Monitor
-{
+{                  
     public class Content_Wave
     {
 
