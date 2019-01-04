@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YH.ECGWave.WaveData
+namespace  YH.Virtual_ECG_Monitor
 {
-    public class WaveData_ECG_00 : WaveData_ECG
+    public class WaveData_ECG_01 : WaveData_ECG
     {
-        public WaveData_ECG_00() : base()
+        public WaveData_ECG_01() : base()
         {
-            ID = "R00";
+            ID = "R01";
             Name = "窦性心律";
             Remark = "";
             Rate = 80;
-            BaseAMP = 1.0f;
-            WaveData = resp_00;
+            BaseAMP = 1.5f;
+            WaveData = resp_01;
         }
 
-        public static float[,] resp_00 = new float[43, 12] {
+        public static float[,] resp_01 = new float[43, 12] {
             {34.11f,   33.96f,   31.98f,   30.90f,   34.11f,   33.46f,   34.05f,   34.60f,   33.59f,   34.07f,   33.57f,   34.60f},
             {34.11f,   33.96f,   31.98f,   30.90f,   34.11f,   33.46f,   34.03f,   34.60f,   33.59f,   34.07f,   33.57f,   34.60f},
             {34.11f,   33.96f,   31.98f,   30.90f,   34.11f,   33.46f,   34.00f,   34.60f,   33.59f,   34.07f,   33.57f,   34.60f},

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YH.ECGWave.WaveData
+namespace YH.Virtual_ECG_Monitor
 {
     public class WaveData_PLETH
     {
@@ -17,7 +17,7 @@ namespace YH.ECGWave.WaveData
 
         public WaveData_PLETH()
         {
-
+            _name = "血氧描记";
         }
 
         /// <summary>

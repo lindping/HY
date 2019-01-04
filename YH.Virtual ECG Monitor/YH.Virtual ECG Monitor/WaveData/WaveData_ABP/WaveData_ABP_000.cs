@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YH.ECGWave.WaveData
+namespace  YH.Virtual_ECG_Monitor
 {
     public class WaveData_ABP_01 : WaveData_ABP
     {

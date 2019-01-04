@@ -39,6 +39,22 @@
         </Setter>
     </Style>
 
+    <!--表格背景颜色样式-->
+    <Style x:Key="tablebg1">
+        <Setter Property="DockPanel.Background" Value="#999999"></Setter>
+    </Style>
+
+    <!--表格分割线颜色样式-->
+    <Style x:Key="Split1">
+        <Setter Property="DockPanel.Background" Value="#f1f1f1"></Setter>
+    </Style>
+
+    <!--频谱背景颜色样式-->
+    <Style x:Key="ppbg1">
+        <Setter Property="DockPanel.Background" Value="#cccccc"></Setter>
+    </Style>
+
+
     <!--背景颜色样式-->
     <Style x:Key="bg1">
         <Setter Property="DockPanel.Background" Value="White"></Setter>

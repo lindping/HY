@@ -119,8 +119,12 @@
     <Compile Include="AlartVolumnSetting.xaml.cs">
       <DependentUpon>AlartVolumnSetting.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Content_Wave.cs" />
     <Compile Include="OtherWave.xaml.cs">
       <DependentUpon>OtherWave.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_Wave.xaml.cs">
+      <DependentUpon>UserControl_Wave.xaml</DependentUpon>
     </Compile>
     <Compile Include="VirtualManSetting.xaml.cs">
       <DependentUpon>VirtualManSetting.xaml</DependentUpon>
@@ -145,7 +149,8 @@
       <DependentUpon>PatientInfo.xaml</DependentUpon>
     </Compile>
     <Compile Include="WaveData\RespType.cs" />
-    <Compile Include="WaveData\Wave_RESP.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG.cs" />
+    <Compile Include="WaveData\WaveData_RESP\Wave_RESP.cs" />
     <Compile Include="SelectToColorConverter.cs" />
     <Compile Include="SetLayoutName.xaml.cs">
       <DependentUpon>SetLayoutName.xaml</DependentUpon>
@@ -153,14 +158,13 @@
     <Compile Include="Setting.cs" />
     <Compile Include="WaveData\Rhythm.cs" />
     <Compile Include="WaveData\WaveData_ABP\WaveData_ABP.cs" />
-    <Compile Include="WaveData\WaveData_ABP\WaveData_ABP_01.cs" />
-    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG.cs" />
-    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_00.cs" />
-    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_01.cs" />
-    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_28.cs" />
-    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_29.cs" />
+    <Compile Include="WaveData\WaveData_ABP\WaveData_ABP_000.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_000.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_001.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_028.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_029.cs" />
     <Compile Include="WaveData\WaveData_PLETH\WaveData_PLETH.cs" />
-    <Compile Include="WaveData\WaveData_PLETH\WaveData_PLETH_01.cs" />
+    <Compile Include="WaveData\WaveData_PLETH\WaveData_PLETH_000.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_000.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_001.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_002.cs" />
@@ -194,9 +198,6 @@
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_030.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_031.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_032.cs" />
-    <Compile Include="WaveData\Wave_ABP.cs" />
-    <Compile Include="WaveData\Wave_ECG.cs" />
-    <Compile Include="WaveData\Wave_PLETH.cs" />
     <Compile Include="WaveSetting.xaml.cs">
       <DependentUpon>WaveSetting.xaml</DependentUpon>
     </Compile>
@@ -225,6 +226,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="OtherWave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl_Wave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -317,6 +322,11 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SettingData\OtherSettingData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SettingData\PatientInfoData.json" />
+    <None Include="SettingData\VirtualManAttributeData.json" />
+    <None Include="SettingData\WaveSettingData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

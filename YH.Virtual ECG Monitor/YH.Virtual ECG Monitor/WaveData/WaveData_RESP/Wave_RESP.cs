@@ -8,10 +8,11 @@ namespace YH.Virtual_ECG_Monitor
 {
     public class Wave_RESP
     {
-        private string _id;             //ID号
+        private string _id;             //记录号
         private string _name;           //名称
-        private string _remark;         //病例描述      
+        private string _remark;         //描述       
         private int _rate;              //波形频率   
+        private float _baseAMP;         //波形放大倍数
         private int _inspcapacity;      //吸气量     //3000ml
         private int _ratio;             //吸气比(时间)     呼吸比1:2
         private int _etco2;             //呼气末二氧化碳
@@ -20,7 +21,7 @@ namespace YH.Virtual_ECG_Monitor
         public Wave_RESP()
         {
 
-        }       
+        }
 
         /// <summary>
         /// 记录号
@@ -56,6 +57,15 @@ namespace YH.Virtual_ECG_Monitor
         {
             get { return _rate; }
             set { _rate = value; }
+        }
+
+        /// <summary>
+        /// 波形放大倍数
+        /// </summary>
+        public float BaseAMP
+        {
+            get { return _baseAMP; }
+            set { _baseAMP = value; }
         }
 
         /// <summary>

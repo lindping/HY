@@ -4,19 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YH.ECGWave.WaveData
+namespace YH.Virtual_ECG_Monitor
 {
-    public class WaveData_PLETH_01 : WaveData_PLETH
+    public class WaveData_PLETH_000 : WaveData_PLETH
     {
 
-        public WaveData_PLETH_01() : base()
+        public WaveData_PLETH_000() : base()
         {
             Rate = 80;
             BaseAMP = 0.3f;
-            WaveData = pleth_01;
+            WaveData = _waveData;
+
+
         }
 
-        public static float[] pleth_01 = new float[200] {
+        public static float[] _waveData = new float[200] {
             1.0f,2.15f ,3.35f ,4.65f ,6.05f ,7.6f ,9.2f ,10.9f ,12.7f ,14.6f ,16.55f ,18.6f ,
             20.7f ,22.9f ,25.15f ,27.45f ,29.85f ,32.3f ,34.75f ,37.3f ,39.9f ,42.55f ,
             45.25f ,48.1f ,51.15f ,54.2f ,57.25f ,60.3f ,63.4f ,66.45f ,69.55f ,72.6f ,

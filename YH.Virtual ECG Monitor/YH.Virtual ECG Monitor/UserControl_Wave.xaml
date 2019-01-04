@@ -1,0 +1,129 @@
+﻿<UserControl x:Class="YH.Virtual_ECG_Monitor.UserControl_Wave"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
+               mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="600">
+    <Grid>
+        <Border Grid.Column="0" CornerRadius="5" Padding="10" Style="{DynamicResource bg1}" BorderBrush="Red" BorderThickness="0">
+            <!--右侧表格-->
+            <Grid Background="Black">
+                <Grid.RowDefinitions>
+                    <!--定义Grid的行，定义4行-->
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <!--定义Grid的列，定义2列-->
+                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <!--网格分割线-->
+                <GridSplitter Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Width="1" Style="{DynamicResource Split1}" VerticalAlignment="Stretch" />
+                <GridSplitter Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                <GridSplitter Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                <GridSplitter Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
+                <Border Grid.Row="0" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="ECG II" Margin="0,0,10,0" Width="36"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left"  >
+                                <Canvas x:Name="myCanvas1" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
+                                    <Polyline x:Name="polyline1" Points="" Stroke="#339900"  StrokeThickness="1" StrokeLineJoin="Round"  FillRule="EvenOdd"/>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="0" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="HR" Margin="0,0,10,0" VerticalAlignment="Top" />
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left" >
+                                <TextBlock x:Name="textblock_HeartRate" Style="{DynamicResource font1}" Text="75" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="ABP" Margin="0,0,10,0"  Width="36"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <Canvas x:Name="myCanvas2" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
+                                    <Polyline x:Name="polyline2" Points="" Stroke="#339900"  StrokeThickness="1" StrokeLineJoin="Round"  FillRule="EvenOdd"/>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="1" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="IBP" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_IBP" Style="{DynamicResource font1}" Text="120/80" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="PLETH" Margin="0,0,10,0"  Width="36"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <Canvas x:Name="myCanvas3" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
+                                    <Polyline x:Name="polyline3" Points="" Stroke="#339900"  StrokeThickness="1" StrokeLineJoin="Round"  FillRule="EvenOdd" />
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="2" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="SpO2" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_SpO2" Style="{DynamicResource font1}" Text="98" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="RESP" Margin="0,0,10,0"  Width="36"/>
+                        <Grid Style="{DynamicResource bg1 }" >
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <Canvas x:Name="myCanvas4" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
+                                    <Polyline x:Name="polyline4" Points="" Stroke="#339900"  StrokeThickness="1" StrokeLineJoin="Round" FillRule="EvenOdd"/>
+                                </Canvas>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="3" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="RR" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_RespRate" Style="{DynamicResource font1}" Text="15" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>
