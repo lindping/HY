@@ -259,7 +259,6 @@ namespace YH.Virtual_ECG_Monitor
                     newleftplotCount = plotCount * nRespRatio / 100;
                     newrightplotCount = newplotCount - newleftplotCount;
                 }
-
             }
 
             wavedata = new float[newplotCount];         //重新定义长度
@@ -300,7 +299,6 @@ namespace YH.Virtual_ECG_Monitor
                     wavedata[i] = currentwavedata[o,0] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
                 }
             }
-
 
             //右边波形
             if (newleftplotCount > leftplotCount)

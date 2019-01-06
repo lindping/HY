@@ -22,7 +22,10 @@ namespace YH.Virtual_ECG_Monitor
         public WaveDisplay()
         {
             InitializeComponent();
-            uc_wave.Run(Rhythm.Rhythm_01,60);       
+            uc_wave.Run_ECG(Rhythm.Rhythm_01,60);
+            uc_wave.Run_PLETH(120,50);
+            uc_wave.Run_ABP(50, 140, 90);
+            uc_wave.Run_RESP(RespType.Resp_01, 100, 60, 100, 80);
         }
     }
 }

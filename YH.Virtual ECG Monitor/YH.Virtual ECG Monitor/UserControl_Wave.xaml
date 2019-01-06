@@ -57,8 +57,8 @@
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
-                                <Canvas x:Name="myCanvas2" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="640" Margin="0">
-                                    <Polyline x:Name="polyline2" Points="" Stroke="#339900"  StrokeThickness="1" StrokeLineJoin="Round"  FillRule="EvenOdd"/>
+                                <Canvas x:Name="myCanvas2" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
+                                    <Polyline x:Name="polyline2" Points="" Stroke="Red"  StrokeThickness="2" StrokeLineJoin="Round"  FillRule="EvenOdd"/>
                                 </Canvas>
                             </Viewbox>
                         </Grid>
@@ -82,7 +82,7 @@
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
                                 <Canvas x:Name="myCanvas3" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
-                                    <Polyline x:Name="polyline3" Points="" Stroke="#339900"  StrokeThickness="1" StrokeLineJoin="Round"  FillRule="EvenOdd" />
+                                    <Polyline x:Name="polyline3" Points="" Stroke="Red"  StrokeThickness="2" StrokeLineJoin="Round"  FillRule="EvenOdd" />
                                 </Canvas>
                             </Viewbox>
                         </Grid>
@@ -106,7 +106,7 @@
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
                                 <Canvas x:Name="myCanvas4" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
-                                    <Polyline x:Name="polyline4" Points="" Stroke="#339900"  StrokeThickness="1" StrokeLineJoin="Round" FillRule="EvenOdd"/>
+                                    <Polyline x:Name="polyline4" Points="" Stroke="Red"  StrokeThickness="2" StrokeLineJoin="Round" FillRule="EvenOdd"/>
                                 </Canvas>
                             </Viewbox>
                         </Grid>

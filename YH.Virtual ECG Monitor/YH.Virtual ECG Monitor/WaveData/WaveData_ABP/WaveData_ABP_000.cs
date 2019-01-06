@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace  YH.Virtual_ECG_Monitor
 {
-    public class WaveData_ABP_01 : WaveData_ABP
+    public class WaveData_ABP_000 : WaveData_ABP
     {
 
-        public WaveData_ABP_01() : base()
+        public WaveData_ABP_000() : base()
         {
             Rate = 80;
             BaseAMP = 0.2f;
