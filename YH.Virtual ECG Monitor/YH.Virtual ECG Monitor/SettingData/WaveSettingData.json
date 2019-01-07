@@ -1,1 +1,1 @@
-﻿{"Custom":{"PLETH":{"Gain":5,"Speed":100},"ABP":{"Gain":5,"Speed":100},"PAP":{"Gain":10,"Speed":25},"CO2":{"Gain":20,"Speed":25}},"Default":{"PLETH":{"Gain":5,"Speed":25},"ABP":{"Gain":10,"Speed":25},"PAP":{"Gain":10,"Speed":25},"CO2":{"Gain":10,"Speed":25}}}
+﻿{"Custom":{"PLETH":{"Gain":5,"Speed":5},"ABP":{"Gain":5,"Speed":100},"PAP":{"Gain":5,"Speed":25},"CO2":{"Gain":5,"Speed":25}},"Default":{"PLETH":{"Gain":5,"Speed":25},"ABP":{"Gain":10,"Speed":25},"PAP":{"Gain":10,"Speed":25},"CO2":{"Gain":10,"Speed":25}}}

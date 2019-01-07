@@ -4,11 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
-        mc:Ignorable="d"
-        xmlns:my="clr-namespace:YH.Virtual_ECG_Monitor"
-        Title="WaveDisplay" Height="800" Width="800">
+        mc:Ignorable="d"  
+        Title="WaveDisplay" Height="800" Width="800"  Loaded="Window_Loaded" >
     <Grid>
-        <my:UserControl_Wave HorizontalAlignment="Left" Margin="0,0" x:Name="uc_wave" VerticalAlignment="Top" Height="600" Width="700" />
+        <local:UserControl_Wave HorizontalAlignment="Left" Margin="0,0" x:Name="uc_wave" VerticalAlignment="Top" Height="600" Width="700" />
+        <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="305,660,0,0" VerticalAlignment="Top" Width="75" Click="button_Click"/>
 
     </Grid>
 </Window>

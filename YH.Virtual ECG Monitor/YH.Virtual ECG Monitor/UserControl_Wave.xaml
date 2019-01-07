@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
                mc:Ignorable="d" 
-             d:DesignHeight="640" d:DesignWidth="720">
+             d:DesignHeight="640" d:DesignWidth="960">
     <Grid>
         <Border Grid.Column="0" CornerRadius="5" Padding="10" Style="{DynamicResource bg1}" BorderBrush="Red" BorderThickness="0">
             <!--右侧表格-->
@@ -32,10 +32,8 @@
                         <TextBlock Style="{DynamicResource font1}" Text="ECG II" Margin="0,0,10,0" Width="36"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
-                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left"  >
-                                <Canvas x:Name="myCanvas1" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
-                                    <Polyline x:Name="polyline1" Points="" Stroke="Red"  StrokeThickness="2" StrokeLineJoin="Round"  FillRule="EvenOdd"/>
-                                </Canvas>
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left"  Height="80" Width="640" >                           
+                                <local:UserControl_OneWave x:Name="ecg_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>
                             </Viewbox>
                         </Grid>
                     </DockPanel>
@@ -57,10 +55,8 @@
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
-                                <Canvas x:Name="myCanvas2" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
-                                    <Polyline x:Name="polyline2" Points="" Stroke="Red"  StrokeThickness="2" StrokeLineJoin="Round"  FillRule="EvenOdd"/>
-                                </Canvas>
-                            </Viewbox>
+                                <local:UserControl_OneWave x:Name="abp_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>                            
+                             </Viewbox>
                         </Grid>
                     </DockPanel>
                 </Border>
@@ -81,9 +77,7 @@
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
-                                <Canvas x:Name="myCanvas3" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
-                                    <Polyline x:Name="polyline3" Points="" Stroke="Red"  StrokeThickness="2" StrokeLineJoin="Round"  FillRule="EvenOdd" />
-                                </Canvas>
+                                <local:UserControl_OneWave x:Name="pleth_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>                             
                             </Viewbox>
                         </Grid>
                     </DockPanel>
@@ -104,10 +98,8 @@
                         <TextBlock Style="{DynamicResource font1}" Text="RESP" Margin="0,0,10,0"  Width="36"/>
                         <Grid Style="{DynamicResource bg1 }" >
                             <!--tablebg1-->
-                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
-                                <Canvas x:Name="myCanvas4" Height="80" VerticalAlignment="Top" HorizontalAlignment="Center" Width="600" Margin="0">
-                                    <Polyline x:Name="polyline4" Points="" Stroke="Red"  StrokeThickness="2" StrokeLineJoin="Round" FillRule="EvenOdd"/>
-                                </Canvas>
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">                          
+                                <local:UserControl_OneWave x:Name="resp_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>
                             </Viewbox>
                         </Grid>
                     </DockPanel>

@@ -123,6 +123,9 @@
     <Compile Include="OtherWave.xaml.cs">
       <DependentUpon>OtherWave.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControl_OneWave.xaml.cs">
+      <DependentUpon>UserControl_OneWave.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl_Wave.xaml.cs">
       <DependentUpon>UserControl_Wave.xaml</DependentUpon>
     </Compile>
@@ -229,6 +232,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="OtherWave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl_OneWave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

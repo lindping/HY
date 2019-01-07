@@ -20,7 +20,7 @@ namespace YH.Virtual_ECG_Monitor
         /// </summary>
         /// <param name="eRhythm"></param>
         /// <param name="nHeartRate"></param>
-        public float[,] GetWaveData_ECG(Rhythm eRhythm, int nHeartRate)
+        public float[,] GetWaveData_ECG(Rhythm eRhythm, int nHeartRate, float baseAMP)
         {
             float[,] wavedata;
             //float baseAMP = 1.0f;                             
@@ -28,7 +28,7 @@ namespace YH.Virtual_ECG_Monitor
 
             float[,] currentwavedata = wave_ECG.WaveData;    //获取ECG波形的数据
             int currentwaverate = wave_ECG.Rate;             //获取ECG波形的频率
-            float baseAMP = wave_ECG.BaseAMP;                //原始数据放大倍数
+    //        float baseAMP = wave_ECG.BaseAMP;                //原始数据放大倍数
             int plotCount = currentwavedata.GetLength(0);
 
             int newplotCount = 1;
@@ -100,7 +100,7 @@ namespace YH.Virtual_ECG_Monitor
         /// </summary>
         /// <param name="nPlot"></param>
         /// <param name="nSpo2"></param>
-        public float[] GetWaveData_ABP(int nPlot, int nSystolic, int nDiastolic)
+        public float[] GetWaveData_ABP(int nPlot, int nSystolic, int nDiastolic, float baseAMP)
         {
             float[] wavedata = new float[0];
             //const float baseAMP = 0.5f;                                   //原始数据放大倍数  
@@ -108,7 +108,7 @@ namespace YH.Virtual_ECG_Monitor
 
             float[] currentwavedata = wave_ABP.WaveData;       //获取ABP波形的数据
             int currentwaverate = wave_ABP.Rate;               //获取ABP波形的频率
-            float baseAMP = wave_ABP.BaseAMP;                  //原始数据放大倍数  
+         //   float baseAMP = wave_ABP.BaseAMP;                  //原始数据放大倍数  
             int plotCount = currentwavedata.GetLength(0);
 
             int newplotCount = nPlot;
@@ -161,7 +161,7 @@ namespace YH.Virtual_ECG_Monitor
         /// </summary>
         /// <param name="nPlethRate"></param>
         /// <param name="nSpo2"></param>
-        public float[] GetWaveData_PLETH(int plot, int nSpo2)
+        public float[] GetWaveData_PLETH(int plot, int nSpo2, float baseAMP)
         {
             float[] wavedata = new float[0];
             //const float baseAMP = 0.5f;                                        //原始数据放大倍数  
@@ -169,7 +169,7 @@ namespace YH.Virtual_ECG_Monitor
 
             float[] currentwavedata = wave_PLETH.WaveData;       //获取PLETH波形的数据
             int currentwaverate = wave_PLETH.Rate;               //获取PLETH波形的频率
-            float baseAMP = wave_PLETH.BaseAMP;                  //原始数据放大倍数 
+        //    float baseAMP = wave_PLETH.BaseAMP;                  //原始数据放大倍数 
             int plotCount = currentwavedata.GetLength(0);
 
             int newplotCount = plot;
@@ -222,7 +222,7 @@ namespace YH.Virtual_ECG_Monitor
         /// <param name="nRespRate"></param>
         /// <param name="nInspCapacity"></param>
         /// <param name="nRespRatio"></param>
-        public float[] GetWaveData_RESP(RespType eRespType, int plot, int nRespRate, int nInspCapacity, int nRespRatio)
+        public float[] GetWaveData_RESP(RespType eRespType, int plot, int nRespRate, int nInspCapacity, int nRespRatio,float baseAMP)
         {
             float[] wavedata = new float[0];
             //const float baseAMP = 30.0f;
@@ -230,7 +230,7 @@ namespace YH.Virtual_ECG_Monitor
 
             float[,] currentwavedata = wave_RESP.WaveData;       //获取RESP波形的数据
             int currentwaverate = wave_RESP.Rate;               //获取RESP波形的频率
-            float baseAMP = wave_RESP.BaseAMP;                    //原始数据放大倍数 
+          //  float baseAMP = wave_RESP.BaseAMP;                    //原始数据放大倍数 
 
             int plotCount = 1, leftplotCount = 1, rightplotCount = 0;
             plotCount = currentwavedata.GetLength(0);
