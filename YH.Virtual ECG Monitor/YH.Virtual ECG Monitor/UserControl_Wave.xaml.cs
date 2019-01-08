@@ -59,14 +59,12 @@ namespace YH.Virtual_ECG_Monitor
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[] Pleth_data = content.GetWaveData_PLETH(plot, spo2, waveSetting.Custom.PLETH.Gain);
             pleth_wave.Run(Pleth_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed);
-
             textblock_SpO2.Text = spo2.ToString();
         }
 
         public void Run_ABP(int nPlot, int nSystolic, int nDiastolic)
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
-
             float[]  ABP_data = content.GetWaveData_ABP(nPlot, nSystolic, nDiastolic, waveSetting.Custom.ABP.Gain);
             abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.ABP.Speed);       
             textblock_IBP.Text = string.Format("{0}/{1}", nSystolic, nDiastolic);
