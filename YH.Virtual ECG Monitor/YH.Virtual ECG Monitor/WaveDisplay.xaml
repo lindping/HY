@@ -8,6 +8,5 @@
         Title="WaveDisplay" Height="800" Width="800"  Loaded="Window_Loaded" >
     <Grid>
         <local:UserControl_Wave HorizontalAlignment="Left" Margin="0,0" x:Name="uc_wave" VerticalAlignment="Top" Height="600" Width="700" />
-
     </Grid>
 </Window>
