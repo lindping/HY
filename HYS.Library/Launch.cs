@@ -118,6 +118,10 @@ namespace HYS.Library
             this.WorkResetEvent.Set();
         }
 
+        public void Close()
+        {
+            DestroyWork();
+        }
         #endregion
 
         #region *** Private Method ***

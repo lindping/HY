@@ -186,13 +186,11 @@ namespace YH.Virtual_ECG_Monitor
                 {
                     if (i < plotCount)
                     {
-
                         wavedata[i] = currentwavedata[i] * (nSpo2 / 100.0f) * baseAMP - waveOffsetY0;
                         //ecgwavelastplotNum = i + 1;
                     }
                     else
                     {
-
                         wavedata[i] = currentwavedata[0] * (nSpo2 / 100.0f) * baseAMP - waveOffsetY0;
 
                     }

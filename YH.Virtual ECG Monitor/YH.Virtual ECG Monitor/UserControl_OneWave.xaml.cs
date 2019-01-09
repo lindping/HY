@@ -39,10 +39,15 @@ namespace YH.Virtual_ECG_Monitor
 
         public void Run(float[] data, int maxWaveCount, float speed)
         {
+
+            if (launch != null)
+            {
+                launch.Close();
+            }
+            launch = new Launch((int)(1000 / speed));
             this.data = data;
             MaxWaveCount = maxWaveCount;
             addX = (double)ActualWidth / (double)maxWaveCount / ((double)data.GetLength(0));
-            launch = new Launch((int)(1000 / speed));
             launch.OnElapsed += launch_OnElapsed;
             launch.Start();
         }
@@ -51,15 +56,17 @@ namespace YH.Virtual_ECG_Monitor
         {
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                float y = data[i];
-                polyline.Points.Add(new Point(x, y));
-                x += (float)addX;
-                i++;
                 if (i >= data.GetLength(0))
                 {
                     i = 0;
                     curWaveCount++;
                 }
+
+                float y = data[i];
+                polyline.Points.Add(new Point(x, y));
+                x += (float)addX;
+                i++;
+
                 if (curWaveCount >= MaxWaveCount)
                 {
                     curWaveCount = 0;
