@@ -28,7 +28,7 @@ namespace YH.Virtual_ECG_Monitor
             InitializeComponent();
             random = new Random();
             content = new Content_Wave();
-            launch = new Launch(2000);
+            launch = new Launch(15000);
             launch.OnElapsed += Launch_OnElapsed;
            
             launch.Start();
@@ -79,7 +79,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[]  ABP_data = content.GetWaveData_ABP(nPlot, nSystolic, nDiastolic, waveSetting.Custom.ABP.Gain/10.00f);
-            abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.ABP.Speed);
+            abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed * 20);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
                 textblock_IBP.Text = string.Format("{0}/{1}", nSystolic, nDiastolic);
@@ -90,7 +90,7 @@ namespace YH.Virtual_ECG_Monitor
         {     
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[]  RESP_data = content.GetWaveData_RESP(respType,plot,respRate,capacity, respRatio, waveSetting.Custom.CO2.Gain*20);
-            resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.CO2.Speed*5);
+            resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed * 20);
 
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {

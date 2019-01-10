@@ -143,7 +143,9 @@ namespace HYS.Library
         {
             _isRun = false;
             //Thread.Sleep(100);
-            WorkThread.DisableComObjectEagerCleanup();
+            WorkThread.DisableComObjectEagerCleanup();     
+
+
         }
 
         /// <summary>

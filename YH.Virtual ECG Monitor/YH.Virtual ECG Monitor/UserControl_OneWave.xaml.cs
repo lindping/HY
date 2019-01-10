@@ -40,15 +40,16 @@ namespace YH.Virtual_ECG_Monitor
         public void Run(float[] data, int maxWaveCount, float speed)
         {
 
-            if (launch != null)
+            if (launch == null)
             {
-                launch.Close();
+                launch = new Launch();
+                launch.OnElapsed += launch_OnElapsed;
             }
-            launch = new Launch((int)(1000 / speed));
+            launch.Interval = (int)(1000 / speed);
             this.data = data;
             MaxWaveCount = maxWaveCount;
             addX = (double)ActualWidth / (double)maxWaveCount / ((double)data.GetLength(0));
-            launch.OnElapsed += launch_OnElapsed;
+         
             launch.Start();
         }
 
