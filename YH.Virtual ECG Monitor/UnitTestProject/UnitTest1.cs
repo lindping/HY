@@ -10,10 +10,11 @@ namespace UnitTestProject
         [TestMethod]
         public void TestMethod1()
         {
-            TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();
-            var setupInfo = tfa.GenerateSetupCode("lindping", "11111111111111111111", 300, 300);
+//            谷歌身份认证账号 apay_lindping@apay.com
+//谷歌身份认证秘钥 MQ3GCZBZGJSTAZBU
 
-           var result = tfa.ValidateTwoFactorPIN("11111111111111111111", "429586");
+            TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();      
+           var result = tfa.ValidateTwoFactorPIN("d6ad92e0d4", "492803");
 
         }
     }
