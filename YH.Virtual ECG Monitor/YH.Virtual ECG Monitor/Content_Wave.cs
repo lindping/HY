@@ -341,4 +341,15 @@ namespace YH.Virtual_ECG_Monitor
         }
 
     }
+
+    //public enum WaveTypes
+    //{
+    //    动脉血压=0,
+    //    二氧化碳=1,
+    //    肺动脉压=2,
+    //    血氧饱和度=3
+    //}
+
+   
+
 }

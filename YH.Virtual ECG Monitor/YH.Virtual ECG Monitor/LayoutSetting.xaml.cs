@@ -233,6 +233,8 @@ namespace YH.Virtual_ECG_Monitor
             return new string[3] { title, name, status };
 
         }
+
+        Button selectWaveButton;
         /// <summary>
         /// 波形位置按钮响应事件处理
         /// </summary>
@@ -241,6 +243,7 @@ namespace YH.Virtual_ECG_Monitor
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
+            selectWaveButton = button;
             //读出按钮的坐标信息
             string[] tags = button.Tag.ToString().Split(',');
             waveCategoryIndex = int.Parse(tags[0]);
@@ -309,6 +312,11 @@ namespace YH.Virtual_ECG_Monitor
                 return;
             }
             selectedWave.Name = lbWaveCategory.SelectedValue.ToString();
+            if (selectWaveButton != null)
+            {
+                (selectWaveButton.Content as TextBlock).Text = selectedWave.Name;
+              //  selectWaveButton.
+            }
 
         }
 

@@ -16,10 +16,14 @@
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <!--定义Grid的列，定义2列-->
-                    <ColumnDefinition Width="4*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <!--网格分割线-->
@@ -27,53 +31,53 @@
                 <GridSplitter Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                 <GridSplitter Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                 <GridSplitter Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
-                <Border Grid.Row="0" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="3" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="ECG II" Margin="0,0,10,0" Width="36"/>
-                        <Grid Style="{DynamicResource bg1 }">
+                        <TextBlock Style="{DynamicResource font1}" Text="波形1" Margin="0,0,10,0" Width="36"/>
+                        <Grid Style="{DynamicResource bg1}">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left"  Height="80" Width="640" >                           
-                                <local:UserControl_OneWave x:Name="ecg_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>
+                                <local:UserControl_OneWave x:Name="wave_1"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>
                             </Viewbox>
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="0" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="HR" Margin="0,0,10,0" VerticalAlignment="Top" />
+                        <TextBlock Style="{DynamicResource font1}" Text="波形2" Margin="0,0,10,0" VerticalAlignment="Top" />
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left" >
-                                <TextBlock x:Name="textblock_HeartRate" Style="{DynamicResource font1}" Text="75" Margin="0,0,10,0"/>
+                                <local:UserControl_OneWave x:Name="wave_2"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>
                             </Viewbox>
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="1" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="ABP" Margin="0,0,10,0"  Width="36"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="波形3" Margin="0,0,10,0"  Width="36"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
-                                <local:UserControl_OneWave x:Name="abp_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>                            
-                             </Viewbox>
-                        </Grid>
-                    </DockPanel>
-                </Border>
-                <Border Grid.Row="1" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
-                    <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="IBP" Margin="0,0,10,0" VerticalAlignment="Top"/>
-                        <Grid Style="{DynamicResource bg1 }">
-                            <!--tablebg1-->
-                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
-                                <TextBlock x:Name="textblock_IBP" Style="{DynamicResource font1}" Text="120/80" Margin="0,0,10,0"/>
+                                <local:UserControl_OneWave x:Name="wave_3"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>
                             </Viewbox>
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="2" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="PLETH" Margin="0,0,10,0"  Width="36"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="波形4" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_IBP" Style="{DynamicResource font1}" Text="" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+                <Border Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="波形5" Margin="0,0,10,0"  Width="36"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
@@ -82,20 +86,20 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="2" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="0" Grid.Column="3" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="SpO2" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="视窗1" Margin="0,0,10,0" VerticalAlignment="Top"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
-                                <TextBlock x:Name="textblock_SpO2" Style="{DynamicResource font1}" Text="98" Margin="0,0,10,0"/>
+                                <TextBlock x:Name="textblock_SpO2" Style="{DynamicResource font1}" Text="" Margin="0,0,10,0"/>
                             </Viewbox>
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="3" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="1" Grid.Column="3"  CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="RESP" Margin="0,0,10,0"  Width="36"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="视窗2" Margin="0,0,10,0"  Width="36"/>
                         <Grid Style="{DynamicResource bg1 }" >
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">                          
@@ -104,17 +108,90 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="3" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="2" Grid.Column="3"  CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="RR" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="视窗3" Margin="0,0,10,0" VerticalAlignment="Top"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
-                                <TextBlock x:Name="textblock_RespRate" Style="{DynamicResource font1}" Text="15" Margin="0,0,10,0"/>
+                                <TextBlock x:Name="textblock_RespRate" Style="{DynamicResource font1}" Text="" Margin="0,0,10,0"/>
                             </Viewbox>
                         </Grid>
                     </DockPanel>
                 </Border>
+
+                <Border Grid.Row="3" Grid.Column="3"  CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="视窗4" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_3_3" Style="{DynamicResource font1}" Text="" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+
+                <Border Grid.Row="4" Grid.Column="3"  CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="视窗5" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_4_3" Style="{DynamicResource font1}" Text="" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+
+                <Border Grid.Row="5" Grid.Column="0"  CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="NIBP" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }" >
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_5_0" Style="{DynamicResource font1}" Text="" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+
+                <Border Grid.Row="5" Grid.Column="1"  CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="视窗6" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_5_1" Style="{DynamicResource font1}" Text="" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+
+                <Border Grid.Row="5" Grid.Column="2"  CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="视窗7" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_5_2" Style="{DynamicResource font1}" Text="" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+
+                <Border Grid.Row="5" Grid.Column="4"  CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>
+                        <TextBlock Style="{DynamicResource font1}" Text="视窗8" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <Grid Style="{DynamicResource bg1 }">
+                            <!--tablebg1-->
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                                <TextBlock x:Name="textblock_5_4" Style="{DynamicResource font1}" Text="" Margin="0,0,10,0"/>
+                            </Viewbox>
+                        </Grid>
+                    </DockPanel>
+                </Border>
+
             </Grid>
         </Border>
     </Grid>

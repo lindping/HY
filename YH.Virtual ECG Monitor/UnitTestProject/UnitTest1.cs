@@ -14,7 +14,7 @@ namespace UnitTestProject
 //谷歌身份认证秘钥 MQ3GCZBZGJSTAZBU
 
             TwoFactorAuthenticator tfa = new TwoFactorAuthenticator();      
-           var result = tfa.ValidateTwoFactorPIN("d6ad92e0d4", "492803");
+           var result = tfa.ValidateTwoFactorPIN("7d07c20967", "492803");
 
         }
     }
