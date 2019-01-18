@@ -8,7 +8,7 @@
     "Max": 120,
     "Min": 60,
     "QRSVolumn": 6,
-    "Speed": 25,
+    "Speed": 5,
     "Warning": true
   }
 }

@@ -132,9 +132,6 @@
     <Compile Include="UserControl_Wave.xaml.cs">
       <DependentUpon>UserControl_Wave.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControl_Wave_Base.xaml.cs">
-      <DependentUpon>UserControl_Wave_Base.xaml</DependentUpon>
-    </Compile>
     <Compile Include="VirtualManSetting.xaml.cs">
       <DependentUpon>VirtualManSetting.xaml</DependentUpon>
     </Compile>
@@ -250,10 +247,6 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControl_Wave.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl_Wave_Base.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

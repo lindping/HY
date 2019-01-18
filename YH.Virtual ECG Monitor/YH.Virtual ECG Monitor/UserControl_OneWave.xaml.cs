@@ -1,18 +1,6 @@
 ﻿using HYS.Library;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Threading;
 
 namespace YH.Virtual_ECG_Monitor
@@ -22,12 +10,13 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class UserControl_OneWave : UserControl
     {
+        int interval = 60;
         Launch launch;
         double addX;
         int i = 0;
-        float x = 0;
+        double x = 0;
         int curWaveCount = 0;
-
+        int intervalCount;
         float[] data;
         public int MaxWaveCount { get; set; }
 
@@ -39,17 +28,30 @@ namespace YH.Virtual_ECG_Monitor
 
         public void Run(float[] data, int maxWaveCount, float speed)
         {
-
+          
             if (launch == null)
             {
                 launch = new Launch();
+                launch.Interval = interval;
                 launch.OnElapsed += launch_OnElapsed;
             }
-            launch.Interval = (int)(1000 / speed);
+        
             this.data = data;
-            MaxWaveCount = maxWaveCount;
-            addX = (double)ActualWidth / (double)maxWaveCount / ((double)data.GetLength(0));
-         
+            MaxWaveCount = maxWaveCount;         
+
+             int  pointAmount= (int)(maxWaveCount * data.GetLength(0) * speed);
+        
+            if (pointAmount < 60000 / interval)
+            {
+                interval = 60000 / pointAmount;
+                intervalCount = 1;
+            }
+            else
+            {
+                intervalCount = pointAmount * interval / 60000;
+            }
+            addX = ActualWidth /(double)( (maxWaveCount * data.Length));
+
             launch.Start();
         }
 
@@ -63,10 +65,17 @@ namespace YH.Virtual_ECG_Monitor
                     curWaveCount++;
                 }
 
-                float y = data[i];
-                polyline.Points.Add(new Point(x, y));
-                x += (float)addX;
-                i++;
+                for (int j = 0; j < intervalCount; j++)
+                {
+                    if (i >= data.Length)
+                    {
+                        break;
+                    }
+                    float y = data[i];
+                    polyline.Points.Add(new Point(x, y));
+                    x += addX;
+                    i++;
+                }            
 
                 if (curWaveCount >= MaxWaveCount)
                 {

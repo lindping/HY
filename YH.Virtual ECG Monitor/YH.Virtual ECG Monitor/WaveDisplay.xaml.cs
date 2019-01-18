@@ -26,10 +26,10 @@ namespace YH.Virtual_ECG_Monitor
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-           // uc_wave.Run_ECG(Rhythm.Rhythm_01, 60);        
-           // uc_wave.Run_ABP(100, 120, 80);
-           //uc_wave.Run_PLETH(120, 50);
-           // uc_wave.Run_RESP(RespType.Resp_01, 100, 60, 100, 80);
+            uc_wave.ABP_Paras = new ABP_Paras() {  Diastolic=100, Systolic=130, Plot=200  };
+            uc_wave.ECG_Paras = new ECG_Paras() {  HeartRat=100, Rhythm= Rhythm.Rhythm_01};
+            uc_wave.Resp_Paras = new Resp_Paras() {  RespType= RespType.Resp_02,  Capacity=100, Plot= 200, RespRate=100, RespRatio=80 };
+            uc_wave.PLETH_Paras = new PLETH_Paras() {  Plot= 200, Spo2=60 };       
 
         }    
     }

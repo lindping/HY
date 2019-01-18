@@ -13,45 +13,84 @@ namespace YH.Virtual_ECG_Monitor
     {
         int MaxwaveCount = 8;//显示波形个数上限
 
-        public Rhythm Rhythm { get; set; }
-        public int HeartRate { get; set; }
-
-
         int ecg_wave_column_index = 1;
 
-        Content_Wave content;
-        Launch launch;
-        Random random;
-   
+        Content_Wave content =new Content_Wave();
+
         public UserControl_Wave()
         {
             InitializeComponent();
-            random = new Random();
-            content = new Content_Wave();
-            launch = new Launch(15000);
-            launch.OnElapsed += Launch_OnElapsed;
-           
-            launch.Start();
         }
 
-        private void Launch_OnElapsed()
+        private ECG_Paras _ECG_Paras;
+        public ECG_Paras ECG_Paras
         {
-            Run_ECG(Rhythm.Rhythm_01, 60 + random.Next(40));
-            int systolic = 60 + random.Next(100);
-            int diastolic = systolic - random.Next(30)-10;
-            Run_ABP(100, systolic, diastolic);
-           Run_PLETH(120, 50);
-          Run_RESP(RespType.Resp_01, 100, 60, 100, 80);
+            get
+            {
+                return _ECG_Paras;
+            }
+            set
+            {
+                _ECG_Paras = value;
+                Run_ECG(_ECG_Paras);
+            }
         }
 
-        public void Run_ECG(Rhythm mRhythm, int mHeartRatet)
-        {            
+        private PLETH_Paras _PLETH_Paras;
+        public PLETH_Paras PLETH_Paras
+        {
+            get
+            {
+                return _PLETH_Paras;
+            }
+            set
+            {
+                _PLETH_Paras = value;
+                Run_PLETH(_PLETH_Paras);
+            }
+        }
+
+        // ABP_Paras
+
+        private ABP_Paras _ABP_Paras;
+        public ABP_Paras ABP_Paras
+        {
+            get
+            {
+                return _ABP_Paras;
+            }
+            set
+            {
+                _ABP_Paras = value;
+                Run_ABP(_ABP_Paras);
+            }
+        }
+
+        //    Resp_Paras
+
+        private Resp_Paras _Resp_Paras;
+        public Resp_Paras Resp_Paras
+        {
+            get
+            {
+                return _Resp_Paras;
+            }
+            set
+            {
+                _Resp_Paras = value;
+                Run_RESP(_Resp_Paras);
+            }
+        }
+
+        
+        public void Run_ECG(ECG_Paras paras)
+        {
             //  launch_ECG.Stop();
-            Rhythm = mRhythm;
-            HeartRate = mHeartRatet;
+            Rhythm rhythm = paras.Rhythm;
+            int heartRate = paras.HeartRat;
             ECGSettingData ecgSetting = Setting.Get<ECGSettingData>();
 
-            float[,]  ecg_data = content.GetWaveData_ECG(Rhythm, HeartRate, ecgSetting.Custom.Gain/5);
+            float[,] ecg_data = content.GetWaveData_ECG(rhythm, heartRate, ecgSetting.Custom.Gain / 5);
             float[] data = new float[ecg_data.GetLength(0)];
             for (int i = 0; i < data.Length; i++)
             {
@@ -60,44 +99,71 @@ namespace YH.Virtual_ECG_Monitor
             ecg_wave.Run(data, MaxwaveCount, ecgSetting.Custom.Speed);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                textblock_HeartRate.Text = mHeartRatet.ToString();
+                textblock_HeartRate.Text = heartRate.ToString();
             });
         }
-        
-        public void Run_PLETH(int plot, int spo2)
+
+        public void Run_PLETH(PLETH_Paras paras)
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
-            float[] Pleth_data = content.GetWaveData_PLETH(plot, spo2, waveSetting.Custom.PLETH.Gain/5.00f);
-            pleth_wave.Run(Pleth_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed*20);
+            float[] Pleth_data = content.GetWaveData_PLETH(paras.Plot, paras.Spo2, waveSetting.Custom.PLETH.Gain / 5.00f);
+            pleth_wave.Run(Pleth_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                textblock_SpO2.Text = spo2.ToString();
+                textblock_SpO2.Text = paras.Spo2.ToString();
             });
         }
 
-        public void Run_ABP(int nPlot, int nSystolic, int nDiastolic)
+        public void Run_ABP(ABP_Paras paras)
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
-            float[]  ABP_data = content.GetWaveData_ABP(nPlot, nSystolic, nDiastolic, waveSetting.Custom.ABP.Gain/10.00f);
-            abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed * 20);
+            float[] ABP_data = content.GetWaveData_ABP(paras.Plot, paras.Plot, paras.Diastolic, waveSetting.Custom.ABP.Gain / 10.00f);
+            abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed );
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                textblock_IBP.Text = string.Format("{0}/{1}", nSystolic, nDiastolic);
+                textblock_IBP.Text = string.Format("{0}/{1}", paras.Systolic, paras.Diastolic);
             });
         }
 
-        public void Run_RESP(RespType respType,int plot, int respRate,int capacity,int respRatio)
-        {     
+        public void Run_RESP(Resp_Paras paras)
+        {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
-            float[]  RESP_data = content.GetWaveData_RESP(respType,plot,respRate,capacity, respRatio, waveSetting.Custom.CO2.Gain*20);
-            resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed * 20);
+            float[] RESP_data = content.GetWaveData_RESP(paras.RespType, paras.Plot, paras.RespRate, paras.Capacity, paras.RespRatio, waveSetting.Custom.CO2.Gain * 20);
+            resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed);
 
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                textblock_RespRate.Text = respRate.ToString();
+                textblock_RespRate.Text = paras.RespRate.ToString();
             });
-        }    
+        }
+    }
 
 
+    public struct ECG_Paras
+    {
+        public Rhythm Rhythm;
+        public int HeartRat;
+    }
+
+    public struct PLETH_Paras
+    {
+        public int Plot { get; set; }
+        public int Spo2 { get; set; }
+    }
+
+    public struct ABP_Paras
+    {
+        public int Plot { get; set; }
+        public int Systolic { get; set; }
+        public int Diastolic { get; set; }
+    }
+
+    public struct Resp_Paras
+    {
+        public RespType RespType { get; set; }
+        public int Plot { get; set; }
+        public int RespRate { get; set; }
+        public int Capacity { get; set; }
+        public int RespRatio { get; set; }
     }
 }
