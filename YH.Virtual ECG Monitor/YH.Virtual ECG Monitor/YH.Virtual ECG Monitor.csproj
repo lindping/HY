@@ -126,9 +126,6 @@
     <Compile Include="UserControl_OneWave.xaml.cs">
       <DependentUpon>UserControl_OneWave.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControl_5Wave.xaml.cs">
-      <DependentUpon>UserControl_5Wave.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UserControl_Wave.xaml.cs">
       <DependentUpon>UserControl_Wave.xaml</DependentUpon>
     </Compile>
@@ -241,10 +238,6 @@
     <Page Include="UserControl_OneWave.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl_5Wave.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="UserControl_Wave.xaml">
       <SubType>Designer</SubType>
