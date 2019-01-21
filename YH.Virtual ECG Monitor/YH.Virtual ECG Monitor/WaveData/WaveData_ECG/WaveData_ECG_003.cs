@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using YH.Simulator.Framework;
 namespace YH.Virtual_ECG_Monitor
 {
-    public class Wave_RESP_003 : Wave_RESP
+    public class WaveData_ECG_003 : WaveData_ECG
     {
-        public Wave_RESP_003()
+        public WaveData_ECG_003()
             : base()
         {
             // TODO: Complete member initialization

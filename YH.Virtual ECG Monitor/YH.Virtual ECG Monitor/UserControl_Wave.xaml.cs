@@ -15,7 +15,7 @@ namespace YH.Virtual_ECG_Monitor
 
         int ecg_wave_column_index = 1;
 
-        Content_Wave content =new Content_Wave();
+        Content_Wave content = new Content_Wave();
 
         public UserControl_Wave()
         {
@@ -82,7 +82,7 @@ namespace YH.Virtual_ECG_Monitor
             }
         }
 
-        
+
         public void Run_ECG(ECG_Paras paras)
         {
             //  launch_ECG.Stop();
@@ -118,7 +118,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[] ABP_data = content.GetWaveData_ABP(paras.Plot, paras.Plot, paras.Diastolic, waveSetting.Custom.ABP.Gain / 10.00f);
-            abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed );
+            abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
                 textblock_IBP.Text = string.Format("{0}/{1}", paras.Systolic, paras.Diastolic);
@@ -135,6 +135,23 @@ namespace YH.Virtual_ECG_Monitor
             {
                 textblock_RespRate.Text = paras.RespRate.ToString();
             });
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Button btn = sender as Button;
+            switch (btn.Content.ToString())
+            {
+                case "ECG设置":
+                    ECGRunSetting runSetting = new ECGRunSetting(ECG_Paras.Rhythm, ECG_Paras.HeartRat);
+                    bool? dialog = runSetting.ShowDialog();
+                    if (dialog.HasValue && dialog.Value)
+                    {
+                        ECG_Paras = new ECG_Paras() { Rhythm = runSetting.Rhythm,  HeartRat= runSetting.HeartRate };
+                    }
+                    break;
+            }
+
         }
     }
 

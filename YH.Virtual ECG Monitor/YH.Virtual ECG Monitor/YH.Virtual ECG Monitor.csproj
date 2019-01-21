@@ -120,6 +120,9 @@
       <DependentUpon>AlartVolumnSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content_Wave.cs" />
+    <Compile Include="ECGRunSetting.xaml.cs">
+      <DependentUpon>ECGRunSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="OtherWave.xaml.cs">
       <DependentUpon>OtherWave.xaml</DependentUpon>
     </Compile>
@@ -153,6 +156,32 @@
     </Compile>
     <Compile Include="WaveData\RespType.cs" />
     <Compile Include="WaveData\WaveData_ECG\WaveData_ECG.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_002.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_003.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_004.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_005.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_006.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_007.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_008.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_009.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_010.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_011.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_012.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_013.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_014.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_015.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_016.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_017.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_018.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_019.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_020.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_021.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_022.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_023.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_024.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_025.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_026.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_027.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP.cs" />
     <Compile Include="SelectToColorConverter.cs" />
     <Compile Include="SetLayoutName.xaml.cs">
@@ -230,6 +259,10 @@
     <Page Include="AlartVolumnSetting.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ECGRunSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OtherWave.xaml">
       <SubType>Designer</SubType>

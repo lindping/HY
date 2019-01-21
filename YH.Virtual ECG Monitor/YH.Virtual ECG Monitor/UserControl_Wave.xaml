@@ -21,6 +21,7 @@
                     <!--定义Grid的列，定义2列-->
                     <ColumnDefinition Width="4*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <!--网格分割线-->
                 <GridSplitter Grid.Row="0" Grid.Column="0" Grid.RowSpan="4" Width="1" Style="{DynamicResource Split1}" VerticalAlignment="Stretch" />
@@ -115,7 +116,16 @@
                         </Grid>
                     </DockPanel>
                 </Border>
+
+                <Border Grid.Row="0" Grid.Column="2" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <DockPanel>                    
+                        <Grid Style="{DynamicResource bg1 }">
+                            <Button Click="Button_Click">ECG设置</Button>                          
+                        </Grid>
+                    </DockPanel>
+                </Border>
             </Grid>
         </Border>
+       
     </Grid>
 </UserControl>
