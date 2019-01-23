@@ -49,6 +49,7 @@ namespace YH.Virtual_ECG_Monitor
                 return;
             }
             Setting.Save(settingModel);
+            this.DialogResult = true;
             this.Close();
         } 
      

@@ -6,9 +6,8 @@
              xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="800"  >
-    <Canvas x:Name="myCanvas"    Margin="0,0,0,0"   >
-        <Polyline x:Name="polyline" Points="" Stroke="Red"  StrokeThickness="2" StrokeLineJoin="Round"  FillRule="EvenOdd"/>
-       
-        
+    
+    <Canvas x:Name="myCanvas"    Margin="0,0,0,0"   Background="Black"   VerticalAlignment="Stretch">   
+        <Polyline x:Name="polyline" Margin="0,0,0,0" Points="0,0" Stroke="Green"     StrokeThickness="2" StrokeLineJoin="Round"  FillRule="EvenOdd" VerticalAlignment="Center" />
     </Canvas>
 </UserControl>

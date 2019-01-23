@@ -120,11 +120,17 @@
       <DependentUpon>AlartVolumnSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="Content_Wave.cs" />
+    <Compile Include="ABPRunSetting.xaml.cs">
+      <DependentUpon>ABPRunSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ECGRunSetting.xaml.cs">
       <DependentUpon>ECGRunSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="OtherWave.xaml.cs">
       <DependentUpon>OtherWave.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PLETHRunSetting.xaml.cs">
+      <DependentUpon>PLETHRunSetting.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControl_OneWave.xaml.cs">
       <DependentUpon>UserControl_OneWave.xaml</DependentUpon>
@@ -260,11 +266,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ABPRunSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="ECGRunSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="OtherWave.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="PLETHRunSetting.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

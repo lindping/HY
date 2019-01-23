@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"  
-        Title="WaveDisplay" Height="650" Width="800"  Loaded="Window_Loaded" >
-    <Grid>
-        <local:UserControl_Wave HorizontalAlignment="Left" Margin="0,0" x:Name="uc_wave" VerticalAlignment="Top" Height="600" Width="800" />
-    </Grid>
+        Title="WaveDisplay"   Loaded="Window_Loaded" >
+    <Viewbox Stretch="Fill">
+        <local:UserControl_Wave HorizontalAlignment="Left" Margin="0,0" x:Name="uc_wave" VerticalAlignment="Top"   />
+    </Viewbox>
 </Window>

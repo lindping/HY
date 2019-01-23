@@ -30,6 +30,8 @@ namespace YH.Virtual_ECG_Monitor
 
         }
 
+
+
         private void InitializeData()
         {
             data = Setting.Get<WaveSettingData>();
@@ -114,6 +116,7 @@ namespace YH.Virtual_ECG_Monitor
             data.Custom.PAP.Speed = item.Speed;
             data.Custom.PLETH.Speed = item.Speed;
             Setting.Save(data);
+            this.DialogResult = true;
             this.Close();
         }
     }

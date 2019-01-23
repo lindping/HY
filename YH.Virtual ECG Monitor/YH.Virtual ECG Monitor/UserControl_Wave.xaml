@@ -33,7 +33,7 @@
                         <TextBlock Style="{DynamicResource font1}" Text="ECG II" Margin="0,0,10,0" Width="36"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
-                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left"  Height="80" Width="640" >                           
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left"  >                           
                                 <local:UserControl_OneWave x:Name="ecg_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>
                             </Viewbox>
                         </Grid>
@@ -43,10 +43,12 @@
                     <DockPanel>
                         <TextBlock Style="{DynamicResource font1}" Text="HR" Margin="0,0,10,0" VerticalAlignment="Top" />
                         <Grid Style="{DynamicResource bg1 }">
-                            <!--tablebg1-->
-                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left" >
-                                <TextBlock x:Name="textblock_HeartRate" Style="{DynamicResource font1}" Text="75" Margin="0,0,10,0"/>
+                            <!--tablebg1-->                       
+                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left"   >
+                                <TextBlock x:Name="textblock_HeartRate" Style="{DynamicResource font1}" Text="75" Margin="0,0,10,0"/>                             
                             </Viewbox>
+                            <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right">BPM</TextBlock>
+
                         </Grid>
                     </DockPanel>
                 </Border>
@@ -118,12 +120,53 @@
                 </Border>
 
                 <Border Grid.Row="0" Grid.Column="2" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
-                    <DockPanel>                    
-                        <Grid Style="{DynamicResource bg1 }">
-                            <Button Click="Button_Click">ECG设置</Button>                          
-                        </Grid>
-                    </DockPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DockPanel   Grid.Row="0" Grid.Column="0" >
+                            <Button   Click="Button_Click">ECG设置</Button>                         
+                        </DockPanel>
+                        <DockPanel   Grid.Row="1" Grid.Column="0" >
+                            <Button  Click="Button_Click">ECG选项</Button>
+                        </DockPanel>                        
+                    </Grid>
+                 
                 </Border>
+
+                <Border Grid.Row="1" Grid.Column="2" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DockPanel   Grid.Row="0" Grid.Column="0" >
+                            <Button   Click="Button_Click">ABP设置</Button>
+                        </DockPanel>
+                        <DockPanel   Grid.Row="1" Grid.Column="0" >
+                            <Button  Click="Button_Click">ABP选项</Button>
+                        </DockPanel>
+                    </Grid>
+
+                </Border>
+
+                <Border Grid.Row="2" Grid.Column="2" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DockPanel   Grid.Row="0" Grid.Column="0" >
+                            <Button   Click="Button_Click">PLETH设置</Button>
+                        </DockPanel>
+                        <DockPanel   Grid.Row="1" Grid.Column="0" >
+                            <Button  Click="Button_Click">PLETH选项</Button>
+                        </DockPanel>
+                    </Grid>
+
+                </Border>
+
             </Grid>
         </Border>
        
