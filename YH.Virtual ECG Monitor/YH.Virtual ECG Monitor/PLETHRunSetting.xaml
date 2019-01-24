@@ -26,9 +26,8 @@
             <ComboBoxItem>250</ComboBoxItem>
             <ComboBoxItem>300</ComboBoxItem>
         </ComboBox>
-        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">Spo2</TextBlock>
-        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtSpo2"></TextBox>      
-
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">血氧饱和度 %</TextBlock>
+        <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtSpo2"></TextBox>    
         <Button Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Click="Button_Click" >确定</Button>
     </Grid>
 </Window>

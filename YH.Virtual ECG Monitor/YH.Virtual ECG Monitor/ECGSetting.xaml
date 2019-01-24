@@ -143,7 +143,7 @@
                 </StackPanel>
             </DockPanel>
             <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10,30,10,0" HorizontalAlignment="Center">
-                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16">设置心电图</TextBlock>
+                <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="16">心电图设置</TextBlock>
             </StackPanel>
 
             <Grid Grid.Row="2" Margin="30">
@@ -255,12 +255,13 @@
             <!--底部-->
             <Grid Grid.Row="4" Margin="30,20,30,0" VerticalAlignment="Bottom">
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Height="40">
-                    <Button Click="Button_Click" Background="#0089e1" Width="100" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                <Button Click="btnClose_Click" Background="#f99f3d" Width="100" Margin="0,0,20,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <TextBlock Foreground="#ffffff" Margin="5,0,5,0">取消</TextBlock>
+                </Button>
+                <Button Click="Button_Click" Background="#0089e1" Width="100" Margin="0,0,10,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
                         <TextBlock Foreground="#ffffff" Margin="5,0,5,0">确定</TextBlock>
                     </Button>
-                    <Button Click="btnClose_Click" Background="#f99f3d" Width="100" Margin="0,0,20,0" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
-                        <TextBlock Foreground="#ffffff" Margin="5,0,5,0">取消</TextBlock>
-                    </Button>
+                  
                 </StackPanel>
             </Grid>
         </Grid>

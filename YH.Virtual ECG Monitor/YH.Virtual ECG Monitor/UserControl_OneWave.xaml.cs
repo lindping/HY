@@ -12,10 +12,9 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class UserControl_OneWave : UserControl
     {
-        int interval = 60;
+        int interval = 100;
         Launch launch;
-        double addX;
-        double addY;
+        double addX;    
         int i = 0;
         double x = 0;
         int curWaveCount = 0;
@@ -40,7 +39,7 @@ namespace YH.Virtual_ECG_Monitor
             }
         }
 
-        public void Run(float[] data, int maxWaveCount, float speed)
+        public void Run(float[] data, int maxWaveCount, float speed,float gain)
         {
 
             if (launch == null)
@@ -50,19 +49,21 @@ namespace YH.Virtual_ECG_Monitor
                 launch.OnElapsed += launch_OnElapsed;
             }
 
-         
+            gain = gain / 5;
+
             float max =data.Max();
             float min = data.Min();
             float valueHeight = max - min;
             this.data = new float[data.Length];
 
-            float controlHeight = (float)myCanvas.ActualHeight*0.9f;
+            float controlHeight = (float)myCanvas.ActualHeight*0.8f;
             for (int i = 0; i < data.Length; i++)
-            {
-                  this.data[i] = controlHeight-((data[i] - min)/ valueHeight) * controlHeight+5;            
+            {                
+                this.data[i] = controlHeight-((data[i] - min)/ valueHeight) * controlHeight;
+                this.data[i] = this.data[i] +10;
             }
 
-            MaxWaveCount = maxWaveCount;
+            MaxWaveCount =maxWaveCount*(int)gain;
 
             int pointAmount = (int)(maxWaveCount * this.data.Length * (speed/5f));
 
@@ -74,8 +75,13 @@ namespace YH.Virtual_ECG_Monitor
             else
             {
                 intervalCount = pointAmount * interval / 60000;
+                if (intervalCount == 0)
+                {
+                    intervalCount = 1;
+                }
+                
             }
-            addX = ActualWidth / (double)((maxWaveCount * data.Length));
+            addX = ActualWidth / (double)((maxWaveCount * data.Length))/gain;
 
             launch.Start();
         }
@@ -102,7 +108,7 @@ namespace YH.Virtual_ECG_Monitor
                     i++;
                 }
 
-                if (curWaveCount >= MaxWaveCount)
+                if (curWaveCount >= MaxWaveCount || x>ActualWidth)
                 {
                     curWaveCount = 0;
                     i = 0;

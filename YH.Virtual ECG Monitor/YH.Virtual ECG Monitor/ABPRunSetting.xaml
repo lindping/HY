@@ -16,6 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="100"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">数据长度</TextBlock>
         <ComboBox Grid.Row="0" Grid.Column="1" x:Name="cbPlot"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center">

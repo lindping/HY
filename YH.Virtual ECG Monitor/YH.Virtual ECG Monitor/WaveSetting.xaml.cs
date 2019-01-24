@@ -111,10 +111,10 @@ namespace YH.Virtual_ECG_Monitor
                     }
                 }
             }
-            data.Custom.ABP.Speed = item.Speed;
-            data.Custom.CO2.Speed = item.Speed;
-            data.Custom.PAP.Speed = item.Speed;
-            data.Custom.PLETH.Speed = item.Speed;
+            //data.Custom.ABP.Speed = item.Speed;
+            //data.Custom.CO2.Speed = item.Speed;
+            //data.Custom.PAP.Speed = item.Speed;
+            //data.Custom.PLETH.Speed = item.Speed;
             Setting.Save(data);
             this.DialogResult = true;
             this.Close();

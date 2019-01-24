@@ -167,6 +167,21 @@
 
                 </Border>
 
+                <Border Grid.Row="3" Grid.Column="2" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <DockPanel   Grid.Row="0" Grid.Column="0" >
+                            <Button   Click="Button_Click">RESP设置</Button>
+                        </DockPanel>
+                        <DockPanel   Grid.Row="1" Grid.Column="0" >
+                            <Button  Click="Button_Click">RESP选项</Button>
+                        </DockPanel>
+                    </Grid>
+
+                </Border>
             </Grid>
         </Border>
        

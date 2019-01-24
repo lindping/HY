@@ -115,6 +115,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="IntValueConverter.cs" />
+    <Compile Include="NumericUpDown.xaml.cs">
+      <DependentUpon>NumericUpDown.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RESPRunSetting.xaml.cs">
+      <DependentUpon>RESPRunSetting.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Constants.cs" />
     <Compile Include="AlartVolumnSetting.xaml.cs">
       <DependentUpon>AlartVolumnSetting.xaml</DependentUpon>
@@ -242,6 +249,14 @@
     <Compile Include="WaveSetting.xaml.cs">
       <DependentUpon>WaveSetting.xaml</DependentUpon>
     </Compile>
+    <Page Include="NumericUpDown.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RESPRunSetting.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Dictionary\Dictionary1.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
