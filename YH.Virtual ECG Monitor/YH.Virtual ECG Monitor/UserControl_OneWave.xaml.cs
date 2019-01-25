@@ -78,11 +78,9 @@ namespace YH.Virtual_ECG_Monitor
                 if (intervalCount == 0)
                 {
                     intervalCount = 1;
-                }
-                
+                }                
             }
             addX = ActualWidth / (double)((maxWaveCount * data.Length))/gain;
-
             launch.Start();
         }
 

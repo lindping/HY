@@ -5,15 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"
-        Title="RESP运行设置" Height="200" Width="300">
-
-    <!--public RespType RespType { get; set; }
-        public int Plot { get; set; }
-        public int RespRate { get; set; }
-        public int Capacity { get; set; }
-        public int RespRatio { get; set; }-->
-    
-    
+        Title="RESP运行设置" Height="200" Width="300" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -22,13 +14,27 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"></ColumnDefinition>
+            <ColumnDefinition  Width="100"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="50"></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">数据长度</TextBlock>
-        <ComboBox Grid.Row="0" Grid.Column="1" x:Name="cbPlot"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"  Margin="0" Background="#0089e1"  VerticalAlignment="Top" >
+            <TextBlock VerticalAlignment="Center" Margin="10,0,0,0" FontSize="14" Foreground="White">RESP运行设置</TextBlock>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10">
+                <Button x:Name="BtnClose"  Foreground="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" IsCancel="True">
+                    <Grid x:Name="Uc_Grid" VerticalAlignment="Center">
+                        <Path x:Name="Uc_Path1" Stroke="#ffffff" StrokeThickness="2" Data="M0,0 L8,8" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        <Path x:Name="Uc_Path2" Stroke="#ffffff" StrokeThickness="2" Data="M8,0 L0,8" VerticalAlignment="Center" HorizontalAlignment="Center"></Path>
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">数据长度</TextBlock>
+        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cbPlot"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
             <ComboBoxItem>120</ComboBoxItem>
             <ComboBoxItem>150</ComboBoxItem>
             <ComboBoxItem>180</ComboBoxItem>
@@ -37,8 +43,8 @@
             <ComboBoxItem>300</ComboBoxItem>
         </ComboBox>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">呼吸类型</TextBlock>
-        <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cbType"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
+        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">呼吸类型</TextBlock>
+        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="cbType"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
             <ComboBoxItem>RESP_001</ComboBoxItem>
             <ComboBoxItem Selector.IsSelected="True">RESP_002</ComboBoxItem>
             <ComboBoxItem>RESP_003</ComboBoxItem>
@@ -46,15 +52,34 @@
             <ComboBoxItem >RESP_005</ComboBoxItem>
         </ComboBox>
 
-        <TextBlock Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">呼吸率</TextBlock>
-        <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtRespRate"></TextBox>
+        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">呼吸率</TextBlock>
+        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtRespRate" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+        <TextBlock Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">RPM</TextBlock>
 
-        <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">吸气量</TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtCapacity"></TextBox>
+        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">吸气量</TextBlock>
+        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtCapacity" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+        <TextBlock Grid.Row="4" Grid.Column="2" VerticalAlignment="Center">L/min</TextBlock>
 
-        <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">吸气比</TextBlock>
-        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtRespRatio"></TextBox>
+        <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">吸气比</TextBlock>
+        <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtRespRatio" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+        <TextBlock Grid.Row="5" Grid.Column="2" VerticalAlignment="Center">%</TextBlock>
 
-        <Button Grid.Row="5" Grid.Column="0"  Grid.ColumnSpan="2" Click="Button_Click" >确定</Button>
+        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3"  Background="#0089e1" Height="32"  VerticalAlignment="Bottom">
+            <StackPanel    Orientation="Horizontal" HorizontalAlignment="Center"  Background="#0089e1" VerticalAlignment="Stretch" >
+                <Button Margin="0,0,10,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  IsCancel="True" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
+                        <TextBlock Foreground="#666666" Margin="5,0,5,0">取消</TextBlock>
+                    </StackPanel>
+                </Button>
+                <Button  Click="Button_Click"  Margin="10,0,0,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="&#xea42;" Style="{DynamicResource FIcon}" FontSize="12" Foreground="#f99f3d" ></TextBlock>
+                        <TextBlock Foreground="#666666" Margin="5,0,5,0">确定</TextBlock>
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+
     </Grid>
 </Window>
