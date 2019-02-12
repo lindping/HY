@@ -39,8 +39,6 @@ namespace YH.Virtual_ECG_Monitor
             txtRespRate.Value = resp_Paras.RespRate;
             txtCapacity.Value = resp_Paras.Capacity;
             txtRespRatio.Value = resp_Paras.RespRatio;
-
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

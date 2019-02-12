@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"
-        Title="RESP运行设置" Height="200" Width="300" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
+        Title="RESP运行设置" Height="250" Width="300" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>
@@ -67,7 +67,7 @@
         <local:NumericUpDown  Grid.Row="5" Grid.Column="1" x:Name="txtRespRatio" MinValue="0" MaxValue="100" ></local:NumericUpDown>
         <TextBlock Grid.Row="5" Grid.Column="2" VerticalAlignment="Center">%</TextBlock>
 
-        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3"  Background="#0089e1" Height="32"  VerticalAlignment="Bottom">
+        <DockPanel   Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3"  Background="#0089e1" Height="40"  VerticalAlignment="Bottom">
             <StackPanel    Orientation="Horizontal" HorizontalAlignment="Center"  Background="#0089e1" VerticalAlignment="Stretch" >
                 <Button Margin="0,0,10,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  IsCancel="True" >
                     <StackPanel Orientation="Horizontal">

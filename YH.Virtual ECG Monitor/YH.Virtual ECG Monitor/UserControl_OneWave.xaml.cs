@@ -8,20 +8,20 @@ using System.Linq;
 namespace YH.Virtual_ECG_Monitor
 {
     /// <summary>
-    /// UserControl_OneWave.xaml 的交互逻辑
+    /// 用于展示波形的控件
     /// </summary>
     public partial class UserControl_OneWave : UserControl
     {
-        int interval = 100;
-        Launch launch;
-        double addX;    
-        int i = 0;
-        double x = 0;
-        int curWaveCount = 0;
-        int intervalCount;
-        float[] data;
-    //    double controlHeight;
-        public int MaxWaveCount { get; set; }
+        int interval = 100;    //描点的数据
+        Launch launch;    //定时器
+        double addX;      // x轴上 点距
+        int i = 0;            //
+        double x = 0;  // x坐标
+        int curWaveCount = 0;  //表示当前第几个波形
+        int intervalCount;   //周期内描点个数
+        float[] data;   //波形数据
+    
+        public int MaxWaveCount { get; set; }   //要展示的波形个数
 
         public UserControl_OneWave()
         {

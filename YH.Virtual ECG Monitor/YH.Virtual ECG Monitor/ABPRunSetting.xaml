@@ -52,7 +52,7 @@
         <TextBlock Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" >mmHg</TextBlock>
 
 
-        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Background="#0089e1" Height="32"  VerticalAlignment="Bottom">
+        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Background="#0089e1" Height="40"  VerticalAlignment="Bottom">
             <StackPanel    Orientation="Horizontal" HorizontalAlignment="Center"  Background="#0089e1" VerticalAlignment="Stretch" >
                 <Button Margin="0,0,10,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  IsCancel="True" >
                     <StackPanel Orientation="Horizontal">
