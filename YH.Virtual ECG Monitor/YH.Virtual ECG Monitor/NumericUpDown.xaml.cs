@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
+
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,12 +20,23 @@ namespace YH.Virtual_ECG_Monitor
 {
     public partial class NumericUpDown : INotifyPropertyChanged
     {
-     
-        private int numericValue = 0;
 
+        private int numericValue = 0;
+        Timer timer;
+        bool isAdd;
         public NumericUpDown()
         {
             this.InitializeComponent();
+            Increment = Increment <= 0 ? 1 : Increment;
+            MaxValue = (MinValue == MaxValue && MinValue == 0) ? 100 : MaxValue;
+            isAdd = false;
+            timer = new Timer(100);
+            timer.Elapsed += Timer_Elapsed;
+        }
+
+        private void Timer_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            ChangeValue();
         }
 
         public int Value
@@ -41,29 +54,32 @@ namespace YH.Virtual_ECG_Monitor
 
         private void UpButton_Click(object sender, RoutedEventArgs e)
         {
-            int newValue = (Value + Increment);
-            if (newValue > MaxValue)
-            {
-                Value = MaxValue;
-            }
-            else
-            {
-                Value = newValue;
-            }
+            isAdd = true;
+            ChangeValue();
         }
-
         private void DownButton_Click(object sender, RoutedEventArgs e)
         {
-            int newValue = (Value - Increment);
+            isAdd = false;
+            ChangeValue();
+        }
+
+        private void ChangeValue()
+        {
+            int increment = isAdd ? Increment : -Increment;
+
+            int newValue = Value + increment;
+            if (newValue > MaxValue)
+            {
+                newValue = MaxValue;
+            }
             if (newValue < MinValue)
             {
-                Value = MinValue;
+                newValue = MinValue;
             }
-            else
-            {
-                Value = newValue;
-            }
+            Value = newValue;
         }
+
+    
 
         private void ValueText_LostFocus(object sender, RoutedEventArgs e)
         {
@@ -75,7 +91,7 @@ namespace YH.Virtual_ECG_Monitor
                     ValueText.Text = MaxValue.ToString();
                     Value = MaxValue;
                 }
-                else if(Value<MinValue)
+                else if (Value < MinValue)
                 {
                     ValueText.Text = MinValue.ToString();
                     Value = MinValue;
@@ -96,12 +112,24 @@ namespace YH.Virtual_ECG_Monitor
         {
             if (PropertyChanged != null)
             {
-             
+
                 PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 
         #endregion
+
+        private void Button_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            Button button = sender as Button;
+            isAdd = button == UpButton;
+            timer.Enabled = true;
+        }
+
+        private void Button_MouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            timer.Enabled = false;
+        }
     }
 
 

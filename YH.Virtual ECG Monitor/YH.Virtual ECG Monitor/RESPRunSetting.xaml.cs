@@ -28,37 +28,26 @@ namespace YH.Virtual_ECG_Monitor
             InitializeComponent();
             Resp_Paras = resp_Paras;
 
-            cbPlot.SelectedValue = resp_Paras.Plot;
+            int selectIndex = cbPlot.Items.IndexOf(resp_Paras.Plot);
+            if (selectIndex >= 0)
+            {
+                cbPlot.SelectedIndex = selectIndex;
+            }
+       //     cbPlot.SelectedValue = resp_Paras.Plot;
             cbType.SelectedIndex = (int)resp_Paras.RespType;
 
-            txtRespRate.Text = resp_Paras.RespRate.ToString();
-            txtCapacity.Text = resp_Paras.Capacity.ToString();
-            txtRespRatio.Text = resp_Paras.RespRatio.ToString();
+            txtRespRate.Value = resp_Paras.RespRate;
+            txtCapacity.Value = resp_Paras.Capacity;
+            txtRespRatio.Value = resp_Paras.RespRatio;
 
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int respRate;
-            int capacity;
-            int respRation;
-
-            if (!int.TryParse(txtRespRate.Text, out respRate))
-            {
-                MessageBox.Show("呼吸率填写不正确");
-                return;
-            }
-            if (!int.TryParse(txtCapacity.Text, out capacity))
-            {
-                MessageBox.Show("吸气量填写不正确");
-                return;
-            }
-            if (!int.TryParse(txtRespRatio.Text, out respRation))
-            {
-                MessageBox.Show("吸气比填写不正确");
-                return;
-            }
+            int respRate= txtRespRate.Value;
+            int capacity= txtCapacity.Value;
+            int respRation= txtRespRatio.Value;          
 
             RespType respType = (RespType)cbType.SelectedIndex;
             int plot = cbPlot.SelectedItem==null?200:  Convert.ToInt32(((ComboBoxItem)cbPlot.SelectedItem).Content);
@@ -74,29 +63,7 @@ namespace YH.Virtual_ECG_Monitor
             };
             this.DialogResult = true;
             Close();
-            //ABP_Paras = new ABP_Paras()
-
-            //int systolic;
-            //int diastolic;
-            //if (!int.TryParse(txtSystolic.Text, out systolic))
-            //{
-            //    MessageBox.Show("舒张压填写不正确");
-            //    return;
-            //}
-
-            //if (!int.TryParse(txtDiastolic.Text, out diastolic))
-            //{
-            //    MessageBox.Show("收缩压填写不正确");
-            //    return;
-            //}
-            //ABP_Paras = new ABP_Paras()
-            //{
-            //    Systolic = systolic,
-            //    Diastolic = diastolic,
-            //    Plot = cbPlot.SelectedItem==null?200: Convert.ToInt32(((ComboBoxItem)cbPlot.SelectedItem).Content)
-            //};
-            //this.DialogResult = true;
-            //Close();
+         
         }
     }
 }

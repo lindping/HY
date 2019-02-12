@@ -24,26 +24,20 @@ namespace YH.Virtual_ECG_Monitor
         public int  HeartRate{ get; set; }
         public ECGRunSetting(Rhythm rhythm,int heartRate)
         {
-            InitializeComponent();
-
-          
+            InitializeComponent();          
 
             Rhythm = rhythm;
             HeartRate = heartRate;
 
             cbRhythm.ItemsSource = MyDictionary.Rhythm_Basic;
             cbRhythm.SelectedIndex = (int)rhythm;
-            txtHeartRate.Text = heartRate.ToString();
+            txtHeartRate.Value = heartRate;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Rhythm = (Rhythm)cbRhythm.SelectedIndex;
-            int heartRate;
-            if (int.TryParse(txtHeartRate.Text, out heartRate))
-            {
-                HeartRate = heartRate;
-            }
+            HeartRate = txtHeartRate.Value;       
             this.DialogResult = true;        
             Close();          
         }

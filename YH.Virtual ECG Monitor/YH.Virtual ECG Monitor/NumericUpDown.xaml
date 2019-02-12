@@ -17,7 +17,7 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type Button}">
                         <Grid>
-                            <Rectangle Stroke="#FFA0A0A0" d:LayoutOverrides="GridBox" RadiusX="1" RadiusY="1" Width="20" Height="8">
+                            <Rectangle Stroke="#FFA0A0A0" d:LayoutOverrides="GridBox" RadiusX="1" RadiusY="1" Width="20" Height="12">
                                 <Rectangle.Fill>
                                     <LinearGradientBrush EndPoint="0.5,0" StartPoint="0.5,1">
                                         <GradientStop Color="#FFDCDCDC" Offset="0"/>
@@ -49,8 +49,8 @@
                     <ColumnDefinition Width="26"/>
                 </Grid.ColumnDefinitions>
                 <TextBox Grid.Column="0" BorderBrush="{x:Null}" BorderThickness="0,0,0,0" Margin="2,2,2,2" VerticalContentAlignment="Center" x:Name="ValueText" LostFocus="ValueText_LostFocus" Text="{Binding Path=Value, Converter={StaticResource MyValueConverter}, ElementName=UserControl, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, FallbackValue=0}"/>
-                <Button HorizontalAlignment="Right" Style="{DynamicResource ArrowButtonStyle}" Width="20" x:Name="UpButton" Grid.Column="1" Margin="0,2,3,0" Click="UpButton_Click" Height="8" VerticalAlignment="Top" />
-                <Button HorizontalAlignment="Right" Style="{DynamicResource ArrowButtonStyle}" VerticalAlignment="Bottom" Width="20" Height="8" RenderTransformOrigin="0.5,0.5" x:Name="DownButton" Grid.Column="1" Margin="0,0,3,2" Click="DownButton_Click">
+                <Button HorizontalAlignment="Right" Style="{DynamicResource ArrowButtonStyle}" Width="20" x:Name="UpButton" Grid.Column="1" Margin="0,2,3,0"   PreviewMouseLeftButtonDown="Button_MouseLeftButtonDown"  PreviewMouseLeftButtonUp="Button_MouseLeftButtonUp"   Height="12" VerticalAlignment="Top" />
+                <Button HorizontalAlignment="Right" Style="{DynamicResource ArrowButtonStyle}" VerticalAlignment="Bottom" Width="20" Height="12" RenderTransformOrigin="0.5,0.5" x:Name="DownButton" Grid.Column="1" Margin="0,0,3,2"  PreviewMouseLeftButtonDown="Button_MouseLeftButtonDown"  PreviewMouseLeftButtonUp="Button_MouseLeftButtonUp">
                     <Button.RenderTransform>
                         <TransformGroup>
                             <ScaleTransform ScaleX="1" ScaleY="-1"/>

@@ -27,30 +27,21 @@ namespace YH.Virtual_ECG_Monitor
             InitializeComponent();
             ABP_Paras = abp_Paras;
 
-            txtSystolic.Text = ABP_Paras.Systolic.ToString();
-            txtDiastolic.Text = ABP_Paras.Diastolic.ToString();
-            cbPlot.SelectedValue = ABP_Paras.Plot;
+            txtSystolic.Value = ABP_Paras.Systolic;
+            txtDiastolic.Value = ABP_Paras.Diastolic;
+             int  selectIndex= cbPlot.Items.IndexOf(abp_Paras.Plot);
+            if (selectIndex >= 0)
+            {
+                cbPlot.SelectedIndex = selectIndex;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            int systolic;
-            int diastolic;
-            if (!int.TryParse(txtSystolic.Text, out systolic))
-            {
-                MessageBox.Show("舒张压填写不正确");
-                return;
-            }
-
-            if (!int.TryParse(txtDiastolic.Text, out diastolic))
-            {
-                MessageBox.Show("收缩压填写不正确");
-                return;
-            }
+        {            
             ABP_Paras = new ABP_Paras()
             {
-                Systolic = systolic,
-                Diastolic = diastolic,
+                Systolic = txtSystolic.Value,
+                Diastolic = txtDiastolic.Value,
                 Plot = cbPlot.SelectedItem==null?200: Convert.ToInt32(((ComboBoxItem)cbPlot.SelectedItem).Content)
             };
             this.DialogResult = true;

@@ -128,7 +128,7 @@ namespace YH.Virtual_ECG_Monitor
         public void Run_ABP(ABP_Paras paras)
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
-            float[] ABP_data = content.GetWaveData_ABP(paras.Plot, paras.Plot, paras.Diastolic, waveSetting.Custom.ABP.Gain);
+            float[] ABP_data = content.GetWaveData_ABP(paras.Plot, paras.Systolic, paras.Diastolic, waveSetting.Custom.ABP.Gain);
             abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.ABP.Speed, waveSetting.Custom.ABP.Gain);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {

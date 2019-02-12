@@ -53,15 +53,18 @@
         </ComboBox>
 
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">呼吸率</TextBlock>
-        <TextBox Grid.Row="3" Grid.Column="1" x:Name="txtRespRate" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
-        <TextBlock Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">RPM</TextBlock>
+        <!--<TextBox Grid.Row="3" Grid.Column="1" x:Name="txtRespRate" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>-->
+        <local:NumericUpDown  Grid.Row="3" Grid.Column="1" x:Name="txtRespRate" MinValue="0" MaxValue="100"></local:NumericUpDown>
+        <TextBlock Grid.Row="3" Grid.Column="2" VerticalAlignment="Center">次/分</TextBlock>
 
         <TextBlock Grid.Row="4" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">吸气量</TextBlock>
-        <TextBox Grid.Row="4" Grid.Column="1" x:Name="txtCapacity" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+        <!--<TextBox Grid.Row="4" Grid.Column="1" x:Name="txtCapacity" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>-->
+        <local:NumericUpDown  Grid.Row="4" Grid.Column="1" x:Name="txtCapacity" MinValue="0" MaxValue="10000" Increment="100"></local:NumericUpDown>
         <TextBlock Grid.Row="4" Grid.Column="2" VerticalAlignment="Center">L/min</TextBlock>
 
         <TextBlock Grid.Row="5" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">吸气比</TextBlock>
-        <TextBox Grid.Row="5" Grid.Column="1" x:Name="txtRespRatio" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>
+        <!--<TextBox Grid.Row="5" Grid.Column="1" x:Name="txtRespRatio" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>-->
+        <local:NumericUpDown  Grid.Row="5" Grid.Column="1" x:Name="txtRespRatio" MinValue="0" MaxValue="100" ></local:NumericUpDown>
         <TextBlock Grid.Row="5" Grid.Column="2" VerticalAlignment="Center">%</TextBlock>
 
         <DockPanel Margin="0"  Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="3"  Background="#0089e1" Height="32"  VerticalAlignment="Bottom">

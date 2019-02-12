@@ -69,8 +69,9 @@
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
-                                <TextBlock x:Name="textblock_IBP" Style="{DynamicResource font1}" Text="120/80" Margin="0,0,10,0"/>
+                                <TextBlock x:Name="textblock_IBP" Style="{DynamicResource font1}" Text="120/80 90" Margin="0,0,10,0"/>
                             </Viewbox>
+                            <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right">mmHg</TextBlock>
                         </Grid>
                     </DockPanel>
                 </Border>
@@ -93,6 +94,7 @@
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
                                 <TextBlock x:Name="textblock_SpO2" Style="{DynamicResource font1}" Text="98" Margin="0,0,10,0"/>
                             </Viewbox>
+                            <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right">%</TextBlock>
                         </Grid>
                     </DockPanel>
                 </Border>
@@ -115,6 +117,8 @@
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
                                 <TextBlock x:Name="textblock_RespRate" Style="{DynamicResource font1}" Text="15" Margin="0,0,10,0"/>
                             </Viewbox>
+                            <TextBlock VerticalAlignment="Bottom" HorizontalAlignment="Right">RPM</TextBlock>
+
                         </Grid>
                     </DockPanel>
                 </Border>

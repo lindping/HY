@@ -27,19 +27,23 @@ namespace YH.Virtual_ECG_Monitor
             PLETH_Paras = pleth_Paras;
 
 
-            txtSpo2.Text = PLETH_Paras.Spo2.ToString();
-
+            txtSpo2.Value = PLETH_Paras.Spo2;
+            int selectIndex = cbPlot.Items.IndexOf(pleth_Paras.Plot);
+            if (selectIndex >= 0)
+            {
+                cbPlot.SelectedIndex = selectIndex;
+            }
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            int spo2;        
-            if (!int.TryParse(txtSpo2.Text, out spo2))
-            {
-                MessageBox.Show("舒张压填写不正确");
-                return;
-            }
+            int spo2=txtSpo2.Value;        
+            //if (!int.TryParse(txtSpo2.Text, out spo2))
+            //{
+            //    MessageBox.Show("舒张压填写不正确");
+            //    return;
+            //}
 
 
             PLETH_Paras = new PLETH_Paras()
