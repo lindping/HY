@@ -195,6 +195,9 @@
     <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_025.cs" />
     <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_026.cs" />
     <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_027.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_030.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_031.cs" />
+    <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_032.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP.cs" />
     <Compile Include="SelectToColorConverter.cs" />
     <Compile Include="SetLayoutName.xaml.cs">

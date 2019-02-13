@@ -27,7 +27,7 @@
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
-                            <Path Fill="#FF5A5A5A" Margin="7,2,7,2" Stretch="Fill" Stroke="{x:Null}" Data="M135.66667,4.6666667 L132.16599,9.4999781 139.16621,9.4999778 z" Width="5" Height="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            <Path Fill="#0089e1" Margin="7,2,7,2" Stretch="Fill" Stroke="{x:Null}" Data="M135.66667,4.6666667 L132.16599,9.4999781 139.16621,9.4999778 z" Width="5" Height="4" HorizontalAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsFocused" Value="True"/>

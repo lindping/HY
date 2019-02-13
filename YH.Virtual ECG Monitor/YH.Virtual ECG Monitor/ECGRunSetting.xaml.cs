@@ -29,7 +29,7 @@ namespace YH.Virtual_ECG_Monitor
             Rhythm = rhythm;
             HeartRate = heartRate;
 
-            cbRhythm.ItemsSource = MyDictionary.Rhythm_Basic;
+            cbRhythm.ItemsSource = MyDictionary.Rhythm_Basic.Select(p=>p.Value);
             cbRhythm.SelectedIndex = (int)rhythm;
             txtHeartRate.Value = heartRate;
         }

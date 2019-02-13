@@ -48,6 +48,7 @@ namespace YH.Virtual_ECG_Monitor
                 NotifyPropertyChanged("Value");
             }
         }
+
         public int Increment { get; set; }
         public int MaxValue { get; set; }
         public int MinValue { get; set; }

@@ -43,10 +43,16 @@ namespace YH.Virtual_ECG_Monitor
                     newplotCount = plotCount * currentwaverate / (nHeartRate);        //根据设定的频率计算的波形点个数
                 }
             }
-            wavedata = new float[newplotCount, 12];         //重新定义长度
-            float[] waveOffsetY0 = new float[12];                                           //首个点的Y值（用作调整波形偏移量使用）
 
-            for (int k = 0; k < 12; k++)
+            int columnCpunt = currentwavedata.GetLength(1);
+            if (columnCpunt > 12)
+            {
+                columnCpunt = 12;
+            }
+            wavedata = new float[newplotCount, columnCpunt];         //重新定义长度
+            float[] waveOffsetY0 = new float[columnCpunt];                                           //首个点的Y值（用作调整波形偏移量使用）
+
+            for (int k = 0; k < columnCpunt; k++)
             {
                 waveOffsetY0[k] = currentwavedata[0, k] * baseAMP;
             }
@@ -58,7 +64,7 @@ namespace YH.Virtual_ECG_Monitor
                 {
                     if (i < plotCount)
                     {
-                        for (int j = 0; j < 12; j++)
+                        for (int j = 0; j < columnCpunt; j++)
                         {
                             wavedata[i, j] = currentwavedata[i, j] * baseAMP - waveOffsetY0[j];
 
@@ -67,7 +73,7 @@ namespace YH.Virtual_ECG_Monitor
                     }
                     else
                     {
-                        for (int j = 0; j < 12; j++)
+                        for (int j = 0; j < columnCpunt; j++)
                         {
                             wavedata[i, j] = currentwavedata[0, j] * baseAMP - waveOffsetY0[j];
                         }
@@ -85,7 +91,7 @@ namespace YH.Virtual_ECG_Monitor
                     {
                         o = plotCount - 1;
                     }
-                    for (int j = 0; j < 12; j++)
+                    for (int j = 0; j < columnCpunt; j++)
                     {
                         wavedata[i, j] = currentwavedata[o, j] * baseAMP - waveOffsetY0[j];
                     }

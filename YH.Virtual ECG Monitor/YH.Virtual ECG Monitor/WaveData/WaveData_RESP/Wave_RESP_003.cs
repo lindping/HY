@@ -14,9 +14,13 @@ namespace YH.Virtual_ECG_Monitor
             // TODO: Complete member initialization
 
             ID = "R03";
-            Name = "窦律，心肌缺血后";
+            Name = "窦律，心肌缺血后";        
+
             Remark = "";
-            Rate = 80;        
+            Rate = 80;
+            InspCapacity = 3000;
+            Ratio = 67;
+            ETCO2 = 40;
             WaveData = resp_00;
         }
 

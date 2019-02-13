@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
+using YH.Simulator.Framework.DataDictionary;
 
 namespace YH.Virtual_ECG_Monitor
 {
@@ -20,6 +21,9 @@ namespace YH.Virtual_ECG_Monitor
         public UserControl_Wave()
         {
             InitializeComponent();
+            PatientInfoData patient = Setting.Get<PatientInfoData>();
+            txtPatient.Text = string.Format("姓名:{0} 性别:{1}  年龄:{2}  病历号:{3}  床位号:{4}", patient.Custom.Name,  patient.Custom.Sex, patient.Custom.Age, patient.Custom.MedRecNo, patient.Custom.BedNo);
+          //   patient.Custom.
         }
 
         private ECG_Paras _ECG_Paras;
@@ -107,7 +111,9 @@ namespace YH.Virtual_ECG_Monitor
                 }
                 else
                 {
-                    textblock_HeartRate.Text = heartRate.ToString();
+                    string rhythmName = MyDictionary.Rhythm_Basic[(int)rhythm].Split('.')[1];
+                    textblock_HeartRate.Text = string.Format("{0}\n{1}", rhythmName, heartRate.ToString());
+
                 }
                 ecg_wave.Run(data, MaxwaveCount, ecgSetting.Custom.Speed, ecgSetting.Custom.Gain);
 
@@ -143,7 +149,7 @@ namespace YH.Virtual_ECG_Monitor
             resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.CO2.Speed, waveSetting.Custom.CO2.Gain);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                textblock_RespRate.Text = paras.RespRate.ToString();
+                textblock_RespRate.Text =  string.Format("{0}  {1}  {2}",  paras.RespRate,paras.Capacity, paras.RespRatio);
             });
         }
 
