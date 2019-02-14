@@ -47,7 +47,7 @@
         <TextBlock Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">mmHg</TextBlock>
 
         <TextBlock Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">收缩压</TextBlock>
-        <local:NumericUpDown Grid.Row="3" Grid.Column="1" x:Name="txtDiastolic"  MinValue="0"  MaxValue="180" ></local:NumericUpDown>
+        <local:NumericUpDown Grid.Row="3" Grid.Column="1" x:Name="txtDiastolic"  MinValue="0"  MaxValue="180" Margin="0,5" ></local:NumericUpDown>
         <!--<TextBox Grid.Row="3" Grid.Column="1" x:Name="txtDiastolic" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></TextBox>-->
         <TextBlock Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" >mmHg</TextBlock>
 

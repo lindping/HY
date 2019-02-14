@@ -21,7 +21,7 @@
             <Button  x:Name="btPause" Click="btPause_Click">暂停</Button>-->
         </DockPanel>
 
-        <Border  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="5" Padding="10" Style="{DynamicResource bg1}" BorderBrush="Red" BorderThickness="0">
+        <Border  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="5" Padding="2" Style="{DynamicResource bg1}" BorderBrush="Red" BorderThickness="0">
 
             <!--右侧表格-->
             <Grid Background="Black">
@@ -43,7 +43,7 @@
                 <GridSplitter Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                 <GridSplitter Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                 <GridSplitter Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
-                <Border Grid.Row="0" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="0" Grid.Column="0" CornerRadius="0" Padding="0" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
                         <TextBlock Style="{DynamicResource font1}" Text="ECG II"  Width="36" Height="20" VerticalAlignment="Center"/>
                         <Grid Style="{DynamicResource bg1 }">
@@ -54,7 +54,7 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="0" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="0" Grid.Column="1" CornerRadius="0" Padding="0" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
                         <TextBlock Style="{DynamicResource font1}" Text="HR" Margin="0,0,10,0" VerticalAlignment="Top" />
                         <Grid Style="{DynamicResource bg1 }">
@@ -66,7 +66,7 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="1" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="1" Grid.Column="0" CornerRadius="0" Padding="0" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
                         <TextBlock Style="{DynamicResource font1}" Text="ABP"   Width="36" VerticalAlignment="Center"/>
                         <Grid Style="{DynamicResource bg1 }">
@@ -77,7 +77,7 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="1" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="1" Grid.Column="1" CornerRadius="0" Padding="0" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
                         <TextBlock Style="{DynamicResource font1}" Text="IBP" Margin="0,0,10,0" VerticalAlignment="Top"/>
                         <Grid Style="{DynamicResource bg1 }">
@@ -89,7 +89,7 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="2" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="2" Grid.Column="0" CornerRadius="0" Padding="0" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
                         <TextBlock Style="{DynamicResource font1}" Text="PLETH"   Width="36" VerticalAlignment="Center"/>
                         <Grid Style="{DynamicResource bg1 }">
@@ -100,7 +100,7 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="2" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="2" Grid.Column="1" CornerRadius="0" Padding="0" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
                         <TextBlock Style="{DynamicResource font1}" Text="SpO2"  VerticalAlignment="Top"/>
                         <Grid Style="{DynamicResource bg1 }">
@@ -112,7 +112,7 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="3" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="3" Grid.Column="0" CornerRadius="0" Padding="0" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
                         <TextBlock Style="{DynamicResource font1}" Text="RESP"   Width="36" VerticalAlignment="Center" />
                         <Grid Style="{DynamicResource bg1 }" >
@@ -138,7 +138,7 @@
                     </DockPanel>
                 </Border>
 
-                <Border Grid.Row="0" Grid.Column="2" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="0" Grid.Column="2" CornerRadius="0" Padding="2" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
@@ -154,7 +154,7 @@
                  
                 </Border>
 
-                <Border Grid.Row="1" Grid.Column="2" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="1" Grid.Column="2" CornerRadius="0" Padding="2" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
@@ -170,7 +170,7 @@
 
                 </Border>
 
-                <Border Grid.Row="2" Grid.Column="2" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="2" Grid.Column="2" CornerRadius="0" Padding="2" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
@@ -186,7 +186,7 @@
 
                 </Border>
 
-                <Border Grid.Row="3" Grid.Column="2" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="3" Grid.Column="2" CornerRadius="0" Padding="2" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition></RowDefinition>
