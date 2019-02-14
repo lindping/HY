@@ -20,14 +20,24 @@ namespace YH.Virtual_ECG_Monitor
         int curWaveCount = 0;  //表示当前第几个波形
         int intervalCount;   //周期内描点个数
         float[] data;   //波形数据
-    
+
         public int MaxWaveCount { get; set; }   //要展示的波形个数
+
+
+
+        public bool IsPause
+        {
+            get
+            {
+                return launch._isPause;
+            }
+        }
 
         public UserControl_OneWave()
         {
             InitializeComponent();
             MaxWaveCount = 8;
-     //       controlHeight = ActualHeight;
+            //       controlHeight = ActualHeight;
         }
 
         public void Stop()
@@ -39,7 +49,18 @@ namespace YH.Virtual_ECG_Monitor
             }
         }
 
-        public void Run(float[] data, int maxWaveCount, float speed,float gain)
+        public void Pause()
+        {
+
+            launch.Pause();
+        }
+
+        public void Start()
+        {
+            launch.Start();
+        }
+
+        public void Run(float[] data, int maxWaveCount, float speed, float gain)
         {
 
             if (launch == null)
@@ -51,21 +72,21 @@ namespace YH.Virtual_ECG_Monitor
 
             gain = gain / 5;
 
-            float max =data.Max();
+            float max = data.Max();
             float min = data.Min();
             float valueHeight = max - min;
             this.data = new float[data.Length];
 
-            float controlHeight = (float)myCanvas.ActualHeight*0.8f;
+            float controlHeight = (float)myCanvas.ActualHeight * 0.9f;
             for (int i = 0; i < data.Length; i++)
-            {                
-                this.data[i] = controlHeight-((data[i] - min)/ valueHeight) * controlHeight;
-                this.data[i] = this.data[i] +10;
+            {
+                this.data[i] = controlHeight - ((data[i] - min) / valueHeight) * controlHeight;
+                this.data[i] = this.data[i] + 5;
             }
 
-            MaxWaveCount =maxWaveCount*(int)gain;
+            MaxWaveCount = maxWaveCount * (int)gain;
 
-            int pointAmount = (int)(maxWaveCount * this.data.Length * (speed/5f));
+            int pointAmount = (int)(maxWaveCount * this.data.Length * (speed / 5f));
 
             if (pointAmount < 60000 / interval)
             {
@@ -78,9 +99,9 @@ namespace YH.Virtual_ECG_Monitor
                 if (intervalCount == 0)
                 {
                     intervalCount = 1;
-                }                
+                }
             }
-            addX = ActualWidth / (double)((maxWaveCount * data.Length))/gain;
+            addX = ActualWidth / (double)((maxWaveCount * data.Length)) / gain;
             launch.Start();
         }
 
@@ -106,7 +127,7 @@ namespace YH.Virtual_ECG_Monitor
                     i++;
                 }
 
-                if (curWaveCount >= MaxWaveCount || x>ActualWidth)
+                if (curWaveCount >= MaxWaveCount || x > ActualWidth)
                 {
                     curWaveCount = 0;
                     i = 0;

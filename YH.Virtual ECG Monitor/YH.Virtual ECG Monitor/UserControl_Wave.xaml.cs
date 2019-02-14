@@ -113,7 +113,6 @@ namespace YH.Virtual_ECG_Monitor
                 {
                     string rhythmName = MyDictionary.Rhythm_Basic[(int)rhythm].Split('.')[1];
                     textblock_HeartRate.Text = string.Format("{0}\n{1}", rhythmName, heartRate.ToString());
-
                 }
                 ecg_wave.Run(data, MaxwaveCount, ecgSetting.Custom.Speed, ecgSetting.Custom.Gain);
 
@@ -241,6 +240,51 @@ namespace YH.Virtual_ECG_Monitor
                     }
                     break;
             }
+        }
+
+        private void btPause_Click(object sender, RoutedEventArgs e)
+        {
+            if (ecg_wave.IsPause)
+            {
+                ecg_wave.Start();
+            }
+            else
+            {
+                ecg_wave.Pause();
+            }
+
+            if ( resp_wave.IsPause)
+            {
+                resp_wave.Start();
+            }
+            else
+            {
+                resp_wave.Pause();
+            }
+
+            if (abp_wave.IsPause)
+            {
+                abp_wave.Start();
+            }
+            else
+            {
+                abp_wave.Pause();
+            }
+
+            if (pleth_wave.IsPause)
+            {
+                pleth_wave.Start();
+            }
+            else
+            {
+                pleth_wave.Pause();
+            }
+
+        }
+
+        private void btSetting_Click(object sender, RoutedEventArgs e)
+        {
+             new Main().ShowDialog();
         }
     }
 

@@ -44,7 +44,7 @@ namespace HYS.Library
         private int _interval = 1000;      //时间间隔 默认1000ms
 
         private bool _isRun = false;
-        private bool _isPause = false;
+        public bool _isPause = false;
 
         #endregion
 

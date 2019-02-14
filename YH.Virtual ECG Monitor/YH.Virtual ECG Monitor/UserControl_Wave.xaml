@@ -11,8 +11,17 @@
             <RowDefinition Height="20" ></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" x:Name="txtPatient"> 病人信息：</TextBlock>
-        <Border  Grid.Row="1" Grid.Column="0" CornerRadius="5" Padding="10" Style="{DynamicResource bg1}" BorderBrush="Red" BorderThickness="0">
+        <DockPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
+            <!--<Button  x:Name="btSetting" Click="btSetting_Click">配置</Button>
+            <Button  x:Name="btPause" Click="btPause_Click">暂停</Button>-->
+        </DockPanel>
+
+        <Border  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="5" Padding="10" Style="{DynamicResource bg1}" BorderBrush="Red" BorderThickness="0">
 
             <!--右侧表格-->
             <Grid Background="Black">
@@ -36,10 +45,10 @@
                 <GridSplitter Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Height="1" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                 <Border Grid.Row="0" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="ECG II" Margin="0,0,10,0" Width="36"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="ECG II"  Width="36" Height="20" VerticalAlignment="Center"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
-                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left"  >                           
+                            <Viewbox   Stretch="Fill" >                           
                                 <local:UserControl_OneWave x:Name="ecg_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>
                             </Viewbox>
                         </Grid>
@@ -59,10 +68,10 @@
                 </Border>
                 <Border Grid.Row="1" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="ABP" Margin="0,0,10,0"  Width="36"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="ABP"   Width="36" VerticalAlignment="Center"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
-                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                            <Viewbox Stretch="Fill" >
                                 <local:UserControl_OneWave x:Name="abp_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>                            
                              </Viewbox>
                         </Grid>
@@ -82,10 +91,10 @@
                 </Border>
                 <Border Grid.Row="2" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="PLETH" Margin="0,0,10,0"  Width="36"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="PLETH"   Width="36" VerticalAlignment="Center"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
-                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
+                            <Viewbox Stretch="Fill">
                                 <local:UserControl_OneWave x:Name="pleth_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>                             
                             </Viewbox>
                         </Grid>
@@ -93,7 +102,7 @@
                 </Border>
                 <Border Grid.Row="2" Grid.Column="1" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="SpO2" Margin="0,0,10,0" VerticalAlignment="Top"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="SpO2"  VerticalAlignment="Top"/>
                         <Grid Style="{DynamicResource bg1 }">
                             <!--tablebg1-->
                             <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">
@@ -105,10 +114,10 @@
                 </Border>
                 <Border Grid.Row="3" Grid.Column="0" CornerRadius="0" Padding="5" Margin="1" BorderBrush="#f1f1f1" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel>
-                        <TextBlock Style="{DynamicResource font1}" Text="RESP" Margin="0,0,10,0"  Width="36"/>
+                        <TextBlock Style="{DynamicResource font1}" Text="RESP"   Width="36" VerticalAlignment="Center" />
                         <Grid Style="{DynamicResource bg1 }" >
                             <!--tablebg1-->
-                            <Viewbox DockPanel.Dock="Right" HorizontalAlignment="Left">                          
+                            <Viewbox  Stretch="Fill">                          
                                 <local:UserControl_OneWave x:Name="resp_wave"  Margin="0,0,0,0" Width="600"  Height="80" ></local:UserControl_OneWave>
                             </Viewbox>
                         </Grid>
