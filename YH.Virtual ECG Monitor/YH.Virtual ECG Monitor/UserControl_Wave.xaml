@@ -148,11 +148,11 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <DockPanel   Grid.Row="0" Grid.Column="0"      >
-                            <Button    Click="Button_Click" Background="Black" Foreground="White">ECG设置</Button>
+                        <DockPanel   Grid.Row="0" Grid.Column="0"    >
+                            <Button  BorderThickness="0,1,0,0"   Click="Button_Click" Background="Black" Foreground="White">ECG设置</Button>
                         </DockPanel>
                         <DockPanel   Grid.Row="1" Grid.Column="0" >
-                            <Button  Click="Button_Click" Background="Black" Foreground="White">ECG选项</Button>
+                            <Button BorderThickness="0,1,0,0"  Click="Button_Click" Background="Black" Foreground="White">ECG选项</Button>
                         </DockPanel>
                     </Grid>
 
@@ -165,10 +165,10 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <DockPanel   Grid.Row="0" Grid.Column="0"  >
-                            <Button   Click="Button_Click" Foreground="White" Background="Black">ABP设置</Button>
+                            <Button  BorderThickness="0,1,0,0"   Click="Button_Click" Foreground="White" Background="Black">ABP设置</Button>
                         </DockPanel>
                         <DockPanel   Grid.Row="1" Grid.Column="0" >
-                            <Button  Click="Button_Click" Foreground="White" Background="Black">ABP选项</Button>
+                            <Button  BorderThickness="0,1,0,0"  Click="Button_Click" Foreground="White" Background="Black">ABP选项</Button>
                         </DockPanel>
                     </Grid>
 
@@ -181,10 +181,10 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <DockPanel   Grid.Row="0" Grid.Column="0" >
-                            <Button   Click="Button_Click" Foreground="White" Background="Black">PLETH设置</Button>
+                            <Button  BorderThickness="0,1,0,0"   Click="Button_Click" Foreground="White" Background="Black">PLETH设置</Button>
                         </DockPanel>
                         <DockPanel   Grid.Row="1" Grid.Column="0" >
-                            <Button  Click="Button_Click" Foreground="White" Background="Black">PLETH选项</Button>
+                            <Button  BorderThickness="0,1,0,0"   Click="Button_Click" Foreground="White" Background="Black">PLETH选项</Button>
                         </DockPanel>
                     </Grid>
 
@@ -197,10 +197,10 @@
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
                         <DockPanel   Grid.Row="0" Grid.Column="0" >
-                            <Button   Click="Button_Click" Foreground="White" Background="Black">RESP设置</Button>
+                            <Button    BorderThickness="0,1,0,0"  Click="Button_Click" Foreground="White" Background="Black">RESP设置</Button>
                         </DockPanel>
                         <DockPanel   Grid.Row="1" Grid.Column="0" >
-                            <Button  Click="Button_Click" Foreground="White" Background="Black">RESP选项</Button>
+                            <Button   BorderThickness="0,1,0,0"  Click="Button_Click" Foreground="White" Background="Black">RESP选项</Button>
                         </DockPanel>
                     </Grid>
 
