@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"  
         Title="WaveDisplay"   Loaded="Window_Loaded" >
-    <Viewbox Stretch="Fill">
+    <Viewbox Stretch="Fill"   >
         <local:UserControl_Wave HorizontalAlignment="Left" Margin="0,0" x:Name="uc_wave" VerticalAlignment="Top"   />
     </Viewbox>
 </Window>

@@ -206,7 +206,7 @@
                 <RadioButton  GroupName="rbGain" IsChecked="{ Binding  Mode=TwoWay, Path=Gain, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=5}" Content="5" Margin="5"/>
                 <RadioButton  GroupName="rbGain" IsChecked="{ Binding  Mode=TwoWay, Path=Gain, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=10}" Content="10" Margin="5"/>
                 <RadioButton  GroupName="rbGain" IsChecked="{ Binding  Mode=TwoWay, Path=Gain, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=20}" Content="20" Margin="5"/>
-                <RadioButton  GroupName="rbGain" IsChecked="{ Binding  Mode=TwoWay, Path=Gain, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=50}" Content="50" Margin="5"/>
+                <RadioButton  GroupName="rbGain" IsChecked="{ Binding  Mode=TwoWay, Path=Gain, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=40}" Content="40" Margin="5"/>
                 </StackPanel>
                 <!--心电图开关-->
                 <StackPanel  Grid.Row="2" Grid.Column="1" Orientation="Horizontal">

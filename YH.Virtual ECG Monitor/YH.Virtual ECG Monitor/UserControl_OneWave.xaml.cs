@@ -70,7 +70,7 @@ namespace YH.Virtual_ECG_Monitor
                 launch.OnElapsed += launch_OnElapsed;
             }
 
-            gain = gain / 5;
+            gain = gain / 40;
 
             float max = data.Max();
             float min = data.Min();
@@ -80,11 +80,11 @@ namespace YH.Virtual_ECG_Monitor
             float controlHeight = (float)myCanvas.ActualHeight * 0.9f;
             for (int i = 0; i < data.Length; i++)
             {
-                this.data[i] = controlHeight - ((data[i] - min) / valueHeight) * controlHeight;
+                this.data[i] = controlHeight - ((data[i] - min) / valueHeight) * controlHeight*gain;
                 this.data[i] = this.data[i] + 5;
             }
 
-            MaxWaveCount = maxWaveCount * (int)gain;
+    //        MaxWaveCount = maxWaveCount * (int)gain;
 
             int pointAmount = (int)(maxWaveCount * this.data.Length * (speed / 5f));
 
@@ -101,7 +101,7 @@ namespace YH.Virtual_ECG_Monitor
                     intervalCount = 1;
                 }
             }
-            addX = ActualWidth / (double)((maxWaveCount * data.Length)) / gain;
+            addX = ActualWidth / (double)(maxWaveCount * data.Length);
             launch.Start();
         }
 

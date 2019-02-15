@@ -12,7 +12,7 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class UserControl_Wave : UserControl
     {
-        int MaxwaveCount =4;//显示波形个数上限
+        int MaxwaveCount =8;//显示波形个数上限
 
         int ecg_wave_column_index = 1;
 
