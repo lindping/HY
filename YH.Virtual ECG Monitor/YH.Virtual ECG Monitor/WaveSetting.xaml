@@ -5,7 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"     
-       Title="波形参数设置" Width="400"  Height="200" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
+       Title="波形参数设置" Width="450"  Height="200" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary  Source="Dictionary/PopWindow.xaml"></ResourceDictionary>
+    </Window.Resources>
     <Grid x:Name="grid" Margin="0">
         <Grid.RowDefinitions>
             <RowDefinition ></RowDefinition>

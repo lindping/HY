@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"
         Title="ECG运行设置" Height="200" Width="300" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
-
+    <Window.Resources>
+        <ResourceDictionary  Source="Dictionary/PopWindow.xaml"></ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition></RowDefinition>

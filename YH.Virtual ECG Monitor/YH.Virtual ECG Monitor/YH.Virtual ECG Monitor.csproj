@@ -219,39 +219,16 @@
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_003.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_004.cs" />
     <Compile Include="WaveData\WaveData_RESP\Wave_RESP_005.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_006.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_007.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_008.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_009.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_010.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_011.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_012.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_013.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_014.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_015.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_016.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_017.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_018.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_019.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_020.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_021.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_022.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_023.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_024.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_025.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_026.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_027.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_028.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_029.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_030.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_031.cs" />
-    <Compile Include="WaveData\WaveData_RESP\Wave_RESP_032.cs" />
     <Compile Include="WaveDisplay.xaml.cs">
       <DependentUpon>WaveDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="WaveSetting.xaml.cs">
       <DependentUpon>WaveSetting.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dictionary\PopWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NumericUpDown.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

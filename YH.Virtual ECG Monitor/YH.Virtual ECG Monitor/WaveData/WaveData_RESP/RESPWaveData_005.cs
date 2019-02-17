@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YH.Simulator.Framework;
 
-namespace YH.Virtual_ECG_Monitor
+namespace ECGMonitor
 {
-    public class Wave_RESP_000 : Wave_RESP
+    public class RESPWaveData_005:RESPWaveData
     {
-        public Wave_RESP_000()
+        public RESPWaveData_005()
             : base()
         {
             // TODO: Complete member initialization
 
-            RESP_ID = "R00";
-            Name = "正常呼吸";
+            RESP_ID = "R05";
+            Case = "呼吸暂停";
             Remark = "";
-            Rate = 8;
-            InspCapacity = 3000;
-            Ratio = 67;
-            ETCO2 = 40;
-            WaveData = resp_00;
+            Rate = 5;
+            InspCapacity = 1000;
+            Ratio = 33;
+            ETCO2 = 10;
+            WaveData = resp_05;
         }
 
-        public static float[] resp_00 = new float[2000] {0.0f,
+        public static float[] resp_05 = new float[2000] {0.0f, 
             0f ,
 0f ,
 0f ,
@@ -2024,5 +2023,7 @@ namespace YH.Virtual_ECG_Monitor
 0.15f ,
 0.05f ,
 0f ,};
+        
+        
     }
 }

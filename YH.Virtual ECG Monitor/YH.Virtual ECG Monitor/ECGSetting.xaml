@@ -174,10 +174,10 @@
                 <!--速度-->
                 <StackPanel  Grid.Row="1" Grid.Column="0" Orientation="Horizontal" Margin="0,0,0,20">
                     <TextBlock VerticalAlignment="Center" Margin="10,0,20,0" FontSize="14">速度（mm/sec）</TextBlock>
-                <RadioButton GroupName="rbSpeed" IsChecked="{ Binding  Mode=TwoWay, Path=Speed, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=50}" Content="50" Margin="5"/>
                 <RadioButton GroupName="rbSpeed" IsChecked="{ Binding  Mode=TwoWay, Path=Speed, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=25}" Content="25" Margin="5"/>
-                <RadioButton  GroupName="rbSpeed" IsChecked="{ Binding  Mode=TwoWay, Path=Speed, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=12.5}" Content="12.5" Margin="5"/>
-                <RadioButton GroupName="rbSpeed"   IsChecked="{ Binding  Mode=TwoWay, Path=Speed, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=6.5}" Content="6.5" Margin="5"/>
+                <RadioButton GroupName="rbSpeed" IsChecked="{ Binding  Mode=TwoWay, Path=Speed, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=50}" Content="50" Margin="5"/>
+                <RadioButton  GroupName="rbSpeed" IsChecked="{ Binding  Mode=TwoWay, Path=Speed, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=100}" Content="100" Margin="5"/>
+                <RadioButton GroupName="rbSpeed"   IsChecked="{ Binding  Mode=TwoWay, Path=Speed, Converter={StaticResource ObjectToBoolConverter}, ConverterParameter=200}" Content="200" Margin="5"/>
                 </StackPanel>
                 <!--QRS音量-->
                 <!--<StackPanel  Grid.Row="1" Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,0">

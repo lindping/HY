@@ -6,6 +6,9 @@
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"
         Title="设置屏幕显示" Width="800" Height="500" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
+    <Window.Resources>
+        <ResourceDictionary  Source="Dictionary/PopWindow.xaml"></ResourceDictionary>
+    </Window.Resources>
     <Grid>
         <!--布局-->
         <Grid.RowDefinitions>

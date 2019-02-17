@@ -4,41 +4,36 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace YH.ECGWave.WaveData
+namespace ECGMonitor
 {
-    public class WaveData_RESP
+    public class RESPWaveData
     {
-        private string _id;             //记录号
-        private string _name;           //名称
-        private string _remark;         //描述       
-        private int _rate;              //波形频率   
-        private float _baseAMP;         //波形放大倍数
-        private int _inspcapacity;      //吸气量     //3000ml
-        private int _ratio;             //吸气比(时间)     呼吸比1:2
-        private int _etco2;             //呼气末二氧化碳
-        private float[] _waveData;      //波形数据
+        private string _resp_id;           //记录号
+        private string _case;      //病例名称
+        private string _remark;        //病例描述       
+        private int _rate;                      //波形频率   
+        private int _inspcapacity;              //吸气量     //3000ml
+        private int _ratio;                  //吸气比(时间)     呼吸比1:2
+        private int _etco2;                       //呼气末二氧化碳
+        private float[] _waveData;          //波形数据
 
-        public WaveData_RESP()
-        {
-
-        }
 
         /// <summary>
         /// 记录号
         /// </summary>
-        public string ID
+        public string RESP_ID
         {
-            get { return _id; }
-            set { _id = value; }
+            get { return _resp_id; }
+            set { _resp_id = value; }
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Name
+        public string Case
         {
-            get { return _name; }
-            set { _name = value; }
+            get { return _case; }
+            set { _case = value; }
         }
 
         /// <summary>
@@ -48,7 +43,7 @@ namespace YH.ECGWave.WaveData
         {
             get { return _remark; }
             set { _remark = value; }
-        }
+        }              
 
         /// <summary>
         /// 波形频率
@@ -60,18 +55,9 @@ namespace YH.ECGWave.WaveData
         }
 
         /// <summary>
-        /// 波形放大倍数
-        /// </summary>
-        public float BaseAMP
-        {
-            get { return _baseAMP; }
-            set { _baseAMP = value; }
-        }
-
-        /// <summary>
         /// 吸气量     3000ml
         /// </summary>
-        public int InspCapacity
+        public int InspCapacity              
         {
             get { return _inspcapacity; }
             set { _inspcapacity = value; }
@@ -80,7 +66,7 @@ namespace YH.ECGWave.WaveData
         /// <summary>
         /// 吸气比(时间)     呼吸比1:2
         /// </summary>
-        public int Ratio
+        public int Ratio                 
         {
             get { return _ratio; }
             set { _ratio = value; }
@@ -89,7 +75,7 @@ namespace YH.ECGWave.WaveData
         /// <summary>
         /// 呼气末二氧化碳
         /// </summary>
-        public int ETCO2
+        public int ETCO2                       
         {
             get { return _etco2; }
             set { _etco2 = value; }
@@ -102,6 +88,11 @@ namespace YH.ECGWave.WaveData
         {
             get { return _waveData; }
             set { _waveData = value; }
+        }
+
+        public RESPWaveData()
+        {
+
         }
     }
 }

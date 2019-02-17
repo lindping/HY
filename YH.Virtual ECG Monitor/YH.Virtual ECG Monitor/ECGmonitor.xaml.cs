@@ -21,7 +21,7 @@ namespace YH.Virtual_ECG_Monitor
         double y = 0; // y坐标
         int i = 0;    //样本数据的数组索引
 
-        Wave_RESP data;
+        WaveData_ECG data;
 
         int rhythm;  //心率类型
         int wave;    //心律波形索引值
@@ -39,7 +39,7 @@ namespace YH.Virtual_ECG_Monitor
             this.rhythm = rhythm;
             setting = Setting.Get<ECGSettingData>().Custom;
             this.wave = setting.Lead;
-            data = DataToObject.To<Wave_RESP>(rhythm);
+            data = DataToObject.To<WaveData_ECG>(rhythm);
             dataLength = data.WaveData.GetLength(0);
             IndexInterval = dataLength > 1000 ? 10 : 1;
             addX = (double)myCanvas.Width / (double)waveCountMax / ((double)dataLength / (double)IndexInterval);

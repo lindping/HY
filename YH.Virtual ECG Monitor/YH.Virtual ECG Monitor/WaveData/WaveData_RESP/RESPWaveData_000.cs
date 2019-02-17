@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using YH.Simulator.Framework;
 
-namespace YH.Virtual_ECG_Monitor
+namespace ECGMonitor
 {
-    public class Wave_RESP_000 : Wave_RESP
+    public class RESPWaveData_000:RESPWaveData
     {
-        public Wave_RESP_000()
+        public RESPWaveData_000()
             : base()
         {
             // TODO: Complete member initialization
 
             RESP_ID = "R00";
-            Name = "正常呼吸";
+            Case = "正常呼吸";
             Remark = "";
             Rate = 8;
             InspCapacity = 3000;
@@ -24,7 +23,7 @@ namespace YH.Virtual_ECG_Monitor
             WaveData = resp_00;
         }
 
-        public static float[] resp_00 = new float[2000] {0.0f,
+        public static float[] resp_00 = new float[2000] {0.0f, 
             0f ,
 0f ,
 0f ,

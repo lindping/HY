@@ -114,7 +114,10 @@ namespace YH.Virtual_ECG_Monitor
                     string rhythmName = MyDictionary.Rhythm_Basic[(int)rhythm].Split('.')[1];
                     textblock_HeartRate.Text = string.Format("{0}\n{1}", rhythmName, heartRate.ToString());
                 }
-                ecg_wave.Run(data, MaxwaveCount, ecgSetting.Custom.Speed, ecgSetting.Custom.Gain);
+
+                ecg_wave.Run(data, MaxwaveCount, ecgSetting.Custom.Speed, ecgSetting.Custom.Gain,paras.HeartRat);
+                Run_PLETH(PLETH_Paras);
+                Run_ABP(ABP_Paras);
 
             });
         }
@@ -123,7 +126,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[] Pleth_data = content.GetWaveData_PLETH(paras.Plot, paras.Spo2, waveSetting.Custom.PLETH.Gain);
-            pleth_wave.Run(Pleth_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed, waveSetting.Custom.PLETH.Gain);
+            pleth_wave.Run(Pleth_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed, waveSetting.Custom.PLETH.Gain, ECG_Paras.HeartRat);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
                 textblock_SpO2.Text = paras.Spo2.ToString();
@@ -134,7 +137,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[] ABP_data = content.GetWaveData_ABP(paras.Plot, paras.Systolic, paras.Diastolic, waveSetting.Custom.ABP.Gain);
-            abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.ABP.Speed, waveSetting.Custom.ABP.Gain);
+            abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.ABP.Speed, waveSetting.Custom.ABP.Gain, ECG_Paras.HeartRat);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
                 textblock_IBP.Text = string.Format("{0}/{1}", paras.Systolic, paras.Diastolic);
@@ -145,7 +148,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[] RESP_data = content.GetWaveData_RESP(paras.RespType, paras.Plot, paras.RespRate, paras.Capacity, paras.RespRatio, waveSetting.Custom.CO2.Gain);
-            resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.CO2.Speed, waveSetting.Custom.CO2.Gain);
+            resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.CO2.Speed, waveSetting.Custom.CO2.Gain, paras.RespRate);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
                 textblock_RespRate.Text =  string.Format("{0}  {1}  {2}",  paras.RespRate,paras.Capacity, paras.RespRatio);

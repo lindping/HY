@@ -232,20 +232,20 @@ namespace YH.Virtual_ECG_Monitor
             //const float baseAMP = 30.0f;
             Wave_RESP wave_RESP = DataToObject.To<Wave_RESP>((int)eRespType);                           //获取指定编号PLETH波形
 
-            float[,] currentwavedata = wave_RESP.WaveData;       //获取RESP波形的数据
+            float[] currentwavedata = wave_RESP.WaveData;       //获取RESP波形的数据
             int currentwaverate = wave_RESP.Rate;               //获取RESP波形的频率
           //  float baseAMP = wave_RESP.BaseAMP;                    //原始数据放大倍数 
 
             int plotCount = 1, leftplotCount = 1, rightplotCount = 0;
             plotCount = currentwavedata.GetLength(0);
 
-            float[,] currentwavedatas = wave_RESP.WaveData;       //获取RESP波形的数据
+            float[] currentwavedatas = wave_RESP.WaveData;       //获取RESP波形的数据
 
             if (plotCount > 1)
             {
                 //预设波形数据
                 leftplotCount = plotCount * wave_RESP.Ratio / 100;                    //预存RESP波形左边点个数
-                rightplotCount = plotCount - leftplotCount;                                         //预存RESP波形右边点个数
+                rightplotCount = plotCount - leftplotCount;                                        //预存RESP波形右边点个数
 
             }
 
@@ -266,7 +266,7 @@ namespace YH.Virtual_ECG_Monitor
             }
 
             wavedata = new float[newplotCount];         //重新定义长度
-            float waveOffsetY0 = currentwavedata[0,0] * (nInspCapacity / 3000.0f) * baseAMP;                //首个点的Y值（用作调整波形偏移量使用）
+            float waveOffsetY0 = currentwavedata[0] * (nInspCapacity / 3000.0f) * baseAMP;                //首个点的Y值（用作调整波形偏移量使用）
             //左边波形
             if (newleftplotCount > leftplotCount)
             {
@@ -275,18 +275,18 @@ namespace YH.Virtual_ECG_Monitor
                 int o = 0;
                 for (int i = 0; i < leftplotCount; i++)
                 {
-                    wavedata[i + o] = currentwavedata[i,0] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
+                    wavedata[i + o] = currentwavedata[i] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
                     if ((i + 1) % step == 0)
                     {
                         ++o;
-                        wavedata[(o * (int)step) + o - 1] = currentwavedata[i,0] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
+                        wavedata[(o * (int)step) + o - 1] = currentwavedata[i] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
                     }
                 }
                 if (leftplotCount - 1 + o < newleftplotCount)
                 {
                     for (int j = leftplotCount - 1 + o; j < newleftplotCount; j++)
                     {
-                        wavedata[j] = currentwavedata[leftplotCount - 1,0] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
+                        wavedata[j] = currentwavedata[leftplotCount - 1] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
                     }
                 }
             }
@@ -300,7 +300,7 @@ namespace YH.Virtual_ECG_Monitor
                     {
                         o = leftplotCount - 1;
                     }
-                    wavedata[i] = currentwavedata[o,0] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
+                    wavedata[i] = currentwavedata[o] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
                 }
             }
 
@@ -313,11 +313,11 @@ namespace YH.Virtual_ECG_Monitor
                 int o = 0;
                 for (int i = 0; i < rightplotCount; i++)
                 {
-                    wavedata[newleftplotCount - 1 + i + o] = currentwavedata[leftplotCount - 1 + i,0] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
+                    wavedata[newleftplotCount - 1 + i + o] = currentwavedata[leftplotCount - 1 + i] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
                     if ((i + 1) % step == 0)
                     {
                         ++o;
-                        wavedata[newleftplotCount - 1 + (o * (int)step) + o - 1] = currentwavedata[leftplotCount - 1 + i,0] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
+                        wavedata[newleftplotCount - 1 + (o * (int)step) + o - 1] = currentwavedata[leftplotCount - 1 + i] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
                     }
                 }
             }
@@ -333,11 +333,11 @@ namespace YH.Virtual_ECG_Monitor
                     }
                     if (newleftplotCount > 0)
                     {
-                        wavedata[newleftplotCount - 1 + i] = currentwavedata[leftplotCount - 1 + o,0] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
+                        wavedata[newleftplotCount - 1 + i] = currentwavedata[leftplotCount - 1 + o] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
                     }
                     else
                     {
-                        wavedata[i] = currentwavedata[leftplotCount - 1 + o,0] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
+                        wavedata[i] = currentwavedata[leftplotCount - 1 + o] * (nInspCapacity / 3000.0f) * baseAMP - waveOffsetY0;
                     }
                 }
 

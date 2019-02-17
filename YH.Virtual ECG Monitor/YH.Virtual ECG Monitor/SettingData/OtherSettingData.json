@@ -1,8 +1,1 @@
-﻿{
-  "Custom": null,
-  "Default": {
-    "DefaultLayout": 8,
-    "AlartVolumn": 6,
-    "NIBP": false
-  }
-}
+﻿{"Custom":{"DefaultLayout":"8","AlartVolumn":8,"NIBP":false},"Default":{"DefaultLayout":"8","AlartVolumn":6,"NIBP":false}}
