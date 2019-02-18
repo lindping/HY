@@ -40,10 +40,16 @@ namespace YH.Virtual_ECG_Monitor
 
 
             uc_wave.ABP_Paras = new ABP_Paras() { Diastolic = 100, Systolic = 130, Plot = 200 };
-            uc_wave.ECG_Paras = new ECG_Paras() { HeartRat = 100, Rhythm = Rhythm.Rhythm_01 };
+          
             uc_wave.Resp_Paras = new Resp_Paras() { RespType = RespType.Resp_02, Capacity = 100, Plot = 200, RespRate = 100, RespRatio = 80 };
             uc_wave.PLETH_Paras = new PLETH_Paras() { Plot = 200, Spo2 = 60 };
+            uc_wave.ECG_Paras = new ECG_Paras() { HeartRat = 120, Rhythm = Rhythm.Rhythm_01 };
 
+
+            uc_wave. Run_PLETH();
+            uc_wave.Run_ABP();
+            uc_wave.Run_ECG();
+            uc_wave.Run_RESP();
         }
     }
 }

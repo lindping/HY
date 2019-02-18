@@ -4,6 +4,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
 using System.Linq;
+using System.IO;
+using System;
+using System.Threading;
 
 namespace YH.Virtual_ECG_Monitor
 {
@@ -12,14 +15,18 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class UserControl_OneWave : UserControl
     {
-        int interval = 200;    //描点周期 单位毫秒
+        int interval = 100;    //描点周期 单位毫秒
         Launch launch;    //定时器
         double addX;      // x轴上 点距
-        int i = 0;            //
-        double x = 0;  // x坐标
-        int curWaveCount = 0;  //表示当前第几个波形
+        int arr_i = 0;
+
         int intervalCount;   //描点周期内描点个数
         float[] data;   //波形数据
+        float[] runData;
+
+        double showTime; //一个展示周期的时间， 毫秒
+        DateTime startTime;  //波形展示开始时间
+
 
         public int MaxWaveCount { get; set; }   //要展示的波形个数
 
@@ -67,7 +74,7 @@ namespace YH.Virtual_ECG_Monitor
         /// <param name="speed"></param>
         /// <param name="gain"></param>
         /// <param name="frequent"></param>
-        public void Run(float[] mData, int maxWaveCount, float speed, float gain,float rate)
+        public void Run(float[] mData, int maxWaveCount, float speed, float gain, float rate)
         {
             if (rate <= 0)
             {
@@ -82,6 +89,7 @@ namespace YH.Virtual_ECG_Monitor
 
             gain = gain / 40;
             speed = speed / 50;
+            rate = rate * speed;
 
             float max = mData.Max();
             float min = mData.Min();
@@ -102,31 +110,21 @@ namespace YH.Virtual_ECG_Monitor
                 }
                 this.data[i] = controlHeight - this.data[i];
             }
+            List<float> list = new List<float>();
+            for (int i = 0; i < MaxWaveCount; i++)
+            {
+                list.AddRange(data);
+            }
+            runData = list.ToArray();
 
-            int pointAmount = maxWaveCount * data.Length ;
-            int t = (int)(60000 * maxWaveCount / rate);
+            float PointPerMin = rate * data.Length;  //每分钟波形的数据长度
+            intervalCount = (int)Math.Ceiling(PointPerMin * interval / 60000); // 每个周期内需要的数据点数
 
-            // intervalCount =(int) (10*speed);
-            //  interval = t * intervalCount / pointAmount;
-
-            interval = t/ f(pointAmount, t);
-            intervalCount =(int)( pointAmount * interval/ t * speed);
-
-            addX = ActualWidth / pointAmount;
-            launch.Interval = interval;
+            showTime = 60000 * MaxWaveCount / rate;
+            arr_i = 0;
             launch.Start();
         }
 
-        static int f(int a, int b)//最大公约数 
-         {
-             if (a<b) { a = a + b; b = a - b; a = a - b; }
-             return (a % b == 0) ? b : f(a % b, b);
-         }
- 
-         static int m(int a, int b)//最小公倍数 
-         {
-             return a* b / f(a, b);
-         }
 
 
         public void Run(float[] mData, int maxWaveCount, float speed, float gain)
@@ -149,7 +147,7 @@ namespace YH.Virtual_ECG_Monitor
             float controlHeight = (float)myCanvas.ActualHeight;
             for (int i = 0; i < mData.Length; i++)
             {
-                data[i] = ((mData[i] - min) / valueHeight) * controlHeight * gain;          
+                data[i] = ((mData[i] - min) / valueHeight) * controlHeight * gain;
             }
             float maxData = data.Max();
             for (int i = 0; i < data.Length; i++)
@@ -160,7 +158,7 @@ namespace YH.Virtual_ECG_Monitor
                 }
                 this.data[i] = controlHeight - this.data[i];
             }
-            
+
 
             int pointAmount = (int)(maxWaveCount * this.data.Length * speed);
 
@@ -183,32 +181,31 @@ namespace YH.Virtual_ECG_Monitor
 
         private void launch_OnElapsed()
         {
+
+
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                if (i >= this.data.GetLength(0))
+
+                if (arr_i == 0)
                 {
-                    i = 0;
-                    curWaveCount++;
+                    polyline.Points.Clear();
+                    startTime = DateTime.Now;
                 }
 
                 for (int j = 0; j < intervalCount; j++)
                 {
-                    if (i >= this.data.Length)
+                    if (arr_i >= runData.Length)
                     {
-                        break;
+                        if(showTime < (DateTime.Now - startTime).TotalMilliseconds)
+                        {
+                            arr_i = 0;                         
+                        }
+                      break;                    
                     }
-                    float y = this.data[i];
+                    float y = runData[arr_i++];
+                    double x = ActualWidth * arr_i / (runData.Length - 1);
                     polyline.Points.Add(new Point(x, y));
-                    x += addX;
-                    i++;
-               }
-
-                if (curWaveCount >= MaxWaveCount || x > ActualWidth)
-                {
-                    curWaveCount = 0;
-                    i = 0;
-                    x = 0;
-                    polyline.Points.Clear();
+                    
                 }
             });
         }

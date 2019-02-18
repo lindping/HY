@@ -36,7 +36,7 @@ namespace YH.Virtual_ECG_Monitor
             set
             {
                 _ECG_Paras = value;
-                Run_ECG(_ECG_Paras);
+             //   Run_ECG(_ECG_Paras);
             }
         }
 
@@ -50,7 +50,7 @@ namespace YH.Virtual_ECG_Monitor
             set
             {
                 _PLETH_Paras = value;
-                Run_PLETH(_PLETH_Paras);
+             //   Run_PLETH(_PLETH_Paras);
             }
         }
 
@@ -66,7 +66,7 @@ namespace YH.Virtual_ECG_Monitor
             set
             {
                 _ABP_Paras = value;
-                Run_ABP(_ABP_Paras);
+             //   Run_ABP(_ABP_Paras);
             }
         }
 
@@ -82,16 +82,16 @@ namespace YH.Virtual_ECG_Monitor
             set
             {
                 _Resp_Paras = value;
-                Run_RESP(_Resp_Paras);
+              //  Run_RESP(_Resp_Paras);
             }
         }
 
 
-        public void Run_ECG(ECG_Paras paras)
+        public void Run_ECG()
         {
             //  launch_ECG.Stop();
-            Rhythm rhythm = paras.Rhythm;
-            int heartRate = paras.HeartRat;
+            Rhythm rhythm = ECG_Paras.Rhythm;
+            int heartRate = ECG_Paras.HeartRat;
             ECGSettingData ecgSetting = Setting.Get<ECGSettingData>();
 
 
@@ -115,46 +115,53 @@ namespace YH.Virtual_ECG_Monitor
                     textblock_HeartRate.Text = string.Format("{0}\n{1}", rhythmName, heartRate.ToString());
                 }
 
-                ecg_wave.Run(data, MaxwaveCount, ecgSetting.Custom.Speed, ecgSetting.Custom.Gain,paras.HeartRat);
-                Run_PLETH(PLETH_Paras);
-                Run_ABP(ABP_Paras);
+                ecg_wave.Run(data, MaxwaveCount, ecgSetting.Custom.Speed, ecgSetting.Custom.Gain, ECG_Paras.HeartRat);
+           //     PLETH_Paras = PLETH_Paras;
+            //    ABP_Paras = ABP_Paras;
+           
 
             });
         }
 
-        public void Run_PLETH(PLETH_Paras paras)
+        public void Run_PLETH()
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
-            float[] Pleth_data = content.GetWaveData_PLETH(paras.Plot, paras.Spo2, waveSetting.Custom.PLETH.Gain);
+            float[] Pleth_data = content.GetWaveData_PLETH(PLETH_Paras.Plot, PLETH_Paras.Spo2, waveSetting.Custom.PLETH.Gain);
             pleth_wave.Run(Pleth_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed, waveSetting.Custom.PLETH.Gain, ECG_Paras.HeartRat);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                textblock_SpO2.Text = paras.Spo2.ToString();
+                textblock_SpO2.Text = PLETH_Paras.Spo2.ToString();
             });
         }
 
-        public void Run_ABP(ABP_Paras paras)
+        public void Run_ABP()
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
-            float[] ABP_data = content.GetWaveData_ABP(paras.Plot, paras.Systolic, paras.Diastolic, waveSetting.Custom.ABP.Gain);
+            float[] ABP_data = content.GetWaveData_ABP(ABP_Paras.Plot, ABP_Paras.Systolic, ABP_Paras.Diastolic, waveSetting.Custom.ABP.Gain);
             abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.ABP.Speed, waveSetting.Custom.ABP.Gain, ECG_Paras.HeartRat);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                textblock_IBP.Text = string.Format("{0}/{1}", paras.Systolic, paras.Diastolic);
+                textblock_IBP.Text = string.Format("{0}/{1}", ABP_Paras.Systolic, ABP_Paras.Diastolic);
             });
         }
 
-        public void Run_RESP(Resp_Paras paras)
+        public void Run_RESP()
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
-            float[] RESP_data = content.GetWaveData_RESP(paras.RespType, paras.Plot, paras.RespRate, paras.Capacity, paras.RespRatio, waveSetting.Custom.CO2.Gain);
-            resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.CO2.Speed, waveSetting.Custom.CO2.Gain, paras.RespRate);
+            float[] RESP_data = content.GetWaveData_RESP(Resp_Paras.RespType, Resp_Paras.Plot, Resp_Paras.RespRate, Resp_Paras.Capacity, Resp_Paras.RespRatio, waveSetting.Custom.CO2.Gain);
+            resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.CO2.Speed, waveSetting.Custom.CO2.Gain, Resp_Paras.RespRate);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-                textblock_RespRate.Text =  string.Format("{0}  {1}  {2}",  paras.RespRate,paras.Capacity, paras.RespRatio);
+                textblock_RespRate.Text =  string.Format("{0}  {1}  {2}", Resp_Paras.RespRate, Resp_Paras.Capacity, Resp_Paras.RespRatio);
             });
         }
 
+        private void RunWave()
+        {
+            Run_ABP();
+            Run_PLETH();
+            Run_ECG();
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             bool? dialog;
@@ -179,14 +186,15 @@ namespace YH.Virtual_ECG_Monitor
                     if (dialog.HasValue && dialog.Value)
                     {
                         ECG_Paras = new ECG_Paras() { Rhythm = runSetting.Rhythm, HeartRat = runSetting.HeartRate };
+                        RunWave();
                     }
                     break;
                 case "ECG选项":
                     ecgSetting = new ECGSetting();
                     dialog = ecgSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
-                    {                       
-                        Run_ECG(ECG_Paras);
+                    {
+                        RunWave();
                     }
                     break;
                 case "ABP设置":
@@ -195,15 +203,15 @@ namespace YH.Virtual_ECG_Monitor
                     if (dialog.HasValue && dialog.Value)
                     {
                         ABP_Paras = abpSetting.ABP_Paras;
-                        Run_ABP(ABP_Paras);
+                        RunWave();
                     }
                     break;
                 case "ABP选项":
                     WaveSetting waveSetting = new WaveSetting(1);
                     dialog = waveSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
-                    {                       
-                        Run_ABP(ABP_Paras);
+                    {
+                        RunWave();
                     }
                     break;
 
@@ -213,7 +221,7 @@ namespace YH.Virtual_ECG_Monitor
                     if (dialog.HasValue && dialog.Value)
                     {
                         PLETH_Paras = plethRunSetting.PLETH_Paras;
-                        Run_PLETH(PLETH_Paras);
+                        RunWave();
                     }
                     break;
                 case "PLETH选项":
@@ -221,7 +229,7 @@ namespace YH.Virtual_ECG_Monitor
                     dialog = waveSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
                     {
-                        Run_PLETH(PLETH_Paras);
+                        RunWave();
                     }
                     break;
 
@@ -231,7 +239,7 @@ namespace YH.Virtual_ECG_Monitor
                     if (dialog.HasValue && dialog.Value)
                     {
                         Resp_Paras = respRunSetting.Resp_Paras;
-                        Run_RESP(Resp_Paras);
+                        Run_RESP();
                     }
                     break;
                 case "RESP选项":
@@ -239,7 +247,7 @@ namespace YH.Virtual_ECG_Monitor
                     dialog = waveSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
                     {
-                        Run_RESP(Resp_Paras);
+                        Run_RESP();
                     }
                     break;
             }
