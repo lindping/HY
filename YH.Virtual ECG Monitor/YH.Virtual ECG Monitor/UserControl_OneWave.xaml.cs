@@ -15,22 +15,17 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class UserControl_OneWave : UserControl
     {
-        int interval = 100;    //描点周期 单位毫秒
-        Launch launch;    //定时器
-        double addX;      // x轴上 点距
-        int arr_i = 0;
 
-        int intervalCount;   //描点周期内描点个数
-        float[] data;   //波形数据
-        float[] runData;
+        Launch launch;    //定时器
+        int interval = 100;    //定时器描点周期 单位毫秒   
+        int intervalCount;   //描点周期内描点个数    
+        float[] runData;  //一个展示波形内的数据
+        int data_i = 0;
 
         double showTime; //一个展示周期的时间， 毫秒
         DateTime startTime;  //波形展示开始时间
 
-
         public int MaxWaveCount { get; set; }   //要展示的波形个数
-
-
 
         public bool IsPause
         {
@@ -58,7 +53,6 @@ namespace YH.Virtual_ECG_Monitor
 
         public void Pause()
         {
-
             launch.Pause();
         }
 
@@ -66,6 +60,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             launch.Start();
         }
+
         /// <summary>
         /// 
         /// </summary>
@@ -74,7 +69,7 @@ namespace YH.Virtual_ECG_Monitor
         /// <param name="speed"></param>
         /// <param name="gain"></param>
         /// <param name="frequent"></param>
-        public void Run(float[] mData, int maxWaveCount, float speed, float gain, float rate)
+        public void Run(float[] data, int maxWaveCount, float speed, float gain, float rate)
         {
             if (rate <= 0)
             {
@@ -90,122 +85,69 @@ namespace YH.Virtual_ECG_Monitor
             gain = gain / 40;
             speed = speed / 50;
             rate = rate * speed;
-
-            float max = mData.Max();
-            float min = mData.Min();
-            float valueHeight = max - min;
-            this.data = new float[mData.Length];
-
-            float controlHeight = (float)myCanvas.ActualHeight;
-            for (int i = 0; i < mData.Length; i++)
-            {
-                data[i] = ((mData[i] - min) / valueHeight) * controlHeight * gain;
-            }
-            float maxData = data.Max();
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (gain < 1)
-                {
-                    this.data[i] += (controlHeight - maxData) / 2;
-                }
-                this.data[i] = controlHeight - this.data[i];
-            }
-            List<float> list = new List<float>();
-            for (int i = 0; i < MaxWaveCount; i++)
-            {
-                list.AddRange(data);
-            }
-            runData = list.ToArray();
-
-            float PointPerMin = rate * data.Length;  //每分钟波形的数据长度
-            intervalCount = (int)Math.Ceiling(PointPerMin * interval / 60000); // 每个周期内需要的数据点数
+          
+            runData = GetRunData(data, gain);
+            intervalCount = (int)Math.Ceiling(  runData.Length *rate * interval/(60000*MaxWaveCount) ); // 每个计时周期内需要描绘的数据数量
 
             showTime = 60000 * MaxWaveCount / rate;
-            arr_i = 0;
+            data_i = 0;
             launch.Start();
         }
 
-
-
-        public void Run(float[] mData, int maxWaveCount, float speed, float gain)
+        private float[] GetRunData(float[] data, float gain)
         {
-
-            if (launch == null)
-            {
-                launch = new Launch();
-                launch.Interval = interval;
-                launch.OnElapsed += launch_OnElapsed;
-            }
-
-            gain = gain / 40;
-            speed = speed / 50;
-            float max = mData.Max();
-            float min = mData.Min();
-            float valueHeight = max - min;
-            data = new float[mData.Length];
-
+            //  this.data = new float[mData.Length];
+            List<float> list = new List<float>();
             float controlHeight = (float)myCanvas.ActualHeight;
-            for (int i = 0; i < mData.Length; i++)
-            {
-                data[i] = ((mData[i] - min) / valueHeight) * controlHeight * gain;
-            }
-            float maxData = data.Max();
+            float max = data.Max();
+            float min = data.Min();
+            float valueHeight = max - min;
+
             for (int i = 0; i < data.Length; i++)
+            {
+                list.Add(((data[i] - min) / valueHeight) * controlHeight * gain);
+            }
+
+            float maxData = list.Max();
+            list.ForEach(p =>
             {
                 if (gain < 1)
                 {
-                    this.data[i] += (controlHeight - maxData) / 2;
+                    p += (controlHeight - maxData) / 2;
                 }
-                this.data[i] = controlHeight - this.data[i];
-            }
+                p = controlHeight - p;
+            });
 
-
-            int pointAmount = (int)(maxWaveCount * this.data.Length * speed);
-
-            if (pointAmount < 60000 / interval)
+            List<float> newList = new List<float>();
+            for (int i = 0; i < MaxWaveCount; i++)
             {
-                interval = 60000 / pointAmount;
-                intervalCount = 1;
+                newList.AddRange(list);
             }
-            else
-            {
-                intervalCount = pointAmount * interval / 60000;
-                if (intervalCount == 0)
-                {
-                    intervalCount = 1;
-                }
-            }
-            addX = ActualWidth / pointAmount;
-            launch.Start();
+            return newList.ToArray();
         }
 
         private void launch_OnElapsed()
         {
-
-
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
-
-                if (arr_i == 0)
+                if (data_i == 0)
                 {
                     polyline.Points.Clear();
                     startTime = DateTime.Now;
                 }
-
                 for (int j = 0; j < intervalCount; j++)
                 {
-                    if (arr_i >= runData.Length)
+                    if (data_i >= runData.Length)
                     {
-                        if(showTime < (DateTime.Now - startTime).TotalMilliseconds)
+                        if (showTime < (DateTime.Now - startTime).TotalMilliseconds)  //波形展示完毕，如果时间还没到就跳出循环等待下一次计时。
                         {
-                            arr_i = 0;                         
+                            data_i = 0;
                         }
-                      break;                    
+                        break;
                     }
-                    float y = runData[arr_i++];
-                    double x = ActualWidth * arr_i / (runData.Length - 1);
+                    float y = runData[data_i++];
+                    double x = ActualWidth * data_i / (runData.Length - 1);
                     polyline.Points.Add(new Point(x, y));
-                    
                 }
             });
         }

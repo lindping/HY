@@ -46,9 +46,7 @@ namespace YH.Virtual_ECG_Monitor
             uc_wave.ECG_Paras = new ECG_Paras() { HeartRat = 120, Rhythm = Rhythm.Rhythm_01 };
 
 
-            uc_wave. Run_PLETH();
-            uc_wave.Run_ABP();
-            uc_wave.Run_ECG();
+            uc_wave.RunWave();          
             uc_wave.Run_RESP();
         }
     }

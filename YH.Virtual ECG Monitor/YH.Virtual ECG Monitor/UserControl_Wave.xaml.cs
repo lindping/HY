@@ -156,7 +156,7 @@ namespace YH.Virtual_ECG_Monitor
             });
         }
 
-        private void RunWave()
+        public void RunWave()
         {
             Run_ABP();
             Run_PLETH();
@@ -169,16 +169,6 @@ namespace YH.Virtual_ECG_Monitor
             ECGSetting ecgSetting;
             switch (btn.Content.ToString())
             {
-
-                //case 0:
-                //    item = data.Custom.PLETH; break;
-                //case 1:
-                //    item = data.Custom.ABP; break;
-                //case 2:
-                //    item = data.Custom.PAP; break;
-                //case 3:
-                //    item = data.Custom.CO2; break;
-
 
                 case "ECG设置":
                     ECGRunSetting runSetting = new ECGRunSetting(ECG_Paras.Rhythm, ECG_Paras.HeartRat);
