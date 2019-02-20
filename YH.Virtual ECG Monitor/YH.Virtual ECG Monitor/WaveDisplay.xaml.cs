@@ -47,7 +47,7 @@ namespace YH.Virtual_ECG_Monitor
 
 
             uc_wave.RunWave();          
-            uc_wave.Run_RESP();
+           uc_wave.Run_RESP();
         }
     }
 }

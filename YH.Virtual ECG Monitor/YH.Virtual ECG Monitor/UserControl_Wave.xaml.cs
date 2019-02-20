@@ -115,7 +115,7 @@ namespace YH.Virtual_ECG_Monitor
                     textblock_HeartRate.Text = string.Format("{0}\n{1}", rhythmName, heartRate.ToString());
                 }
 
-                ecg_wave.Run(data, MaxwaveCount, ecgSetting.Custom.Speed, ecgSetting.Custom.Gain, ECG_Paras.HeartRat);
+                ecg_wave.Run(data,  ecgSetting.Custom.Speed, ecgSetting.Custom.Gain, ECG_Paras.HeartRat);
            //     PLETH_Paras = PLETH_Paras;
             //    ABP_Paras = ABP_Paras;
            
@@ -127,7 +127,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[] Pleth_data = content.GetWaveData_PLETH(PLETH_Paras.Plot, PLETH_Paras.Spo2, waveSetting.Custom.PLETH.Gain);
-            pleth_wave.Run(Pleth_data, MaxwaveCount, waveSetting.Custom.PLETH.Speed, waveSetting.Custom.PLETH.Gain, ECG_Paras.HeartRat);
+            pleth_wave.Run(Pleth_data,  waveSetting.Custom.PLETH.Speed, waveSetting.Custom.PLETH.Gain, ECG_Paras.HeartRat);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
                 textblock_SpO2.Text = PLETH_Paras.Spo2.ToString();
@@ -138,7 +138,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[] ABP_data = content.GetWaveData_ABP(ABP_Paras.Plot, ABP_Paras.Systolic, ABP_Paras.Diastolic, waveSetting.Custom.ABP.Gain);
-            abp_wave.Run(ABP_data, MaxwaveCount, waveSetting.Custom.ABP.Speed, waveSetting.Custom.ABP.Gain, ECG_Paras.HeartRat);
+            abp_wave.Run(ABP_data,  waveSetting.Custom.ABP.Speed, waveSetting.Custom.ABP.Gain, ECG_Paras.HeartRat);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
                 textblock_IBP.Text = string.Format("{0}/{1}", ABP_Paras.Systolic, ABP_Paras.Diastolic);
@@ -149,7 +149,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[] RESP_data = content.GetWaveData_RESP(Resp_Paras.RespType, Resp_Paras.Plot, Resp_Paras.RespRate, Resp_Paras.Capacity, Resp_Paras.RespRatio, waveSetting.Custom.CO2.Gain);
-            resp_wave.Run(RESP_data, MaxwaveCount, waveSetting.Custom.CO2.Speed, waveSetting.Custom.CO2.Gain, Resp_Paras.RespRate);
+            resp_wave.Run(RESP_data,  waveSetting.Custom.CO2.Speed, waveSetting.Custom.CO2.Gain, Resp_Paras.RespRate);
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {
                 textblock_RespRate.Text =  string.Format("{0}  {1}  {2}", Resp_Paras.RespRate, Resp_Paras.Capacity, Resp_Paras.RespRatio);

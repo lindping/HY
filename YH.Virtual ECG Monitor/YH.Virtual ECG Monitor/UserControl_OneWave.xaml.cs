@@ -23,9 +23,10 @@ namespace YH.Virtual_ECG_Monitor
         int data_i = 0;
 
         double showTime; //一个展示周期的时间， 毫秒
-        DateTime startTime;  //波形展示开始时间
+        DateTime startTime;  //波形展示开始时间      
+        public float MaxWaveCount { get; set; }   //要展示的波形个数
 
-        public int MaxWaveCount { get; set; }   //要展示的波形个数
+        double remain; //intervalCoun取整以后形成的差
 
         public bool IsPause
         {
@@ -69,7 +70,7 @@ namespace YH.Virtual_ECG_Monitor
         /// <param name="speed"></param>
         /// <param name="gain"></param>
         /// <param name="frequent"></param>
-        public void Run(float[] data, int maxWaveCount, float speed, float gain, float rate)
+        public void Run(float[] data, float speed, float gain, float rate)
         {
             if (rate <= 0)
             {
@@ -83,13 +84,12 @@ namespace YH.Virtual_ECG_Monitor
             }
 
             gain = gain / 40;
-            speed = speed / 50;
-            rate = rate * speed;
-          
-            runData = GetRunData(data, gain);
-            intervalCount = (int)Math.Ceiling(  runData.Length *rate * interval/(60000*MaxWaveCount) ); // 每个计时周期内需要描绘的数据数量
-
+            MaxWaveCount = 25 * 16 / speed;
             showTime = 60000 * MaxWaveCount / rate;
+            intervalCount = (int)Math.Ceiling(MaxWaveCount * data.Length * interval / showTime);
+            remain = intervalCount - MaxWaveCount * data.Length * interval / showTime;
+
+            runData = GetRunData(data, gain);
             data_i = 0;
             launch.Start();
         }
@@ -109,14 +109,16 @@ namespace YH.Virtual_ECG_Monitor
             }
 
             float maxData = list.Max();
-            list.ForEach(p =>
+
+
+            for (int i = 0; i < list.Count; i++)
             {
                 if (gain < 1)
                 {
-                    p += (controlHeight - maxData) / 2;
+                    list[i] += (controlHeight - maxData) / 2;
                 }
-                p = controlHeight - p;
-            });
+                list[i] = controlHeight - list[i];
+            };
 
             List<float> newList = new List<float>();
             for (int i = 0; i < MaxWaveCount; i++)
@@ -126,15 +128,25 @@ namespace YH.Virtual_ECG_Monitor
             return newList.ToArray();
         }
 
+        double sumRemain;
+
         private void launch_OnElapsed()
         {
+            //if (sumRemain > intervalCount)
+            //{
+            //    sumRemain -= intervalCount*2;
+            //    return;
+            //}
+
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
-            {
+            {            
+
                 if (data_i == 0)
                 {
                     polyline.Points.Clear();
                     startTime = DateTime.Now;
-                }
+                }            
+             
                 for (int j = 0; j < intervalCount; j++)
                 {
                     if (data_i >= runData.Length)
@@ -145,10 +157,12 @@ namespace YH.Virtual_ECG_Monitor
                         }
                         break;
                     }
+
                     float y = runData[data_i++];
                     double x = ActualWidth * data_i / (runData.Length - 1);
-                    polyline.Points.Add(new Point(x, y));
+                    polyline.Points.Add(new Point(x, y));  
                 }
+                sumRemain += remain;
             });
         }
     }
