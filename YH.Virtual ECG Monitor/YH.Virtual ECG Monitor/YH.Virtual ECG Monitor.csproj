@@ -380,8 +380,12 @@
     <None Include="SettingData\OtherSettingData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="SettingData\PatientInfoData.json" />
-    <None Include="SettingData\VirtualManAttributeData.json" />
+    <None Include="SettingData\PatientInfoData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SettingData\VirtualManAttributeData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SettingData\WaveSettingData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

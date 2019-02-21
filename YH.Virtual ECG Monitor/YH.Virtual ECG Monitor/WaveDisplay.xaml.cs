@@ -39,11 +39,13 @@ namespace YH.Virtual_ECG_Monitor
             this.Height = System.Windows.SystemParameters.PrimaryScreenHeight;
 
 
-            uc_wave.ABP_Paras = new ABP_Paras() { Diastolic = 100, Systolic = 130, Plot = 200 };
+            VirtualManAttributeData setting = Setting.Get<VirtualManAttributeData>();
+      
+            uc_wave.ABP_Paras = new ABP_Paras() { Systolic = setting.Custom.IBP[0].Value, Diastolic = setting.Custom.IBP[1].Value,  Plot = 200 };
           
-            uc_wave.Resp_Paras = new Resp_Paras() { RespType = RespType.Resp_02, Capacity = 100, Plot = 200, RespRate = 100, RespRatio = 80 };
-            uc_wave.PLETH_Paras = new PLETH_Paras() { Plot = 200, Spo2 = 60 };
-            uc_wave.ECG_Paras = new ECG_Paras() { HeartRat = 120, Rhythm = Rhythm.Rhythm_01 };
+            uc_wave.Resp_Paras = new Resp_Paras() { RespType = RespType.Resp_02, Capacity = 3000, Plot = 200, RespRate =  setting.Custom.RESP.Value , RespRatio = 80 };
+            uc_wave.PLETH_Paras = new PLETH_Paras() { Plot = 200, Spo2 = setting.Custom.SPO2.Value };
+            uc_wave.ECG_Paras = new ECG_Paras() { HeartRat = setting.Custom.HeartRate.Value, Rhythm = Rhythm.Rhythm_01 };
 
 
             uc_wave.RunWave();          

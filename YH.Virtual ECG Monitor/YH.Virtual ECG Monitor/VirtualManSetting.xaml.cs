@@ -34,7 +34,7 @@ namespace YH.Virtual_ECG_Monitor
                 model = new VirtualManAttributeData();
                 model.Default = new VirtualManAttributeModel()
                 {
-                    HeartRate = new VirtualManAttributeItem() { Value = 16, Description = "心率 HEART RATE", Name = "HeartRate", MaxValue = 32, MinValue = 1 , unit= "BPM" },
+                    HeartRate = new VirtualManAttributeItem() { Value = 80, Description = "心率 HEART RATE", Name = "HeartRate", MaxValue = 300, MinValue = 0 , unit= "BPM" },
                     PulseRate = new VirtualManAttributeItem() { Value = 16, Description = "脉搏频率 PULSE RATE", Name = "PulseRate", MaxValue = 32, MinValue = 1, unit = "BPM" },//16,
                     SPO2 = new VirtualManAttributeItem() { Value = 50, Description = "血氧饱和度 SPO2", Name = "SPO2", MaxValue = 100, MinValue = 0  , unit = "%" },// 50,
                     IBP = new VirtualManAttributeItem[] { new VirtualManAttributeItem { Value = 120, Description = "有创血压_收缩压  IBP_Systolic", Name = "IBP_Systolic", MaxValue = 300, MinValue = 0, unit = "mmHg" }, new VirtualManAttributeItem { Value = 80, Description = "有创血压_舒张压  IBP_Diastolic", Name = "IBP_Diastolic", MaxValue = 200, MinValue = 0, unit = "mmHg" } },//120,80,
@@ -124,9 +124,7 @@ namespace YH.Virtual_ECG_Monitor
                     MessageBox.Show("填写数据不合规范");
                     return;
                 }
-
-            }
-          
+            }          
             Setting.Save(model);
             this.Close();                
         }

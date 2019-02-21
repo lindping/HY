@@ -277,10 +277,11 @@ namespace YH.Virtual_ECG_Monitor
                 }
             }
             // 刷新界面,显示波形的初始化状态选择控件
+            lbWaveCategory.SelectionChanged -= lbWaveCategory_Selected;   //避免触发SelectionChanged，反过来又修改select button
             lbWaveCategory.ItemsSource = waveCategories;
             lbWaveCategory.SelectedValue = selectedWave.Name;
             lbWaveCategory.Visibility = Visibility.Visible;
-
+            lbWaveCategory.SelectionChanged += lbWaveCategory_Selected;
             spInitStatus.Opacity = 1;
             rbInitStatus.DataContext = selectedWave;
         }
@@ -307,15 +308,18 @@ namespace YH.Virtual_ECG_Monitor
         /// <param name="e"></param>
         private void lbWaveCategory_Selected(object sender, RoutedEventArgs e)
         {
+
             if (lbWaveCategory.SelectedValue == null || selectedWave == null)
             {
                 return;
             }
             selectedWave.Name = lbWaveCategory.SelectedValue.ToString();
+
+
             if (selectWaveButton != null)
             {
                 (selectWaveButton.Content as TextBlock).Text = selectedWave.Name;
-              //  selectWaveButton.
+           
             }
 
         }

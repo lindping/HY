@@ -5,12 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor"
         mc:Ignorable="d"     
-       Title="波形参数设置" Width="450"  Height="200" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
+       Title="波形参数设置" Width="450"  Height="600" WindowStyle="None" Topmost="False" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" AllowsTransparency="True" Style="{DynamicResource WindowStyle}">
     <Window.Resources>
         <ResourceDictionary  Source="Dictionary/PopWindow.xaml"></ResourceDictionary>
     </Window.Resources>
     <Grid x:Name="grid" Margin="0">
         <Grid.RowDefinitions>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition ></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
             <RowDefinition ></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -31,9 +39,6 @@
                 </Button>
             </StackPanel>
         </DockPanel>
-
-
-  
 
 
         <TextBlock    Grid.Column="0" Grid.Row="1"  VerticalAlignment="Center"  HorizontalAlignment="Left" Margin="20 0 0 0">增益(mm/mV):</TextBlock>
@@ -59,9 +64,52 @@
             <RadioButton GroupName="rb_speed" Content="400" VerticalContentAlignment="Center" Margin="10">
             </RadioButton>
         </StackPanel>
+
+        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="3" HorizontalAlignment="Left" Margin="20 0 0 0">报警开关:</TextBlock>
+        <StackPanel x:Name="rb_warnSwitch"  Grid.Column="1" Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left">
+            <RadioButton GroupName="rb_warnSwitch" Content="开"  VerticalContentAlignment="Center" Margin="10"  IsChecked="True" ></RadioButton>
+            <RadioButton GroupName="rb_warnSwitch" Content="关" VerticalContentAlignment="Center" Margin="5"></RadioButton>          
+        </StackPanel>
+
+        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="20 0 0 0">报警级别:</TextBlock>
+        <StackPanel x:Name="rb_warnLevel"  Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left">
+            <RadioButton GroupName="rb_warnLevel" Content="高"  VerticalContentAlignment="Center" Margin="10"></RadioButton>
+            <RadioButton GroupName="rb_warnLevel" Content="中"  VerticalContentAlignment="Center" Margin="10"></RadioButton>
+            <RadioButton GroupName="rb_warnLevel"  IsChecked="True" Content="低" VerticalContentAlignment="Center" Margin="5">
+            </RadioButton>
+        </StackPanel>
+
+
+        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Margin="20 0 0 0">报警高限:</TextBlock>
+        <StackPanel   Grid.Column="1" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:NumericUpDown x:Name="nud_hignLimit0"></local:NumericUpDown>
+        </StackPanel>
+        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" Margin="20 0 0 0">报警低限:</TextBlock>
+        <StackPanel   Grid.Column="1" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:NumericUpDown x:Name="nud_lowLimit0"></local:NumericUpDown>
+        </StackPanel>
+
+        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="7" HorizontalAlignment="Left" Margin="20 0 0 0">报警高限:</TextBlock>
+        <StackPanel   Grid.Column="1" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:NumericUpDown x:Name="nud_hignLimit1"></local:NumericUpDown>
+        </StackPanel>
+        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="8" HorizontalAlignment="Left" Margin="20 0 0 0">报警低限:</TextBlock>
+        <StackPanel   Grid.Column="1" Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:NumericUpDown x:Name="nud_lowLimit1"></local:NumericUpDown>
+        </StackPanel>
+
+        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="9" HorizontalAlignment="Left" Margin="20 0 0 0">报警高限:</TextBlock>
+        <StackPanel   Grid.Column="1" Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:NumericUpDown x:Name="nud_hignLimit2"></local:NumericUpDown>
+        </StackPanel>
+        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="10" HorizontalAlignment="Left" Margin="20 0 0 0">报警低限:</TextBlock>
+        <StackPanel   Grid.Column="1" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:NumericUpDown x:Name="nud_lowLimit2"></local:NumericUpDown>
+        </StackPanel>
+
         <!--</StackPanel>-->
 
-        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Background="#0089e1" Height="32"  VerticalAlignment="Bottom">
+        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="11" Grid.ColumnSpan="2"  Background="#0089e1" Height="32"  VerticalAlignment="Bottom">
             <StackPanel    Orientation="Horizontal" HorizontalAlignment="Center"  Background="#0089e1" VerticalAlignment="Stretch" >
                 <Button Margin="0,0,10,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  IsCancel="True" >
                     <StackPanel Orientation="Horizontal">

@@ -41,10 +41,10 @@ namespace YH.Virtual_ECG_Monitor
                 {
                     Default = new WaveSettingModel()
                     {
-                        ABP = new WaveSettingItem() { Gain = 10, Speed = 25 },
-                        CO2 = new WaveSettingItem() { Gain = 10, Speed = 25 },
-                        PAP = new WaveSettingItem() { Gain = 10, Speed = 25 },
-                        PLETH = new WaveSettingItem() { Gain = 10, Speed = 25 }
+                        ABP = new WaveSettingItem() { Gain = 20, Speed = 25 },
+                        CO2 = new WaveSettingItem() { Gain = 20, Speed = 25 },
+                        PAP = new WaveSettingItem() { Gain = 20, Speed = 25 },
+                        PLETH = new WaveSettingItem() { Gain = 20, Speed = 25 }
                     }
                     
                 };  
@@ -111,10 +111,7 @@ namespace YH.Virtual_ECG_Monitor
                     }
                 }
             }
-            //data.Custom.ABP.Speed = item.Speed;
-            //data.Custom.CO2.Speed = item.Speed;
-            //data.Custom.PAP.Speed = item.Speed;
-            //data.Custom.PLETH.Speed = item.Speed;
+       
             Setting.Save(data);
             this.DialogResult = true;
             this.Close();

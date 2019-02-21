@@ -17,11 +17,11 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" x:Name="txtPatient"> 病人信息：</TextBlock>
         <DockPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-            <!--<Button  x:Name="btSetting" Click="btSetting_Click">配置</Button>
-            <Button  x:Name="btPause" Click="btPause_Click">暂停</Button>-->
+            <Button  x:Name="btSetting" Click="btSetting_Click">配置</Button>
+            <!--<Button  x:Name="btPause" Click="btPause_Click">暂停</Button>-->
         </DockPanel>
 
-        <Border  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="5" Padding="2" Style="{DynamicResource bg1}" BorderBrush="Red" BorderThickness="0">
+        <Border  Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" CornerRadius="5" Padding="0" Style="{DynamicResource bg1}" BorderBrush="Red" BorderThickness="0">
 
             <!--右侧表格-->
             <Grid Background="Black">

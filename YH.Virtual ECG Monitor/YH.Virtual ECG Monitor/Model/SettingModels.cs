@@ -305,11 +305,18 @@ namespace YH.Virtual_ECG_Monitor
     {
         public int Gain { get; set; }
         public int Speed { get; set; }
+         public List<WarnRange> WarnRanges { get; set; }
 
         public WaveSettingItem Clone()
         {
             return this.MemberwiseClone() as WaveSettingItem;
         }
+    }
+
+    public class WarnRange
+    {
+        public float Min { get; set; }
+        public float Max { get; set; }
     }
 }
 

@@ -132,11 +132,12 @@ namespace YH.Virtual_ECG_Monitor
 
         private void launch_OnElapsed()
         {
-            //if (sumRemain > intervalCount)
+            //if (sumRemain >= 2*intervalCount)
             //{
-            //    sumRemain -= intervalCount*2;
+            //    sumRemain -= intervalCount ;
             //    return;
             //}
+          
 
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
             {            
@@ -162,7 +163,9 @@ namespace YH.Virtual_ECG_Monitor
                     double x = ActualWidth * data_i / (runData.Length - 1);
                     polyline.Points.Add(new Point(x, y));  
                 }
-                sumRemain += remain;
+
+         //       sumRemain += remain;
+
             });
         }
     }
