@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Media;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -12,11 +13,12 @@ namespace YH.Virtual_ECG_Monitor
 {
     public class AlermSoundPlayer
     {
+
         private SoundPlayer player;
         private Launch launch;
         const string NormalWavePath = @"sound\du.wav";
         const string WarnWavePath = @"sound\du2.wav";
-        int volumn;
+      
         public int PlayState { get; set; } // 0=stop, 1=play,2=pause
 
         public AlermSoundPlayer()
@@ -25,11 +27,12 @@ namespace YH.Virtual_ECG_Monitor
             launch = new Launch(800);
             launch.OnElapsed += Launch_OnElapsed;
 
-            OtherSettingData setting = Setting.Get<OtherSettingData>();
-            volumn = setting.Custom.AlartVolumn;
-        
+            OtherSettingData setting = Setting.Get<OtherSettingData>();       
 
         }
+
+     
+
 
         private void Launch_OnElapsed()
         {
@@ -85,6 +88,7 @@ namespace YH.Virtual_ECG_Monitor
         {
             if (!string.IsNullOrWhiteSpace(player.SoundLocation))
                 player.PlaySync();
+             
         }
 
     }
