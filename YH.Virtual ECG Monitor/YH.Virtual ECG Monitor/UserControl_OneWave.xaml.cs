@@ -121,8 +121,6 @@ namespace YH.Virtual_ECG_Monitor
             }
 
             float maxData = list.Max();
-
-
             for (int i = 0; i < list.Count; i++)
             {
                 if (gain < 1)
@@ -177,7 +175,7 @@ namespace YH.Virtual_ECG_Monitor
                     double x = ActualWidth * data_i / (runData.Length - 1);
                     polyline.Points.Add(new Point(x, y));
 
-                    if (OnWaveStart != null && data_i < runData.Length - 1 && data_i % dataLength == 0)
+                    if (OnWaveStart != null  && data_i % dataLength == 0)
                     {
                         isWaveStart = true;
                     }

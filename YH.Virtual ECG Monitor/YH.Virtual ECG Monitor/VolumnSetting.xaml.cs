@@ -1,18 +1,7 @@
-﻿using HYS.Library;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace YH.Virtual_ECG_Monitor
@@ -38,6 +27,7 @@ namespace YH.Virtual_ECG_Monitor
             point = new Point(model.Custom.AlartVolumn, 1);
             lgb_volumn.EndPoint = point;
         }
+
         //关闭窗口
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
@@ -62,7 +52,6 @@ namespace YH.Virtual_ECG_Monitor
             model.Custom.AlartVolumn = (int)point.X;
             Setting.Save(model);
             SetValue(10,1, model.Custom.AlartVolumn);
-
         }
 
         #region Windows Media API
