@@ -43,7 +43,13 @@ namespace YH.Virtual_ECG_Monitor
         }
     }
 
-    public class ECGSettingData
+    public interface ISettingData
+    {
+        void SetDefault();
+
+    }
+
+    public class ECGSettingData: ISettingData
     {
         private ECGSettingModel _custom;
         public ECGSettingModel Custom
@@ -63,6 +69,11 @@ namespace YH.Virtual_ECG_Monitor
         }
         public ECGSettingModel Default { get; set; }
 
+        public void SetDefault()
+        {
+
+        }
+
     }
 
     public class PatientInfoModel
@@ -79,7 +90,7 @@ namespace YH.Virtual_ECG_Monitor
         }
     }
 
-    public class PatientInfoData
+    public class PatientInfoData:ISettingData
     {
         private PatientInfoModel _custom;
         public PatientInfoModel Custom
@@ -99,6 +110,11 @@ namespace YH.Virtual_ECG_Monitor
         }
         public PatientInfoModel Default { get; set; }
 
+        public void SetDefault()
+        {
+
+        }
+
     }
 
     public class OtherSettingModel
@@ -112,7 +128,7 @@ namespace YH.Virtual_ECG_Monitor
         }
     }
 
-    public class OtherSettingData
+    public class OtherSettingData:ISettingData
     {
         private OtherSettingModel _custom;
         public OtherSettingModel Custom
@@ -131,6 +147,10 @@ namespace YH.Virtual_ECG_Monitor
             }
         }
         public OtherSettingModel Default { get; set; }
+        public void SetDefault()
+        {
+
+        }
     }
 
     public class LayoutWave
@@ -159,9 +179,13 @@ namespace YH.Virtual_ECG_Monitor
 
     }
 
-    public class LayoutSettingData
+    public class LayoutSettingData:ISettingData
     {
         public List<LayoutSettingModel> Layouts { get; set; }
+        public void SetDefault()
+        {
+
+        }
     }
 
     public class VirtualManAttributeItem
@@ -172,6 +196,8 @@ namespace YH.Virtual_ECG_Monitor
         public int MaxValue { get; set; }
         public int Value { get; set; }
         public string unit { get; set; }
+
+    
     }
 
     /// <summary>
@@ -245,7 +271,7 @@ namespace YH.Virtual_ECG_Monitor
             return this.MemberwiseClone() as VirtualManAttributeModel;
         }
     }
-    public class VirtualManAttributeData
+    public class VirtualManAttributeData:ISettingData
     {
         private VirtualManAttributeModel _custom;
         public VirtualManAttributeModel Custom
@@ -265,9 +291,14 @@ namespace YH.Virtual_ECG_Monitor
         }
         public VirtualManAttributeModel Default { get; set; }
 
+        public void SetDefault()
+        {
+
+        }
+
     }
 
-    public  class WaveSettingData
+    public  class WaveSettingData:ISettingData
     {
         private WaveSettingModel _custom;
         public WaveSettingModel Custom
@@ -286,6 +317,45 @@ namespace YH.Virtual_ECG_Monitor
             }
         }
         public WaveSettingModel Default { get; set; }
+        public void SetDefault()
+        {
+            Default = new WaveSettingModel()
+            {
+                ABP = new WaveSettingItem()
+                {
+                    Gain = 20,
+                    Speed = 25,
+                    WarnSwitch = true,
+                    WarnLevel = 2,
+                    WarnRanges = new List<WarnRange>() {
+                            new WarnRange() {  Min=90,Max=140},
+                            new WarnRange() {  Min=40,Max=90 },
+                            new WarnRange() {  Min=80,Max=100}
+                        }
+                },
+                RESP = new WaveSettingItem()
+                {
+                    Gain = 20,
+                    Speed = 25,
+                    WarnSwitch = true,
+                    WarnLevel = 2,
+                    WarnRanges = new List<WarnRange>() {
+                                 new WarnRange() {  Min=10,Max=20}
+                        }
+                },
+                PAP = new WaveSettingItem() { Gain = 20, Speed = 25 },
+                PLETH = new WaveSettingItem()
+                {
+                    Gain = 20,
+                    Speed = 25,
+                    WarnSwitch = true,
+                    WarnLevel = 2,
+                    WarnRanges = new List<WarnRange>() {
+                                new WarnRange() {  Min=96,Max=99}
+                        }
+                }
+            };
+        }
     }
 
     public class WaveSettingModel
@@ -293,7 +363,7 @@ namespace YH.Virtual_ECG_Monitor
          public WaveSettingItem PLETH { get; set; }
         public WaveSettingItem ABP { get; set; }
         public WaveSettingItem PAP { get; set; }
-        public WaveSettingItem CO2 { get; set; }
+        public WaveSettingItem RESP { get; set; }
 
         public WaveSettingModel Clone()
         {
@@ -305,6 +375,10 @@ namespace YH.Virtual_ECG_Monitor
     {
         public int Gain { get; set; }
         public int Speed { get; set; }
+
+
+        public bool WarnSwitch { get;set; }
+        public int  WarnLevel { get; set; }
          public List<WarnRange> WarnRanges { get; set; }
 
         public WaveSettingItem Clone()
@@ -315,9 +389,12 @@ namespace YH.Virtual_ECG_Monitor
 
     public class WarnRange
     {
-        public float Min { get; set; }
-        public float Max { get; set; }
+        public int Min { get; set; }
+        public int Max { get; set; }
+
     }
+
+   
 }
 
 

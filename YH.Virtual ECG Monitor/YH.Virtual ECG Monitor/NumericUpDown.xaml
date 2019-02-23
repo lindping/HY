@@ -7,8 +7,7 @@
     mc:Ignorable="d"
     x:Name="UserControl"
     xmlns:local="clr-namespace:YH.Virtual_ECG_Monitor" 
-    Width="150" Height="30" MaxHeight="30" MinHeight="30" MinWidth="50"   
-
+    Width="100" Height="30" MaxHeight="30" MinHeight="30" MinWidth="50"   
     >
     <UserControl.Resources>
         <local:IntValueConverter x:Key="MyValueConverter"/>
@@ -41,7 +40,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Grid x:Name="LayoutRoot">
+    <Grid x:Name="LayoutRoot" Margin="2,0" Height="30" VerticalAlignment="Bottom">
         <Border x:Name="ControlBorder" CornerRadius="2,2,2,2" BorderThickness="1,1,1,1" BorderBrush="#FFA0A0A0" Background="#FFFFFFFF">
             <Grid x:Name="ValueGrid" Width="Auto">
                 <Grid.ColumnDefinitions>

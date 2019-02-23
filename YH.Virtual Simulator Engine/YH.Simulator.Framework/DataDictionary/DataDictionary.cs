@@ -456,6 +456,33 @@ namespace YH.Simulator.Framework.DataDictionary
             { 0 , new string[] {"0", "", "" } },
             { 1 , new string[] {"1", "mg", "" } },
             { 2 , new string[] {"2", "ml", "" } }};
+
+
+
+
+        //public static string[] HeartRateAlarmUpperLimit = new string[] { "80", "85", "90", "95", "100", "105", "110", "115", "120", "125", "130", "135", "140", "145", "150", "155", "160", "165", "170", "175", "180" };
+        //public static string[] HeartRateAlarmLowerLimit = new string[] { "120", "115", "110", "105", "100", "95", "90", "85", "80", "75", "70", "65", "60", "55", "50", "45", "40", "35", "30", "25", "20", "15", "10", "5", };
+
+        //public static string[] SystolicSyAlarmUpperLimit = new string[] { "80", "90", "100", "110", "120", "130", "140" };
+        //public static string[] SystolicAlarmLowerLimit = new string[] { "80", "90", "100", "110", "120", "130", "140" };
+
+        //public static string[] DiastolicAlarmUpperLimit = new string[] { "100", "90", "80", "70", "60", "50", "40", "30", "20", "10" };
+        //public static string[] DiastolicAlarmLowerLimit = new string[] { "100", "90", "80", "70", "60", "50", "40", "30", "20", "10" };
+
+        //public static string[] AverageAlarmUpperLimit = new string[] { "50", "60", "70", "80", "90", "100", "110" };
+        //public static string[] AverageAlarmLowerLimit = new string[] { "50", "60", "70", "80", "90", "100", "110" };
+
+      
+
+        //public static string[] SPO2AlarmUpperLimit = new string[] { "95", "96", "97", "98", "99", "100" };
+        //public static string[] SPO2AlarmLowerLimit = new string[] { "97", "96", "95", "94", "93", "92" };
+
+        //public static string[] PRAlarmUpperLimit = new string[] { "60", "70", "80", "90", "100", "110", "120", "130", "140" };
+        //public static string[] PRAlarmLowerLimit = new string[] { "90", "80", "70", "60", "50", "40", "30", "20", "10" };
+
+        //public static string[] RRAlarmUpperLimit = new string[] { "20", "30", "40", "50", "60" };
+        //public static string[] RRAlarmLowerLimit = new string[] { "30", "20", "10", "5", "1" };
+
     }
 
 }

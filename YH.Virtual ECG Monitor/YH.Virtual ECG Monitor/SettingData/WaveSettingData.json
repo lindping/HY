@@ -1,1 +1,108 @@
-﻿{"Custom":{"PLETH":{"Gain":20,"Speed":50},"ABP":{"Gain":20,"Speed":50},"PAP":{"Gain":5,"Speed":25},"CO2":{"Gain":20,"Speed":100}},"Default":{"PLETH":{"Gain":5,"Speed":25},"ABP":{"Gain":10,"Speed":25},"PAP":{"Gain":10,"Speed":25},"CO2":{"Gain":10,"Speed":25}}}
+﻿{
+  "Custom": {
+    "PLETH": {
+      "Gain": 20,
+      "Speed": 50,
+      "WarnSwitch": true,
+      "WarnLevel": 2,
+      "WarnRanges": [
+        {
+          "Min": 96,
+          "Max": 99
+        }
+      ]
+    },
+    "ABP": {
+      "Gain": 20,
+      "Speed": 50,
+      "WarnSwitch": true,
+      "WarnLevel": 2,
+      "WarnRanges": [
+        {
+          "Min": 90,
+          "Max": 140
+        },
+        {
+          "Min": 40,
+          "Max": 90
+        },
+        {
+          "Min": 80,
+          "Max": 100
+        }
+      ]
+    },
+    "PAP": {
+      "Gain": 20,
+      "Speed": 25,
+      "WarnSwitch": false,
+      "WarnLevel": 0,
+      "WarnRanges": null
+    },
+    "RESP": {
+      "Gain": 20,
+      "Speed": 50,
+      "WarnSwitch": true,
+      "WarnLevel": 2,
+      "WarnRanges": [
+        {
+          "Min": 10,
+          "Max": 20
+        }
+      ]
+    }
+  },
+  "Default": {
+    "PLETH": {
+      "Gain": 20,
+      "Speed": 25,
+      "WarnSwitch": true,
+      "WarnLevel": 2,
+      "WarnRanges": [
+        {
+          "Min": 96,
+          "Max": 99
+        }
+      ]
+    },
+    "ABP": {
+      "Gain": 20,
+      "Speed": 50,
+      "WarnSwitch": true,
+      "WarnLevel": 2,
+      "WarnRanges": [
+        {
+          "Min": 90,
+          "Max": 140
+        },
+        {
+          "Min": 40,
+          "Max": 90
+        },
+        {
+          "Min": 80,
+          "Max": 100
+        }
+      ]
+    },
+    "PAP": {
+      "Gain": 20,
+      "Speed": 25,
+      "WarnSwitch": false,
+      "WarnLevel": 0,
+      "WarnRanges": null
+    },
+    "RESP": {
+      "Gain": 20,
+      "Speed": 25,
+      "WarnSwitch": true,
+      "WarnLevel": 2,
+      "WarnRanges": [
+        {
+          "Min": 10,
+          "Max": 20
+        }
+      ]
+    }
+  }
+}

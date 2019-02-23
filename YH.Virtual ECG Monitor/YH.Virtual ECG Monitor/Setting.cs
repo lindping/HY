@@ -20,11 +20,17 @@ namespace YH.Virtual_ECG_Monitor
                 if (!string.IsNullOrWhiteSpace(json))
                 {
                     t = JsonConvert.DeserializeObject<T>(json);
-                }
+                }           
+            
             }
-            catch (Exception ex)
+            catch
             {
-                return t;
+            
+            }
+            if (t == null)
+            {
+                t = Activator.CreateInstance<T>();
+                ((ISettingData)t).SetDefault();
             }
             return t;
         }

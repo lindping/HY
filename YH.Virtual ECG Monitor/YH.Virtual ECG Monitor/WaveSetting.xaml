@@ -19,13 +19,11 @@
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition ></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition ></RowDefinition>        
+          
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="120"></ColumnDefinition>
+            <ColumnDefinition Width="150"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Margin="0" Background="#0089e1"  VerticalAlignment="Top" >
@@ -73,43 +71,39 @@
 
         <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" Margin="20 0 0 0">报警级别:</TextBlock>
         <StackPanel x:Name="rb_warnLevel"  Grid.Column="1" Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Left">
-            <RadioButton GroupName="rb_warnLevel" Content="高"  VerticalContentAlignment="Center" Margin="10"></RadioButton>
+            <RadioButton GroupName="rb_warnLevel" Content="高"    VerticalContentAlignment="Center" Margin="10"></RadioButton>
             <RadioButton GroupName="rb_warnLevel" Content="中"  VerticalContentAlignment="Center" Margin="10"></RadioButton>
             <RadioButton GroupName="rb_warnLevel"  IsChecked="True" Content="低" VerticalContentAlignment="Center" Margin="5">
             </RadioButton>
         </StackPanel>
 
-
-        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Margin="20 0 0 0">报警高限:</TextBlock>
-        <StackPanel   Grid.Column="1" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Left">
-            <local:NumericUpDown x:Name="nud_hignLimit0"></local:NumericUpDown>
-        </StackPanel>
-        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" Margin="20 0 0 0">报警低限:</TextBlock>
-        <StackPanel   Grid.Column="1" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left">
-            <local:NumericUpDown x:Name="nud_lowLimit0"></local:NumericUpDown>
+       
+        <TextBlock x:Name="tb_warn_0"  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" Margin="20 0 0 0">报警范围:</TextBlock>
+        <StackPanel  x:Name="sp_warn_0"  Grid.Column="1" Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:NumericUpDown x:Name="nud_lowLimit_0"></local:NumericUpDown>
+            <TextBlock VerticalAlignment="Center">----</TextBlock>
+            <local:NumericUpDown x:Name="nud_hignLimit_0"></local:NumericUpDown>          
         </StackPanel>
 
-        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="7" HorizontalAlignment="Left" Margin="20 0 0 0">报警高限:</TextBlock>
-        <StackPanel   Grid.Column="1" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Left">
-            <local:NumericUpDown x:Name="nud_hignLimit1"></local:NumericUpDown>
-        </StackPanel>
-        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="8" HorizontalAlignment="Left" Margin="20 0 0 0">报警低限:</TextBlock>
-        <StackPanel   Grid.Column="1" Grid.Row="8" Orientation="Horizontal" HorizontalAlignment="Left">
-            <local:NumericUpDown x:Name="nud_lowLimit1"></local:NumericUpDown>
+        <TextBlock  Visibility="Hidden"  x:Name="tb_warn_1"  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" Margin="20 0 0 0">报警范围:</TextBlock>
+        <StackPanel   Visibility="Hidden"     x:Name="sp_warn_1" Grid.Column="1" Grid.Row="6" Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:NumericUpDown x:Name="nud_lowLimit_1"></local:NumericUpDown>         
+            <TextBlock VerticalAlignment="Center">----</TextBlock>
+            <local:NumericUpDown x:Name="nud_hignLimit_1"></local:NumericUpDown>
         </StackPanel>
 
-        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="9" HorizontalAlignment="Left" Margin="20 0 0 0">报警高限:</TextBlock>
-        <StackPanel   Grid.Column="1" Grid.Row="9" Orientation="Horizontal" HorizontalAlignment="Left">
-            <local:NumericUpDown x:Name="nud_hignLimit2"></local:NumericUpDown>
-        </StackPanel>
-        <TextBlock  VerticalAlignment="Center"  Grid.Column="0" Grid.Row="10" HorizontalAlignment="Left" Margin="20 0 0 0">报警低限:</TextBlock>
-        <StackPanel   Grid.Column="1" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Left">
-            <local:NumericUpDown x:Name="nud_lowLimit2"></local:NumericUpDown>
-        </StackPanel>
 
+        <TextBlock  Visibility="Hidden"  x:Name="tb_warn_2" VerticalAlignment="Center"  Grid.Column="0" Grid.Row="7" HorizontalAlignment="Left" Margin="20 0 0 0">报警范围:</TextBlock>
+        <StackPanel    Visibility="Hidden"   x:Name="sp_warn_2" Grid.Column="1" Grid.Row="7" Orientation="Horizontal" HorizontalAlignment="Left">
+            <local:NumericUpDown x:Name="nud_lowLimit_2"></local:NumericUpDown>
+            <TextBlock VerticalAlignment="Center">----</TextBlock>
+            <local:NumericUpDown x:Name="nud_hignLimit_2"></local:NumericUpDown>
+     
+        </StackPanel>
+   
         <!--</StackPanel>-->
 
-        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="11" Grid.ColumnSpan="2"  Background="#0089e1" Height="32"  VerticalAlignment="Bottom">
+        <DockPanel Margin="0"  Grid.Column="0" Grid.Row="8" Grid.ColumnSpan="2"  Background="#0089e1" Height="32"  VerticalAlignment="Bottom">
             <StackPanel    Orientation="Horizontal" HorizontalAlignment="Center"  Background="#0089e1" VerticalAlignment="Stretch" >
                 <Button Margin="0,0,10,0" Background="#ffffff"  HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}"  IsCancel="True" >
                     <StackPanel Orientation="Horizontal">

@@ -15,18 +15,21 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class UserControl_OneWave : UserControl
     {
-
+     
         Launch launch;    //定时器
         int interval = 100;    //定时器描点周期 单位毫秒   
         int intervalCount;   //描点周期内描点个数    
         float[] runData;  //一个展示波形内的数据
-        int data_i = 0;
-
+        int data_i = 0;    
+        int dataLength = 0; //一个波形的数据长度
         double showTime; //一个展示周期的时间， 毫秒
         DateTime startTime;  //波形展示开始时间      
         public float MaxWaveCount { get; set; }   //要展示的波形个数
 
         double remain; //intervalCoun取整以后形成的差
+
+        public delegate void OnWaveTopEventDelegate();
+        public event OnWaveTopEventDelegate OnWaveStart;
 
         public bool IsPause
         {
@@ -40,8 +43,10 @@ namespace YH.Virtual_ECG_Monitor
         {
             InitializeComponent();
             MaxWaveCount = 8;
+           
             //       controlHeight = ActualHeight;
         }
+
 
         public void Stop()
         {
@@ -49,17 +54,23 @@ namespace YH.Virtual_ECG_Monitor
             {
                 launch.Stop();
                 launch = null;
+         
             }
         }
 
         public void Pause()
         {
             launch.Pause();
+       
         }
 
         public void Start()
         {
             launch.Start();
+            if (Name.ToLower().Contains("ecg"))
+            {
+           //     player.PlayNormalSound();
+            }
         }
 
         /// <summary>
@@ -90,8 +101,9 @@ namespace YH.Virtual_ECG_Monitor
             remain = intervalCount - MaxWaveCount * data.Length * interval / showTime;
 
             runData = GetRunData(data, gain);
+            dataLength = data.Length;
             data_i = 0;
-            launch.Start();
+            Start();
         }
 
         private float[] GetRunData(float[] data, float gain)
@@ -128,8 +140,7 @@ namespace YH.Virtual_ECG_Monitor
             return newList.ToArray();
         }
 
-        double sumRemain;
-
+    
         private void launch_OnElapsed()
         {
             //if (sumRemain >= 2*intervalCount)
@@ -140,16 +151,19 @@ namespace YH.Virtual_ECG_Monitor
           
 
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
-            {            
-
+            {
+           
                 if (data_i == 0)
                 {
+            
                     polyline.Points.Clear();
                     startTime = DateTime.Now;
-                }            
-             
+                }
+
+                bool isWaveStart = false;
                 for (int j = 0; j < intervalCount; j++)
-                {
+                {               
+
                     if (data_i >= runData.Length)
                     {
                         if (showTime < (DateTime.Now - startTime).TotalMilliseconds)  //波形展示完毕，如果时间还没到就跳出循环等待下一次计时。
@@ -161,10 +175,17 @@ namespace YH.Virtual_ECG_Monitor
 
                     float y = runData[data_i++];
                     double x = ActualWidth * data_i / (runData.Length - 1);
-                    polyline.Points.Add(new Point(x, y));  
-                }
+                    polyline.Points.Add(new Point(x, y));
 
-         //       sumRemain += remain;
+                    if (OnWaveStart != null && data_i < runData.Length - 1 && data_i % dataLength == 0)
+                    {
+                        isWaveStart = true;
+                    }
+                }
+                if (isWaveStart)
+                {
+                    OnWaveStart();
+                }         
 
             });
         }

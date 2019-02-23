@@ -167,6 +167,7 @@
     <Compile Include="PatientInfo.xaml.cs">
       <DependentUpon>PatientInfo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="WarnSoundPlayer.cs" />
     <Compile Include="WaveData\RespType.cs" />
     <Compile Include="WaveData\WaveData_ECG\WaveData_ECG.cs" />
     <Compile Include="WaveData\WaveData_ECG\WaveData_ECG_002.cs" />
