@@ -86,6 +86,7 @@
     <Compile Include="Resolve\CPR.cs" />
     <Compile Include="Resolve\Cyanosis.cs" />
     <Compile Include="Resolve\Defibrillation.cs" />
+    <Compile Include="Resolve\LifeSign_Paras.cs" />
     <Compile Include="Resolve\Eyes.cs" />
     <Compile Include="Resolve\Haemorrhage.cs" />
     <Compile Include="Resolve\ECG.cs" />

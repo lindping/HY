@@ -67,8 +67,8 @@ namespace YH.Virtual_ECG_Monitor
 
             m_NetClient.ConnectedServer += M_NetClient_ConnectedServer;
 
-            //  m_NetClient.Connect("127.0.0.1", 8899);
-            //m_NetClient.Connect("10.10.100.254", 8899);
+            m_NetClient.Connect("127.0.0.1", 8899);
+           //m_NetClient.Connect("10.10.100.254", 8899);
             string ip = ConfigurationManager.AppSettings["NetClientIP"].ToString();
             int port = int.Parse(ConfigurationManager.AppSettings["NetClientPort"].ToString());
             m_NetClient.Connect(ip, port);

@@ -354,9 +354,7 @@ namespace YH.Virtual_ECG_Monitor
                     }
                     textblock_IBP.Foreground = Brushes.Red;
                 }
-            }
-
-         
+            }         
           
              ecg_wave.OnWaveStart -= Ecg_wave_OnWaveTop;        
             textblock_HeartRate.Foreground = Brushes.White;
@@ -389,26 +387,26 @@ namespace YH.Virtual_ECG_Monitor
     }
 
 
-    public struct ECG_Paras
+    public class ECG_Paras
     {
         public Rhythm Rhythm;
         public int HeartRat;
     }
 
-    public struct PLETH_Paras
+    public class PLETH_Paras
     {
         public int Plot { get; set; }
         public int Spo2 { get; set; }
     }
 
-    public struct ABP_Paras
+    public class ABP_Paras
     {
         public int Plot { get; set; }
         public int Systolic { get; set; }
         public int Diastolic { get; set; }
     }
 
-    public struct Resp_Paras
+    public class Resp_Paras
     {
         public RespType RespType { get; set; }
         public int Plot { get; set; }
