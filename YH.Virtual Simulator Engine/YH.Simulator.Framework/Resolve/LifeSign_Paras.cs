@@ -39,6 +39,61 @@ namespace YH.Simulator.Framework.Resolve
             return result;
         }
 
-     
+        public static List<byte[]> GetByte_ECG(int heartRate,int spo2,int abp,int respRate,int capacity,int respRatio)
+        {
+            List<byte[]> result = new List<byte[]>();
+
+            byte[] bytes = new byte[5];
+            bytes[0] = BitConverter.GetBytes(CategoryLevel0_LifeSign)[0];
+            bytes[1] = BitConverter.GetBytes(CategoryLevel1_Circulation)[0];
+            bytes[2] = BitConverter.GetBytes(CategoryLevel1_Circulation_HeartRate)[0];
+            bytes[3] = BitConverter.GetBytes(heartRate)[0];
+            bytes[4] = BitConverter.GetBytes(0)[0];
+            result.Add(bytes);
+
+            bytes = new byte[5];
+            bytes[0] = BitConverter.GetBytes(CategoryLevel0_LifeSign)[0];
+            bytes[1] = BitConverter.GetBytes(CategoryLevel1_Circulation)[0];
+            bytes[2] = BitConverter.GetBytes(CategoryLevel1_Circulation_SPO2)[0];
+            bytes[3] = BitConverter.GetBytes(spo2)[0];
+            bytes[4] = BitConverter.GetBytes(0)[0];
+            result.Add(bytes);
+
+            bytes = new byte[5];
+            bytes[0] = BitConverter.GetBytes(CategoryLevel0_LifeSign)[0];
+            bytes[1] = BitConverter.GetBytes(CategoryLevel1_Circulation)[0];
+            bytes[2] = BitConverter.GetBytes(CategoryLevel1_Circulation_ABP)[0];
+            bytes[3] = BitConverter.GetBytes(abp)[0];
+            bytes[4] = BitConverter.GetBytes(abp)[1];
+            result.Add(bytes);
+
+            bytes = new byte[5];
+            bytes[0] = BitConverter.GetBytes(CategoryLevel0_LifeSign)[0];
+            bytes[1] = BitConverter.GetBytes(CategoryLevel1_Respiratory)[0];
+            bytes[2] = BitConverter.GetBytes(CategoryLevel1_Respiratory_RespRate)[0];
+            bytes[3] = BitConverter.GetBytes(respRate)[0];
+            bytes[4] = BitConverter.GetBytes(0)[1];
+            result.Add(bytes);
+
+
+            bytes = new byte[5];
+            bytes[0] = BitConverter.GetBytes(CategoryLevel0_LifeSign)[0];
+            bytes[1] = BitConverter.GetBytes(CategoryLevel1_Respiratory)[0];
+            bytes[2] = BitConverter.GetBytes(CategoryLevel1_Respiratory_Capacity)[0];
+            bytes[3] = BitConverter.GetBytes(capacity)[0];
+            bytes[4] = BitConverter.GetBytes(capacity)[1];
+            result.Add(bytes);
+
+            bytes = new byte[5];
+            bytes[0] = BitConverter.GetBytes(CategoryLevel0_LifeSign)[0];
+            bytes[1] = BitConverter.GetBytes(CategoryLevel1_Respiratory)[0];
+            bytes[2] = BitConverter.GetBytes(CategoryLevel1_Respiratory_RespRatio)[0];
+            bytes[3] = BitConverter.GetBytes(respRatio)[0];
+            bytes[4] = BitConverter.GetBytes(0)[1];
+            result.Add(bytes);
+
+            return result;
+        }
+
     }
 }

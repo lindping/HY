@@ -17,7 +17,9 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="0" x:Name="txtPatient"> 病人信息：</TextBlock>
         <DockPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
+            <Button  x:Name="btConnection" Click="btConnection_Click">连接</Button>
             <Button  x:Name="btSetting" Click="btSetting_Click">配置</Button>
+            <Button  x:Name="btClose" Click="btClose_Click">退出</Button>
             <!--<Button  x:Name="btPause" Click="btPause_Click">暂停</Button>-->
         </DockPanel>
 

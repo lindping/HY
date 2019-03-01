@@ -5,7 +5,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Threading;
+using YH.Network.Framework;
 using YH.Simulator.Framework.DataDictionary;
+using YH.Simulator.Framework.Resolve;
 
 namespace YH.Virtual_ECG_Monitor
 {
@@ -14,17 +16,175 @@ namespace YH.Virtual_ECG_Monitor
     /// </summary>
     public partial class UserControl_Wave : UserControl
     {
+        NetClient m_NetClient;
+
         int ecg_wave_column_index = 1;
         AlermSoundPlayer player = new AlermSoundPlayer();
         bool existAlerm = false;
         Content_Wave content = new Content_Wave();
+
+
 
         public UserControl_Wave()
         {
             InitializeComponent();
             PatientInfoData patient = Setting.Get<PatientInfoData>();
             txtPatient.Text = string.Format("姓名:{0} 性别:{1}  年龄:{2}  病历号:{3}  床位号:{4}", patient.Custom.Name, patient.Custom.Sex, patient.Custom.Age, patient.Custom.MedRecNo, patient.Custom.BedNo);
-            //   patient.Custom.
+
+         //   NetInitializeComponent();
+        }
+
+        private void NetInitializeComponent()
+        {
+            m_NetClient = new NetClient(new Coder(Coder.EncodingMothord.Default));
+
+            //m_NetClient.Resovlver=new DatagramResolver("]}");
+
+            m_NetClient.Resovlver = new Network.Framework.DatagramResolver(new byte[4] { 0xfa, 0xfb, 0xfc, 0xfd });
+
+            m_NetClient.ReceivedDatagram += M_NetClient_ReceivedDatagram;
+
+            m_NetClient.DisConnectedServer += M_NetClient_DisConnectedServer;
+
+            m_NetClient.ConnectedServer += M_NetClient_ConnectedServer;
+
+            if (m_NetClient.IsConnected)
+            {
+                m_NetClient.Close();
+            }
+            try
+            {
+                m_NetClient.Connect("127.0.0.1", 8899);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            //    m_NetClient.Connect("127.0.0.1", 8899); 
+            //m_NetClient.Connect("10.10.100.254", 8899);
+            //  string ip = ConfigurationManager.AppSettings["NetClientIP"].ToString();
+            //  int port = int.Parse(ConfigurationManager.AppSettings["NetClientPort"].ToString());
+            //     m_NetClient.Connect(ip, port);
+        }
+
+
+        private void M_NetClient_ConnectedServer(object sender, NetEventArgs e)
+        {
+            //throw new NotImplementedException();
+            string info = string.Format("A Client:{0} connect server :{1}", e.ClientSession,
+             e.ClientSession.ClientSocket.RemoteEndPoint.ToString());
+            MessageBox.Show("连接成功");
+         
+            SyncParas();
+
+        }
+
+        private void M_NetClient_DisConnectedServer(object sender, NetEventArgs e)
+        {
+            //throw new NotImplementedException();
+            string info;
+
+            if (e.ClientSession.TypeOfExit == Session.ExitType.ExceptionExit)
+            {
+                info = string.Format("A Client Session:{0} Exception Closed.",
+                 e.ClientSession.ID);
+            }
+            else
+            {
+                info = string.Format("A Client Session:{0} Normal Closed.",
+                 e.ClientSession.ID);
+            }
+        }
+
+        private void M_NetClient_ReceivedDatagram(object sender, NetEventArgs e)
+        {
+            this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
+            {
+                byte[] data = e.ClientSession.RecvDataBuffer;
+
+                if (data != null && data.Length > 0 && Convert.ToInt32(data[0]) == LifeSign_Paras.CategoryLevel0_LifeSign)
+                {
+                    RunWave(LifeSign_Paras.GetData_ECG(data));
+                }
+
+            });
+        }
+
+        public void RunWave(int[] paras)
+        {
+            VirtualManAttributeData setting = Setting.Get<VirtualManAttributeData>();
+            int heartRate = setting.Custom.HeartRate.Value;
+            int systolic = setting.Custom.IBP[0].Value;
+            int diastolic = setting.Custom.IBP[1].Value;
+            int spo2 = setting.Custom.SPO2.Value;
+
+            int respRate = setting.Custom.RESP.Value;        
+
+            if (paras != null && paras.Length == 6)
+            {
+                if (paras[1] == LifeSign_Paras.CategoryLevel1_Circulation)
+                {
+                    if (paras[2] == LifeSign_Paras.CategoryLevel1_Circulation_HeartRate)
+                    {
+                        ECG_Paras.HeartRat = paras[3];
+                    }
+                    else if (paras[2] == LifeSign_Paras.CategoryLevel1_Circulation_SPO2)
+                    {
+                        PLETH_Paras.Spo2 = paras[3];
+                    }
+                    else if (paras[2] == LifeSign_Paras.CategoryLevel1_Circulation_ABP)
+                    {
+                        ABP_Paras.Systolic = paras[3];
+                        ABP_Paras.Diastolic = paras[4];
+                    }
+                    Run3Wave(true);
+                }
+                else if (paras[1] == LifeSign_Paras.CategoryLevel1_Respiratory)
+                {
+                    if (paras[2] == LifeSign_Paras.CategoryLevel1_Respiratory_RespRate)
+                    {
+                        Resp_Paras.RespRate = paras[3];
+                    }
+                    else if (paras[2] == LifeSign_Paras.CategoryLevel1_Respiratory_Capacity)
+                    {
+                        Resp_Paras.RespRate = paras[3] * 256 + paras[4];
+                    }
+                    else if (paras[2] == LifeSign_Paras.CategoryLevel1_Respiratory_RespRatio)
+                    {
+                        Resp_Paras.RespRatio = paras[3];
+                    }
+                    Run_RESP(true);
+                }
+                RunAllWave();
+            }
+        }
+
+        public void FirstRunWave()
+        {
+            VirtualManAttributeData setting = Setting.Get<VirtualManAttributeData>();
+            int heartRate = setting.Custom.HeartRate.Value;
+            int systolic = setting.Custom.IBP[0].Value;
+            int diastolic = setting.Custom.IBP[1].Value;
+            int spo2 = setting.Custom.SPO2.Value;
+
+            int respRate = setting.Custom.RESP.Value;
+            int respRatio = 80;
+            int capacity = 3000;
+
+            ABP_Paras = new ABP_Paras() { Systolic = systolic, Diastolic = diastolic, Plot = 200 };
+            Resp_Paras = new Resp_Paras() { RespType = RespType.Resp_02, Capacity = capacity, Plot = 200, RespRate = respRate, RespRatio = respRatio };
+            PLETH_Paras = new PLETH_Paras() { Plot = 200, Spo2 = spo2 };
+            ECG_Paras = new ECG_Paras() { HeartRat = setting.Custom.HeartRate.Value, Rhythm = Rhythm.Rhythm_01 };
+            RunAllWave();
+        }
+
+        private void SyncParas()
+        {
+            if (m_NetClient!=null && m_NetClient.IsConnected)
+            {
+                List<byte[]> data = LifeSign_Paras.GetByte_ECG(ECG_Paras.HeartRat, PLETH_Paras.Spo2, ABP_Paras.Systolic * 256 + ABP_Paras.Diastolic, Resp_Paras.RespRate, Resp_Paras.Capacity, Resp_Paras.RespRatio);
+                data.ForEach(p => m_NetClient.SendBytes(p));
+            }
         }
 
         private ECG_Paras _ECG_Paras;
@@ -150,7 +310,7 @@ namespace YH.Virtual_ECG_Monitor
             });
         }
 
-        public void Run_RESP()
+        public void Run_RESP(bool isCheck)
         {
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
             float[] RESP_data = content.GetWaveData_RESP(Resp_Paras.RespType, Resp_Paras.Plot, Resp_Paras.RespRate, Resp_Paras.Capacity, Resp_Paras.RespRatio, waveSetting.Custom.RESP.Gain);
@@ -159,22 +319,29 @@ namespace YH.Virtual_ECG_Monitor
             {
                 textblock_RespRate.Text = string.Format("{0}  {1}  {2}", Resp_Paras.RespRate, Resp_Paras.Capacity, Resp_Paras.RespRatio);
             });
-            CheckAlerm();
+            if (isCheck)
+            {
+                CheckAlerm();
+                SyncParas();
+            }
         }
 
-        public void Run3Wave()
+        public void Run3Wave(bool isCheck)
         {
             Run_ABP();
             Run_PLETH();
             Run_ECG();
-            CheckAlerm();
+            if (isCheck)
+            {
+                CheckAlerm();
+                SyncParas();
+            }
         }
 
         public void RunAllWave()
         {
-            Run3Wave();
-            Run_RESP();
-       
+            Run3Wave(false);
+            Run_RESP(true);
 
         }
 
@@ -192,7 +359,7 @@ namespace YH.Virtual_ECG_Monitor
                     if (dialog.HasValue && dialog.Value)
                     {
                         ECG_Paras = new ECG_Paras() { Rhythm = runSetting.Rhythm, HeartRat = runSetting.HeartRate };
-                        Run3Wave();
+                        Run3Wave(true);
                     }
                     break;
                 case "ECG选项":
@@ -200,7 +367,7 @@ namespace YH.Virtual_ECG_Monitor
                     dialog = ecgSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
                     {
-                        Run3Wave();
+                        Run3Wave(true);
                     }
                     break;
                 case "ABP设置":
@@ -209,7 +376,7 @@ namespace YH.Virtual_ECG_Monitor
                     if (dialog.HasValue && dialog.Value)
                     {
                         ABP_Paras = abpSetting.ABP_Paras;
-                        Run3Wave();
+                        Run3Wave(true);
                     }
                     break;
                 case "ABP选项":
@@ -217,7 +384,7 @@ namespace YH.Virtual_ECG_Monitor
                     dialog = waveSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
                     {
-                        Run3Wave();
+                        Run3Wave(true);
                     }
                     break;
 
@@ -227,7 +394,7 @@ namespace YH.Virtual_ECG_Monitor
                     if (dialog.HasValue && dialog.Value)
                     {
                         PLETH_Paras = plethRunSetting.PLETH_Paras;
-                        Run3Wave();
+                        Run3Wave(true);
                     }
                     break;
                 case "PLETH选项":
@@ -235,7 +402,7 @@ namespace YH.Virtual_ECG_Monitor
                     dialog = waveSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
                     {
-                        Run3Wave();
+                        Run3Wave(true);
                     }
                     break;
 
@@ -245,7 +412,7 @@ namespace YH.Virtual_ECG_Monitor
                     if (dialog.HasValue && dialog.Value)
                     {
                         Resp_Paras = respRunSetting.Resp_Paras;
-                        Run_RESP();
+                        Run_RESP(true);
                     }
                     break;
                 case "RESP选项":
@@ -253,7 +420,7 @@ namespace YH.Virtual_ECG_Monitor
                     dialog = waveSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
                     {
-                        Run_RESP();
+                        Run_RESP(true);
                     }
                     break;
             }
@@ -310,7 +477,7 @@ namespace YH.Virtual_ECG_Monitor
         public void CheckAlerm()
         {
             //  List<WaveSettingItem> list = new List<WaveSettingItem>();
-            existAlerm = false;            
+            existAlerm = false;
             player.Stop();
             WaveSettingData waveSetting = Setting.Get<WaveSettingData>();
 
@@ -354,9 +521,9 @@ namespace YH.Virtual_ECG_Monitor
                     }
                     textblock_IBP.Foreground = Brushes.Red;
                 }
-            }         
-          
-             ecg_wave.OnWaveStart -= Ecg_wave_OnWaveTop;        
+            }
+
+            ecg_wave.OnWaveStart -= Ecg_wave_OnWaveTop;
             textblock_HeartRate.Foreground = Brushes.White;
             ECGSettingData ecgSetting = Setting.Get<ECGSettingData>();
             if (ECG_Paras.HeartRat < ecgSetting.Custom.Min || ECG_Paras.HeartRat > ecgSetting.Custom.Max)
@@ -371,7 +538,7 @@ namespace YH.Virtual_ECG_Monitor
             if (existAlerm)
             {
                 player.PlayWarnSound();
-          
+
             }
             else
             {
@@ -383,6 +550,16 @@ namespace YH.Virtual_ECG_Monitor
         private void Ecg_wave_OnWaveTop()
         {
             player.PlayNormalSoundOneTime();
+        }
+
+        private void btConnection_Click(object sender, RoutedEventArgs e)
+        {
+            NetInitializeComponent();
+        }
+
+        private void btClose_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.MainWindow.Close();
         }
     }
 
