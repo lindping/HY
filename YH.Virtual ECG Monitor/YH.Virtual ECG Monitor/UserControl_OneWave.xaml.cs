@@ -149,15 +149,12 @@ namespace YH.Virtual_ECG_Monitor
           
 
             this.Dispatcher.BeginInvoke(DispatcherPriority.Normal, (System.Threading.ThreadStart)delegate ()
-            {
-           
+            {           
                 if (data_i == 0)
-                {
-            
+                {            
                     polyline.Points.Clear();
                     startTime = DateTime.Now;
                 }
-
                 bool isWaveStart = false;
                 for (int j = 0; j < intervalCount; j++)
                 {               

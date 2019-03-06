@@ -51,7 +51,7 @@
 
     <!--背景颜色样式-->
     <Style x:Key="bg1">
-        <Setter Property="DockPanel.Background" Value="#222222"></Setter>
+        <Setter Property="DockPanel.Background" Value="#333333"></Setter>
     </Style>
 
     <!--字体颜色样式-->
@@ -61,8 +61,8 @@
 
     <!--菜单按钮样式-->
     <ControlTemplate x:Key="button1" TargetType="{x:Type Button}">
-        <Grid x:Name="controlLayout">
-            <Rectangle x:Name="buttonSurface" RadiusX="8" RadiusY="8" Fill="#333333"/>
+        <Grid x:Name="controlLayout" >
+            <Rectangle    x:Name="buttonSurface" RadiusX="8" RadiusY="8" Fill="#333333"    />
             <Label x:Name="buttonCaption" Foreground="#f1f1f1" Content="{TemplateBinding Content}"/>
         </Grid>
 

@@ -126,7 +126,7 @@
     <!--菜单按钮控件-->
     <ControlTemplate x:Key="MenuButtonTemplate" TargetType="{x:Type Button}">
         <Grid x:Name="controlLayout" Margin="0,5,0,0">
-            <Rectangle x:Name="buttonSurface" RadiusX="3" RadiusY="3" Fill="{TemplateBinding Background}"  Width="80" />
+            <Rectangle x:Name="buttonSurface" RadiusX="3" RadiusY="3" Fill="{TemplateBinding Background}"  Width="100" />
             <Label x:Name="buttonCaption" FontSize="14" HorizontalAlignment="Center" Foreground="White" Content="{TemplateBinding Content}"/>
         </Grid>
 

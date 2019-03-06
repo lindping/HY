@@ -8,18 +8,25 @@
              d:DesignHeight="640" d:DesignWidth="960">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20" ></RowDefinition>
+            <RowDefinition  Height="auto"></RowDefinition>
             <RowDefinition ></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="0" x:Name="txtPatient"> 病人信息：</TextBlock>
-        <DockPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Right">
-            <Button  x:Name="btConnection" Click="btConnection_Click">连接</Button>
-            <Button  x:Name="btSetting" Click="btSetting_Click">配置</Button>
-            <Button  x:Name="btClose" Click="btClose_Click">退出</Button>
+
+
+        <DockPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"  Background="Black" Width="1024" >
+            <TextBlock  x:Name="txtPatient" Width="600" Foreground="White" VerticalAlignment="Center"> 病人信息：</TextBlock>
+            <DockPanel Width="256" HorizontalAlignment="Right">
+                <Button  Margin="1" x:Name="btConnection" Click="btConnection_Click" Background="#0089e1" Width="100"    HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <TextBlock x:Name="tbConnection" Foreground="#ffffff" Margin="2,0">连接模型</TextBlock>
+                </Button>
+                <Button Margin="1" x:Name="btSetting" Click="btSetting_Click" Background="#0089e1" Width="100" HorizontalAlignment="Center" VerticalAlignment="Center" Template="{DynamicResource MenuButtonTemplate}">
+                    <TextBlock x:Name="tbMoreSetting" Foreground="#ffffff" Margin="2,0">更多配置</TextBlock>
+                </Button>          
+            </DockPanel>
             <!--<Button  x:Name="btPause" Click="btPause_Click">暂停</Button>-->
         </DockPanel>
 
@@ -45,7 +52,7 @@
                 <GridSplitter Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2" Height="0" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                 <GridSplitter Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2" Height="0" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
                 <GridSplitter Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Height="0" Style="{DynamicResource Split1}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom"/>
-                <Border Grid.Row="0" Grid.Column="0" CornerRadius="0" Padding="0" Margin="0" BorderBrush="#000" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="0" Grid.Column="0" CornerRadius="0" Padding="0" Margin="5,0,0,0" BorderBrush="#000" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel Background="Black">
                         <TextBlock Style="{DynamicResource font1}" Text="ECG II"  Width="36" Height="20" VerticalAlignment="Bottom" Foreground="White"/>
                         <Grid Style="{DynamicResource bg1 }">
@@ -72,7 +79,7 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="1" Grid.Column="0" CornerRadius="0" Padding="0" Margin="0" BorderBrush="#000" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="1" Grid.Column="0" CornerRadius="0" Padding="0" Margin="5,0,0,0" BorderBrush="#000" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel Background="Black">
                         <TextBlock Style="{DynamicResource font1}" Text="ABP"   Width="36" VerticalAlignment="Bottom" Foreground="White"/>
                         <Grid Style="{DynamicResource bg1 }">
@@ -83,7 +90,7 @@
                         </Grid>
                     </DockPanel>
                 </Border>
-                <Border Grid.Row="1" Grid.Column="1" CornerRadius="0" Padding="0" Margin="0" BorderBrush="#000" BorderThickness="0" Style="{DynamicResource bg1}">
+                <Border Grid.Row="1" Grid.Column="1" CornerRadius="0" Padding="0" Margin="5,0,0,0" BorderBrush="#000" BorderThickness="0" Style="{DynamicResource bg1}">
                     <DockPanel Background="Black">
                         <TextBlock Style="{DynamicResource font1}" Text="IBP" Margin="0,0,10,0" VerticalAlignment="Top" Foreground="White"/>
                         <Grid Style="{DynamicResource bg1 }" Background="Black">

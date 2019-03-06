@@ -1,0 +1,40 @@
+﻿[
+  {
+    "PageName": "WaveDisplay",
+    "Controls": [
+      {
+        "ControlName": "btTheme1",
+        "ControlText": "深色"
+      },
+      {
+        "ControlName": "btTheme2",
+        "ControlText": "浅色"
+      },
+      {
+        "ControlName": "btSetting",
+        "ControlText": "设置"
+      },
+      {
+        "ControlName": "btHelp",
+        "ControlText": "帮助"
+      },
+      {
+        "ControlName": "uc_wave",
+        "ControlText": ""
+      }
+    ]
+  },
+  {
+    "PageName": "UserControl_Wave",
+    "Controls": [
+      {
+        "ControlName": "tbConnection",
+        "ControlText": "连接模型"
+      },
+      {
+        "ControlName": "tbMoreSetting",
+        "ControlText": "更多设置"
+      }
+    ]
+  }
+]

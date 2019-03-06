@@ -1,0 +1,40 @@
+﻿[
+  {
+    "PageName": "WaveDisplay",
+    "Controls": [
+      {
+        "ControlName": "btTheme1",
+        "ControlText": "Deep"
+      },
+      {
+        "ControlName": "btTheme2",
+        "ControlText": "Ligh"
+      },
+      {
+        "ControlName": "btSetting",
+        "ControlText": "Setting"
+      },
+      {
+        "ControlName": "btHelp",
+        "ControlText": "Help"
+      },
+      {
+        "ControlName": "uc_wave",
+        "ControlText": ""
+      }
+    ]
+  },
+  {
+    "PageName": "UserControl_Wave",
+    "Controls": [
+      {
+        "ControlName": "tbConnection",
+        "ControlText": "Connect Model"
+      },
+      {
+        "ControlName": "tbMoreSetting",
+        "ControlText": "More Setting"
+      }
+    ]
+  }
+]

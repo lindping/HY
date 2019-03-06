@@ -1,6 +1,7 @@
 ﻿using HYS.Library;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -54,17 +55,14 @@ namespace YH.Virtual_ECG_Monitor
             }
             try
             {
-                m_NetClient.Connect("127.0.0.1", 8899);
+                string ip = ConfigurationManager.AppSettings["NetClientIP"].ToString();
+                int port = int.Parse(ConfigurationManager.AppSettings["NetClientPort"].ToString());
+                m_NetClient.Connect(ip, port);             
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-            //    m_NetClient.Connect("127.0.0.1", 8899); 
-            //m_NetClient.Connect("10.10.100.254", 8899);
-            //  string ip = ConfigurationManager.AppSettings["NetClientIP"].ToString();
-            //  int port = int.Parse(ConfigurationManager.AppSettings["NetClientPort"].ToString());
-            //     m_NetClient.Connect(ip, port);
+            }      
         }
 
 
@@ -73,10 +71,9 @@ namespace YH.Virtual_ECG_Monitor
             //throw new NotImplementedException();
             string info = string.Format("A Client:{0} connect server :{1}", e.ClientSession,
              e.ClientSession.ClientSocket.RemoteEndPoint.ToString());
-            MessageBox.Show("连接成功");
-         
-            SyncParas();
 
+            SyncParas();
+            MessageBox.Show("连接成功");
         }
 
         private void M_NetClient_DisConnectedServer(object sender, NetEventArgs e)

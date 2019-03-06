@@ -116,6 +116,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="IntValueConverter.cs" />
+    <Compile Include="Language\LanguageSetting.cs" />
     <Compile Include="NumericUpDown.xaml.cs">
       <DependentUpon>NumericUpDown.xaml</DependentUpon>
     </Compile>
@@ -365,6 +366,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="Language\English.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Language\Chinese.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\app.manifest" />
     <None Include="SettingData\ECGSettingData.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -434,6 +441,7 @@
     <Content Include="Sound\du2.wav">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Resource Include="yh.ico" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
