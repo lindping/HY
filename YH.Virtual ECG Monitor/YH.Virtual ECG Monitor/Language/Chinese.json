@@ -34,6 +34,38 @@
       {
         "ControlName": "tbMoreSetting",
         "ControlText": "更多设置"
+      },
+      {
+        "ControlName": "btECGSetting",
+        "ControlText": "ECG设置"
+      },
+      {
+        "ControlName": "btECGOption",
+        "ControlText": "ECG选项"
+      },
+      {
+        "ControlName": "btABPSetting",
+        "ControlText": "ABP设置"
+      },
+      {
+        "ControlName": "btEABPOption",
+        "ControlText": "ABP选项"
+      },
+      {
+        "ControlName": "btPlethSetting",
+        "ControlText": "Pleth设置"
+      },
+      {
+        "ControlName": "btEPlethOption",
+        "ControlText": "Pleth选项"
+      },
+      {
+        "ControlName": "btRespSetting",
+        "ControlText": "Resp设置"
+      },
+      {
+        "ControlName": "btERespOption",
+        "ControlText": "Resp选项"
       }
     ]
   }

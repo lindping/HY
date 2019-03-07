@@ -29,11 +29,43 @@
     "Controls": [
       {
         "ControlName": "tbConnection",
-        "ControlText": "Connect Model"
+        "ControlText": "ConnectModel"
       },
       {
         "ControlName": "tbMoreSetting",
-        "ControlText": "More Setting"
+        "ControlText": "MoreSetting"
+      },
+      {
+        "ControlName": "btECGSetting",
+        "ControlText": "ECGSetting"
+      },
+      {
+        "ControlName": "btECGOption",
+        "ControlText": "ECGOption"
+      },
+      {
+        "ControlName": "btABPSetting",
+        "ControlText": "ABPSetting"
+      },
+      {
+        "ControlName": "btABPOption",
+        "ControlText": "ABPOption"
+      },
+      {
+        "ControlName": "btPlethSetting",
+        "ControlText": "PlethSetting"
+      },
+      {
+        "ControlName": "btPlethOption",
+        "ControlText": "PlethOption"
+      },
+      {
+        "ControlName": "btRespSetting",
+        "ControlText": "RespSetting"
+      },
+      {
+        "ControlName": "btRespOption",
+        "ControlText": "RespOption"
       }
     ]
   }

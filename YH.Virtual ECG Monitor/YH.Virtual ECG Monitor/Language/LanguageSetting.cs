@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,12 +16,21 @@ namespace YH.Virtual_ECG_Monitor
     {
 
 
-        public static AppLanguage _curLanguage = AppLanguage.Chinese;
+        public static AppLanguage _curLanguage =  AppLanguage.Default;
         public static AppLanguage CurLanguage
         {
             get
             {
-                return _curLanguage;
+                if (_curLanguage == AppLanguage.Default)
+                {
+                    string language=   ConfigurationManager.AppSettings["Language"].ToString();
+                    _curLanguage = (AppLanguage)Enum.Parse(typeof(AppLanguage), language);
+                }
+                if (_curLanguage == AppLanguage.Default)
+                {
+                    _curLanguage = AppLanguage.Chinese;
+                }
+                    return _curLanguage;
             }
             set
             {
@@ -103,7 +113,9 @@ namespace YH.Virtual_ECG_Monitor
     }
     public enum AppLanguage
     {
-        Chinese = 0,
-        English = 1
+        Default = 0,
+        Chinese = 1,
+        English = 2
+
     }
 }

@@ -35,7 +35,7 @@
             </StackPanel>
         </DockPanel>
 
-        <TextBlock Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">数据长度</TextBlock>
+        <TextBlock  Grid.Row="1" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center">数据长度</TextBlock>
         <ComboBox Grid.Row="1" Grid.Column="1" x:Name="cbPlot"  VerticalContentAlignment="Center" HorizontalContentAlignment="Center">
             <ComboBoxItem>120</ComboBoxItem>
             <ComboBoxItem>150</ComboBoxItem>
