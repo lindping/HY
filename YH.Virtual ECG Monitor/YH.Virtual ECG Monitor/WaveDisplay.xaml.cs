@@ -30,6 +30,7 @@ namespace YH.Virtual_ECG_Monitor
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //应用语言资源
             ((ContentControl)this).ApplyLanguage();
 
             // 设置全屏
@@ -51,7 +52,7 @@ namespace YH.Virtual_ECG_Monitor
             this.Close();
         }
 
-        //窗口换肤-浅色
+        //窗口换肤
         private void btnColor1_Click(object sender, RoutedEventArgs e)
         {
             Button btn = sender as Button;
@@ -74,6 +75,11 @@ namespace YH.Virtual_ECG_Monitor
             };
         }
 
+        /// <summary>
+        /// 切换语言
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnLanguage_Click(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;

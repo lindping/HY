@@ -347,10 +347,10 @@ namespace YH.Virtual_ECG_Monitor
             bool? dialog;
             Button btn = sender as Button;
             ECGSetting ecgSetting;
-            switch (btn.Content.ToString())
+            switch (btn.Name)
             {
 
-                case "ECG设置":
+                case "btECGSetting":
                     ECGRunSetting runSetting = new ECGRunSetting(ECG_Paras.Rhythm, ECG_Paras.HeartRat);
                     dialog = runSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
@@ -359,7 +359,7 @@ namespace YH.Virtual_ECG_Monitor
                         Run3Wave(true);
                     }
                     break;
-                case "ECG选项":
+                case "btECGOption":
                     ecgSetting = new ECGSetting();
                     dialog = ecgSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
@@ -367,7 +367,7 @@ namespace YH.Virtual_ECG_Monitor
                         Run3Wave(true);
                     }
                     break;
-                case "ABP设置":
+                case "btABPSetting":
                     ABPRunSetting abpSetting = new ABPRunSetting(ABP_Paras);
                     dialog = abpSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
@@ -376,7 +376,7 @@ namespace YH.Virtual_ECG_Monitor
                         Run3Wave(true);
                     }
                     break;
-                case "ABP选项":
+                case "btABPOption":
                     WaveSetting waveSetting = new WaveSetting(1);
                     dialog = waveSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
@@ -385,7 +385,7 @@ namespace YH.Virtual_ECG_Monitor
                     }
                     break;
 
-                case "PLETH设置":
+                case "btPlethSetting":
                     PLETHRunSetting plethRunSetting = new PLETHRunSetting(PLETH_Paras);
                     dialog = plethRunSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
@@ -394,7 +394,7 @@ namespace YH.Virtual_ECG_Monitor
                         Run3Wave(true);
                     }
                     break;
-                case "PLETH选项":
+                case "btPlethOption":
                     waveSetting = new WaveSetting(0);
                     dialog = waveSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
@@ -403,7 +403,7 @@ namespace YH.Virtual_ECG_Monitor
                     }
                     break;
 
-                case "RESP设置":
+                case "btRespSetting":
                     RESPRunSetting respRunSetting = new RESPRunSetting(Resp_Paras);
                     dialog = respRunSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
@@ -412,7 +412,7 @@ namespace YH.Virtual_ECG_Monitor
                         Run_RESP(true);
                     }
                     break;
-                case "RESP选项":
+                case "btRespOption":
                     waveSetting = new WaveSetting(3);
                     dialog = waveSetting.ShowDialog();
                     if (dialog.HasValue && dialog.Value)
