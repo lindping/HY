@@ -18,7 +18,7 @@ namespace YH.Simulator.Framework.Modle
         V7,
         V8,
         V9,
-        V10,
+        V10
     }
 
     public enum PlaybackMode
@@ -34,6 +34,6 @@ namespace YH.Simulator.Framework.Modle
         /// <summary>
         /// 重复播放
         /// </summary>
-        Replay,
+        Replay
     }
 }

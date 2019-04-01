@@ -64,7 +64,7 @@ namespace YH.Virtual_ECG_Monitor
         /// 对当前页面应用内置语言资源
         /// </summary>
         /// <param name="contentControl"></param>
-        public static void ApplyLanguage(this ContentControl contentControl)
+        public static void ApplyLanguage(this Window contentControl)
         {
             ApplyLanguage(contentControl, _curLanguage);
         }

@@ -284,8 +284,8 @@ namespace YH.Simulator.Framework.Modle
         {
             _default.inO2 = DataValue.Default;
             _default.exO2 = DataValue.Default;
-
         }
+
         /// <summary>
         /// 吸入的氧气 Inhaled Oxygen
         /// </summary>

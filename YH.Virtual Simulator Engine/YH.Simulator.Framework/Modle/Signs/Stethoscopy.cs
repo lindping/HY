@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace YH.Simulator.Framework.Modle
 {
     /// <summary>
-    /// 身体声音 BodySounds
+    /// 听诊
     /// </summary>
     public struct Stethoscopy
     {
@@ -190,11 +190,11 @@ namespace YH.Simulator.Framework.Modle
         /// 血管音 Vascular Sounds
         /// </summary>
         public BodySound Vascular;
-
-
-
     }
 
+    /// <summary>
+    /// 身体声音 BodySounds
+    /// </summary>
     public struct BodySound
     {
         static private BodySound _default;

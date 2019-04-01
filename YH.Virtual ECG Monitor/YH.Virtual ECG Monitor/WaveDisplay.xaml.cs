@@ -31,7 +31,7 @@ namespace YH.Virtual_ECG_Monitor
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //应用语言资源
-            ((ContentControl)this).ApplyLanguage();
+            this.ApplyLanguage();           
 
             // 设置全屏
             this.WindowState = System.Windows.WindowState.Normal;
@@ -86,12 +86,12 @@ namespace YH.Virtual_ECG_Monitor
             if (button.Content.ToString() == "en-US")
             {
                 button.Content = "中文";
-                ((ContentControl)this).ApplyLanguage(AppLanguage.English);
+                ((Window)this).ApplyLanguage(AppLanguage.English);
             }
             else
             {
                 button.Content = "en-US";
-                ((ContentControl)this).ApplyLanguage(AppLanguage.Chinese);
+                ((Window)this).ApplyLanguage(AppLanguage.Chinese);
             }
         
         }
